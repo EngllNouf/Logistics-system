@@ -11,3 +11,13 @@ This section highlights the challenges faced by traders and transportation compa
 # Our Proposed Solution: A Comprehensive Intermediary Platform for Logistics and Transportation
 
 To address the challenges and improve operational efficiency in logistics and transportation, a proposed solution is an integrated platform and application acting as an intermediary. This solution aims to simplify transfer procedures, ensure transaction transparency, facilitate communication, streamline payment processes, enforce timely delivery, and promote fair practices. Traders can track deliveries, sign electronic contracts, make direct payments, and choose preferred transportation companies. Transportation companies can register, authenticate, receive transport requests, and efficiently approve them.
+
+
+# Project Team:  For Logistics-system 
+
+Team Members:
+1. Raghad Abdullah Alshahrani
+2. Sadeem Abdulaziz Alharthi
+3. Nouf Mohammed Aljedaani
+4. Noura Abdulrahman Al-Bassam
+5. Huda Abdullah Mohammed
