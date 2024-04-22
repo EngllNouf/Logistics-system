@@ -241,7 +241,7 @@ form.sign-in-form {
   transform: translate(100%, -50%);
   right: 52%;
 }
-
+  
 .container.sign-up-mode .left-panel .image,
 .container.sign-up-mode .left-panel .content {
   transform: translateX(-800px);
@@ -273,6 +273,7 @@ form.sign-in-form {
 .container.sign-up-mode .right-panel {
   pointer-events: all;
 }
+
 
 @media (max-width: 870px) {
   .container {
