@@ -197,18 +197,33 @@ h1, h2, h3, h4, h5,
 
 
 /* Navbar */
+
+nav
+{
+ 
+  
+}
 .site-navbar {
+   background-color: rgba(255, 255, 255, 0.929);
   margin-bottom: 0px;
   z-index: 1999;
   position: absolute;
-  width: 100%; }
+  width: 100%;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   
+ }
   .site-navbar.transparent {
-    background: transparent; }
+    background: transparent; 
+    
+  }
   .site-navbar.absolute {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; }
+    width: 100%; 
+    
+  }
   .site-navbar .site-logo {
     position: absolute;
     left: 0;
@@ -231,7 +246,7 @@ h1, h2, h3, h4, h5,
       padding: 10px 10px; }
       .site-navbar .site-navigation .site-menu > li > a {
         padding: 10px 0px;
-        color: #fff;
+        color: #000000;
         text-decoration: none !important; }
         .site-navbar .site-navigation .site-menu > li > a:hover {
           color: #f89d13; }
@@ -835,3 +850,8 @@ h1, h2, h3, h4, h5,
 .custom-pagination span {
   background: #e6e6e6;
   color: #000; }
+
+
+ .LogoSample_ByTailorBrands{
+  border-radius: 100px;
+ }
