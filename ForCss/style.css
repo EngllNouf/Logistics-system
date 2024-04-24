@@ -204,11 +204,8 @@ nav
   
 }
 .site-navbar {
-   background-color: rgb(0, 0, 0);
-  margin-bottom: 0px;
-  z-index: 1999;
-  position: absolute;
-  width: 100%;
+   background-color: rgba(251, 251, 251, 0.988);
+ 
 
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    
