@@ -1,3 +1,9 @@
+
+![WhatsApp Image 2024-04-23 at 20 19 06_a7254cb5](https://github.com/EngllNouf/Logistics-system/assets/124361377/bf4babc5-652d-4243-9a41-d682db8fde61)
+
+
+
+
 # Logistics-system
 
 The logistics sector plays a crucial role in shaping the efficiency and competitiveness of a nation's economy, particularly in the context of global trade and commerce. In Saudi Arabia, the logistics industry is undergoing significant transformation as part of the ambitious Vision 2030 initiative, which aims to drive the Kingdom's economy towards prosperity and sustainability. Embracing technological advancements and innovation in transportation is a key focus of this vision.
