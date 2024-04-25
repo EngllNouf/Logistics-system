@@ -695,6 +695,74 @@ body {
 .text{
   margin-left: 6px;
 }
+.list {
+  margin-top:30px;
+  display:flex;
+  justify-content:left;
+  flex-wrap:wrap;
+  gap:10px;
+  max-width:650px;
+}
+
+.form-element {
+  position:relative;
+  width:200px;
+  height:150px;
+}
+.form-element input {
+  display:none;
+}
+.form-element label {
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  height:100%;
+  cursor:pointer;
+  border:2px solid #ddd;
+  background:#fff;
+  box-shadow:0px 5px 20px 2px rgba(0,0,0,0.1);
+  text-align:center;
+  transition:all 200ms ease-in-out;
+  border-radius:20px;
+}
+.form-element .title {
+  font-size:15px;
+  color:#555;
+  padding:5px 0px;
+  transition:all 200ms ease-in-out;
+}
+.form-element label:before {
+  content:"✓";
+  position:absolute;
+  width:18px;
+  height:18px;
+  top:8px;
+  left:8px;
+  background:sandybrown;
+  color:#fff;
+  text-align:center;
+  line-height:18px;
+  font-size:14px;
+  font-weight:600;
+  border-radius:50%;
+  opacity:0;
+  transform:scale(0.5);
+  transition:all 200ms ease-in-out;
+}
+.form-element input:checked + label:before {
+  opacity:1;
+  transform:scale(1);
+}
+.form-element input:checked + label .icon {
+  color:sandybrown;
+}
+.form-element input:checked + label .title {
+  color:sandybrown;
+}
+.form-element input:checked + label {
+  border:2px solid sandybrown;
+}
 
 
 
