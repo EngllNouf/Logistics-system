@@ -6,11 +6,11 @@ body{
     background-color: #333333;
     color: #eae6e5;
     text-align: center;
-    padding-top: 0.05px;
-    padding-bottom: 0.05px;
-    font-size: 12px;
+    padding: 5px;
+    font-weight: bold;
     margin-left: 100px;
     margin-right: 100px;
+    margin-top: 100px;
     border-radius: 10px;
 }
 
@@ -20,7 +20,7 @@ body{
     margin-left: 100px;
     margin-right: 100px;
     padding: 20px;
-    padding-top: 5px;
+    padding-top: 10px;
     border-radius: 10px;
 }
 
@@ -33,9 +33,17 @@ body{
     align-items: center;
 }
 
+.formBody > h6 {
+    font-weight: bold;
+}
+
+.formBody > form {
+    font-size: 14px;
+}
+
 input[type=text], select {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -55,16 +63,9 @@ input[type=text], select {
     padding-left: 80px;
     padding-right: 80px;
     margin-top: 15px;
-    transition-duration: 0.4s;
+    font-size: 14px;
+    transition-duration: 0.3s;
 }
-
-.Buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 
 .confirm-butn {
     background-color: #333333;
@@ -75,7 +76,16 @@ input[type=text], select {
     padding-left: 50px;
     padding-right: 50px;
     margin-top: 15px;
-    transition-duration: 0.4s;
+    margin-bottom:  15px;
+    font-size: 14px;
+    transition-duration: 0.3s;
+}
+
+.Buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .addTruck-btn:hover {
@@ -85,7 +95,7 @@ input[type=text], select {
   }
 
 .confirm-butn:hover {
-    background-color: #606060;
+    background-color: #000000;
     color: #eae6e5;
-    box-shadow: 0 12px 16px 0 rgba(255, 255, 255, 0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   }

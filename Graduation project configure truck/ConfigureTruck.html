@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configure Truck</title>
     <link rel="stylesheet" href="ConfigureTruck.css">
+    <script src="AddTruckForm.js"></script>
 
     <!--Nav and Footer-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> <!---->
@@ -34,69 +35,13 @@
 
     <body>
 
-          <!--Nav Start-->
-          <div class="site-wrap">
-        
-            <div class="site-mobile-menu">
-              <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close mt-3">
-                  <span class="icon-close2 js-menu-toggle"></span>
-                </div>
-              </div>
-              <div class="site-mobile-menu-body"></div>
-            </div>
-            
-            <header class="site-navbar py-3" role="banner">
-        
-              <div class="container">
-                <div class="row align-items-center">
-                  
-                  <div class="col-11 col-xl-2">
-                    <h1 class="mb-0"><a href="HomePage.html" class="text-white h2 mb-0">Transport<span style="color: #f89d13;">Link</span></a></h1>
-        
-                  </div>
-                  <div class="col-12 col-md-10 d-none d-xl-block">
-                    <nav class="site-navigation position-relative text-right" role="navigation">
-        
-                      <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-                        <li class="active"><a href="HomePage.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li class="has-children">
-                          <a href="services.html">Services</a>
-                          <ul class="dropdown">
-                            <li><a href="#">Treder</a></li>
-                            <li><a href="#">transportation company</a></li>
-                            <li><a href="#">Dirver</a></li>
-                            
-                          </ul>
-                        </li>
-                        <!--
-                        <li><a href="industries.html">Industries</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>-->
-                      </ul>
-                    </nav>
-                  </div>
-        
-        
-                  <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-        
-                  </div>
-        
-                </div>
-              </div>
-              
-            </header>
-            <!--End-->
-           <!--For Nav BAR added by nouf -->
-
         <div class="titleFrame">
-            <h3> Configure Truck </h3>
+            <h5> Configure Truck </h5>
         </div>
 
         <div class="formBody">
 
-            <h4>Truck Details</h4>
+            <h6>Truck Details</h6>
 
             <form>
 
@@ -113,9 +58,14 @@
                 <div>
                     <label for="TruckType">Truck type <span style="color: red;">*</span></label>
                     <select id="TruckType" name="TruckType" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option selected disabled value=""></option>
+                        <option value="Semi-trailer truck">Semi-trailer truck</option>
+                        <option value="Straight truck ">Straight truck</option>
+                        <option value="Flatbed truck">Flatbed truck</option>
+                        <option value="Refrigerated truck">Refrigerated truck</option>
+                        <option value="Tanker truck">Tanker truck</option>
+                        <option value="Dump truck">Dump truck</option>
+                        <option value="LTL truck">LTL (Less Than Truckload) truck</option>
                     </select>
                 </div>
 
@@ -127,9 +77,10 @@
                 <div>
                     <label for="Status">Status <span style="color: red;">*</span></label>
                     <select id="Status" name="Status" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option selected disabled value=""></option>
+                        <option value="Active">Active</option>
+                        <option value="Available">Available</option>
+                        <option value="Out of Service">Out of Service</option>
                     </select>
                 </div>
 
