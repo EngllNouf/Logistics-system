@@ -7,6 +7,11 @@ var mapOptions = {
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
 };
+document.getElementById("calculateButton").addEventListener("click", function(event) {
+    event.preventDefault();
+    calcRoute();
+    document.querySelector('.output').focus();
+  });
 
 //create map
 var map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
@@ -66,3 +71,5 @@ var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
 
 var input2 = document.getElementById("to");
 var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+
+
