@@ -15,85 +15,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      
     <title></title>
-    <link rel="stylesheet" href="../ForCss/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
     
     <link rel="stylesheet" href="../ForCss/style.css">
 
-    <!--For Navbar--> 
-    <link rel="stylesheet" href="../../fonts/icomoon/style.css">
-    <link rel="stylesheet" href="../../ForCss/bootstrap.min.css">
-    <!--End For Navbar-->
+    <!--For Nav Bar-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script><!--For cilck and drop down-->
+    <link rel="stylesheet" href="../HomePage/ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
+    <link rel="stylesheet" href="/ForNavBar/allPages.Css"> <!--For simple style (nav)-->
+    <!--End nav bar-->
    
 
     <link rel="stylesheet" href="Trader.Css">
 </head>
 <body>
     <!--Nav-->
-    <header>
-    <div class="site-wrap">
-
-        <div class="site-mobile-menu">
-          <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close mt-3">
-              <span class="icon-close2 js-menu-toggle"></span>
-            </div>
-          </div>
-          <div class="site-mobile-menu-body"></div>
-        </div>
-        
-        <header class="site-navbar py-3" role="banner">
-    
-          <div class="container">
-            <div class="row align-items-center">
-              
-              <div class="col-11 col-xl-2">
-                <img class="LogoSample_ByTailorBrands" src="/images/LogoSample_ByTailorBrands.jpg" width="90" height="80">
-    
-              </div>
-              <div class="col-12 col-md-10 d-none d-xl-block">
-                <nav class="site-navigation position-relative text-right" role="navigation">
-    
-                  <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-                    <li class="active"><a href="HomePage.html" style="font-size: large;">Home</a></li>
-                  <li><a href="about.html" style="font-size: large;">About Us</a></li>
-                    <li class="has-children">
-                      <a href="services.html"style="font-size: large;">Services</a>
-                      <ul class="dropdown">
-                        <li><a href="#" style="font-size: large;">Treder</a></li>
-                        <li><a href="#"style="font-size: large;">transportation company</a></li>
-                        <li><a href="#"style="font-size: large;">Dirver</a></li>
-                        
+    <nav id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
+      <div class="container">
+          <a class="navbar-brand" href="../FotHtml/HomePage.html"><img src="../images/LogoSample_ByTailorBrands.jpg" height="60" width="90" alt="logo"></a>
+          <button class="navbar-toggler collapsed" type="button" 
+          data-bs-toggle="collapse" data-bs-target="#miniNav" aria-controls="miniNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="miniNav">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../FotHtml/HomePage.html" style="color: #f89d13;">Home</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services
+                    </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="../index_file/Login.html">Treder</a></li>
+                         
+                            <li><a class="dropdown-item" href="../index_file/Register.html">transportation company</a></li>
+                            <li><a class="dropdown-item" href="../index_file/Login.html">Dirver</a></li>
+                          </ul>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="../index_file/aboutUs.html">AboutUs</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="../index_file/ContactUs.html">ContactUs</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="../images/person.png" height="30" width="30" alt="person icon">
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="../index_file/Login.html">Login</a></li>
+                          <li><a class="dropdown-item" href="../index_file/Register.html">Register</a></li>
                       </ul>
-                    </li>
-                    
-                   
-                      <a href="#"><img src="/images/user.png" width="40" height="40"></a>
-                     
-                       
-                      
-                        
-                      </ul>
-                    
-                    <!--
-                    <li><a href="industries.html">Industries</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>-->
-                  </ul>
-                </nav>
-              </div>
-    
-    
-              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-    
-              </div>
-    
-            </div>
+                  </li>
+              </ul> 
           </div>
-          
-        </header>
+      </div>
+  </nav> 
         <!--End of anv bar-->
 
 
@@ -121,7 +102,7 @@
             </div>
         </section>
 
-<!--End Timline-->
+
     
     
 
@@ -136,7 +117,7 @@
     <div class="row align-items-stretch">
       <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
         <div class="unit-4 d-flex">
-          <div class="unit-4-icon mr-4"><img src="../images/Order_mang.png " width="50" height="50"></div>
+          <div class="unit-4-icon mr-4"><img src="../HomePage/images/Order_mang.png " width="50" height="50"></div>
           <div>
             <h3>Effortless Order Placement</h3>
             <p>Using our intuitive form, which allows you to choose truck size, number of trucks, and pick-up and drop-off locations, place orders in a matter of seconds.</p>
@@ -146,7 +127,7 @@
       </div>
       <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
         <div class="unit-4 d-flex">
-          <div class="unit-4-icon mr-4"><img src="../images/automation.png " width="50" height="50"></div>
+          <div class="unit-4-icon mr-4"><img src="../HomePage/images/automation.png " width="50" height="50"></div>
           <div>
             <h3>Automated Matching for Efficiency</h3>
             <p>Based on your unique needs, our system will automatically match your order with the best transportation provider. </p>
@@ -156,7 +137,7 @@
       </div>
       <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
         <div class="unit-4 d-flex">
-          <div class="unit-4-icon mr-4"><img src="../images/registration.png " width="50" height="50"></div>
+          <div class="unit-4-icon mr-4"><img src="../HomePage/images/registration.png " width="50" height="50"></div>
 
           <div>
             <h3> Comprehensive Order Management</h3>
@@ -173,75 +154,9 @@
   </div>
 </div>
 
-        <footer class="site-footer">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-9">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <h2 class="footer-heading mb-4">Quick Links</h2>
-                      <ul class="list-unstyled">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-md-3">
-                      <h2 class="footer-heading mb-4">Products</h2>
-                      <ul class="list-unstyled">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-md-3">
-                      <h2 class="footer-heading mb-4">Features</h2>
-                      <ul class="list-unstyled">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-md-3">
-                      <h2 class="footer-heading mb-4">Follow Us</h2>
-                      <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                      <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                      <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                      <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
-                  <form action="#" method="post">
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
-                      <div class="input-group-append">
-                        <button class="btn btn-primary text-white" type="button" id="button-addon2">Send</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-             
-                
-              </div>
-            </div>
-          </footer>
+   
     
   
-    <!--For Navbar-->
-    <script src="../../js/jquery-3.3.1.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/owl.carousel.min.js"></script>
-    <script src="../../js/bootstrap-datepicker.min.js"></script>
-    <script src="../../js/aos.js"></script>
-     <!-- JAVASCRIPT FILES -->
-    <script src="../../js/main.js"></script>
-    <!--End For Navbar-->
   
   
         
