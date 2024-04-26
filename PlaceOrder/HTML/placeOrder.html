@@ -16,8 +16,9 @@
     <!--Form Place Order-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <title>Bootstrap Example</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!--Font Awesome Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!--End Form Place Order-->
     <link rel="stylesheet" href="../CSS/placeOrder.css">
     <title>Place Order</title>
@@ -40,7 +41,8 @@
                 <div class="row align-items-center">
               
                     <div class="col-11 col-xl-2">
-                        <h1 class="mb-0"><a href="HomePage.html" class="text-white h2 mb-0">Transport<span style="color: #f89d13;">Link</span></a></h1>
+                       <!--<h1 class="mb-0"><a href="HomePage.html" class="text-white h2 mb-0">Transport<span style="color: #f89d13;">Link</span></a></h1>-->
+                       <img class="LogoSample_ByTailorBrands" src="../../images/LogoSample_ByTailorBrands.jpg" width="90" height="60" style="border-radius: 50%;">
                     </div>
                     <div class="col-12 col-md-10 d-none d-xl-block">
                         <nav class="site-navigation position-relative text-right" role="navigation">
@@ -109,8 +111,10 @@
             <label for="validationCustom00" class="form-label">Type</label>
             <select class="form-select" id="validationCustom00" required>
               <option selected disabled value="">Choose...</option>
-              <option>Factory/Warehouse</option>
-              <option>Port/Airport</option>
+              <option>Factory</option>
+              <option>Warehouse</option>
+              <option>Port</option>
+              <option>Airport</option>
               <option>Business address</option>
             </select>
             <div class="invalid-feedback">
@@ -166,25 +170,183 @@
             </div>
           </div>
           <label style="font-weight:bold">Choose truck size:</label><br/>
+          <div class="list">
+            <div class="form-element">
+              <input type="radio" name="platform" value="trailerTruck" id="trailerTruck">
+              <label for="trailerTruck">
+                <div class="image">
+                  <img src="../Image\trailer.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Trailer Truck
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="platform" value="tankTruck" id="tankTruck">
+              <label for="tankTruck">
+                <div class="icon">
+                  <img src="../Image\tankTruck.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Tank Truck
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="platform" value="lorryTruck" id="lorryTruck">
+              <label for="lorryTruck">
+                <div class="image">
+                  <img src="../Image\lorry.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Lorry Truck
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="platform" value="lorry7Truck" id="lorry7Truck">
+              <label for="lorry7Truck">
+                <div class="image">
+                  <img src="../Image\lorry7.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Lorry 7 Meter Truck
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="platform" value="dynaTruck" id="dynaTruck">
+              <label for="dynaTruck">
+                <div class="image">
+                  <img src="../Image\dyna.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Dyna Truck
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="platform" value="towTruck" id="towTruck">
+              <label for="towTruck">
+                <div class="image">
+                  <img src="../Image\tow-truck.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Tow Truck
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="platform" value="flatbedTruck" id="flatbedTruck">
+              <label for="flatbedTruck">
+                <div class="image">
+                  <img src="../Image\flatbedTruck.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Flatbed Truck
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="platform" value="tipperTruck" id="tipperTruck">
+              <label for="tipperTruck">
+                <div class="image">
+                  <img src="../Image\tipperTruck.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Tipper Truck
+                </div>
+              </label>
+            </div>
+          </div>
           <label style="font-weight:bold">Choose truck Type:</label><br/>
-          <!--<div class="col-md-4">
-            <label for="validationCustomUsername" class="form-label">Username</label>
-            <div class="input-group has-validation">
-              <span class="input-group-text" id="inputGroupPrepend">@</span>
-              <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-              <div class="invalid-feedback">
-                Please choose a username.
-              </div>
+          <div class="list">
+            <div class="form-element">
+              <input type="radio" name="truckType" value="shortSide" id="shortSide">
+              <label for="shortSide">
+                <div class="image">
+                  <img src="../Image/shortSide.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Short Sides
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="truckType" value="highSide" id="highSide">
+              <label for="highSide">
+                <div class="image">
+                  <img src="../Image/highSides.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  High Sides
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="truckType" value="refrigerator" id="refrigerator">
+              <label for="refrigerator">
+                <div class="image">
+                  <img src="../Image/refrigerator.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Refrigerator
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="truckType" value="freezer" id="freezer">
+              <label for="freezer">
+                <div class="image">
+                  <img src="../Image/freezer.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Freezer
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="truckType" value="curtaion" id="curtaion">
+              <label for="curtaion">
+                <div class="image">
+                  <img src="../Image/curtaion.png" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Curtaion
+                </div>
+              </label>
+            </div>
+            <div class="form-element">
+              <input type="radio" name="truckType" value="equipment" id="equipment">
+              <label for="equipment">
+                <div class="image">
+                  <img src="../Image/equipment.jpg" height="70px" width="70px" alt="test">
+                </div>
+                <div class="title">
+                  Equipment
+                </div>
+              </label>
             </div>
           </div>
           <div class="col-md-6">
-            <label for="validationCustom03" class="form-label">City</label>
-            <input type="text" class="form-control" id="validationCustom03" required>
-            <div class="invalid-feedback">
-              Please provide a valid city.
+            <label class="form-label">Upload Image</label>
+            <div class="containerImage">
+              <input type="file" id="upload-button" multiple accept="image/*" />
+              <label class="upload" for="upload-button"
+                ><i class="fa-solid fa-upload"></i>&nbsp; Choose Or Drop Photos
+              </label>
+              <div id="error"></div>
+              <div id="image-display"></div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-6">
+            <label for="validationCustomUsername" class="form-label">Notes:</label>
+            <div class="input-group has-validation">
+              <textarea class="form-control" id="note" cols="30" rows="5" aria-describedby="inputGroupPrepend" placeholder="Write your notes"></textarea>
+            </div>
+          </div> 
+          <!--<div class="col-md-3">
             <label for="validationCustom04" class="form-label">State</label>
             <select class="form-select" id="validationCustom04" required>
               <option selected disabled value="">Choose...</option>
@@ -213,7 +375,7 @@
             </div>
           </div>-->
           <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <button style="background-color: #f89d13;" class="btn btn-primary" type="submit">Submit form</button>
           </div>
       </form>
     </div>
@@ -227,8 +389,10 @@
     <script src="../../js/owl.carousel.min.js"></script>
     <script src="../../js/bootstrap-datepicker.min.js"></script>
     <script src="../../js/aos.js"></script>
-     <!-- JAVASCRIPT FILES -->
     <script src="../../js/main.js"></script>
     <!--End For Navbar-->
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="../JS/uploadImage.js"></script>
 </body>
 </html>

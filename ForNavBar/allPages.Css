@@ -1,0 +1,30 @@
+
+/* Nav style */
+.navbar {
+    background-color: #ffffff;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.nav-title, .nav-link {
+    transition: color 0.3s, text-shadow 0.3s; 
+}
+
+.nav-title:hover, .nav-link:hover {
+    text-shadow: 2px 2px 15px #e8ab41; 
+}
+
+
+
+
+#nav .navbar-nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#nav .navbar-nav .nav-item {
+    padding: 0 15px; 
+}
+
+/* End Nav Bar */
