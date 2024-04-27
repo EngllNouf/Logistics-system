@@ -28,3 +28,79 @@
 }
 
 /* End Nav Bar */
+
+/* Start Footer */
+
+
+footer{
+    
+    background: #333333; 
+    
+  
+}
+
+
+.site-footer {
+    
+    background: #333333; 
+  
+  }
+    @media (min-width: 768px) {
+
+      .site-footer {
+        color: #ffffff;
+        padding: 2em 0; } }
+    .site-footer .border-top {
+      border-top: 1px solid rgba(255, 255, 255, 0.1) !important; }
+    .site-footer p {
+      color: #fff0f0; }
+    .site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5 {
+      color: #fff; }
+    .site-footer a {
+      color: #ffffff; }
+      .site-footer a:hover {
+        color: white; }
+    .site-footer ul li {
+      margin-bottom: 10px; }
+    .site-footer .footer-heading {
+      font-size: 16px;
+      color: #fff; }
+  
+  .bg-text-line {
+    display: inline;
+    background: #000;
+    color: #ffffff;}
+      
+  .text-white-opacity-05 {
+    color: rgb(255, 255, 255); }
+  
+  .text-black-opacity-05 {
+    color: rgb(255, 255, 255); }
+  
+  .hover-bg-enlarge {
+    overflow: hidden;
+    position: relative; }
+    @media (max-width: 991.98px) {
+
+      .hover-bg-enlarge {
+        height: auto !important; } 
+    }
+    .hover-bg-enlarge > div {
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: .8s all ease-in-out;
+      -o-transition: .8s all ease-in-out;
+      transition: .8s all ease-in-out; }
+    .hover-bg-enlarge:hover > div, .hover-bg-enlarge:focus > div, .hover-bg-enlarge:active > div {
+      -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+      transform: scale(1.2); }
+    @media (max-width: 991.98px) {
+      .hover-bg-enlarge .bg-image-md-height {
+        height: 200px !important; } }
+  
+  
+  
+
+
