@@ -56,13 +56,23 @@ input[type=text], select {
     font-size: 12px;
 }
 
+.Check_box {
+    margin-left: 105px;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.Check_box input[type="checkbox"] {
+    vertical-align: middle;
+}
+
 .addTruck-btn {
     border: none;
     border-radius: 10px;
     padding: 10px;
     padding-left: 80px;
     padding-right: 80px;
-    margin-top: 15px;
+    margin-top: 5px;
     font-size: 14px;
     transition-duration: 0.3s;
 }
@@ -99,3 +109,41 @@ input[type=text], select {
     color: #eae6e5;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   }
+
+
+/* The first modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  /* End of first modal */

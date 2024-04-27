@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configure Truck</title>
     <link rel="stylesheet" href="ConfigureTruck.css">
-    <script src="AddTruckForm.js"></script>
+    
 
     <!--Nav and Footer-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> <!---->
@@ -47,7 +47,7 @@
 
                 <div>
                     <label for="LicensePlate">License plate no. <span style="color: red;">*</span></label>
-                    <input type="text" id="LicensePlate" name="LicensePlate" required>
+                    <input type="text" id="LicensePlate" name="LicensePlate" placeholder="0000 ABC" required>
                 </div>
 
                 <div>
@@ -87,9 +87,33 @@
             </form>
         </div>
 
+        <Section id="AddForm"></Section> <!-- Where any additional truck forms will be added -->
+
+        <div class="Check_box">
+        <input type="checkbox" id="Check" name="Check" value="agree">
+        <label for="Check" id="Check">I acknowledge that I am solely responsible for the accuracy and validity of the information provided, and I understand that any misinformation may result in consequences. <span style="color: red;">*</span></label>
+        </div>
+
         <div class="Buttons">
             <button class="addTruck-btn" id="addTruck-btn">+ Add another truck</button>
-            <button class="confirm-butn" id="confirm-btn">Confirm</button>
+            <button class="confirm-butn" id="confirm-btn" disabled="true">Confirm</button>
+        </div>
+
+        <!-- First modal -->
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Are you sure you would like to confirm and save?</p>
+
+            <div class="modalButtons">
+              <button class="cancel-btn" id="cancel-btn">Cancel</button>
+              <button class="confirmSave-butn" id="confirmSave-btn">Confirm</button>
+            </div>
+
+          </div>
+        
         </div>
 
 
@@ -97,8 +121,8 @@
      
   <!-- Footer -->
 
-
-
+  <script src="ConfigTruckButtons.js"></script>
+  <script src="Modals.js"></script>
 
    <!--IT iS only for nav Bar-->
    <script src="../js/jquery-3.3.1.min.js"></script>
