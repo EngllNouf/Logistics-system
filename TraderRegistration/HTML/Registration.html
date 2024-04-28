@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/Registration.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../HomePage/ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
+    
+</head>
+<body>
+    <!-- Nav bar hereee -->
+
+
+
+
+
+    <div class="welcome-container" id="welcomeContainer">
+        <h1>Welcome!</h1>
+        <p>Choose Which Option Best Describes your Business</p>
+        <div class="options-container">
+            <div class="option">
+                <img src="../IMG/truck.png" alt="truck">
+                <button onclick="selectOption('transportation')">Transportation Company</button>
+            </div>
+            <div class="option">
+                <img src="../IMG/trader.png" alt="trader">
+                <button onclick="selectOption('trader')">Trader</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-container" id="formContainer" style="display: none;">
+        <!-- Company details form -->
+        <div class="form-step company-details" id="step1" style="display: none;">
+            <h2> Trader's Company Details : </h2>
+            <div class="grid-container">
+                <input type="text" placeholder="Company Name">
+                <input type="text" placeholder="Company Email Id">
+                <input type="text" placeholder="Address line 1">
+                <select id="citySelect">
+                    <option value="" disabled selected>Select City</option>
+                    <option value="Abha">Abha</option>
+                    <option value="Jeddah">Jeddah</option>
+                </select>
+                <input type="text" placeholder="Zip Code">
+              
+                <input type="text" placeholder="VAT Number">
+                <input type="text" placeholder="Business License Number">
+            </div>
+            <button onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- Trader details form -->
+        <div class="form-step trader-details" id="step2" style="display: none;">
+            <h2>Trader's Details : </h2>
+            <div class="grid-container">
+                <input type="text" placeholder="Name">
+                <input type="text" placeholder="Phone Number">
+                <input type="text" placeholder="Address">
+                <select id="industrySelect">
+                    <option value="" disabled selected>Select Industry</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Finance">Finance</option>
+                </select>
+                <input type="text" placeholder="Saudi National ID or Iqama Number">
+            </div>
+          
+               <div class="button-container">
+                 <button onclick="backStep()">Back</button>
+                 <button onclick="submitForm()">Submit</button>
+               </div>
+        </div>
+
+        <div id="successMessage" class="success-animation" style="display: none;"></div>
+    </div>
+
+            <div class="welcome-message" id="welcomeMessage">
+                Welcome <span id="userName"></span>!
+           </div>
+
+    
+
+    <script src="../JS/Registration.js"></script>
+</body>
+</html>
