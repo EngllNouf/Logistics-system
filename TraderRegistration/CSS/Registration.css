@@ -5,7 +5,7 @@ body {
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
+     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -28,6 +28,7 @@ body {
 
 .welcome-container {
     text-align: center;
+   
 }
 
 .options-container {
