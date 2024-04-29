@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configure Truck</title>
+    <link rel="stylesheet" href="ConfigureTruck.css">
+    
+
+    <!--Nav and Footer-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> <!---->
+    <link rel="stylesheet" href="../fonts/icomoon/style.css"><!--THIS IS FOR ICON IN NAV BAR  ابو ثلاث شرطات-->
+
+    <link rel="stylesheet" href="../ForCss/bootstrap.min.css"> <!--BootStrap For Nav .css لاني اضفته يدوي مو رابط -->
+    <link rel="stylesheet" href="../ForCss/magnific-popup.css">
+    <link rel="stylesheet" href="../ForCss/jquery-ui.css">
+    <link rel="stylesheet" href="../ForCss/owl.carousel.min.css">
+    <link rel="stylesheet" href="../ForCss/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="../ForCss/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
+
+    <link href="../ForCss/FotTiimeline.css" rel="stylesheet">      
+
+                      
+
+    <link href="../ForCss/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="ForCss/aos.css">
+
+    <link rel="stylesheet" href="../ForCss/style.css">
+    <!--Nav and Footer-->
+</head>
+
+    <body>
+
+        <div class="titleFrame">
+            <h5> Configure Truck </h5>
+        </div>
+          
+        <div class="formBody">
+
+            <h3>Owner details</h3>
+
+            <form>
+
+
+                <div>
+                    <label for="Owner"> Owner <span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="Owner" name="Owner" required>
+                </div>
+
+                <div>
+                    <label for="OwnerID">Owner's identity<span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="OwnerID" name="OwnerID" required>
+                </div>
+
+               <!--
+                <div> هذا ما عرفت لشو
+                    <label for="RegistrationSerial">Registration serial no. <span style="color: red;">*</span></label>
+                    <input type="text" id="RegistrationSerial" name="RegistrationSerial" required>
+                </div>
+            -->
+
+            <div></div> 
+
+                <div><h3>Truck details</h3></div>
+               <div></div> 
+               <div></div> 
+               
+                
+                <div>
+                    
+                    
+                    <label for="TruckType">Truck type <span style="color: red;">*</span></label>
+                    <select id="TruckType" name="TruckType" required>
+                        <option selected disabled value=""></option>
+                        <option value="Semi-trailer truck">Semi-trailer truck</option>
+                        <option value="Straight truck ">Straight truck</option>
+                        <option value="Flatbed truck">Flatbed truck</option>
+                        <option value="Refrigerated truck">Refrigerated truck</option>
+                        <option value="Tanker truck">Tanker truck</option>
+                        <option value="Dump truck">Dump truck</option>
+                        <option value="LTL truck">LTL (Less Than Truckload) truck</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="Capacity">Capacity <span style="color: red;">* </span><span class="smallText">(Weight by tons)</span></label>
+                    <input type="text" id="Capacity" name="Capacity" required>
+                </div>
+
+                <div>
+                    <label for="Status">Status <span style="color: red;">*</span></label>
+                    <select id="Status" name="Status" required>
+                        <option selected disabled value=""></option>
+                        <option value="Active">Active</option>
+                        <option value="Available">Available</option>
+                        <option value="Out of Service">Out of Service</option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label for="LicensePlate">License plate no. <span style="color: red;">*</span></label>
+                    <input type="text" id="LicensePlate" name="LicensePlate" placeholder="0000 ABC" required>
+                </div>
+
+           
+
+
+                <div>
+                    <label for="VIM">Vehicle identification number (VIN) <span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="VIM" name="VIM" required>
+
+                </div>
+
+             
+
+
+
+                <div>
+                    <label for="Vehicle_model">Vehicle make and model<span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="Vehicle_model" name="Vehicle_model" required>
+                </div>
+
+                <div>
+                    <label for="Color">Color<span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="Color" name="Color" required>
+                </div>
+
+                <div>
+                    <label for="manufacture">Year of manufacture<span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="manufacture" name="manufacture" required>
+                </div>
+
+                <div>
+                    <label for="Serial_number">Serial number<span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="Serial_number" name="Serial_number" required>
+                </div>
+
+
+
+
+                <div>
+                    <label for="insurance_start">Insurance Start Date<span style="color: red;">*</span></label>
+                    <input type="date" id="insurance_start" name="insurance_start" required>
+                          <br>
+                          <br>
+                    <label for="insurance_end">Insurance End Date<span style="color: red;">*</span></label>
+                    <input type="date" id="insurance_end" name="insurance_end" required>
+                </div>
+                
+                <div>
+                    <label for="inspection_start">Inspection Start Date<span style="color: red;">*</span></label>
+                    <input type="date" id="inspection_start" name="inspection_start" required>
+                    <br>
+                    <br>
+                    <label for="inspection_end">Inspection End Date<span style="color: red;">*</span></label>
+                    <input type="date" id="inspection_end" name="inspection_end" required>
+
+
+                </div>
+              
+            </form>
+        </div>
+
+        <Section id="AddForm"></Section> <!-- Where any additional truck forms will be added -->
+
+        <div class="Check_box">
+        <input type="checkbox" id="Check" name="Check" value="agree">
+        <label for="Check" id="Check">I acknowledge that I am solely responsible for the accuracy and validity of the information provided, and I understand that any misinformation may result in consequences. <span style="color: red;">*</span></label>
+        </div>
+
+        <div class="Buttons">
+            <button class="addTruck-btn" id="addTruck-btn">+ Add another truck</button>
+            <button class="confirm-butn" id="confirm-btn" disabled="true">Confirm</button>
+        </div>
+
+        <!-- First modal -->
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Are you sure you would like to confirm and save?</p>
+
+            <div class="modalButtons">
+              <button class="cancel-btn" id="cancel-btn">Cancel</button>
+              <button class="confirmSave-butn" id="confirmSave-btn">Confirm</button>
+            </div>
+
+          </div>
+        
+
+
+  <!-- Footer -->
+     
+  <!-- Footer -->
+
+  <script src="ConfigTruckButtons.js"></script>
+  <script src="Modals.js"></script>
+
+   <!--IT iS only for nav Bar-->
+   <script src="../js/jquery-3.3.1.min.js"></script>
+   <script src="../js/bootstrap.min.js"></script>
+   <script src="../js/owl.carousel.min.js"></script>
+   <script src="../js/bootstrap-datepicker.min.js"></script>
+   <script src="../js/aos.js"></script>
+    <!-- JAVASCRIPT FILES -->
+   <script src="../js/main.js"></script>
+
+    </body>
+
+</html>
