@@ -123,12 +123,28 @@
                             <input type="date" class="form-control" id="date" required>
                         </div>
                     </div>
-                    <div class="col-xs-offset-2 col-xs-10">
-                        <button class="btn btn-info btn-lg " onclick="calcRoute();"><i class="fas fa-map-signs" id="calculateButton"></i></button>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col-xs-offset-2 col-xs-8">
+                                <button class="btn btn-info btn-lg" onclick="calcRoute();">
+                                    <i class="fas fa-map fa-lg" id="calculateButton" style="position: relative;"></i> <!-- Map outline -->
+        <i class="fas fa-circle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 6px;"></i> <!-- Dot inside -->
+                                </button>
+                            </div>
+                        </div>
                     </div>
+                                     
+                    
                     <div class="container-fluid">
                         <div id="googleMap"></div>
                         <div id="output"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <label style="margin-bottom: 10px;" for="validationCustom07" class="form-label">Type of Cargo</label>
+                        <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom07" placeholder="Enter the type of cargo" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
                     </div>
                     <label>Choose truck size:</label>
                     <div class="list">
@@ -290,6 +306,7 @@
                             </label>
                         </div>
                     </div>
+                <div  class="container1">
                     <div class="col-md-4">
                         <label class="form-label">Number of Trucks</label>
                         <div class="wrapper">
@@ -306,8 +323,8 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label style="margin-bottom: 10px;" for="validationCustom07" class="form-label">Type of Cargo</label>
-                        <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom07" placeholder="Enter the type of cargo" required>
+                        <label style="margin-bottom: 10px;" for="validationCustom06" class="form-label">Goods weight</label>
+                        <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom06" placeholder="Enter the Goods weight" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -331,9 +348,9 @@
                         </div>
                     </div> 
                     <div class="col-12">
-                        <button style="background-color: #f89d13;" class="btn btn-primary" type="submit">Submit form</button>
+                        <button style="background-color: #5b9279;" class="btn btn-primary" type="submit">Submit form</button>
                     </div>
-
+                </div>
                    
                 </form>
             </div>
