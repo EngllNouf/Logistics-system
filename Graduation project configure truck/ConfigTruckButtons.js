@@ -1,5 +1,6 @@
 document.getElementById("addTruck-btn").addEventListener("click", createTruckForm);
 document.getElementById("Check").addEventListener("click", enableConfirm);
+document.getElementsByClassName("formClose").addEventListener("click", deleteForm);
 
 function createTruckForm() {
 
@@ -21,4 +22,12 @@ function enableConfirm(){
         confirm.disabled = "true";
     }
 
+}
+
+function deleteForm() {
+
+    var deleteButton = document.getElementsByClassName("formClose")[0];
+    var parentDiv = deleteButton.parentNode;
+  
+    parentDiv.remove();
 }
