@@ -5,7 +5,7 @@
         <meta chartset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>
         <!--CSS-->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -338,30 +338,144 @@
                 </form>
             </div>
         </section>
-        <script type="text/javascript">
-            $(function() {
-                $('#datepicker').datepicker();
-            });
-        </script>
-        <script>
-            const plus = document.querySelector(".plus"),
-             minus = document.querySelector(".minus"),
-             num = document.querySelector(".num");
-             let a = 1;
-             plus.addEventListener("click", ()=>{
-               a++;
-               a = (a < 10) ? "0" + a : a;
-               num.innerText = a;
-             });
-             minus.addEventListener("click", ()=>{
-               if(a > 1){
-                 a--;
-                 a = (a < 10) ? "0" + a : a;
-                 num.innerText = a;
-               }
-             });
-        </script>
-             
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>
+       
+<script type="text/javascript">
+
+   
+
+let map, markerPickup, markerDropoff, directionsService, directionsRenderer, polyline;
+
+function initModal() {
+    map = new google.maps.Map(document.getElementById("googleMap"), {
+        center: { lat: 40.7128, lng: -74.0060 },
+        zoom: 8,
+    });
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer({
+        map: map,
+    });
+
+    polyline = new google.maps.Polyline({
+        strokeColor: "#0000FF",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        map: map,
+    });
+
+    map.addListener('click', function (event) {
+        if (!markerPickup) {
+            placeMarker(event.latLng, 'from');
+        } else if (!markerDropoff) {
+            placeMarker(event.latLng, 'to');
+            drawPolyline();
+            calculateAndDisplayRoute();
+        }
+    });
+
+    // Add event listeners to the input fields for manual entry
+    document.getElementById('from').addEventListener('change', function () {
+        geocodeAddress(this.value, 'from');
+    });
+
+    document.getElementById('to').addEventListener('change', function () {
+        geocodeAddress(this.value, 'to');
+    });
+}
+
+function placeMarker(location, inputField) {
+    if (inputField === 'from') {
+        if (markerPickup) markerPickup.setMap(null);
+        markerPickup = new google.maps.Marker({
+            position: location,
+            map: map,
+            draggable: true
+        });
+        geocodeLatLng(location, 'from');
+    } else if (inputField === 'to') {
+        if (markerDropoff) markerDropoff.setMap(null);
+        markerDropoff = new google.maps.Marker({
+            position: location,
+            map: map,
+            draggable: true
+        });
+        geocodeLatLng(location, 'to');
+    }
+}
+
+function drawPolyline() {
+    polyline.setPath([markerPickup.getPosition(), markerDropoff.getPosition()]);
+}
+
+function geocodeLatLng(location, inputField) {
+    let geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'location': location }, function (results, status) {
+        if (status === 'OK') {
+            if (results[0]) {
+                document.getElementById(inputField).value = results[0].formatted_address;
+            } else {
+                console.log('No results found');
+            }
+        } else {
+            console.log('Geocoder failed due to: ' + status);
+        }
+    });
+}
+
+function geocodeAddress(address, inputField) {
+    let geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status === 'OK') {
+            map.setCenter(results[0].geometry.location);
+            if (inputField === 'from') {
+                if (markerPickup) markerPickup.setMap(null);
+                markerPickup = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    draggable: true
+                });
+            } else if (inputField === 'to') {
+                if (markerDropoff) markerDropoff.setMap(null);
+                markerDropoff = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    draggable: true
+                });
+                drawPolyline();
+                calculateAndDisplayRoute();
+            }
+        } else {
+            console.log('Geocode was not successful for the following reason: ' + status);
+        }
+    });
+}
+
+function calculateAndDisplayRoute() {
+    if (!markerPickup || !markerDropoff) {
+        console.log("Please select both pickup and drop-off locations.");
+        return;
+    }
+    const request = {
+        origin: markerPickup.getPosition(),
+        destination: markerDropoff.getPosition(),
+        travelMode: google.maps.TravelMode.DRIVING
+    };
+    directionsService.route(request, function (response, status) {
+        if (status === 'OK') {
+            directionsRenderer.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
+}
+
+
+
+
+</script>
+
+
+
 
         <!-- JAVASCRIPT FILES -->
         <script src="../JS/uploadImage.js"></script>
@@ -372,10 +486,10 @@
         <script src="../../HomePage/js/custom.js"></script>
 
         <script src="../../HomePage/js/main.js"></script>
-
+        
         <!--Map-->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=myMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="Scripts/jquery-3.1.1.min.js"></script>
