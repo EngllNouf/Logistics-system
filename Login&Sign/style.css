@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
 * {
-
+     
 }
 
 body,
@@ -12,15 +12,14 @@ input {
 .container {
   position: relative;
   width: 100%;
-  background-color: #fff;
+  background-color: #ffffff74;
   min-height: 100vh;
   overflow: hidden;
   
 }
 
 .forms-container {
-  background-color: #e7ece6;
-
+  
   position: absolute;
   width: 100%;
   height: 100%;
@@ -164,26 +163,17 @@ form.sign-in-form {
 .container:before {
   content: "";
   position: absolute;
-  height: 2000px;
+  height: 3000px;
   width: 2000px;
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #8fcb9b 0%, #5b927900 0% );
-  transition: 1.8s ease-in-out;
+  background-image: url(/HomePage/images/Load\ up_\ Move\ out.gif);
+  
   border-radius: 50%;
   z-index: 6;
 }
 
-
-.image {
-  position: relative;
-  width: 170%;
-  
-    left: 270px;
-  transition: transform 1.1s ease-in-out;
-  transition-delay: 0.4s;
-}
 
 .panel {
   display: flex;
@@ -204,17 +194,6 @@ form.sign-in-form {
   padding: 3rem 12% 2rem 17%;
 }
 
-.panel .content {
-  color: #fff;
-  transition: transform 0.9s ease-in-out;
-  transition-delay: 0.6s;
-}
-
-.panel h3 {
-  font-weight: 600;
-  line-height: 1;
-  font-size: 1.5rem;
-}
 
 .panel p {
   font-size: 0.95rem;
