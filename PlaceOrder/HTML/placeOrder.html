@@ -87,11 +87,12 @@
                   <li class="step circle" id="step-3">Confirmation</li>
               </ul>
             <!-- Step Counter Ends -->
-        </div>
+          </div>
   
           <!--Start Form-->
           <form id="myForm" action="" method="post" autocomplete = "off">
               <div class="tab" id = "tab-1">
+                <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
                   <div class="top">
                       <label class="heading">Order Details</label><br/>
                       <label class="text">Fill out the form carefully for order</label><br/>
@@ -334,10 +335,14 @@
                         <textarea name="notes" class="form-control" id="note" cols="30" rows="5" aria-describedby="inputGroupPrepend" placeholder="Write your notes"></textarea>
                     </div>
                 </div> 
-                <div class="index-btn-wrapper">
-                  <div class="index-btn" onclick="run(1, 2);">Next</div>
-                </div>
-              </div>
+
+                        <Section id="AddForm" class="AddForm"></Section> <!-- Where any additional truck forms will be added -->
+
+                      <div class="index-btn-wrapper">
+                        <div class="index-btn" onclick="run(1, 2);">Next</div>
+                        <button class="addShipment-btn index-btn" id="addShipment-btn">+ Add another shipment</button>
+                      </div>
+            </div>
               <!--Page View order-->
               <div class="tab" id = "tab-2">
                       <div class="top">
@@ -358,38 +363,74 @@
                   </div>      
             </form>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>
- 
-        
         <script>
             // Default tab
             $(".tab").css("display", "none");
             $("#tab-1").css("display", "block");
-
+        
+            var cloneCount = 0; // تتبع عدد النماذج المنسوخة
+            var maxClones = 3; // الحد الأقصى لعدد النماذج المنسوخة
+        
             function run(hideTab, showTab) {
-            if (hideTab < showTab) { // If not pressing previous button
-                // Validation if pressing next button
-                var currentTab = 0;
-                var x = $('#tab-' + hideTab);
-                var y = x.find("input");
-                for (i = 0; i < y.length; i++) {
-                if (y[i].value === "") {
-                    $(y[i]).css("background", "#ffdddd");
-                    return false;
+                if (hideTab < showTab) { // إذا لم يتم النقر على الزر السابق
+                    // التحقق إذا تم النقر على الزر التالي
+                    var currentTab = 0;
+                    var x = $('#tab-' + hideTab);
+                    var y = x.find("input");
+                    for (i = 0; i < y.length; i++) {
+                        if (y[i].value === "") {
+                            $(y[i]).css("background", "#ffdddd");
+                            return false;
+                        }
+                    }
                 }
+        
+                // تبديل الأقسام
+                $("#tab-" + hideTab).css("display", "none");
+                $("#tab-" + showTab).css("display", "block");
+                $("input").css("background", "#fff");
+            }
+        
+            function cloneForm() {
+            if (cloneCount < maxClones) {
+                var clonedForm = $("#tab-1").clone();
+
+
+            // إزالة العناصر غير الضرورية
+            clonedForm.find(".index-btn , AddForm").remove();
+
+
+            // تحديث معرفات عناصر النموذج المنسوخة
+            clonedForm.find("input, radio").each(function() {
+                var elementId = $(this).attr("id");
+                var newId = elementId + cloneCount;
+                $(this).attr("id", newId);
+                $(this).removeAttr("disabled"); // إزالة الخاصية المعطلة
+            });
+            // نسخ قيم الحقول من النموذج الأصلي وإعادة تعيينها في النموذج المنسوخ
+            var originalForm = $("#tab-1");
+            clonedForm.find("input").each(function() {
+                var elementId = $(this).attr("id");
+                var originalField = originalForm.find("#" + elementId);
+                $(this).val(originalField.val());
+            });
+
+                // إضافة النموذج المنسوخ إلى الحاوية إذا لم يكن موجودًا بالفعل
+                if (!$(".AddForm").find(clonedForm).length) {
+                    $(".AddForm").append(clonedForm);
+                    cloneCount++; // زيادة عداد النماذج المنسوخة
+                } else {
+                    alert("هذا النموذج موجود بالفعل.");
                 }
+            } else {
+                alert("تم الوصول إلى الحد الأقصى من عدد النماذج المنسوخة.");
             }
-
-            // Progress bar
-            for (i = 1; i < showTab; i++) {
-                $("#step-" + i).addClass("active");
-            }
-
-            // Switch tab
-            $("#tab-" + hideTab).css("display", "none");
-            $("#tab-" + showTab).css("display", "block");
-            $("input").css("background", "#fff");
-            }
-          </script>
+        }
+            
+        $(document).on("click", "#addShipment-btn", function() {
+            cloneForm();
+        });
+        </script>
 <script type="text/javascript">
 let map, markerPickup, markerDropoff, directionsService, directionsRenderer, polyline;
 
@@ -541,7 +582,7 @@ function calculateAndDisplayRoute() {
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="Scripts/jquery-3.1.1.min.js"></script>
         <script src="../../Map/Distance cities/Main.js"></script>
-
+        <script src="../JS/Form.js"></script>
 
 
 
