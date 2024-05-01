@@ -73,7 +73,7 @@ content: counter(step);
 counter-increment: step;
 }
 
-form{
+.form{
   background: #ffffff;
   margin: 100px auto;
   padding: 15px 40px 40px 40px;
