@@ -89,87 +89,84 @@
             <!-- Step Counter Ends -->
         </div>
   
-        <!--Start Form-->
-        <section class="form">
-        <div class="formBody" id="formBody" style="display: none;">
-            <form id="myForm" action="" method="post" autocomplete = "off">
-                <div class="tab" id = "tab-1">
-                <div class="top">
-                    <label class="heading">Order Details</label><br/>
-                    <label class="text">Fill out the form carefully for order</label><br/>
-                    <hr style="background: black;"><br/>
-                </div> 
-                </div> 
+          <!--Start Form-->
+          <form id="myForm" action="" method="post" autocomplete = "off">
+              <div class="tab" id = "tab-1">
+                  <div class="top">
+                      <label class="heading">Order Details</label><br/>
+                      <label class="text">Fill out the form carefully for order</label><br/>
+                      <hr style="background: black;"><br/>
+                  </div>  
                 <div class="col-sm-6">
                     <label for="from" class="col-xs-2 control-label"><i class="far fa-dot-circle"></i></label>
                     <div class="col-xs-4">
                         <input type="text" id="from" placeholder="Enter the load pickup location" class="form-control" required>
                     </div>
-                </div>
-                <div class="col-sm-6">
+                 </div>
+                 <div class="col-sm-6">
                     <label for="to" class="col-xs-2 control-label"><i class="fas fa-map-marker-alt"></i></label>
                     <div class="col-xs-4">
                         <input type="text" id="to" placeholder="Enter the load drop-off location" class="form-control">
                     </div>
-                </div>
-                <div class="container text-center">
-                    <div class="row">
+                 </div>
+                 <div class="container text-center">
+                  <div class="row">
                       <div class="col-xs-offset-2 col-xs-8">
                           <button style="background-color: #f89d13;" class="btn btn-info btn-lg" onclick="calcRoute();">
-                            <i class="fas fa-map fa-lg" id="calculateButton" style="position: relative;"></i> <!-- Map outline -->
-                            <i class="fas fa-circle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 6px;"></i> <!-- Dot inside -->
+                              <i class="fas fa-map fa-lg" id="calculateButton" style="position: relative;"></i> <!-- Map outline -->
+  <i class="fas fa-circle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 6px;"></i> <!-- Dot inside -->
                           </button>
                       </div>
                   </div>
-                </div>
-                <div class="col-sm-12 container-fluid">
+              </div>
+                 <div class="col-sm-12 container-fluid">
                     <div id="googleMap"></div>
                     <div id="output"></div>
-                </div>
-                <div class="col-sm-6">
-                    <label for="date" class="form-label">Pick-up Date</label>
-                    <div class="input-group date" id="datepicker">
-                        <input type="date" class="form-control" id="date" required>
-                    </div>
-                </div>
-                <div class="col-sm-6">
+                 </div>
+                 <div class="col-sm-6">
+                  <label for="date" class="form-label">Pick-up Date</label>
+                 <div class="input-group date" id="datepicker">
+                      <input type="date" class="form-control" id="date" required>
+                  </div>
+                  </div>
+                  <div class="col-sm-6">
                       <label for="date" class="form-label">Drop-off Date</label>
                       <div class="input-group date" id="datepicker">
                           <input type="date" class="form-control" id="date" required>
                       </div>
-                </div>
-                <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4">
                       <label style="margin-bottom: 10px;" for="validationCustom07" class="form-label">Type of Cargo</label>
                       <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom07" placeholder="Enter the type of cargo" required>
                       <div class="valid-feedback">
                           Looks good!
                       </div>
-                </div>
+                  </div>
                  <label>Choose truck size:</label>
                  <div class="list">
-                        <div class="form-element">
-                            <input type="radio" name="platform" value="trailerTruck" id="trailerTruck">
-                            <label for="trailerTruck">
-                            <div class="image">
-                                 <img src="../Image/trailer.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                 Trailer Truck
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="platform" value="tankTruck" id="tankTruck">
-                            <label for="tankTruck">
-                            <div class="icon">
-                                 <img src="../Image/tankTruck.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                 Tank Truck
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
+                                <div class="form-element">
+                                    <input type="radio" name="platform" value="trailerTruck" id="trailerTruck">
+                                    <label for="trailerTruck">
+                                    <div class="image">
+                                        <img src="../Image/trailer.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Trailer Truck
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="platform" value="tankTruck" id="tankTruck">
+                                    <label for="tankTruck">
+                                    <div class="icon">
+                                        <img src="../Image/tankTruck.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Tank Truck
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
                                     <input type="radio" name="platform" value="lorryTruck" id="lorryTruck">
                                     <label for="lorryTruck">
                                     <div class="image">
@@ -179,8 +176,8 @@
                                         Lorry Truck
                                     </div>
                                     </label>
-                        </div>
-                        <div class="form-element">
+                                </div>
+                                <div class="form-element">
                                     <input type="radio" name="platform" value="lorry7Truck" id="lorry7Truck">
                                     <label for="lorry7Truck">
                                     <div class="image">
@@ -190,8 +187,8 @@
                                         Lorry 7 Meter Truck
                                     </div>
                                     </label>
-                        </div>
-                        <div class="form-element">
+                                </div>
+                                <div class="form-element">
                                     <input type="radio" name="platform" value="dynaTruck" id="dynaTruck">
                                     <label for="dynaTruck">
                                     <div class="image">
@@ -201,8 +198,8 @@
                                         Dyna Truck
                                     </div>
                                     </label>
-                        </div>
-                         <div class="form-element">
+                                </div>
+                                <div class="form-element">
                                     <input type="radio" name="platform" value="towTruck" id="towTruck">
                                     <label for="towTruck">
                                     <div class="image">
@@ -212,8 +209,8 @@
                                         Tow Truck
                                     </div>
                                     </label>
-                        </div>
-                         <div class="form-element">
+                                </div>
+                                <div class="form-element">
                                     <input type="radio" name="platform" value="flatbedTruck" id="flatbedTruck">
                                     <label for="flatbedTruck">
                                     <div class="image">
@@ -223,8 +220,8 @@
                                         Flatbed Truck
                                     </div>
                                     </label>
-                         </div>
-                         <div class="form-element">
+                                </div>
+                                <div class="form-element">
                                     <input type="radio" name="platform" value="tipperTruck" id="tipperTruck">
                                     <label for="tipperTruck">
                                     <div class="image">
@@ -234,7 +231,7 @@
                                         Tipper Truck
                                     </div>
                                     </label>
-                        </div>
+                                </div>
                  </div>
                  <label>Choose truck Type:</label>
                  <div style="margin-bottom: 20px;" class="list">
@@ -304,7 +301,7 @@
                                     </div>
                                     </label>
                                 </div>
-                </div>
+                 </div>
                  <div class="col-md-4">
                     <label class="form-label">Number of Trucks</label>
                     <div class="wrapper">
@@ -337,15 +334,10 @@
                         <textarea name="notes" class="form-control" id="note" cols="30" rows="5" aria-describedby="inputGroupPrepend" placeholder="Write your notes"></textarea>
                     </div>
                 </div> 
-            </form>
-        </div>
-
-        <Section id="AddForm"></Section> <!-- Where any additional truck forms will be added -->
-
                 <div class="index-btn-wrapper">
                   <div class="index-btn" onclick="run(1, 2);">Next</div>
-                  <button class="addShipment-btn index-btn" id="addShipment-btn">Add Another Shipment</button>
                 </div>
+              </div>
               <!--Page View order-->
               <div class="tab" id = "tab-2">
                       <div class="top">
@@ -359,14 +351,12 @@
                   </div>
               </div>
           
-              <div class="tab" id = "tab-3">
+                <div class="tab" id = "tab-3">
                   <div class="index-btn-wrapper">
                       <div class="index-btn" onclick="run(3, 2);">Previous</div>
                       <button class = "index-btn" type="submit" name="submit" style = "background: #f89d13;">Submit</button>
                   </div>      
-              </div>  
-
-        </section>
+            </form>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>
  
         
@@ -400,7 +390,7 @@
             $("input").css("background", "#fff");
             }
           </script>
-        <script type="text/javascript">
+<script type="text/javascript">
 let map, markerPickup, markerDropoff, directionsService, directionsRenderer, polyline;
 
 function initModal() {
@@ -529,7 +519,7 @@ function calculateAndDisplayRoute() {
 
 
 
-        </script>
+</script>
 
 
 
@@ -551,6 +541,10 @@ function calculateAndDisplayRoute() {
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="Scripts/jquery-3.1.1.min.js"></script>
         <script src="../../Map/Distance cities/Main.js"></script>
-        <script src="../JS/Form.js"></script>
-     </body>
+
+
+
+
+
+  </body>
 </html>
