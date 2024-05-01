@@ -79,288 +79,326 @@
             </div>
         </nav>   
         <div class="cardy-name">
-          <!-- Step Counter Starts -->
-            <ul class="progressbar rb-step d-flex justify-content-center">
-                <!--class="active"-->
-                <li>order details</li>
-                <li>Select transportation company</li>
-                <li>Confirmation</li>
-            </ul>
-          <!-- Step Counter Ends -->
-        </div>
-
-        <!--Start Form-->
-        <section class="form-container">
-            <div class="form-box">
-                <form class="row g-3">
-                    <div class="top">
-                        <label class="heading">Order Details</label><br/>
-                        <label class="text">Fill out the form carefully for order</label><br/>
-                        <hr style="background: black;"><br/>
+            <!-- Step Counter Starts -->
+              <ul class="progressbar rb-step d-flex justify-content-center">
+                  <!--class="active"-->
+                  <li class="step circle" id="step-1">order details</li>
+                  <li class="step circle" id="step-2">View Order</li>
+                  <li class="step circle" id="step-3">Confirmation</li>
+              </ul>
+            <!-- Step Counter Ends -->
+          </div>
+  
+          <!--Start Form-->
+          <form id="myForm" action="" method="post" autocomplete = "off">
+              <div class="tab" id = "tab-1">
+                  <div class="top">
+                      <label class="heading">Order Details</label><br/>
+                      <label class="text">Fill out the form carefully for order</label><br/>
+                      <hr style="background: black;"><br/>
+                  </div>  
+                <div class="col-sm-6">
+                    <label for="from" class="col-xs-2 control-label"><i class="far fa-dot-circle"></i></label>
+                    <div class="col-xs-4">
+                        <input type="text" id="from" placeholder="Enter the load pickup location" class="form-control" required>
                     </div>
-                    <div class="col-sm-6">
-                        <label for="from" class="col-xs-2 control-label"><i class="far fa-dot-circle"></i></label>
-                        <div class="col-xs-4">
-                            <input type="text" id="from" placeholder="Enter the load pickup location" class="form-control" required>
-                        </div>
-                   </div>
-                   <div class="col-sm-6">
-                        <label for="date" class="form-label">Pick-up Date</label>
-                       <div class="input-group date" id="datepicker">
-                            <input type="date" class="form-control" id="date" required>
-                        </div>
+                 </div>
+                 <div class="col-sm-6">
+                    <label for="to" class="col-xs-2 control-label"><i class="fas fa-map-marker-alt"></i></label>
+                    <div class="col-xs-4">
+                        <input type="text" id="to" placeholder="Enter the load drop-off location" class="form-control">
                     </div>
-                   <div class="col-sm-6">
-                        <label for="to" class="col-xs-2 control-label"><i class="fas fa-map-marker-alt"></i></label>
-                        <div class="col-xs-4">
-                            <input type="text" id="to" placeholder="Enter the load drop-off location" class="form-control">
-                        </div>
-                      
-                    </div>
-                    <div class="col-sm-6">
-                        <label for="date" class="form-label">Drop-off Date</label>
-                        <div class="input-group date" id="datepicker">
-                            <input type="date" class="form-control" id="date" required>
-                        </div>
-                    </div>
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-xs-offset-2 col-xs-8">
-                                <button class="btn btn-info btn-lg" onclick="calcRoute();">
-                                    <i class="fas fa-map fa-lg" id="calculateButton" style="position: relative;"></i> <!-- Map outline -->
-        <i class="fas fa-circle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 6px;"></i> <!-- Dot inside -->
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                                     
-                    
-                    <div class="container-fluid">
-                        <div id="googleMap"></div>
-                        <div id="output"></div>
-                    </div>
-                    <div class="col-md-4">
-                        <label style="margin-bottom: 10px;" for="validationCustom07" class="form-label">Type of Cargo</label>
-                        <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom07" placeholder="Enter the type of cargo" required>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                    </div>
-                    <label>Choose truck size:</label>
-                    <div class="list">
-                        <div class="form-element">
-                            <input type="radio" name="platform" value="trailerTruck" id="trailerTruck">
-                            <label for="trailerTruck">
-                            <div class="image">
-                                <img src="../Image/trailer.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Trailer Truck
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="platform" value="tankTruck" id="tankTruck">
-                            <label for="tankTruck">
-                            <div class="icon">
-                                <img src="../Image/tankTruck.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Tank Truck
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="platform" value="lorryTruck" id="lorryTruck">
-                            <label for="lorryTruck">
-                            <div class="image">
-                                <img src="../Image/lorry.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Lorry Truck
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="platform" value="lorry7Truck" id="lorry7Truck">
-                            <label for="lorry7Truck">
-                            <div class="image">
-                                <img src="../Image/lorry7.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Lorry 7 Meter Truck
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="platform" value="dynaTruck" id="dynaTruck">
-                            <label for="dynaTruck">
-                            <div class="image">
-                                <img src="../Image/dyna.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Dyna Truck
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="platform" value="towTruck" id="towTruck">
-                            <label for="towTruck">
-                            <div class="image">
-                                <img src="../Image/tow-truck.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Tow Truck
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="platform" value="flatbedTruck" id="flatbedTruck">
-                            <label for="flatbedTruck">
-                            <div class="image">
-                                <img src="../Image/flatbedTruck.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Flatbed Truck
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="platform" value="tipperTruck" id="tipperTruck">
-                            <label for="tipperTruck">
-                            <div class="image">
-                                <img src="../Image/tipperTruck.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Tipper Truck
-                            </div>
-                            </label>
-                        </div>
-                    </div>
-                    <label>Choose truck Type:</label>
-                    <div style="margin-bottom: 20px;" class="list">
-                        <div class="form-element">
-                            <input type="radio" name="truckType" value="shortSide" id="shortSide">
-                            <label for="shortSide">
-                            <div class="image">
-                                <img src="../Image/shortSide.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Short Sides
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="truckType" value="highSide" id="highSide">
-                            <label for="highSide">
-                            <div class="image">
-                                <img src="../Image/highSides.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                High Sides
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="truckType" value="refrigerator" id="refrigerator">
-                            <label for="refrigerator">
-                            <div class="image">
-                                <img src="../Image/refrigerator.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Refrigerator
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="truckType" value="freezer" id="freezer">
-                            <label for="freezer">
-                            <div class="image">
-                                <img src="../Image/freezer.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Freezer
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="truckType" value="curtaion" id="curtaion">
-                            <label for="curtaion">
-                            <div class="image">
-                                <img src="../Image/curtaion.png" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Curtaion
-                            </div>
-                            </label>
-                        </div>
-                        <div class="form-element">
-                            <input type="radio" name="truckType" value="equipment" id="equipment">
-                            <label for="equipment">
-                            <div class="image">
-                                <img src="../Image/equipment.jpg" height="70px" width="70px" alt="test">
-                            </div>
-                            <div class="title">
-                                Equipment
-                            </div>
-                            </label>
-                        </div>
-                    </div>
-                <div  class="container1">
-                    <div class="col-md-4">
-                        <label class="form-label">Number of Trucks</label>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <label style="margin-bottom: 10px;" for="validationCustom06" class="form-label">Goods value</label>
-                        <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom06" placeholder="Enter the Goods Value" required>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <label style="margin-bottom: 10px;" for="validationCustom06" class="form-label">Goods weight</label>
-                        <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom06" placeholder="Enter the Goods weight" required>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                    </div>
-                 
-                    <div class="col-md-4">
-                    <label class="form-label">Upload Image</label>
-                        <div class="containerImage">
-                            <input type="file" id="upload-button" multiple accept="image/*" />
-                            <label class="upload" for="upload-button">
-                            <i class="fa-solid fa-upload"></i>&nbsp; Choose Or Drop Photos
-                            </label>
-                            <div id="error"></div>
-                            <div id="image-display"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="validationCustomUsername" class="form-label">Notes</label>
-                        <div class="input-group has-validation">
-                            <textarea class="form-control" id="note" cols="30" rows="5" aria-describedby="inputGroupPrepend" placeholder="Write your notes"></textarea>
-                        </div>
-                    </div> 
-                    <div class="col-12">
-                        <button style="background-color: #5b9279;" class="btn btn-primary" type="submit">Submit form</button>
+                 </div>
+                 <div class="container text-center">
+                  <div class="row">
+                      <div class="col-xs-offset-2 col-xs-8">
+                          <button style="background-color: #f89d13;" class="btn btn-info btn-lg" onclick="calcRoute();">
+                              <i class="fas fa-map fa-lg" id="calculateButton" style="position: relative;"></i> <!-- Map outline -->
+  <i class="fas fa-circle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 6px;"></i> <!-- Dot inside -->
+                          </button>
+                      </div>
+                  </div>
+              </div>
+                 <div class="col-sm-12 container-fluid">
+                    <div id="googleMap"></div>
+                    <div id="output"></div>
+                 </div>
+                 <div class="col-sm-6">
+                  <label for="date" class="form-label">Pick-up Date</label>
+                 <div class="input-group date" id="datepicker">
+                      <input type="date" class="form-control" id="date" required>
+                  </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <label for="date" class="form-label">Drop-off Date</label>
+                      <div class="input-group date" id="datepicker">
+                          <input type="date" class="form-control" id="date" required>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <label style="margin-bottom: 10px;" for="validationCustom07" class="form-label">Type of Cargo</label>
+                      <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom07" placeholder="Enter the type of cargo" required>
+                      <div class="valid-feedback">
+                          Looks good!
+                      </div>
+                  </div>
+                 <label>Choose truck size:</label>
+                 <div class="list">
+                                <div class="form-element">
+                                    <input type="radio" name="platform" value="trailerTruck" id="trailerTruck">
+                                    <label for="trailerTruck">
+                                    <div class="image">
+                                        <img src="../Image/trailer.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Trailer Truck
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="platform" value="tankTruck" id="tankTruck">
+                                    <label for="tankTruck">
+                                    <div class="icon">
+                                        <img src="../Image/tankTruck.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Tank Truck
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="platform" value="lorryTruck" id="lorryTruck">
+                                    <label for="lorryTruck">
+                                    <div class="image">
+                                        <img src="../Image/lorry.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Lorry Truck
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="platform" value="lorry7Truck" id="lorry7Truck">
+                                    <label for="lorry7Truck">
+                                    <div class="image">
+                                        <img src="../Image/lorry7.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Lorry 7 Meter Truck
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="platform" value="dynaTruck" id="dynaTruck">
+                                    <label for="dynaTruck">
+                                    <div class="image">
+                                        <img src="../Image/dyna.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Dyna Truck
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="platform" value="towTruck" id="towTruck">
+                                    <label for="towTruck">
+                                    <div class="image">
+                                        <img src="../Image/tow-truck.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Tow Truck
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="platform" value="flatbedTruck" id="flatbedTruck">
+                                    <label for="flatbedTruck">
+                                    <div class="image">
+                                        <img src="../Image/flatbedTruck.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Flatbed Truck
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="platform" value="tipperTruck" id="tipperTruck">
+                                    <label for="tipperTruck">
+                                    <div class="image">
+                                        <img src="../Image/tipperTruck.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Tipper Truck
+                                    </div>
+                                    </label>
+                                </div>
+                 </div>
+                 <label>Choose truck Type:</label>
+                 <div style="margin-bottom: 20px;" class="list">
+                                <div class="form-element">
+                                    <input type="radio" name="truckType" value="shortSide" id="shortSide">
+                                    <label for="shortSide">
+                                    <div class="image">
+                                        <img src="../Image/shortSide.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Short Sides
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="truckType" value="highSide" id="highSide">
+                                    <label for="highSide">
+                                    <div class="image">
+                                        <img src="../Image/highSides.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        High Sides
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="truckType" value="refrigerator" id="refrigerator">
+                                    <label for="refrigerator">
+                                    <div class="image">
+                                        <img src="../Image/refrigerator.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Refrigerator
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="truckType" value="freezer" id="freezer">
+                                    <label for="freezer">
+                                    <div class="image">
+                                        <img src="../Image/freezer.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Freezer
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="truckType" value="curtaion" id="curtaion">
+                                    <label for="curtaion">
+                                    <div class="image">
+                                        <img src="../Image/curtaion.png" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Curtaion
+                                    </div>
+                                    </label>
+                                </div>
+                                <div class="form-element">
+                                    <input type="radio" name="truckType" value="equipment" id="equipment">
+                                    <label for="equipment">
+                                    <div class="image">
+                                        <img src="../Image/equipment.jpg" height="70px" width="70px" alt="test">
+                                    </div>
+                                    <div class="title">
+                                        Equipment
+                                    </div>
+                                    </label>
+                                </div>
+                 </div>
+                 <div class="col-md-4">
+                    <label class="form-label">Number of Trucks</label>
+                    <div class="wrapper">
+                        <span class="minus">-</span>
+                        <span class="num">01</span>
+                        <span class="plus">+</span>
                     </div>
                 </div>
-                   
-                </form>
-            </div>
-        </section>
+                <div class="col-md-4">
+                    <label style="margin-bottom: 10px;" for="validationCustom06" class="form-label">Goods value</label>
+                    <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom06" placeholder="Enter the Goods Value" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label style="margin-bottom: 10px;" for="validationCustom07" class="form-label">Type of Cargo</label>
+                    <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom07" placeholder="Enter the type of cargo" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+             
+                <div class="col-md-4">
+                <label class="form-label">Upload Image</label>
+                    <div class="containerImage">
+                        <input type="file" id="upload-button" multiple accept="image/*" />
+                        <label class="upload" for="upload-button">
+                        <i class="fa-solid fa-upload"></i>&nbsp; Choose Or Drop Photos
+                        </label>
+                        <div id="error"></div>
+                        <div id="image-display"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustomUsername" class="form-label">Notes</label>
+                    <div class="input-group has-validation">
+                        <textarea name="notes" class="form-control" id="note" cols="30" rows="5" aria-describedby="inputGroupPrepend" placeholder="Write your notes"></textarea>
+                    </div>
+                </div> 
+                <div class="index-btn-wrapper">
+                  <div class="index-btn" onclick="run(1, 2);">Next</div>
+                </div>
+              </div>
+        
+              <div class="tab" id = "tab-2">
+                      <div class="top">
+                          <label class="heading">View Order</label><br/>
+                          <!--<label class="text">Fill out the form carefully for order</label><br/>-->
+                          <hr style="background: black;"><br/>
+                      </div>
+                  <div class="index-btn-wrapper">
+                    <div class="index-btn" onclick="run(2, 1);">Previous</div>
+                    <div class="index-btn" onclick="run(2, 3);">Next</div>
+                  </div>
+              </div>
+          
+                <div class="tab" id = "tab-3">
+                  <div class="index-btn-wrapper">
+                      <div class="index-btn" onclick="run(3, 2);">Previous</div>
+                      <button class = "index-btn" type="submit" name="submit" style = "background: #f89d13;">Submit</button>
+                  </div>      
+            </form>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>
-       
+ 
+        
+        <script>
+            // Default tab
+            $(".tab").css("display", "none");
+            $("#tab-1").css("display", "block");
+
+            function run(hideTab, showTab) {
+            if (hideTab < showTab) { // If not pressing previous button
+                // Validation if pressing next button
+                var currentTab = 0;
+                var x = $('#tab-' + hideTab);
+                var y = x.find("input");
+                for (i = 0; i < y.length; i++) {
+                if (y[i].value === "") {
+                    $(y[i]).css("background", "#ffdddd");
+                    return false;
+                }
+                }
+            }
+
+            // Progress bar
+            for (i = 1; i < showTab; i++) {
+                $("#step-" + i).addClass("active");
+            }
+
+            // Switch tab
+            $("#tab-" + hideTab).css("display", "none");
+            $("#tab-" + showTab).css("display", "block");
+            $("input").css("background", "#fff");
+            }
+          </script>
 <script type="text/javascript">
-
-   
-
 let map, markerPickup, markerDropoff, directionsService, directionsRenderer, polyline;
 
 function initModal() {
