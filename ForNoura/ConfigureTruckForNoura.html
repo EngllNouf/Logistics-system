@@ -14,15 +14,16 @@
     <body>
 
         <div class="titleFrame">
-            <h3> Configure Truck </h3>
+            <h4> Configure Truck </h4>
         </div>
 
-        <div class="formBody">
+        <div class="formBody" id="formBody">
 
+            <span class="formClose">&times;</span>
             
-            <h3>Owner details</h3>
+            <h5>Owner details</h5>
 
-            <form action="#" method="post" id="form"> <!--I  added id="form"-->
+            <form action="#" method="post" id="form">
 
             <div>
                 <label for="Owner">Owner <span style="color: red;">* </span><span class="smallText"></span></label>
@@ -31,7 +32,7 @@
 
             <div>
                 <label for="OwnerID">Owner ID <span style="color: red;">* </span><span class="smallText"></span></label>
-                <input type="text" id="OwnerID" name="OwnerID"  required> <!--Id Number must be number & 11 يigits,-->
+                <input type="text" id="OwnerID" name="OwnerID" pattern="[0-9]{10}" required> <!--Id Number must be number & 11 igits,-->
             </div>
 
             <div class="mb-3">
@@ -46,21 +47,21 @@
 
             <div>
                 <label for="OwnerID">User ID</label>
-                <input type="text" id="OwnerID" name="OwnerID" pattern="[0-9]{11}"> <!--Id Number must be number & 11 igits,-->
+                <input type="text" id="OwnerID" name="OwnerID" pattern="[0-9]{10}"> <!--Id Number must be number & 11 igits,-->
             </div>
 
             <div class="mb-3">
                 <label for="formUserIDFile" class="form-label">Upload user ID</span></label>
-                <input class="form-control" type="file" id="formUserIDFile" >
+                <input class="form-control" type="file" id="formUserIDFile">
             </div>
 
             </form>
 
+            <hr>
 
+            <h5>Vehicle Details</h5>
 
-            <h4>Vehicle Details</h4>
-
-            <form action="#" method="post" id="form"><!--I  added id="form"-->
+            <form action="#" method="post" id="form">
 
                 <div>
                     <label for="LicensePlate">License plate no. <span style="color: red;">*</span></label>
@@ -71,8 +72,6 @@
                     <label for="VehicleChassis">Vehicle chassis number <span style="color: red;">* </span><span class="smallText"></span></label>
                     <input type="text" id="VehicleChassis" name="VehicleChassis" maxlength="17" required>
                 </div>
-
-
 
                 <div>
                     <label for="RegistrationType">Registration type <span style="color: red;">* </span><span class="smallText"></span></label>
@@ -149,22 +148,35 @@
 
         <div class="Buttons">
             <button class="addTruck-btn" id="addTruck-btn">+ Add another truck</button>
-            <button class="confirm-butn" id="confirm-btn"  type="submit" form ="form">Confirm</button> <!--I added form ="form"-->
+            <button class="confirm-butn" id="confirm-btn" form="form" disabled >Confirm</button><!--هنا نوره لمن اشيل ال disabled يشتغل الفالديشين -->
         </div>
 
-        <!-- First modal -->
-        <div class="container">
-            <div class="cookiesContent" id="cookiesPopup">
-              <button class="close">✖</button>
-              <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="cookies-img" />
-              <p>ِAre you sure you would like to confirm and save?</p>
-              <button class="accept">Confirm</button>
-              <button class="accept">Cancel</button>
+
+        <!-- The first Modal -->
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <img src="question.png" alt="Question-img" />
+            <p>Are you sure you would like to confirm and save?</p>
+            <button class="acceptConfirm" id="acceptConfirm"  >Confirm</button>
+            <button class="cancel" id="cancel">Cancel</button>
             </div>
+        
+        </div>
+
+        <!-- The second Modal -->
+        <div id="mySuccessModal" class="successmodal">
+
+            <div class="successModal-content">
+            <span class="secondClose">&times;</span>
+            <img src="delivery-truck.png" alt="Question-img" />
+            <p>Vehicles successfully saved</p>
+            </div>
+        
         </div>
   
-
-
+        <!--JS-->
         <script src="ConfigTruckButtons.js"></script>
         <script src="Modals.js"></script>
 
