@@ -12,6 +12,7 @@
 
 
 .formBody {
+  display: none;
   background-color: #F5F5F5;
   margin-top: 20px;
   margin-left: 100px;
