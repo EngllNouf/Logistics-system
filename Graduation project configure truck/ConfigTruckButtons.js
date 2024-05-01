@@ -1,13 +1,17 @@
 document.getElementById("addTruck-btn").addEventListener("click", createTruckForm);
 document.getElementById("Check").addEventListener("click", enableConfirm);
-document.getElementsByClassName("formClose").addEventListener("click", deleteForm);
+document.getElementById("formClose").addEventListener("click", deleteForm);
+
+document.addEventListener("DOMContentLoaded", function() {
+    createTruckForm(); // Create an initial form when the page loads
+});
 
 function createTruckForm() {
-
     var addFormPlace = document.getElementById('AddForm');
     var formBody = document.querySelector('.formBody');
-
-    addFormPlace.appendChild(formBody.cloneNode(true));
+    var clonedFormBody = formBody.cloneNode(true);
+    clonedFormBody.style.display = 'block'; // Display the cloned form body
+    addFormPlace.appendChild(clonedFormBody);
 }
 
 function enableConfirm(){
@@ -24,10 +28,16 @@ function enableConfirm(){
 
 }
 
-function deleteForm() {
-
-    var deleteButton = document.getElementsByClassName("formClose")[0];
-    var parentDiv = deleteButton.parentNode;
+function deleteForm(event) {
+    var deleteButton = event.target;
+    var parentForm = deleteButton.closest("div");
   
-    parentDiv.remove();
+    parentForm.remove();
 }
+
+ // Event delegation to handle delete button clicks
+ document.addEventListener('click', function(event) {
+    if (event.target && event.target.className === 'formClose') {
+        deleteForm(event);
+    }
+});

@@ -19,11 +19,11 @@
 
         <div class="formBody" id="formBody">
 
-            <span class="formClose">&times;</span>
+            <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
             
             <h5>Owner details</h5>
 
-            <form action="#" method="post" id="form">
+            <form>
 
             <div>
                 <label for="Owner">Owner <span style="color: red;">* </span><span class="smallText"></span></label>
@@ -32,7 +32,7 @@
 
             <div>
                 <label for="OwnerID">Owner ID <span style="color: red;">* </span><span class="smallText"></span></label>
-                <input type="text" id="OwnerID" name="OwnerID" pattern="[0-9]{11}" required> <!--Id Number must be number & 11 igits,-->
+                <input type="text" id="OwnerID" name="OwnerID" required>
             </div>
 
             <div class="mb-3">
@@ -47,7 +47,7 @@
 
             <div>
                 <label for="OwnerID">User ID</label>
-                <input type="text" id="OwnerID" name="OwnerID" pattern="[0-9]{11}"> <!--Id Number must be number & 11 igits,-->
+                <input type="text" id="OwnerID" name="OwnerID">
             </div>
 
             <div class="mb-3">
@@ -61,16 +61,16 @@
 
             <h5>Vehicle Details</h5>
 
-            <form action="#" method="post" id="form">
+            <form>
 
                 <div>
                     <label for="LicensePlate">License plate no. <span style="color: red;">*</span></label>
-                    <input type="text" id="LicensePlate" name="LicensePlate" placeholder="0000 ABC"  pattern="[0-9]{4} [A-Za-z]{3}" required> <!--4847 AAA-->
+                    <input type="text" id="LicensePlate" name="LicensePlate" required>
                 </div>
 
                 <div>
                     <label for="VehicleChassis">Vehicle chassis number <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="VehicleChassis" name="VehicleChassis" maxlength="17" required>
+                    <input type="text" id="VehicleChassis" name="VehicleChassis" required>
                 </div>
 
                 <div>
