@@ -75,11 +75,11 @@ function validateOwnerID(ownerId) {
     }
     return true;
   }
-  
+  //Start 
   // Function to handle form submission
   function handleFormSubmission(event) {
     event.preventDefault();
-  
+   
     // Get the form data
     const owner = document.getElementById('Owner').value;
     const ownerId = document.getElementById('OwnerID').value;
