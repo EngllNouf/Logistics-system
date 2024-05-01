@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +22,7 @@
 
         <div class="formBody" id="formBody">
 
-            <span class="formClose">&times;</span>
+            <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
             
             <h5>Owner details</h5>
 
@@ -27,7 +30,7 @@
 
             <div>
                 <label for="Owner">Owner <span style="color: red;">* </span><span class="smallText"></span></label>
-                <input type="text" id="Owner" name="Owner" required>
+                <input type="text" id="Owner" name="Owner" onblur="validateOwnerName()" required>
             </div>
 
             <div>
@@ -37,17 +40,17 @@
 
             <div class="mb-3">
                 <label for="formOwnerIDFile" class="form-label">Upload owner ID <span style="color: red;">* </span><span class="smallText"></span></label>
-                <input class="form-control" type="file" id="formOwnerIDFile" required>
+                <input class="form-control" type="file" id="formOwnerIDFile" pattern="[0-9]{10}" required>
             </div>
 
             <div>
-                <label for="Owner">User</label>
-                <input type="text" id="Owner" name="Owner">
+                <label for="User">User</label>
+                <input type="text" id="User" name="User">
             </div>
 
             <div>
-                <label for="OwnerID">User ID</label>
-                <input type="text" id="OwnerID" name="OwnerID" pattern="[0-9]{10}"> <!--Id Number must be number & 11 igits,-->
+                <label for="UserID">User ID</label>
+                <input type="text" id="UserID" name="UserID" pattern="[0-9]{10}"> <!--Id Number must be number & 11 igits,-->
             </div>
 
             <div class="mb-3">
@@ -148,7 +151,7 @@
 
         <div class="Buttons">
             <button class="addTruck-btn" id="addTruck-btn">+ Add another truck</button>
-            <button class="confirm-butn" id="confirm-btn" form="form" disabled >Confirm</button><!--هنا نوره لمن اشيل ال disabled يشتغل الفالديشين -->
+            <button class="confirm-butn" id="confirm-btn"  form="form" >Confirm</button>
         </div>
 
 
@@ -159,7 +162,7 @@
             <span class="close">&times;</span>
             <img src="question.png" alt="Question-img" />
             <p>Are you sure you would like to confirm and save?</p>
-            <button class="acceptConfirm" id="acceptConfirm"  >Confirm</button>
+            <button class="acceptConfirm" id="acceptConfirm">Confirm</button>
             <button class="cancel" id="cancel">Cancel</button>
             </div>
         
@@ -187,3 +190,7 @@
     </body>
 
 </html>
+
+
+
+
