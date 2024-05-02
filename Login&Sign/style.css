@@ -18,14 +18,7 @@ input {
   
 }
 
-.forms-container {
-  
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
+
 
 .signin-signup {
   position: absolute;
@@ -70,13 +63,14 @@ form.sign-in-form {
   max-width: 380px;
   width: 100%;
   background-color: #f0f0f0;
-  margin: 10px 0;
+  margin: 20px 0;
   height: 55px;
   border-radius: 55px;
   display: grid;
   grid-template-columns: 15% 85%;
   padding: 0 0.4rem;
   position: relative;
+  
 }
 
 .input-field i {
@@ -87,14 +81,36 @@ form.sign-in-form {
   font-size: 1.1rem;
 }
 
+/* Input field styling */
 .input-field input {
+
   background: none;
   outline: none;
   border: none;
   line-height: 1;
   font-weight: 600;
-  font-size: 1.1rem;
-  color: #333;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+/* Placeholder styling */
+.input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+
+/* Focus state styling */
+.input-field input:focus {
+  padding-left: 50px;
+}
+
+
+/* Error message styling */
+.input-field .error-message {
+  position: absolute;
+  bottom: -34px;
+  color: red;
+  font-size: 0.9rem;
 }
 
 .input-field input::placeholder {
@@ -128,8 +144,8 @@ form.sign-in-form {
 }
 
 .social-icon:hover {
-  color: #44eb57;
-  border-color: #44eb8f;
+  color: #eb7944;
+  border-color: #ebbc44;
 }
 
 .btn {
@@ -160,6 +176,7 @@ form.sign-in-form {
   grid-template-columns: repeat(2, 1fr);
 }
 
+/* هنا المشكله حق الصورة */
 .container:before {
   content: "";
   position: absolute;
@@ -170,7 +187,7 @@ form.sign-in-form {
   transform: translateY(-50%);
   background-image: url(/HomePage/images/Load\ up_\ Move\ out.gif);
   
-  border-radius: 50%;
+ 
   z-index: 6;
 }
 
@@ -195,20 +212,7 @@ form.sign-in-form {
 }
 
 
-.panel p {
-  font-size: 0.95rem;
-  padding: 0.7rem 0;
-}
 
-.btn.transparent {
-  margin: 0;
-  background: none;
-  border: 2px solid #fff;
-  width: 130px;
-  height: 41px;
-  font-weight: 600;
-  font-size: 0.8rem;
-}
 
 .right-panel .image,
 .right-panel .content {
@@ -256,6 +260,8 @@ form.sign-in-form {
 
 
 @media (max-width: 870px) {
+    
+  
   .container {
     min-height: 800px;
     height: 100vh;
@@ -363,7 +369,7 @@ form.sign-in-form {
     padding: 0 1.5rem;
   }
 
-  .image {
+  img {
     display: none;
   }
   .panel .content {
@@ -393,3 +399,4 @@ form.sign-in-form {
   font-size: inherit;
   font-weight: inherit;
 }
+
