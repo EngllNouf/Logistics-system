@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,183 +12,193 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv" crossorigin="anonymous">
 </head>
 
-    <body>
+<body>
 
-        <div class="titleFrame">
-            <h4> Configure Truck </h4>
-        </div>
+    <div class="titleFrame">
+        <h4> Configure Truck </h4>
+    </div>
 
-        <div class="formBody" id="formBody">
+    <div class="formBody" id="formBody">
 
-            <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
-            
-            <h5>Owner details</h5>
+        <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
+        
+        <h5>Owner details</h5>
 
-            <form action="#" method="post" id="form">
+        <form action="#" method="post" id="Form">
 
             <div>
-                <label for="Owner">Owner <span style="color: red;">* </span><span class="smallText"></span></label>
+                <label for="Owner">Owner <span style="color: red;">* </span></label>
                 <input type="text" id="Owner" name="Owner" required>
+                <span class="error" id="Owner-error"></span>
             </div>
 
             <div>
-                <label for="OwnerID">Owner ID <span style="color: red;">* </span><span class="smallText"></span></label>
-                <input type="text" id="OwnerID" name="OwnerID" pattern="[0-9]{10}" required> <!--Id Number must be number & 11 igits,-->
+                <label for="OwnerID">Owner ID <span style="color: red;">* </span></label>
+                <input type="text" id="OwnerID" name="OwnerID" pattern="[0-9]{10}" required>
+                <span class="error" id="OwnerID-error"></span>
             </div>
 
             <div class="mb-3">
-                <label for="formOwnerIDFile" class="form-label">Upload owner ID <span style="color: red;">* </span><span class="smallText"></span></label>
-                <input class="form-control" type="file" id="formOwnerIDFile" pattern="[0-9]{10}" required>
+                <label for="formOwnerIDFile" class="form-label">Upload owner ID <span style="color: red;">* </span></label>
+                <input class="form-control" type="file" id="formOwnerIDFile" required>
             </div>
 
             <div>
-                <label for="User">User</label>
-                <input type="text" id="User" name="User">
+                <label for="Owner">User</label>
+                <input type="text" id="Owner" name="Owner">
             </div>
 
             <div>
-                <label for="UserID">User ID</label>
-                <input type="text" id="UserID" name="UserID" pattern="[0-9]{10}"> <!--Id Number must be number & 11 igits,-->
+                <label for="OwnerID">User ID</label>
+                <input type="text" id="OwnerID" name="OwnerID" pattern="[0-9]{10}">
             </div>
 
             <div class="mb-3">
-                <label for="formUserIDFile" class="form-label">Upload user ID</span></label>
+                <label for="formUserIDFile" class="form-label">Upload user ID</label>
                 <input class="form-control" type="file" id="formUserIDFile">
             </div>
 
-            </form>
+        </form>
 
-            <hr>
+        <hr>
 
-            <h5>Vehicle Details</h5>
+        <h5>Vehicle Details</h5>
 
-            <form action="#" method="post" id="form">
+        <form action="#" method="post" id="Form">
 
-                <div>
-                    <label for="LicensePlate">License plate no. <span style="color: red;">*</span></label>
-                    <input type="text" id="LicensePlate" name="LicensePlate" placeholder="0000 ABC"  pattern="[0-9]{4} [A-Za-z]{3}" required> <!--4847 AAA-->
-                </div>
-
-                <div>
-                    <label for="VehicleChassis">Vehicle chassis number <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="VehicleChassis" name="VehicleChassis" maxlength="17" required>
-                </div>
-
-                <div>
-                    <label for="RegistrationType">Registration type <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="RegistrationType" name="RegistrationType" required>
-                </div>
-
-                
-                <div>
-                    <label for="VehicleBrand">Vehicle brand <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="VehicleBrand" name="VehicleBrand" required>
-                </div>
-
-                <div>
-                    <label for="VehicleModel">Vehicle model <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="VehicleModel" name="VehicleModel" required>
-                </div>
-
-                <div>
-                    <label for="Colour">Colour <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="Colour" name="Colour" required>
-                </div>
-
-                <div>
-                    <label for="ManufactureYear">Manufacture year <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="ManufactureYear" name="ManufactureYear" required>
-                </div>
-
-                <div>
-                    <label for="Serial_number">Serial number<span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="Serial_number" name="Serial_number" required>
-                </div>
-
-                <div></div>
-
-                <div>
-                    <label for="insurance_start">Insurance Start Date<span style="color: red;">*</span></label>
-                    <input type="date" id="insurance_start" name="insurance_start" required>
-                          <br>
-                          <br>
-                    <label for="insurance_end">Insurance End Date<span style="color: red;">*</span></label>
-                    <input type="date" id="insurance_end" name="insurance_end" required>
-                </div>
-                
-                <div>
-                    <label for="inspection_start">Inspection Start Date<span style="color: red;">*</span></label>
-                    <input type="date" id="inspection_start" name="inspection_start" required>
-                    <br>
-                    <br>
-                    <label for="inspection_end">Inspection End Date<span style="color: red;">*</span></label>
-                    <input type="date" id="inspection_end" name="inspection_end" required>
-                </div>
-
-                <div>
-                    <div class="mb-3">
-                        <label for="formVehicleRegistrationFile" class="form-label">Upload vehicle registration <span style="color: red;">* </span><span class="smallText"></span></label>
-                        <input class="form-control" type="file" id="formVehicleRegistrationFile" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="formVehiclePhotoFile" class="form-label">Upload vehicle photo <span style="color: red;">* </span><span class="smallText"></span></label>
-                        <input class="form-control" type="file" id="formVehiclePhotoFile" required>
-                    </div>
-                </div>
-
-
-            </form>
-        </div>
-
-        <Section id="AddForm"></Section> <!-- Where any additional truck forms will be added -->
-
-        <div class="Check_box">
-            <input type="checkbox" id="Check" name="Check" value="agree">
-            <label for="Check" id="CheckLabel">I acknowledge that I am solely responsible for the accuracy and validity of the information provided, and I understand that any misinformation may result in consequences. <span style="color: red;">*</span></label>
-        </div>
-
-        <div class="Buttons">
-            <button class="addTruck-btn" id="addTruck-btn">+ Add another truck</button>
-            <button class="confirm-butn" id="confirm-btn"  form="form" >Confirm</button>
-        </div>
-
-
-        <!-- The first Modal -->
-        <div id="myModal" class="modal">
-
-            <div class="modal-content">
-            <span class="close">&times;</span>
-            <img src="question.png" alt="Question-img" />
-            <p>Are you sure you would like to confirm and save?</p>
-            <button class="acceptConfirm" id="acceptConfirm">Confirm</button>
-            <button class="cancel" id="cancel">Cancel</button>
+            <div>
+                <label for="LicensePlate">License plate no. <span style="color: red;">*</span></label>
+                <input type="text" id="LicensePlate" name="LicensePlate" placeholder="0000 ABC" pattern="[0-9]{4} [A-Za-z]{3}" required>
+                <span class="error" id="LicensePlate-error"></span>
             </div>
-        
-        </div>
 
-        <!-- The second Modal -->
-        <div id="mySuccessModal" class="successmodal">
-
-            <div class="successModal-content">
-            <span class="secondClose">&times;</span>
-            <img src="delivery-truck.png" alt="Question-img" />
-            <p>Vehicles successfully saved</p>
+            <div>
+                <label for="VehicleChassis">Vehicle chassis number <span style="color: red;">* </span></label>
+                <input type="text" id="VehicleChassis" name="VehicleChassis" maxlength="17" required>
+                <span class="error" id="VehicleChassis-error"></span>
             </div>
-        
+
+            <div>
+                <label for="RegistrationType">Registration type <span style="color: red;">* </span></label>
+                <input type="text" id="RegistrationType" name="RegistrationType" required>
+                <span class="error" id="RegistrationType-error"></span>
+            </div>
+
+            <div>
+                <label for="VehicleBrand">Vehicle brand <span style="color: red;">* </span></label>
+                <input type="text" id="VehicleBrand" name="VehicleBrand" required>
+                <span class="error" id="VehicleBrand-error"></span>
+            </div>
+
+            <div>
+                <label for="VehicleModel">Vehicle model <span style="color: red;">* </span></label>
+                <input type="text" id="VehicleModel" name="VehicleModel" required>
+                <span class="error" id="VehicleModel-error"></span>
+            </div>
+
+            <div>
+                <label for="Colour">Colour <span style="color: red;">* </span></label>
+                <input type="text" id="Colour" name="Colour" required>
+                <span class="error" id="Colour-error"></span>
+            </div>
+
+            <div>
+                <label for="ManufactureYear">Manufacture year <span style="color: red;">* </span></label>
+                <input type="text" id="ManufactureYear" name="ManufactureYear" required>
+                <span class="error" id="ManufactureYear-error"></span>
+            </div>
+
+            <div>
+                <label for="Serial_number">Serial number<span style="color: red;">* </span></label>
+                <input type="text" id="Serial_number" name="Serial_number" required>
+                <span class="error" id="Serial_number-error"></span>
+            </div>
+
+            <div>
+                <label for="insurance_start">Insurance Start Date<span style="color: red;">*</span></label>
+                <input type="date" id="insurance_start" name="insurance_start" required>
+                <span class="error" id="insurance_start-error"></span>
+                <br>
+                <br>
+                <label for="insurance_end">Insurance End Date<span style="color: red;">*</span></label>
+                <input type="date" id="insurance_end" name="insurance_end" required>
+                <span class="error" id="insurance_end-error"></span>
+            </div>
+            
+            <div>
+                <label for="inspection_start">Inspection Start Date<span style="color: red;">*</span></label>
+                <input type="date" id="inspection_start" name="inspection_start" required>
+                <span class="error" id="inspection_start-error"></span>
+                <br>
+                <br>
+                <label for="inspection_end">Inspection End Date<span style="color: red;">*</span></label>
+                <input type="date" id="inspection_end" name="inspection_end" required>
+                <span class="error" id="inspection_end-error"></span>
+            </div>
+
+            <div>
+                <div class="mb-3">
+                    <label for="formVehicleRegistrationFile" class="file-label">Upload vehicle registration <span style="color: red;">* </span></label>
+                    <input class="form-control" type="file" id="formVehicleRegistrationFile" required>
+                    <span class="error" id="formVehicleRegistrationFile-error"></span>
+                </div>
+                <br>
+                <div class="mb-3">
+                    <label for="formVehiclePhotoFile" class="file-label">Upload vehicle photo <span style="color: red;">* </span></label>
+                    <input class="form-control" type="file" id="formVehiclePhotoFile" required>
+                    <span class="error" id="formVehiclePhotoFile-error"></span>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <Section id="AddForm"></Section> <!-- Where any additional truck forms will be added -->
+
+    <div class="Check_box">
+        <input type="checkbox" id="Check" name="Check" value="agree">
+        <label for="Check" id="CheckLabel">I acknowledge that I am solely responsible for the accuracy and validity of the information provided, and I understand that any misinformation may result in consequences. <span style="color: red;">*</span></label>
+        <span class="error" id="Check-error"></span>
+    </div>
+
+    <div class="Buttons">
+        <button class="addTruck-btn" id="addTruck-btn">Add another truck</button>
+        <button class="confirm-butn" id="confirm-btn"  form="Form">Confirm</button>
+    </div>
+
+
+    <!-- The first Modal -->
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="question.png" alt="Question-img" />
+        <p>Are you sure you would like to confirm and save?</p>
+        <button class="acceptConfirm" id="acceptConfirm">Confirm</button>
+        <button class="cancel" id="cancel">Cancel</button>
         </div>
-  
-        <!--JS-->
-        <script src="ConfigTruckButtons.js"></script>
-        <script src="Modals.js"></script>
+    
+    </div>
 
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
- 
-    </body>
+    <!-- The second Modal -->
+    <div id="mySuccessModal" class="successmodal">
 
+        <div class="successModal-content">
+        <span class="secondClose">&times;</span>
+        <img src="delivery-truck.png" alt="Question-img" />
+        <p>Vehicles successfully saved</p>
+        </div>
+    
+    </div>
+
+    <!--JS-->
+    <script src="Validation.js"></script>
+    <script src="ConfigTruckButtons.js"></script>
+    <script src="Modals.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+</body>
 </html>
-
-
-
-
