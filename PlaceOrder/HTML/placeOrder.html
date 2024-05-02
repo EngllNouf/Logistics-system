@@ -92,8 +92,8 @@
           <!--Start Form-->
           <form id="myForm" action="" method="post" autocomplete = "off">
               <div class="tab" id = "tab-1">
-                <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
                   <div class="top">
+                      <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
                       <label class="heading">Order Details</label><br/>
                       <label class="text">Fill out the form carefully for order</label><br/>
                       <hr style="background: black;"><br/>
@@ -397,7 +397,7 @@
 
 
             // إزالة العناصر غير الضرورية
-            clonedForm.find(".index-btn , AddForm").remove();
+            clonedForm.find(".index-btn ,.AddForm, .heading ").remove();
 
 
             // تحديث معرفات عناصر النموذج المنسوخة
