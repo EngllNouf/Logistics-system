@@ -93,6 +93,7 @@
           <form id="myForm" action="" method="post" autocomplete = "off">
               <div class="tab" id = "tab-1">
                   <div class="top">
+                    <!--Close button-->
                       <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
                       <label class="heading">Order Details</label><br/>
                       <label class="text">Fill out the form carefully for order</label><br/>
@@ -335,8 +336,8 @@
                         <textarea name="notes" class="form-control" id="note" cols="30" rows="5" aria-describedby="inputGroupPrepend" placeholder="Write your notes"></textarea>
                     </div>
                 </div> 
-
-                        <Section id="AddForm" class="AddForm"></Section> <!-- Where any additional truck forms will be added -->
+                        <!-- Where any additional shipment will be added -->
+                        <Section id="AddForm" class="AddForm"></Section> 
 
                       <div class="index-btn-wrapper">
                         <div class="index-btn" onclick="run(1, 2);">Next</div>
@@ -420,10 +421,10 @@
                     $(".AddForm").append(clonedForm);
                     cloneCount++; // زيادة عداد النماذج المنسوخة
                 } else {
-                    alert("هذا النموذج موجود بالفعل.");
+                    alert("This form already exists.");
                 }
             } else {
-                alert("تم الوصول إلى الحد الأقصى من عدد النماذج المنسوخة.");
+                alert("The maximum number of cloned forms has been reached.");
             }
         }
             
