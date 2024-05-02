@@ -310,3 +310,31 @@ margin: 20px auto;
   display: flex;
   flex-wrap: wrap;
 }
+
+.popover {
+  display: none;
+  position: absolute;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 6px;
+  width: auto; /* Allow popover width to adjust based on content */
+  width: 500px; /* Limit the maximum width of the popover */
+  white-space: normal; /* Allow text to wrap onto new lines */
+}
+
+.popover-left {
+  left: calc(-107% - 10px);/* Position to the left of the image */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.popover-right {
+  left: calc(95% + 10px); /* Position to the right of the image */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.form-element:hover .popover {
+  display: block;
+}

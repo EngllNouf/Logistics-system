@@ -138,46 +138,53 @@
                       </div>
                   </div>
                   <div class="col-md-4">
-                      <label style="margin-bottom: 10px;" for="validationCustom07" class="form-label">Type of Cargo</label>
-                      <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom07" placeholder="Enter the type of cargo" required>
-                      <div class="valid-feedback">
-                          Looks good!
-                      </div>
-                  </div>
+                    <label style="margin-bottom: 10px;" for="validationCustom07" class="form-label">Type of Cargo</label>
+                    <select style="height: 2.3em; border-radius: 5px;" class="form-select" id="validationCustom07" required>
+                        <option value="">Select Cargo Type</option>
+                       
+                    </select>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
                  <label>Choose truck size:</label>
                  <div class="list">
-                    <div class="form-element">
+                    <div class="form-element" id="dieselFormElement">
                         <input type="radio" name="platform" value="DieselTankTruck" id="DieselTankTruck">
                         <label for="DieselTankTruck">
-                        <div class="icon">
-                            <img src="../Image/TankTruck.png" height="70px" width="200px" alt="Diesel Tank Truck">
-                        </div>
-                        <div class="title">
-                            Diesel Tank Truck
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
+                            <div class="icon">
+                                <img src="../Image/TankTruck.png" height="70px" width="200px" alt="Diesel Tank Truck">
+                            </div>
+                            <div class="title">Diesel Tank Truck</div>
+                            <div class="wrapper">
+                                <span class="minus">-</span>
+                                <span class="num">01</span>
+                                <span class="plus">+</span>
+                            </div>
                         </label>
+                        <div class="popover popover-left">Popover content for Diespover content for Water opover coel Tank yhgjgkTruck</div>
                     </div>
-                    <div class="form-element">
+                    
+                    <div class="form-element" id="waterFormElement">
                         <input type="radio" name="platform" value="WaterTankTruck" id="WaterTankTruck">
                         <label for="WaterTankTruck">
-                        <div class="icon">
-                            <img src="../Image/TankTruck.png" height="70px" width="200px" alt="Water Tank Truck">
-                        </div>
-                        <div class="title">
-                            Water Tank Truck
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
+                            <div class="icon">
+                                <img src="../Image/TankTruck.png" height="70px" width="200px" alt="Water Tank Truck">
+                            </div>
+                            <div class="title">Water Tank Truck</div>
+                            <div class="wrapper">
+                                <span class="minus">-</span>
+                                <span class="num">01</span>
+                                <span class="plus">+</span>
+                            </div>
                         </label>
+                        <div class="popover popover-right">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
+                    
+                    <!-- Repeat similar structure for other form elements -->
+                    
+                    
+              
                     <div class="form-element">
                         <input type="radio" name="platform" value="petrolTankTruck" id="petrolTankTruck">
                         <label for="petrolTankTruck">
@@ -193,6 +200,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-left">Popover content for Diespover content for Water opover coel Tank yhgjgkTruck</div>
                     </div>
                     <div class="form-element">
                         <input type="radio" name="platform" value="TipperTruck" id="TipperTruck">
@@ -209,6 +217,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-right">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
                     <div class="form-element">
                         <input type="radio" name="platform" value="RefrigeratedTruck" id="RefrigeratedTruck">
@@ -225,6 +234,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-left">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
                     <div class="form-element">
                         <input type="radio" name="platform" value="FreezerTruck" id="FreezerTruck">
@@ -241,6 +251,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-right">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
                     <div class="form-element">
                         <input type="radio" name="platform" value=" ContainerTruck" id=" ContainerTruck">
@@ -257,6 +268,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-left">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
                     <div class="form-element">
                         <input type="radio" name="platform" value="CarCarrier " id="CarCarrier ">
@@ -273,6 +285,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-right">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
                     <div class="form-element">
                         <input type="radio" name="platform" value="FlatbedTruck" id="FlatbedTruck">
@@ -289,6 +302,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-left">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
                     <div class="form-element">
                         <input type="radio" name="platform" value="LowbedHydraulic" id="LowbedHydraulic">
@@ -305,6 +319,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-right">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
                     <div class="form-element">
                         <input type="radio" name="platform" value="HighSidesTruck" id="HighSidesTruck">
@@ -321,6 +336,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-left">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
                     <div class="form-element">
                         <input type="radio" name="platform" value="ShortSidesTruck" id="ShortSidesTruck">
@@ -337,6 +353,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-right">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
                     <div class="form-element">
                         <input type="radio" name="platform" value="CurtainTruck" id="CurtainTruck">
@@ -353,6 +370,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-left">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
                     <div class="form-element">
                         <input type="radio" name="platform" value="Lowbed" id="Lowbed">
@@ -369,6 +387,7 @@
                             <span class="plus">+</span>
                         </div>
                         </label>
+                        <div class="popover popover-right">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                     </div>
                 <div class="form-element">
                     <input type="radio" name="BulkerTrack" value="BulkerTrack" id="BulkerTrack">
@@ -385,6 +404,7 @@
                         <span class="plus">+</span>
                     </div>
                     </label>
+                    <div class="popover popover-left">Popover content for Water opover co pover content for Water opover co ntent for Diesel Tank yhgjgkTru Truck</div>
                 </div>
             </div>
                 <div class="col-md-4">
@@ -438,8 +458,127 @@
                       <button class = "index-btn" type="submit" name="submit" style = "background: #f89d13;">Submit</button>
                   </div>      
             </form>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>     
         <script>
+            const cargoTypes = [
+                "Food Items-Dry Fast-Moving Consum",
+                "Food Items-Cold Fast-Moving Consum",
+                "Food Items-Dry Health Care",
+                "Food Items-Cold Health Care",
+                "Petroleum Products-Petrol 91",
+                "Petroleum Products-Petrol 95",
+                "Petroleum Products-Diesel",
+                "Petroleum Products-Kerosene",
+                "Petroleum Products-Petrochemicals",
+                "Petroleum Products-Oils",
+                "Petroleum Products-Petroleum Gas",
+                "Petroleum Products-Continent",
+                "Petroleum Products-Paraffin Wax",
+                "Petroleum Products-Asphalt",
+                "Petroleum Products-Jet Fuel",
+                "Vehicle Transportation-Private Transportation For Individuals",
+                "Vehicle Transportation-Vehicle Transportation For Individuals",
+                "Vehicle Transportation-Private Transport For Business Sector",
+                "Vehicle Transportation-Business Vehicle Transportation",
+                "Vehicle Transportation-Damaged Vehicles Transportation",
+                "Dangerous Materials-Explosives",
+                "Dangerous Materials-Gases",
+                "Dangerous Materials-Flammable Liquid",
+                "Medical supplies and hospital supplies",
+                "Dangerous Materials-Dangerous Materials-Toxic and infectious substances",
+                "Dangerous Materials-Radioactive material",
+                "Dangerous Materials-Corrosive substances",
+                "Dangerous Materials-Miscellaneous dangerous substances",
+                "Building And Construction Items-Concrete",
+                "Building And Construction Items-Concrete",
+                "Building And Construction Items-Steel",
+                "Building And Construction Items-Pipes and water extension materials include tanks",
+                "Building And Construction Items-Glass and aluminum panels include doors and windows",
+                "Building And Construction Items-Finishing works, paints and external textures",
+                "Building And Construction Items-Equipment and tools include saws, hammers, fisher",
+                "Building And Construction Items-Plumbing work and health extensions",
+                "Building And Construction Items-Insulating materials",
+                "Building And Construction Items-Book and asphalt materials",
+                "Building And Construction Items-Woods include carpentry wood, doors and succession",
+                "Building And Construction Items-Reinforcing",
+                "Building And Construction Items-Electricity extensions materials",
+                "Building And Construction Items-Stones, rocks and paving materials, and this is formed tiles",
+                "Building And Construction Items-Clay",
+                "Building And Construction Items-Brick",
+                "Building And Construction Items-Air conditioning tools and machines include extension tubes and air dictations",
+                "Mining or Fossilization Materials-Bauxite/ Aluminium Ore - AL2O3 > 40?",
+                "Mining or Fossilization Materials-Copper",
+                "Mining or Fossilization Materials-Feldspar",
+                "Mining or Fossilization Materials-Fluorite",
+                "Mining or Fossilization Materials-Garnet Minerals Group - Other Uses",
+                "Mining or Fossilization Materials-Gypsum & Anhydrite",
+                "Mining or Fossilization Materials-Iron ore - Fe<40?",
+                "Mining or Fossilization Materials-Limestone for industry",
+                "Mining or Fossilization Materials-Magnesite",
+                "Mining or Fossilization Materials-Marble for industry",
+                "Mining or Fossilization Materials-Nepheline Syenite",
+                "Mining or Fossilization Materials-Perlite",
+                "Mining or Fossilization Materials-Potash",
+                "Building And Construction Items-Cement",
+                "Food Items-Dairy",
+                "LIVE ANIMALS-Birds",
+                "LIVE ANIMALS-Cattles",
+                "Sanitation",
+                "Water Tanks",
+                "Gas Tanks",
+                "Building And Construction Items-Sand",
+                "Spares-Used spare and scrap",
+                "Reinforcing-Computers, electronic and optical products",
+                "Spares-Tires",
+                "Industrial-Plastic materials",
+                "Chemicals materials",
+                "Agricultural-Forage and grain",
+                "Food Items-Oils",
+                "Petroleum Products-Oils",
+                "Prefabricated Houses",
+                "Food Items-Soft drinks",
+                "Industrial-Raw materials for manufacturing industries",
+                "LIVE ANIMALS-Camels and Horses",
+                "Furniture-Used Furniture",
+                "Furniture- New Furniture",
+                "Clothes and Shoes",
+                "Charcoal and Firewood",
+                "Medicines",
+                "Industrial-Leather products and related products",
+                "Industrial-Paper and its products",
+                "Industrial-Rubber and plastics",
+                "Veterinary medicines",
+                "Bicycles",
+                "Motorbikes",
+                "Medical supplies and hospital supplies",
+                "Books",
+                "Agricultural-Agricultural materials and fertilizers",
+                "Electricity Generators",
+                "Textile and sewing materials",
+                "Tobacco Products",
+                "Remnants",
+                "Building And Construction Items-Ferrous materials",
+                "Spares-New spare",
+                "Bottled water",
+                "containers",
+                "Waste material-Medical Waste",
+                "sponges",
+                "Building And Construction Items-gypsum",
+                "Food Items-Vegetables and fruits",
+                "Cleaning materials-soap",
+                "Cleaning materials-Tissue paper",
+                "Cleaning materials-napkins",
+                "Industrial-Industrial machines"
+             
+            ];
+
+            cargoTypes.forEach(item => {
+                const option = document.createElement("option");
+                option.textContent = item;
+                document.getElementById("validationCustom07").appendChild(option);
+            });
+        </script>
+     <script>
             // Default tab
             $(".tab").css("display", "none");
             $("#tab-1").css("display", "block");
