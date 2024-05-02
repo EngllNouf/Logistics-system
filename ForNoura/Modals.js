@@ -22,11 +22,6 @@ btn.onclick = function() {
 // Function to validate the form
 function validateForm() {
   // Add validation logic here
-  // Example:
-  if (document.getElementById('OwnerID').value === '') {
-    alert('Please enter the owner ID.');
-    return false;
-  }
 
   // Function to validate the owner ID
   function validateOwnerID(ownerId) {
