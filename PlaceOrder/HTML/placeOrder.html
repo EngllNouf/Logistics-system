@@ -91,10 +91,10 @@
   
           <!--Start Form-->
           <form id="myForm" action="" method="post" autocomplete = "off">
+            <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
               <div class="tab" id = "tab-1">
                   <div class="top">
                     <!--Close button-->
-                      <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
                       <label class="heading">Order Details</label><br/>
                       <label class="text">Fill out the form carefully for order</label><br/>
                       <hr style="background: black;"><br/>
@@ -393,44 +393,46 @@
             }
         
             function cloneForm() {
-            if (cloneCount < maxClones) {
-                var clonedForm = $("#tab-1").clone();
-
-
-            // إزالة العناصر غير الضرورية
-            clonedForm.find(".index-btn ,.AddForm, .heading ").remove();
-
-
-            // تحديث معرفات عناصر النموذج المنسوخة
-            clonedForm.find("input, radio").each(function() {
-                var elementId = $(this).attr("id");
-                var newId = elementId + cloneCount;
-                $(this).attr("id", newId);
-                $(this).removeAttr("disabled"); // إزالة الخاصية المعطلة
-            });
-            // نسخ قيم الحقول من النموذج الأصلي وإعادة تعيينها في النموذج المنسوخ
-            var originalForm = $("#tab-1");
-            clonedForm.find("input").each(function() {
-                var elementId = $(this).attr("id");
-                var originalField = originalForm.find("#" + elementId);
-                $(this).val(originalField.val());
-            });
-
-                // إضافة النموذج المنسوخ إلى الحاوية إذا لم يكن موجودًا بالفعل
-                if (!$(".AddForm").find(clonedForm).length) {
-                    $(".AddForm").append(clonedForm);
-                    cloneCount++; // زيادة عداد النماذج المنسوخة
+                if (cloneCount < maxClones) {
+                    var clonedForm = $("#tab-1").clone();
+        
+                    // إزالة العناصر غير الضرورية
+                    clonedForm.find(".index-btn ,.AddForm, .heading ").remove();
+        
+                    // تحديث معرفات عناصر النموذج المنسوخة
+                    clonedForm.find("input, radio").each(function() {
+                        var elementId = $(this).attr("id");
+                        var newId = elementId + cloneCount;
+                        $(this).attr("id", newId);
+                        $(this).removeAttr("disabled"); // إزالة الخاصية المعطلة
+                    });
+        
+                    // نسخ قيم الحقول من النموذج الأصلي وإعادة تعيينها في النموذج المنسوخ
+                    var originalForm = $("#tab-1");
+                    clonedForm.find("input").each(function() {
+                        var elementId = $(this).attr("id");
+                        var originalField = originalForm.find("#" + elementId);
+                        $(this).val(originalField.val());
+                    });
+        
+                    // إضافة النموذج المنسوخ إلى الحاوية إذا لم يكن موجودًا بالفعل
+                    if (!$(".AddForm").find(clonedForm).length) {
+                        $(".AddForm").append(clonedForm);
+                        cloneCount++; // زيادة عداد النماذج المنسوخة
+        
+                        // إعادة تهيئة الخريطة بعد إضافة النموذج المنسوخ
+                        initializeMap();
+                    } else {
+                        alert("This form already exists.");
+                    }
                 } else {
-                    alert("This form already exists.");
+                    alert("The maximum number of cloned forms has been reached.");
                 }
-            } else {
-                alert("The maximum number of cloned forms has been reached.");
             }
-        }
-            
-        $(document).on("click", "#addShipment-btn", function() {
-            cloneForm();
-        });
+        
+            $(document).on("click", "#addShipment-btn", function() {
+                cloneForm();
+            });
         </script>
 <script type="text/javascript">
 let map, markerPickup, markerDropoff, directionsService, directionsRenderer, polyline;
@@ -557,6 +559,31 @@ function calculateAndDisplayRoute() {
         }
     });
 }
+
+</script> 
+        <script type="text/javascript">
+            $(function() {
+                $('#datepicker').datepicker();
+            });
+        </script>
+        <script>
+            const plus = document.querySelector(".plus"),
+             minus = document.querySelector(".minus"),
+             num = document.querySelector(".num");
+             let a = 1;
+             plus.addEventListener("click", ()=>{
+               a++;
+               a = (a < 10) ? "0" + a : a;
+               num.innerText = a;
+             });
+             minus.addEventListener("click", ()=>{
+               if(a > 1){
+                 a--;
+                 a = (a < 10) ? "0" + a : a;
+                 num.innerText = a;
+               }
+             });
+        </script>
 
 
 
