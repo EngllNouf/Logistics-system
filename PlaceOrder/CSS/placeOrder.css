@@ -151,6 +151,7 @@ margin-left: 6px;
   }
 
   .form-element {
+  display: none;
   position:relative;
   width:250px;
   height:250px;
