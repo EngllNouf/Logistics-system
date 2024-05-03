@@ -126,17 +126,20 @@
                     <div id="output"></div>
                  </div>
                  <div class="col-sm-6">
-                  <label for="date" class="form-label">Pick-up Date</label>
-                 <div class="input-group date" id="datepicker">
-                      <input type="date" class="form-control" id="date" required>
-                  </div>
-                  </div>
-                  <div class="col-sm-6">
-                      <label for="date" class="form-label">Drop-off Date</label>
-                      <div class="input-group date" id="datepicker">
-                          <input type="date" class="form-control" id="date" required>
-                      </div>
-                  </div>
+                    <label for="date" class="form-label">Pick-up Date</label>
+                    <div class="input-group date" id="datepicker">
+                        <input type="date" class="form-control" id="pickupDate" required onchange="handleDropoffDate()">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="date" class="form-label">Drop-off Date</label>
+                    <div class="input-group date" id="datepicker">
+                        <input type="date" class="form-control" id="dropoffDate" required onchange="handleDropoffDate()">
+                        <!-- عنصر النص لعرض الشرط -->
+                        <span id="dateRestriction" style="color: red;"></span>
+                    </div>
+                </div>
+                
                   <div class="col-md-4">
                     <label style="margin-bottom: 10px;" for="validationCustom07" class="form-label">Type of Cargo</label>
                     <select style="height: 2.3em; border-radius: 5px;" class="form-select" id="validationCustom07" required>
@@ -782,7 +785,8 @@ function geocodeAddress(address, inputField) {
     });
 }
 
-function calculateAndDisplayRoute() {
+
+function calculateDistance() {
     if (!markerPickup || !markerDropoff) {
         console.log("Please select both pickup and drop-off locations.");
         return;
@@ -794,13 +798,39 @@ function calculateAndDisplayRoute() {
     };
     directionsService.route(request, function (response, status) {
         if (status === 'OK') {
-            directionsRenderer.setDirections(response);
+            const route = response.routes[0];
+            const distance = route.legs[0].distance.value / 1000; // Distance in kilometers
+            console.log("Distance: " + distance + " km");
+            document.getElementById('distanceOutput').innerText = "Distance: " + distance + " km"; // Update the text element in the form
+            
+            // Check if the distance is greater than 100 kilometers
+            if (distance > 100) {
+                // Display a warning message to the user
+                document.getElementById('dateRestriction').innerText = "Drop-off date must be at least two days ahead when distance is greater than 100 km.";
+            } else {
+                // If the distance is less than 100 kilometers, remove the message
+                document.getElementById('dateRestriction').innerText = "";
+            }
         } else {
-            window.alert('Directions request failed due to ' + status);
+            console.error('Failed to get route due to ' + status);
         }
     });
 }
 
+// Function to handle drop-off date selection 
+function handleDropoffDate() {
+    const pickupDate = new Date(document.getElementById('pickupDate').value);
+    const dropoffDate = new Date(document.getElementById('dropoffDate').value);
+    const timeDifference = dropoffDate.getTime() - pickupDate.getTime();
+    const dayDifference = timeDifference / (1000 * 3600 * 24);
+
+    if (dayDifference < 2) {
+        document.getElementById('dropoffDate').value = ""; // Clear the drop-off date value
+        document.getElementById('dateWarning').innerText = "Please select a drop-off date at least two days after the pickup date."; // Show a message under the drop-off date field
+    } else {
+        document.getElementById('dateWarning').innerText = ""; // Remove the message
+    }
+}
 </script> 
         <script type="text/javascript">
             $(function() {
