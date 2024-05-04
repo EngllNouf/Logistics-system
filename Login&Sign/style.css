@@ -186,7 +186,7 @@ form.sign-in-form {
   right: 48%;
   transform: translateY(-50%);
   background-image: url('../HomePage/images/Load.gif');
-  
+  border-radius: 90%;
  
   z-index: 6;
 }
