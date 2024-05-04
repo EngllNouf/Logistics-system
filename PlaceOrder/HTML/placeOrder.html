@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
         <title>Place Order</title>
         <meta chartset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,7 +34,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
         <!--End for date-->
         <link rel="stylesheet" href="../CSS/placeOrder.css">
-  </head>
+    </head>
     <body>
         <nav style="background-color: #FFFFFF;" id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
             <div class="container">
@@ -78,395 +78,475 @@
                 </div>
             </div>
         </nav>   
+        <!--Start Progress Bar-->
         <div class="cardy-name">
             <!-- Step Counter Starts -->
-              <ul class="progressbar rb-step d-flex justify-content-center">
+             <ul class="progressbar rb-step d-flex justify-content-center">
                   <!--class="active"-->
                   <li class="step circle" id="step-1">order details</li>
                   <li class="step circle" id="step-2">View Order</li>
                   <li class="step circle" id="step-3">Confirmation</li>
-              </ul>
-            <!-- Step Counter Ends -->
-          </div>
-  
-          <!--Start Form-->
-          <form id="myForm" action="" method="post" autocomplete = "off">
-            <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
-              <div class="tab" id = "tab-1">
-                  <div class="top">
-                    <!--Close button-->
-                      <label class="heading">Order Details</label><br/>
-                      <label class="text">Fill out the form carefully for order</label><br/>
-                      <hr style="background: black;"><br/>
-                  </div>  
-                <div class="col-sm-6">
-                    <label for="from" class="col-xs-2 control-label"><i class="far fa-dot-circle"></i></label>
-                    <div class="col-xs-4">
-                        <input type="text" id="from" placeholder="Enter the load pickup location" class="form-control" required>
-                    </div>
-                 </div>
-                 <div class="col-sm-6">
-                    <label for="to" class="col-xs-2 control-label"><i class="fas fa-map-marker-alt"></i></label>
-                    <div class="col-xs-4">
-                        <input type="text" id="to" placeholder="Enter the load drop-off location" class="form-control">
-                    </div>
-                 </div>
-                 <div class="container text-center">
-                  <div class="row">
-                      <div class="col-xs-offset-2 col-xs-8">
-                          <button style="background-color: #f89d13;" class="btn btn-info btn-lg" onclick="calcRoute();">
-                              <i class="fas fa-map fa-lg" id="calculateButton" style="position: relative;"></i> <!-- Map outline -->
-  <i class="fas fa-circle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 6px;"></i> <!-- Dot inside -->
-                          </button>
-                      </div>
-                  </div>
-              </div>
-                 <div class="col-sm-12 container-fluid">
-                    <div id="googleMap"></div>
-                    <div id="output"></div>
-                 </div>
-                 <div class="col-sm-6">
-                    <label for="date" class="form-label">Pick-up Date</label>
-                    <div class="input-group date" id="datepicker">
-                        <input type="date" class="form-control" id="pickupDate" required onchange="handleDropoffDate()">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label for="date" class="form-label">Drop-off Date</label>
-                    <div class="input-group date" id="datepicker">
-                        <input type="date" class="form-control" id="dropoffDate" required onchange="handleDropoffDate()">
-                        <!-- عنصر النص لعرض الشرط -->
-                        <span id="dateRestriction" style="color: red;"></span>
-                    </div>
-                </div>
-                
-                  <div class="col-md-4">
-                    <label style="margin-bottom: 10px;" for="validationCustom07" class="form-label">Type of Cargo</label>
-                    <select style="height: 2.3em; border-radius: 5px;" class="form-select" id="validationCustom07" required>
-                        <option value="">Select Cargo Type</option>
-                       
-                    </select>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                 <label style="margin-top: 10px;">Choose truck:</label>
-                 <div class="list">
-                    <div class="form-element Diesel" id="dieselFormElement">
-                        <input type="radio" name="platform" value="DieselTankTruck" id="DieselTankTruck">
-                        <label for="DieselTankTruck">
-                            <div class="icon">
-                                <img src="../Image/TankTruck.png" height="70px" width="200px" alt="Diesel Tank Truck">
-                            </div>
-                            <div class="title">Diesel Tank Truck</div>
-                            <div class="wrapper">
-                                <span class="minus">-</span>
-                                <span class="num">01</span>
-                                <span class="plus">+</span>
-                            </div>
-                        </label>
-                        <div class="popover popover-left">specialized for transporting diesel fuel safely to different locations, construction, and agriculture.</div>
-                    </div>
-                    
-                    <div class="form-element Water" id="waterFormElement">
-                        <input type="radio" name="platform" value="WaterTankTruck" id="WaterTankTruck">
-                        <label for="WaterTankTruck">
-                            <div class="icon">
-                                <img src="../Image/TankTruck.png" height="70px" width="200px" alt="Water Tank Truck">
-                            </div>
-                            <div class="title">Water Tank Truck</div>
-                            <div class="wrapper">
-                                <span class="minus">-</span>
-                                <span class="num">01</span>
-                                <span class="plus">+</span>
-                            </div>
-                        </label>
-                        <div class="popover popover-right">A vehicle equipped with a large tank for transporting water, commonly used for firefighting, and agricultural purposes.</div>
-                    </div>
-                    
-                 
-                    
-                    
-              
-                    <div class="form-element Petrol">
-                        <input type="radio" name="platform" value="petrolTankTruck" id="petrolTankTruck">
-                        <label for="petrolTankTruck">
-                        <div class="icon">
-                            <img src="../Image/TankTruck.png" height="70px" width="200px" alt="Petrol Tank Truck">
-                        </div>
-                        <div class="title">
-                            Petrol Tank Truck
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-left">vehicle designed for transporting large quantities of petrol ,These trucks typically consist of a safety equipment to ensure the secure transportation of the fuel.</div>
-                 
-                    </div>
-                    <div class="form-element Concrete Sand gypsum">
-                        <input type="radio" name="platform" value="TipperTruck" id="TipperTruck">
-                        <label for="TipperTruck">
-                        <div class="image">
-                            <img src="../Image/TipperTruck.png" height="70px" width="200px" alt="Tipper Truck">
-                        </div>
-                        <div class="title">
-                            Tipper Truck
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-right">truck with a hydraulic lift mechanism that dumps cargo from the back of the truck. It's commonly used in construction and mining to transport materials like sand and gravel</div>
-                    </div>
-                    <div class="form-element Food-Items Items-Cold Medical-Items">
-                        <input type="radio" name="platform" value="RefrigeratedTruck" id="RefrigeratedTruck">
-                        <label for="RefrigeratedTruck">
-                        <div class="image">
-                            <img src="../Image/RefrigeratedTruck.png" height="70px" width="200px" alt="test">
-                        </div>
-                        <div class="title">
-                            Refrigerated Truck
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-left"> truck to transport perishable goods at controlled temperatures. It has a built-in refrigeration unit to maintain the cargo area at specific temperatures, preserving the quality of items like food, pharmaceuticals, and flowers. </div>
-                    </div>
-                    <div class="form-element Food-Items Items-Cold Medical-Items">
-                        <input type="radio" name="platform" value="FreezerTruck" id="FreezerTruck">
-                        <label for="FreezerTruck">
-                        <div class="image">
-                            <img src="../Image/RefrigeratedTruck.png" height="70px" width="200px" alt="Freezer Truck">
-                        </div>
-                        <div class="title">
-                            Freezer Truck
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-right">vehicle that is equipped with refrigeration units that maintain the cargo area at specific temperatures, typically ranging from below freezing to slightly above freezing, depending on the requirements of the goods being transported.</div>
-                    </div>
-                    <div class="form-element Food-Items Medical-Items closeed Tires All">
-                        <input type="radio" name="platform" value=" ContainerTruck" id=" ContainerTruck">
-                        <label for=" ContainerTruck">
-                        <div class="image">
-                            <img src="../Image/ContainerTruck.png" height="70px" width="200px" alt=" Container Truck">
-                        </div>
-                        <div class="title">
-                            Container Truck
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-left">vehicle designed for transporting standard intermodal containers. These trucks are commonly used in logistics and freight transportation industries for efficiently moving cargo containers between ports, warehouses, and distribution centers.</div>
-                    </div>
-                    <div class="form-element Vehicle-Transportation">
-                        <input type="radio" name="platform" value="CarCarrier " id="CarCarrier ">
-                        <label for="CarCarrier ">
-                        <div class="image">
-                            <img src="../Image/CarCarrier.png" height="70px" width="200px" alt="Car Carrier ">
-                        </div>
-                        <div class="title">
-                            Car Carrier 
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-right">vehicle designed for transporting multiple vehicles, typically automobiles, from one location to another. These trucks are equipped with a large platform or trailer bed specifically designed to securely hold and transport vehicles.</div>
-                    </div>
-                    <div class="form-element Building Tires Food-Items Medical-Items All containers">
-                        <input type="radio" name="platform" value="FlatbedTruck" id="FlatbedTruck">
-                        <label for="FlatbedTruck">
-                        <div class="image">
-                            <img src="../Image/FlatbedTruck.png" height="70px" width="200px" alt="Flatbed Truck">
-                        </div>
-                        <div class="title">
-                            Flatbed Truck
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-right">truck is a type of commercial vehicle characterized by its open cargo area with no roof or sides. The cargo area, or bed, is flat and level, providing a large and versatile space for transporting various types of goods and equipment.</div>
-                    </div>
-                    <div class="form-element heavy">
-                        <input type="radio" name="platform" value="LowbedHydraulic" id="LowbedHydraulic">
-                        <label for="LowbedHydraulic">
-                        <div class="image">
-                            <img src="../Image/LowbedHydraulic.png" height="70px" width="200px" alt="Lowbed Hydraulic">
-                        </div>
-                        <div class="title">
-                            Lowbed Hydraulic
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-right">type of semi-trailer with a low height deck. This design allows it to haul heavy and oversized loads, such as construction machinery, industrial equipment, and other large cargo, while maintaining a low center of gravity for stability during transport.</div>
-                    </div>
-                    <div class="form-element Food-Items Tires All">
-                        <input type="radio" name="platform" value="HighSidesTruck" id="HighSidesTruck">
-                        <label for="HighSidesTruck">
-                        <div class="image">
-                            <img src="../Image/HighSidesTruck.png" height="70px" width="200px" alt="High Sides Truck">
-                        </div>
-                        <div class="title">
-                            High Sides Truck 
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-left">
-                            A high sides truck has taller side panels, offering increased cargo capacity, better security, and improved safety. It's commonly used in construction, agriculture, and waste management for transporting bulkier loads safely.</div>
-                    </div>
-                    <div class="form-element Food-Items Building Tires All">
-                        <input type="radio" name="platform" value="ShortSidesTruck" id="ShortSidesTruck">
-                        <label for="ShortSidesTruck">
-                        <div class="image">
-                            <img src="../Image/ShortSidesTruck.jpg" height="70px" width="200px" alt="Short Sides Truck">
-                        </div>
-                        <div class="title">
-                            Short Sides Truck 
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-right">A truck that designed with shorter side panels, offering easy access to cargo while maintaining a compact and maneuverable profile. Ideal for urban deliveries and transporting smaller items, it ensures efficiency and convenience in tight spaces.</div>
-                    </div>
-                    <div class="form-element Food-Items Medical-Items closeed Tires All">
-                        <input type="radio" name="platform" value="CurtainTruck" id="CurtainTruck">
-                        <label for="CurtainTruck">
-                        <div class="image">
-                            <img src="../Image/CurtainTruck.jpg" height="70px" width="200px" alt="Curtain Truck">
-                        </div>
-                        <div class="title">
-                            Curtain Truck   
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-left">A type of truck with a tarpaulin stretched along its sides, offering easy access for loading and unloading goods. It's commonly used for transporting various items, especially palletized goods, furniture, and appliances.
-                        </div>
-                    </div>
-                    <div class="form-element Tires">
-                        <input type="radio" name="platform" value="Lowbed" id="Lowbed">
-                        <label for="Lowbed">
-                        <div class="image">
-                            <img src="../Image/Lowbed.jpg" height="70px" width="200px" alt="Lowbed">
-                        </div>
-                        <div class="title">
-                            Lowbed 
-                        </div>
-                        <div class="wrapper">
-                            <span class="minus">-</span>
-                            <span class="num">01</span>
-                            <span class="plus">+</span>
-                        </div>
-                        </label>
-                        <div class="popover popover-right">A heavy-duty vehicle designed to transport oversized and overweight loads . The main feature of a lowbed truck is its low bed height, which allows it to carry tall cargo while maintaining stability and ensuring safe transportation.</div>
-                    </div>
-                 <div class="form-element">
-                    <input type="radio" name="BulkerTrack" value="BulkerTrack" id="BulkerTrack">
-                    <label for="BulkerTrack">
-                    <div class="image">
-                        <img src="../Image/BulkerTrack.jpg" height="70px" width="200px" alt="Bulker Track">
-                    </div>
-                    <div class="title">
-                        Bulker Track
-                    </div>
-                    <div class="wrapper">
-                        <span class="minus">-</span>
-                        <span class="num">01</span>
-                        <span class="plus">+</span>
-                    </div>
-                    </label>
-                    <div class="popover popover-left">
-                        A bulker track is a large ship designed to transport bulk cargo like grain, coal, and ore across long distances. It has multiple cargo holds and hatches for efficient loading and unloading.</div>
-                </div>
+             </ul>
+             <!-- Step Counter Ends -->
+        </div>
+        <!--End Progress Bar-->
 
-                 </div>
-             </div>
-                <div class="col-md-4">
-                    <label style="margin-bottom: 10px;" for="validationCustom06" class="form-label">Goods value</label>
-                    <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom06" placeholder="Enter the Goods Value" required>
-                    <div class="valid-feedback">
-                        Looks good!
+        <!--Start Form-->
+        <section class="form-container ">
+            <div class="form-box">
+                <form id="myForm" action="#" method="post" autocomplete = "off">
+                    <!-- Start Tab 1 in brogress bar-->
+                    <div class="tab" id ="tab-1">
+                        <!--Heading-->
+                        <div class="top">  
+                            <label class="heading">Order Details</label><br/>
+                            <label class="text">Fill out the form carefully for order</label><br/>
+                            <hr style="background: black;"><br/>
+                            <!--Pick-Up and Drop-Off-->
+                        </div>
+                         <div class="row">
+                            <div class="col-sm-5">
+                                <label style="margin-bottom: 10px;" class="form-label">Location</label>
+                                <!--Pick-Up-->
+                                <div class="col-xs-2">
+                                    <label for="pickup" class="control-label"><i class="far fa-dot-circle"></i></label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <input type="text" id="pickup" name="pickup" placeholder="Enter the load pickup location" class="form-control" required>
+                                </div>
+                                <!--Drop-Off-->
+                                <div class="col-xs-2">
+                                    <label for="dropOff" class="control-label"><i class="fas fa-map-marker-alt"></i></label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <input type="text" id="dropOff" name="dropOff" placeholder="Enter the load drop-off location" class="form-control">
+                                </div>
+                                <!--Button or Icon for Map-->
+                                <div class="text-left">
+                                    <div class="col-xs-12">
+                                        <button style="margin-bottom: 20px; background-color: #f89d13; margin-top: 30px;" class="index-btn" onclick="calcRoute();">
+                                            <i class="fas fa-map fa-lg" id="calculateButton" style="position: relative;"></i> <!-- Map outline -->
+                                            <i class="fas fa-circle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 6px;"></i> <!-- Dot inside -->
+                                            Add Location
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Map-->
+                            <div class="col-sm-6 container-fluid">
+                                <div id="googleMap"></div>
+                                <div id="output"></div>
+                            </div>
+                        </div>
+                        <!--Date Pick-Up and Drop-Off-->
+                        <div class="row">
+                            <!--Pick-Up Date-->
+                            <div class="col-sm-6">
+                                <label for="datePickUp" class="form-label">Pick-up Date</label>
+                                <div class="input-group date" id="datepicker">
+                                    <input type="date" class="form-control" id="pickupDate" name="datePickUp" required onchange="handleDropoffDate()">
+                                </div>
+                            </div>
+                            <!--Drop-Off Date-->
+                            <div class="col-sm-6">
+                                <label for="dateDropOff" class="form-label">Drop-off Date</label>
+                                <div class="input-group date" id="datepicker">
+                                    <input type="date" class="form-control" id="dropoffDate" name="dateDropOff" required onchange="handleDropoffDate()">
+                                    <!--Show condition-->
+                                    <span id="dateRestriction" style="color: red;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Type of Cargo-->
+                        <div class="col-md-13" style="margin-top: 50px;">
+                            <label style="margin-bottom: 10px;" for="typeCargo" class="form-label">Type of Cargo</label>
+                            <select style="height: 2.3em; border-radius: 5px;" class="form-select" id="typeCargo" name="typeCargo" required>
+                                <option value="">Select Cargo Type</option>
+                            </select>
+                        </div>
+                        <!--Trucks-->
+                        <label style="margin-top: 50px;">Choose truck:</label>
+                        <div class="list">
+                            <!--1.Diesel Tank Truck-->
+                            <div class="form-element Diesel" id="dieselFormElement">
+                                <input type="radio" name="truck" value="DieselTankTruck" id="DieselTankTruck">
+                                <!--Image and Name of Truck-->
+                                <label for="DieselTankTruck">
+                                    <div class="icon">
+                                        <img src="../Image/TankTruck.png" height="70px" width="200px" alt="Diesel Tank Truck">
+                                    </div>
+                                    <div class="title">Diesel Tank Truck</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-left">specialized for transporting diesel fuel safely to different locations, construction, and agriculture.</div>
+                            </div>
+                            <!--2.Water Tank Truck-->
+                            <div class="form-element Water" id="waterFormElement">
+                                <input type="radio" name="truck" value="WaterTankTruck" id="WaterTankTruck">
+                                <!--Image and Name of Truck-->
+                                <label for="WaterTankTruck">
+                                    <div class="icon">
+                                        <img src="../Image/TankTruck.png" height="70px" width="200px" alt="Water Tank Truck">
+                                    </div>
+                                    <div class="title">Water Tank Truck</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-right">A vehicle equipped with a large tank for transporting water, commonly used for firefighting, and agricultural purposes.</div>
+                            </div>
+                            <!--3.Petrol Tank Truck-->
+                            <div class="form-element Petrol">
+                                <input type="radio" name="truck" value="petrolTankTruck" id="petrolTankTruck">
+                                <!--Image and Name of Truck-->
+                                <label for="petrolTankTruck">
+                                <div class="icon">
+                                    <img src="../Image/TankTruck.png" height="70px" width="200px" alt="Petrol Tank Truck">
+                                </div>
+                                <div class="title">Petrol Tank Truck</div></label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-left">vehicle designed for transporting large quantities of petrol ,These trucks typically consist of a safety equipment to ensure the secure transportation of the fuel.</div>
+                            </div>
+                            <!--4.Tipper Truck-->
+                            <div class="form-element Concrete Sand">
+                                <input type="radio" name="truck" value="TipperTruck" id="TipperTruck">
+                                <!--Image and Name of Truck-->
+                                <label for="TipperTruck">
+                                <div class="image">
+                                    <img src="../Image/TipperTruck.png" height="70px" width="200px" alt="Tipper Truck">
+                                </div>
+                                <div class="title">Tipper Truck</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-right">truck with a hydraulic lift mechanism that dumps cargo from the back of the truck. It's commonly used in construction and mining to transport materials like sand and gravel</div>
+                            </div>
+                            <!--5.Refrigerated Truck-->
+                            <div class="form-element Food-Items Items-Cold Medical-Items">
+                                <input type="radio" name="truck" value="RefrigeratedTruck" id="RefrigeratedTruck">
+                                <!--Image and Name of Truck-->
+                                <label for="RefrigeratedTruck">
+                                <div class="image">
+                                    <img src="../Image/RefrigeratedTruck.png" height="70px" width="200px" alt="test">
+                                </div>
+                                <div class="title">Refrigerated Truck</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-left"> truck to transport perishable goods at controlled temperatures. It has a built-in refrigeration unit to maintain the cargo area at specific temperatures, preserving the quality of items like food, pharmaceuticals, and flowers. </div>
+                            </div>
+                            <!--6.Freezer Truck-->
+                            <div class="form-element Food-Items Items-Cold Medical-Items">
+                                <input type="radio" name="truck" value="FreezerTruck" id="FreezerTruck">
+                                <!--Image and Name of Truck-->
+                                <label for="FreezerTruck">
+                                <div class="image">
+                                    <img src="../Image/RefrigeratedTruck.png" height="70px" width="200px" alt="Freezer Truck">
+                                </div>
+                                <div class="title">Freezer Truck</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-right">vehicle that is equipped with refrigeration units that maintain the cargo area at specific temperatures, typically ranging from below freezing to slightly above freezing, depending on the requirements of the goods being transported.</div>
+                            </div>
+                            <!--7.Container Truck-->
+                            <div class="form-element Food-Items Medical-Items closeed Tires All">
+                                <input type="radio" name="truck" value=" ContainerTruck" id=" ContainerTruck">
+                                <!--Image and Name of Truck-->
+                                <label for=" ContainerTruck">
+                                <div class="image">
+                                    <img src="../Image/ContainerTruck.png" height="70px" width="200px" alt=" Container Truck">
+                                </div>
+                                <div class="title">Container Truck</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-left">vehicle designed for transporting standard intermodal containers. These trucks are commonly used in logistics and freight transportation industries for efficiently moving cargo containers between ports, warehouses, and distribution centers.</div>
+                            </div>
+                            <!--8.Car Carrier-->
+                            <div class="form-element Vehicle-Transportation">
+                                <input type="radio" name="truck" value="CarCarrier " id="CarCarrier ">
+                                <!--Image and Name of Truck-->
+                                <label for="CarCarrier ">
+                                <div class="image">
+                                    <img src="../Image/CarCarrier.png" height="70px" width="200px" alt="Car Carrier ">
+                                </div>
+                                <div class="title">Car Carrier</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-right">vehicle designed for transporting multiple vehicles, typically automobiles, from one location to another. These trucks are equipped with a large platform or trailer bed specifically designed to securely hold and transport vehicles.</div>
+                            </div>
+                            <!--9.Flatbed Truck-->
+                            <div class="form-element Building Tires Food-Items Medical-Items All containers gypsum">
+                                <input type="radio" name="truck" value="FlatbedTruck" id="FlatbedTruck">
+                                <!--Image and Name of Truck-->
+                                <label for="FlatbedTruck">
+                                <div class="image">
+                                    <img src="../Image/FlatbedTruck.png" height="70px" width="200px" alt="Flatbed Truck">
+                                </div>
+                                <div class="title">Flatbed Truck</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-right">truck is a type of commercial vehicle characterized by its open cargo area with no roof or sides. The cargo area, or bed, is flat and level, providing a large and versatile space for transporting various types of goods and equipment.</div>
+                            </div>
+                            <!--10.Lowbed Hydraulic-->
+                            <div class="form-element heavy">
+                                <input type="radio" name="truck" value="LowbedHydraulic" id="LowbedHydraulic">
+                                <!--Image and Name of Truck-->
+                                <label for="LowbedHydraulic">
+                                <div class="image">
+                                    <img src="../Image/LowbedHydraulic.png" height="70px" width="200px" alt="Lowbed Hydraulic">
+                                </div>
+                                <div class="title">Lowbed Hydraulic</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-right">type of semi-trailer with a low height deck. This design allows it to haul heavy and oversized loads, such as construction machinery, industrial equipment, and other large cargo, while maintaining a low center of gravity for stability during transport.</div>
+                            </div>
+                            <!--11.High Sides Truck-->
+                            <div class="form-element Food-Items Tires All">
+                                <input type="radio" name="truck" value="HighSidesTruck" id="HighSidesTruck">
+                                <!--Image and Name of Truck-->
+                                <label for="HighSidesTruck">
+                                <div class="image">
+                                    <img src="../Image/HighSidesTruck.png" height="70px" width="200px" alt="High Sides Truck">
+                                </div>
+                                <div class="title">High Sides Truck</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-left">A high sides truck has taller side panels, offering increased cargo capacity, better security, and improved safety. It's commonly used in construction, agriculture, and waste management for transporting bulkier loads safely.</div>
+                            </div>
+                            <!--12.Short Sides Truck-->
+                            <div class="form-element Food-Items Building Tires All">
+                                <input type="radio" name="truck" value="ShortSidesTruck" id="ShortSidesTruck">
+                                <!--Image and Name of Truck-->
+                                <label for="ShortSidesTruck">
+                                <div class="image">
+                                    <img src="../Image/ShortSidesTruck.jpg" height="70px" width="200px" alt="Short Sides Truck">
+                                </div>
+                                <div class="title">Short Sides Truck</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-right">A truck that designed with shorter side panels, offering easy access to cargo while maintaining a compact and maneuverable profile. Ideal for urban deliveries and transporting smaller items, it ensures efficiency and convenience in tight spaces.</div>
+                            </div>
+                            <!--13.Curtain Truck-->
+                            <div class="form-element Food-Items Medical-Items closeed Tires All">
+                                <input type="radio" name="truck" value="CurtainTruck" id="CurtainTruck">
+                                <!--Image and Name of Truck-->
+                                <label for="CurtainTruck">
+                                <div class="image">
+                                    <img src="../Image/CurtainTruck.jpg" height="70px" width="200px" alt="Curtain Truck">
+                                </div>
+                                <div class="title">Curtain Truck</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-left">A type of truck with a tarpaulin stretched along its sides, offering easy access for loading and unloading goods. It's commonly used for transporting various items, especially palletized goods, furniture, and appliances.</div>
+                            </div>
+                            <!--14.Lowbed-->
+                            <div class="form-element Tires">
+                                <input type="radio" name="truck" value="Lowbed" id="Lowbed">
+                                <!--Image and Name of Truck-->
+                                <label for="Lowbed">
+                                <div class="image">
+                                    <img src="../Image/Lowbed.jpg" height="70px" width="200px" alt="Lowbed">
+                                </div>
+                                <div class="title">Lowbed</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-right">A heavy-duty vehicle designed to transport oversized and overweight loads . The main feature of a lowbed truck is its low bed height, which allows it to carry tall cargo while maintaining stability and ensuring safe transportation.</div>
+                            </div>
+                            <!--15.Bulker Track-->
+                            <div class="form-element">
+                                <input type="radio" name="truck" value="BulkerTrack" id="BulkerTrack">
+                                <!--Image and Name of Truck-->
+                                <label for="BulkerTrack">
+                                <div class="image">
+                                    <img src="../Image/BulkerTrack.jpg" height="70px" width="200px" alt="Bulker Track">
+                                </div>
+                                <div class="title">Bulker Track</div>
+                                </label>
+                                <!--Number of Trucks-->
+                                <div class="wrapper">
+                                    <span class="minus">-</span>
+                                    <span class="num">01</span>
+                                    <span class="plus">+</span>
+                                </div>
+                                <!--Info for Truck-->
+                                <div class="popover popover-left">A bulker track is a large ship designed to transport bulk cargo like grain, coal, and ore across long distances. It has multiple cargo holds and hatches for efficient loading and unloading.</div>
+                            </div>
+                        </div>
+                        <!--Goods Value, Images and Notes-->
+                        <div class="row">
+                            <!--Good Value-->
+                            <div style="margin-left: 18px; margin-bottom: 50px;" class="col-md-6">
+                                <label style="margin-bottom: 10px;" for="validationCustom06" class="form-label">Goods value</label>
+                                <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom06" name="goodsValue" placeholder="Enter the Goods Value" required>
+                            </div>  
+                            <!--Images and Notes-->   
+                            <div class="col-sm-12">
+                                <!--Image-->
+                                <div class="col-md-4">
+                                    <label class="form-label">Upload Image</label>
+                                    <div class="containerImage">
+                                        <input type="file" id="upload-button" name="image" multiple accept="image/*" />
+                                        <label class="upload" for="upload-button">
+                                            <i class="fa-solid fa-upload"></i>&nbsp; Choose Or Drop Photos
+                                        </label>
+                                        <div id="error"></div>
+                                        <div id="image-display"></div>
+                                    </div>
+                                </div>
+                                <!--Note-->
+                                <div class="col-md-12">
+                                    <label for="validationCustomUsername" class="form-label">Notes</label>
+                                    <div class="input-group has-validation">
+                                        <textarea name="notes" class="form-control" id="note" cols="30" rows="5" aria-describedby="inputGroupPrepend" placeholder="Write your notes"></textarea>
+                                    </div>
+                                </div> 
+                            </div>  
+                        </div>
+                        <div style="margin-top: 50px;" class="index-btn-wrapper">
+                            <div class="index-btn" onclick="run(1, 2);">Next</div>
+                            <button class="addShipment-btn index-btn" id="addShipment-btn">+ Add another shipment</button>
+                        </div>
                     </div>
-                </div>             
-                <div class="col-md-4">
-                <label class="form-label">Upload Image</label>
-                    <div class="containerImage">
-                        <input type="file" id="upload-button" multiple accept="image/*" />
-                        <label class="upload" for="upload-button">
-                        <i class="fa-solid fa-upload"></i>&nbsp; Choose Or Drop Photos
-                        </label>
-                        <div id="error"></div>
-                        <div id="image-display"></div>
+                    <!-- End Tab 1 in brogress bar-->
+                    <!-- Start Tab 2 Page View order-->
+                    <div class="tab" id = "tab-2">
+                        <div class="top">
+                            <label class="heading">View Order</label><br/>
+                            <hr style="background: black;"><br/>
+                        </div>
+                        <div style="margin-top: 50px;" class="index-btn-wrapper">
+                            <div class="index-btn" onclick="run(2, 1);">Previous</div>
+                            <div class="index-btn" onclick="run(2, 3);">Next</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <label for="validationCustomUsername" class="form-label">Notes</label>
-                    <div class="input-group has-validation">
-                        <textarea name="notes" class="form-control" id="note" cols="30" rows="5" aria-describedby="inputGroupPrepend" placeholder="Write your notes"></textarea>
-                    </div>
-                </div> 
-                        <!-- Where any additional shipment will be added -->
-                        <Section id="AddForm" class="AddForm"></Section> 
-
-                      <div class="index-btn-wrapper">
-                        <div class="index-btn" onclick="run(1, 2);">Next</div>
-                        <button class="addShipment-btn index-btn" id="addShipment-btn">+ Add another shipment</button>
-                      </div>
+                    <!-- End Tab 2 Page View order-->
+                    <!-- Start Tab 3 in brogress bar-->
+                    <div style="margin-top: 50px;" class="tab" id = "tab-3">
+                        <div class="index-btn-wrapper">
+                            <div class="index-btn" onclick="run(3, 2);">Previous</div>
+                            <button class = "index-btn" type="submit" name="submit" style = "background: #f89d13;">Submit</button>
+                        </div> 
+                    </div>  
+                    <!-- End Tab 3 in brogress bar-->
+                </form>
             </div>
-              <!--Page View order-->
-              <div class="tab" id = "tab-2">
-                      <div class="top">
-                          <label class="heading">View Order</label><br/>
-                          <!--<label class="text">Fill out the form carefully for order</label><br/>-->
-                          <hr style="background: black;"><br/>
-                      </div>
-                  <div class="index-btn-wrapper">
-                    <div class="index-btn" onclick="run(2, 1);">Previous</div>
-                    <div class="index-btn" onclick="run(2, 3);">Next</div>
-                  </div>
-              </div>
-          
-                <div class="tab" id = "tab-3">
-                  <div class="index-btn-wrapper">
-                      <div class="index-btn" onclick="run(3, 2);">Previous</div>
-                      <button class = "index-btn" type="submit" name="submit" style = "background: #f89d13;">Submit</button>
-                  </div>      
-            </form>
+        </section>
+        <!--End Form-->      
+        <script>
+            // Default tab
+            $(".tab").css("display", "none");
+            $("#tab-1").css("display", "block");
+
+            function run(hideTab, showTab) {
+            if (hideTab < showTab) { // If not pressing previous button
+                // Validation if pressing next button
+                var currentTab = 0;
+                var x = $('#tab-' + hideTab);
+                var y = x.find("input");
+                for (i = 0; i < y.length; i++) {
+                if (y[i].value === "") {
+                    $(y[i]).css("background", "#ffdddd");
+                    return false;
+                }
+                }
+            }
+
+            // Progress bar
+            for (i = 1; i < showTab; i++) {
+                $("#step-" + i).addClass("active");
+            }
+
+            // Switch tab
+            $("#tab-" + hideTab).css("display", "none");
+            $("#tab-" + showTab).css("display", "block");
+            $("input").css("background", "#fff");
+            }
+          </script>
+
+
+
+
+
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>     
         <script>
             /*We have a total of 107 cargo types available.*/
@@ -580,7 +660,7 @@
                 {value: "heavy", label: "Industrial-Industrial machines"}
              
             ];
-            const selectElement = document.getElementById("validationCustom07");
+            const selectElement = document.getElementById("typeCargo");
 
             cargoTypes.forEach(item => {
                 const option = document.createElement("option");
@@ -590,7 +670,7 @@
             });
         </script>
             <script>
-                const selectType = document.getElementById('validationCustom07');
+                const selectType = document.getElementById('typeCargo');
                 const truckOptions = document.getElementsByClassName('form-element');
         
                 selectType.addEventListener('change', function() {
@@ -608,76 +688,11 @@
                     }
                 });
             </script>
-     <script>
-            // Default tab
-            $(".tab").css("display", "none");
-            $("#tab-1").css("display", "block");
-        
-            var cloneCount = 0; // تتبع عدد النماذج المنسوخة
-            var maxClones = 3; // الحد الأقصى لعدد النماذج المنسوخة
-        
-            function run(hideTab, showTab) {
-                if (hideTab < showTab) { // إذا لم يتم النقر على الزر السابق
-                    // التحقق إذا تم النقر على الزر التالي
-                    var currentTab = 0;
-                    var x = $('#tab-' + hideTab);
-                    var y = x.find("input");
-                    for (i = 0; i < y.length; i++) {
-                        if (y[i].value === "") {
-                            $(y[i]).css("background", "#ffdddd");
-                            return false;
-                        }
-                    }
-                }
-        
-                // تبديل الأقسام
-                $("#tab-" + hideTab).css("display", "none");
-                $("#tab-" + showTab).css("display", "block");
-                $("input").css("background", "#fff");
-            }
-        
-            function cloneForm() {
-                if (cloneCount < maxClones) {
-                    var clonedForm = $("#tab-1").clone();
-        
-                    // إزالة العناصر غير الضرورية
-                    clonedForm.find(".index-btn ,.AddForm, .heading ").remove();
-        
-                    // تحديث معرفات عناصر النموذج المنسوخة
-                    clonedForm.find("input, radio").each(function() {
-                        var elementId = $(this).attr("id");
-                        var newId = elementId + cloneCount;
-                        $(this).attr("id", newId);
-                        $(this).removeAttr("disabled"); // إزالة الخاصية المعطلة
-                    });
-        
-                    // نسخ قيم الحقول من النموذج الأصلي وإعادة تعيينها في النموذج المنسوخ
-                    var originalForm = $("#tab-1");
-                    clonedForm.find("input").each(function() {
-                        var elementId = $(this).attr("id");
-                        var originalField = originalForm.find("#" + elementId);
-                        $(this).val(originalField.val());
-                    });
-        
-                    // إضافة النموذج المنسوخ إلى الحاوية إذا لم يكن موجودًا بالفعل
-                    if (!$(".AddForm").find(clonedForm).length) {
-                        $(".AddForm").append(clonedForm);
-                        cloneCount++; // زيادة عداد النماذج المنسوخة
-        
-                        // إعادة تهيئة الخريطة بعد إضافة النموذج المنسوخ
-                        initializeMap();
-                    } else {
-                        alert("This form already exists.");
-                    }
-                } else {
-                    alert("The maximum number of cloned forms has been reached.");
-                }
-            }
-        
-            $(document).on("click", "#addShipment-btn", function() {
-                cloneForm();
-            });
-        </script>
+
+
+
+
+
 <script type="text/javascript">
 let map, markerPickup, markerDropoff, directionsService, directionsRenderer, polyline;
 
@@ -709,32 +724,32 @@ function initModal() {
     });
 
     // Add event listeners to the input fields for manual entry
-    document.getElementById('from').addEventListener('change', function () {
-        geocodeAddress(this.value, 'from');
+    document.getElementById('pickup').addEventListener('change', function () {
+        geocodeAddress(this.value, 'pickup');
     });
 
-    document.getElementById('to').addEventListener('change', function () {
-        geocodeAddress(this.value, 'to');
+    document.getElementById('dropOff').addEventListener('change', function () {
+        geocodeAddress(this.value, 'dropOff');
     });
 }
 
 function placeMarker(location, inputField) {
-    if (inputField === 'from') {
+    if (inputField === 'pickup') {
         if (markerPickup) markerPickup.setMap(null);
         markerPickup = new google.maps.Marker({
             position: location,
             map: map,
             draggable: true
         });
-        geocodeLatLng(location, 'from');
-    } else if (inputField === 'to') {
+        geocodeLatLng(location, 'pickup');
+    } else if (inputField === 'dropOff') {
         if (markerDropoff) markerDropoff.setMap(null);
         markerDropoff = new google.maps.Marker({
             position: location,
             map: map,
             draggable: true
         });
-        geocodeLatLng(location, 'to');
+        geocodeLatLng(location, 'dropOff');
     }
 }
 
@@ -762,14 +777,14 @@ function geocodeAddress(address, inputField) {
     geocoder.geocode({ 'address': address }, function (results, status) {
         if (status === 'OK') {
             map.setCenter(results[0].geometry.location);
-            if (inputField === 'from') {
+            if (inputField === 'pickup') {
                 if (markerPickup) markerPickup.setMap(null);
                 markerPickup = new google.maps.Marker({
                     map: map,
                     position: results[0].geometry.location,
                     draggable: true
                 });
-            } else if (inputField === 'to') {
+            } else if (inputField === 'dropOff') {
                 if (markerDropoff) markerDropoff.setMap(null);
                 markerDropoff = new google.maps.Marker({
                     map: map,
@@ -837,29 +852,38 @@ function handleDropoffDate() {
                 $('#datepicker').datepicker();
             });
         </script>
-        <script>
-            const plus = document.querySelector(".plus"),
-             minus = document.querySelector(".minus"),
-             num = document.querySelector(".num");
-             let a = 1;
-             plus.addEventListener("click", ()=>{
-               a++;
-               a = (a < 10) ? "0" + a : a;
-               num.innerText = a;
-             });
-             minus.addEventListener("click", ()=>{
-               if(a > 1){
-                 a--;
-                 a = (a < 10) ? "0" + a : a;
-                 num.innerText = a;
-               }
-             });
-        </script>
+                    <script>
+                        const plusButtons = document.querySelectorAll(".plus");
+                        const minusButtons = document.querySelectorAll(".minus");
+                        const numElements = document.querySelectorAll(".num");
 
+                        plusButtons.forEach((button) => {
+                        button.addEventListener("click", function() {
+                            const parentElement = this.closest(".form-element");
+                            const numElement = parentElement.querySelector(".num");
+                            
+                            let a = parseInt(numElement.innerText);
+                            a++;
+                            a = (a < 10) ? "0" + a : a;
+                            numElement.innerText = a;
+                        });
+                        });
 
+                        minusButtons.forEach((button) => {
+                        button.addEventListener("click", function() {
+                            const parentElement = this.closest(".form-element");
+                            const numElement = parentElement.querySelector(".num");
+                            
+                            let a = parseInt(numElement.innerText);
+                            if (a > 1) {
+                            a--;
+                            a = (a < 10) ? "0" + a : a;
+                            numElement.innerText = a;
+                            }
+                        });
+                        });
+                    </script>
 
-
-</script>
 
 
 

@@ -45,3 +45,31 @@ function handleDropoffDate() {
         document.getElementById('dateWarning').innerText = ""; // Remove the message
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//This for Raghad 
+
+//<span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span> //Close Button
+
+//Where any additional shipment will be added 
+
+//<Section id="AddForm" class="AddForm"></Section> 
