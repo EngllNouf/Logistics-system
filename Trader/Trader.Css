@@ -1,17 +1,13 @@
-body{
-  background-color: #f1f1f1;
-}
 
+#TaransportCompany{
+  background-image: linear-gradient(-45deg, #8fcb9bc9 0%, #5b9279aa 0% );
+      
+  justify-content: center;
+  align-items: center;
+  padding: 150px;
 
-#whoAreWe{
-    background-image: linear-gradient(-45deg, #8fcb9bc9 0%, #5b9279aa 0% );
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    padding: 90px;
-    margin: 40px;
-    transition: 2s;
-    color: #f1f1f1;
+  transition: 2s;
+  color: #f1f1f1;
   
 }
 
