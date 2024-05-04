@@ -185,7 +185,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: url(/HomePage/images/Load\ up_\ Move\ out.gif);
+  background-image: url('../HomePage/images/Load.gif');
   
  
   z-index: 6;

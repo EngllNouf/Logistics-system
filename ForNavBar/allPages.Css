@@ -5,7 +5,7 @@ nav {
   font-weight: bold;
 }
 
-.Login {
+#Login {
   border: 3px solid #f89d13;
   padding: 8px;
   border-radius: 10px;
@@ -17,7 +17,7 @@ nav {
 
 
 
-.Register{
+#Register{
   background-color: #f89d13;
   border: 3px solid #f89d13;
   color: #fff;
