@@ -73,3 +73,97 @@ function handleDropoffDate() {
 //Where any additional shipment will be added 
 
 //<Section id="AddForm" class="AddForm"></Section> 
+=======
+// اكواد الباك حق التسجيل
+
+const express = require('express');
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+// Create connection
+const db = mysql.createConnection({
+  host     : '127.0.0.1',
+  user     : 'root',
+  password : 'root',
+  database : 'loginandsignup'
+});
+
+// Connect
+db.connect((err) => {
+  if(err){
+      throw err;
+  }
+  console.log('MySQL Connected...');
+});
+
+// Static routing
+app.use("/", express.static("./website"));
+
+// HTML routing
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Sign-up form submission handling
+app.post("/signup", (request, response) => {
+  const { UserName, Email, Password, ConfirmPassword } = request.body;
+
+  // Validate form data
+  if (!UserName || !Email || !Password || !ConfirmPassword) {
+    return response.status(400).send("All fields are required.");
+  }
+
+  if (Password !== ConfirmPassword) {
+    return response.status(400).send("Passwords do not match.");
+  }
+
+  // Create SQL insert query
+  const sql = `INSERT INTO Users (UserName, Email, Password) VALUES (?, ?, ?)`;
+  const values = [UserName, Email, Password];
+
+  // Insert new user into database
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err);
+      return response.status(500).send("An error occurred while saving the user.");
+    }
+    response.send("Sign-up successful! You can now login.");
+  });
+});
+
+// Login form submission handling
+app.post("/login", (request, response) => {
+  const { UserName, Password } = request.body;
+
+  // Validate form data
+  if (!UserName || !Password) {
+    return response.status(400).send("Username and password are required.");
+  }
+
+  // Check if user exists in the database
+  const sql = `SELECT * FROM Users WHERE UserName = ? AND Password = ?`;
+  const values = [UserName, Password];
+  
+  db.query(sql, values, (err, results) => {
+    if (err) {
+      console.error(err);
+      return response.status(500).send("An error occurred while logging in.");
+    }
+
+    if (results.length === 0) {
+      return response.status(401).send("Invalid username or password.");
+    }
+
+    response.send("Login successful!");
+  });
+});
+
+// JSON routing
+app.use(express.json());
+
+// Server
+const port = 9000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+>>>>>>> 7568f661f67d9263806587c50d2887162569f65b

@@ -3,33 +3,18 @@
 nav {
   font-size: 17px;
   font-weight: bold;
-}
-
-#Login {
-  border: 3px solid #f89d13;
-  padding: 8px;
-  border-radius: 10px;
   
-
+  margin-right: 60px;
   
-
 }
 
 
-
-#Register{
-  background-color: #f89d13;
-  border: 3px solid #f89d13;
-  color: #fff;
-  border-radius: 10px;
-  padding: 8px;
-}
 .nav-title, .nav-link {
   transition: color 0.3s;
 }
 
 .nav-title:hover, .nav-link:hover {
-  text-shadow: 2px 2px 15px #e8ab41cd; 
+  text-shadow: 2px 2px 15px #e8ab41d0; 
 }
 
 #nav .navbar-nav {
@@ -39,7 +24,8 @@ nav {
 }
 
 #nav .navbar-nav .nav-item {
-  padding: 0 5px; 
+  padding-left: 40px; 
+  
 }
 
 
@@ -49,16 +35,9 @@ nav {
 /* Start Footer */
 
 
-footer{
-    
-    background: #333333; 
-    
-  
-}
-
 
 .site-footer {
-    
+  
     background: #333333; 
   
   }
@@ -66,7 +45,11 @@ footer{
 
       .site-footer {
         color: #ffffff;
-        padding: 2em 0; } }
+        padding: 2em 0; 
+        padding-right: 250px; 
+      } 
+      
+      }
     .site-footer .border-top {
       border-top: 1px solid rgba(255, 255, 255, 0.1) !important; }
     .site-footer p {
@@ -115,7 +98,10 @@ footer{
       transform: scale(1.2); }
     @media (max-width: 991.98px) {
       .hover-bg-enlarge .bg-image-md-height {
-        height: 200px !important; } }
+        height: 200px !important; } 
+      
+      
+      }
   
   
   
