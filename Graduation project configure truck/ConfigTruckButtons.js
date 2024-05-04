@@ -1,11 +1,12 @@
 document.getElementById("addTruck-btn").addEventListener("click", createTruckForm);
 document.getElementById("Check").addEventListener("click", enableConfirm);
-document.getElementById("formClose").addEventListener("click", deleteForm);
 
+// Create an initial form when the page loads
 document.addEventListener("DOMContentLoaded", function() {
-    createTruckForm(); // Create an initial form when the page loads
+    createTruckForm(); 
 });
 
+//Makes a copy of original form
 function createTruckForm() {
     var addFormPlace = document.getElementById('AddForm');
     var formBody = document.querySelector('.formBody');
@@ -14,6 +15,7 @@ function createTruckForm() {
     addFormPlace.appendChild(clonedFormBody);
 }
 
+//confirm button is disabled till user checks the acknowledgement check box 
 function enableConfirm(){
 
     var check = document.getElementById("Check");
@@ -25,9 +27,26 @@ function enableConfirm(){
     else{
         confirm.disabled = "true";
     }
-
 }
 
+//Message when mouse hovers over confirm button 
+document.getElementById("confirm-btn").addEventListener("mouseover", function() {
+    var confirm = document.getElementById("confirm-btn");
+  
+    if (confirm.disabled) {
+      confirm.textContent = "Please check the acknowledgement check box";
+    }
+  });
+  
+document.getElementById("confirm-btn").addEventListener("mouseout", function() {
+    var confirm = document.getElementById("confirm-btn");
+  
+    if (confirm.disabled) {
+      confirm.textContent = "Confirm";
+    }
+});
+
+//delete form
 function deleteForm(event) {
     var deleteButton = event.target;
     var parentForm = deleteButton.closest("div");
