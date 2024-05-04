@@ -28,14 +28,17 @@
                 <div>
                     <label for="Owner">Owner <span style="color: red;">* </span><span class="smallText"></span></label>
                     <input type="text" id="Owner" name="Owner" required>
+                    <span class="error" id="Owner-error" style="color: red;"></span>
+
                 </div>
 
                 <div>
                     <label for="OwnerID">Owner ID <span style="color: red;">* </span><span class="smallText"></span></label>
                     <input type="text" id="OwnerID" name="OwnerID" required>
+                    <span class="error" id="OwnerID-error" style="color: red;"></span>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3"> <!--نحتاج نتحقق من الفايل كمان-->
                     <label for="formOwnerIDFile" class="form-label">Upload owner ID <span style="color: red;">* </span><span class="smallText"></span></label>
                     <input class="form-control" type="file" id="formOwnerIDFile" required>
                 </div>
@@ -66,42 +69,56 @@
                 <div>
                     <label for="LicensePlate">License plate no. <span style="color: red;">*</span></label>
                     <input type="text" id="LicensePlate" name="LicensePlate" required>
+                    <span class="error" id="LicensePlate-error" style="color: red;"></span>
+
                 </div>
 
                 <div>
                     <label for="VehicleChassis">Vehicle chassis number <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="VehicleChassis" name="VehicleChassis" required>
+                    <input type= "text" id="VehicleChassis" name="VehicleChassis" required>
+                    <span class="error" id="VehicleChassis-error" style="color: red;"></span>
                 </div>
 
                 <div>
                     <label for="RegistrationType">Registration type <span style="color: red;">* </span><span class="smallText"></span></label>
                     <input type="text" id="RegistrationType" name="RegistrationType" required>
+                    <span class="error" id="RegistrationType-error" style="color: red;"></span>
+
                 </div>
 
                 
                 <div>
                     <label for="VehicleBrand">Vehicle brand <span style="color: red;">* </span><span class="smallText"></span></label>
                     <input type="text" id="VehicleBrand" name="VehicleBrand" required>
+                    <span class="error" id="VehicleBrand-error" style="color: red;"></span>
+
                 </div>
 
                 <div>
                     <label for="VehicleModel">Vehicle model <span style="color: red;">* </span><span class="smallText"></span></label>
                     <input type="text" id="VehicleModel" name="VehicleModel" required>
+                    <span class="error" id="VehicleModel-error" style="color: red;"></span>
+
                 </div>
 
                 <div>
                     <label for="Colour">Colour <span style="color: red;">* </span><span class="smallText"></span></label>
                     <input type="text" id="Colour" name="Colour" required>
+
                 </div>
 
                 <div>
                     <label for="ManufactureYear">Manufacture year <span style="color: red;">* </span><span class="smallText"></span></label>
                     <input type="text" id="ManufactureYear" name="ManufactureYear" required>
+                    <span class="error" id="ManufactureYear-error" style="color: red;"></span>
+
                 </div>
 
                 <div>
                     <label for="Serial_number">Serial number<span style="color: red;">* </span><span class="smallText"></span></label>
                     <input type="text" id="Serial_number" name="Serial_number" required>
+                    <span class="error" id="Serial_number-error" style="color: red;"></span>
+
                 </div>
 
                 <div></div> <!--Empty div to fill in a grid column (For form organisation)-->
@@ -118,10 +135,14 @@
                 <div>
                     <label for="inspection_start">Inspection Start Date<span style="color: red;">*</span></label>
                     <input type="date" id="inspection_start" name="inspection_start" required>
+                    <span class="error" id="insurance_start-error" style="color: red;"></span>
+
                     <br>
                     <br>
                     <label for="inspection_end">Inspection End Date<span style="color: red;">*</span></label>
                     <input type="date" id="inspection_end" name="inspection_end" required>
+                    <span class="error" id="insurance_end-error" style="color: red;"></span>
+
                 </div>
 
                 <div>
