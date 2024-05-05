@@ -73,7 +73,6 @@ function handleDropoffDate() {
 //Where any additional shipment will be added 
 
 //<Section id="AddForm" class="AddForm"></Section> 
-=======
 // اكواد الباك حق التسجيل
 
 const express = require('express');
