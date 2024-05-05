@@ -34,6 +34,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
         <!--End for date-->
         <link rel="stylesheet" href="../CSS/placeOrder.css">
+
+        <script src="../JS/Map.js"></script>
     </head>
     <body>
         <nav style="background-color: #FFFFFF;" id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
@@ -454,6 +456,11 @@
                         </div>
                         <!--Goods Value, Images and Notes-->
                         <div class="row">
+                            <!--Number of Truks-->
+                            <div style="margin-left: 18px; margin-bottom: 50px;" class="col-md-6">
+                                <label style="margin-bottom: 10px;" for="numberOfTruck" class="form-label">Number of Trucks</label>
+                                <input style="height: 2.3em; border-radius: 5px;" type="text" class="form-control" id="numberOfTruck" name="numberOfTruck" value="01" readonly>
+                            </div>
                             <!--Good Value-->
                             <div style="margin-left: 18px; margin-bottom: 50px;" class="col-md-6">
                                 <label style="margin-bottom: 10px;" for="validationCustom06" class="form-label">Goods value</label>
@@ -482,6 +489,7 @@
                                 </div> 
                             </div>  
                         </div>
+                        <p class="truck-alert" style="display: none; color: red;">Please choose the type of truck</p>
                         <div style="margin-top: 50px;" class="index-btn-wrapper">
                             <div class="index-btn" onclick="run(1, 2);">Next</div>
                             <button class="addShipment-btn index-btn" id="addShipment-btn">+ Add another shipment</button>
@@ -512,381 +520,14 @@
             </div>
         </section>
         <!--End Form-->      
-        <script>
-            // Default tab
-            $(".tab").css("display", "none");
-            $("#tab-1").css("display", "block");
 
-            function run(hideTab, showTab) {
-            if (hideTab < showTab) { // If not pressing previous button
-                // Validation if pressing next button
-                var currentTab = 0;
-                var x = $('#tab-' + hideTab);
-                var y = x.find("input");
-                for (i = 0; i < y.length; i++) {
-                if (y[i].value === "") {
-                    $(y[i]).css("background", "#ffdddd");
-                    return false;
-                }
-                }
-            }
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>     
 
-            // Progress bar
-            for (i = 1; i < showTab; i++) {
-                $("#step-" + i).addClass("active");
-            }
-
-            // Switch tab
-            $("#tab-" + hideTab).css("display", "none");
-            $("#tab-" + showTab).css("display", "block");
-            $("input").css("background", "#fff");
-            }
-          </script>
-
-
-
-
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>     
-        <script>
-            /*We have a total of 107 cargo types available.*/
-            const cargoTypes = [
-                {value: "Food-Items", label: "Food Items-Dry Fast-Moving Consum"},
-                {value: "Items-Cold", label: "Food Items-Cold Fast-Moving Consum"},
-                {value: "Food-Items", label: "Food Items-Dry Health Care"},
-                {value: "Items-Cold", label: "Food Items-Cold Health Care"},
-                {value: "Petrol", label: "Petroleum Products-Petrol 91"},
-                {value: "Petrol", label: "Petroleum Products-Petrol 95"},
-                {value: "Diesel", label: "Petroleum Products-Diesel"},
-                /*{value: "8", label: "Petroleum Products-Kerosene"},
-                {value: "9", label: "Petroleum Products-Petrochemicals"},
-                {value: "10", label: "Petroleum Products-Oils"},
-                {value: "11", label: "Petroleum Products-Petroleum Gas"},
-                {value: "12", label: "Petroleum Products-Continent"},
-                {value: "13", label: "Petroleum Products-Paraffin Wax"},
-                {value: "14", label: "Petroleum Products-Asphalt"},*/
-                {value: "Petrol", label: "Petroleum Products-Jet Fuel"},
-                {value: "Vehicle-Transportation", label: "Vehicle Transportation-Private Transportation For Individuals"},
-                {value: "Vehicle-Transportation", label: "Vehicle Transportation-Vehicle Transportation For Individuals"},
-                {value: "Vehicle-Transportation", label: "Vehicle Transportation-Private Transport For Business Sector"},
-                {value: "Vehicle-Transportation", label: "Vehicle Transportation-Business Vehicle Transportation"},
-                {value: "Vehicle-Transportation", label: "Vehicle Transportation-Damaged Vehicles Transportation"},
-                /*{value: "21", label: "Dangerous Materials-Explosives"},
-                {value: "22", label: "Dangerous Materials-Gases"},
-                {value: "23", label: "Dangerous Materials-Flammable Liquid"},*/
-                {value: "Medical-Items", label: "Medical supplies and hospital supplies"},
-                /*{value: "25", label: "Dangerous Materials-Dangerous Materials-Toxic and infectious substances"},
-                {value: "26", label: "Dangerous Materials-Radioactive material"},
-                {value: "27", label: "Dangerous Materials-Corrosive substances"},
-                {value: "28", label: "Dangerous Materials-Miscellaneous dangerous substances"},*/
-                {value: "Concrete", label: "Building And Construction Items-Concrete"},
-                /*{value: "30", label: "Building And Construction Items-Steel"},*/
-                {value: "Building", label: "Building And Construction Items-Pipes and water extension materials include tanks"},
-                {value: "Building", label: "Building And Construction Items-Glass and aluminum panels include doors and windows"},
-                {value: "Building", label: "Building And Construction Items-Finishing works, paints and external textures"},
-                {value: "Building", label: "Building And Construction Items-Equipment and tools include saws, hammers, fisher"},
-                {value: "Building", label: "Building And Construction Items-Plumbing work and health extensions"},
-                {value: "Building", label: "Building And Construction Items-Insulating materials"},
-                {value: "Building", label: "Building And Construction Items-Book and asphalt materials"},
-                {value: "Building", label: "Building And Construction Items-Woods include carpentry wood, doors and succession"},
-                {value: "Building", label: "Building And Construction Items-Reinforcing"},
-                {value: "Building", label: "Building And Construction Items-Electricityextensions materials"},
-                {value: "Building", label: "Building And Construction Items-Stones, rocks and paving materials, and this is formed tiles"},
-                /*{value: "42", label: "Building And Construction Items-Clay"},*/
-                /*{value: "43", label: "Building And Construction Items-Brick"},*/
-                {value: "Building", label: "Building And Construction Items-Air conditioning tools and machines include extension tubes and air dictations"},
-                {value: "Building", label: "Mining or Fossilization Materials-Bauxite/ Aluminium Ore - AL2O3 > 40?"},
-                {value: "Building", label: "Mining or Fossilization Materials-Copper"},
-                {value: "Building", label: "Mining or Fossilization Materials-Feldspar"},
-                {value: "Building", label: "Mining or Fossilization Materials-Fluorite"},
-                {value: "Building", label: "Mining or Fossilization Materials-Garnet Minerals Group - Other Uses"},
-                {value: "Building", label: "Mining or Fossilization Materials-Gypsum & Anhydrite"},
-                {value: "Building", label: "Mining or Fossilization Materials-Iron ore - Fe<40?"},
-                {value: "Building", label: "Mining or Fossilization Materials-Limestone for industry"},
-                {value: "Building", label: "Mining or Fossilization Materials-Magnesite"},
-                {value: "Building", label: "Mining or Fossilization Materials-Marble for industry"},
-                {value: "Building", label: "Mining or Fossilization Materials-Nepheline Syenite"},
-                {value: "Building", label: "Mining or Fossilization Materials-Perlite"},
-                {value: "Building", label: "Mining or Fossilization Materials-Potash"},
-                {value: "Building", label: "Building And Construction Items-Cement"},
-                {value: "Food-Items", label: "Food Items-Dairy"},
-               /* {value: "60", label: "LIVE ANIMALS-Birds"},
-                {value: "61", label: "LIVE ANIMALS-Cattles"},
-                {value: "62", label: "Sanitation"},*/
-                {value: "Water", label: "Water Tanks"},
-                /*{value: "64", label: "Gas Tanks"},*/
-                {value: "Sand", label: "Building And Construction Items-Sand"},
-                /*{value: "66", label: "Spares-Used spare and scrap"},*/
-                {value: "closeed", label: "Reinforcing-Computers, electronic and optical products"},
-                {value: "Tires", label: "Spares-Tires"},
-                {value: "All", label: "Industrial-Plastic materials"},
-                /*{value: "70", label: "Chemicals materials"},
-                {value: "71", label: "Agricultural-Forage and grain"},*/
-                {value: "Food-Items", label: "Food Items-Oils"},
-                /*{value: "73", label: "Petroleum Products-Oils"},
-                {value: "74", label: "Prefabricated Houses"},*/
-                {value: "Food-Items", label: "Food Items-Soft drinks"},
-                /*{value: "76", label: "Industrial-Raw materials for manufacturing industries"},
-                {value: "77", label: "LIVE ANIMALS-Camels and Horses"},*/
-                {value: "All", label: "Furniture-Used Furniture"},
-                {value: "All", label: "Furniture- New Furniture"},
-                {value: "All", label: "Clothes and Shoes"},
-                /*{value: "81", label: "Charcoal and Firewood"},*/
-                {value: "Medical-Items", label: "Medicines"},
-                {value: "All", label: "Industrial-Leather products and related products"},
-                {value: "All", label: "Industrial-Paper and its products"},
-                {value: "All", label: "Industrial-Rubber and plastics"},
-                {value: "Medical-Items", label: "Veterinary medicines"},
-                /*{value: "87", label: "Bicycles"},
-                {value: "88", label: "Motorbikes"},*/
-                {value: "Medical-Items", label: "Medical supplies and hospital supplies"},
-                {value: "closeed", label: "Books"},
-                /*{value: "91", label: "Agricultural-Agricultural materials and fertilizers"},*/
-                /*{value: "92", label: "Electricity Generators"},*/
-                {value: "All", label: "Textile and sewing materials"},
-                /*{value: "94", label: "Tobacco Products"},
-                {value: "95", label: "Remnants"},*/
-                {value: "Building", label: "Building And Construction Items-Ferrous materials"},
-                {value: "All", label: "Spares-New spare"},
-                {value: "All", label: "Bottled water"},
-                {value: "containers", label: "containers"},
-                /*{value: "100", label: "Waste material-Medical Waste"},*/
-                {value: "All", label: "sponges"},
-                {value: "gypsum", label: "Building And Construction Items-gypsum"},
-                {value: "Food-Items", label: "Food Items-Vegetables and fruits"},
-                {value: "All", label: "Cleaning materials-soap"},
-                {value: "All", label: "Cleaning materials-Tissue paper"},
-                {value: "All", label: "Cleaning materials-napkins"},
-                {value: "heavy", label: "Industrial-Industrial machines"}
-             
-            ];
-            const selectElement = document.getElementById("typeCargo");
-
-            cargoTypes.forEach(item => {
-                const option = document.createElement("option");
-                option.value = item.value;
-                option.textContent = item.label;
-                selectElement.appendChild(option);
-            });
-        </script>
-            <script>
-                const selectType = document.getElementById('typeCargo');
-                const truckOptions = document.getElementsByClassName('form-element');
-        
-                selectType.addEventListener('change', function() {
-                    const selectedValue = this.value;
-        
-                    for (let i = 0; i < truckOptions.length; i++) {
-                        const option = truckOptions[i];
-                        const platform = option.getAttribute('class');
-        
-                        if (platform.includes(selectedValue)) {
-                            option.style.display = 'block';
-                        } else {
-                            option.style.display = 'none';
-                        }
-                    }
-                });
-            </script>
-
-
-
-
-
-<script type="text/javascript">
-let map, markerPickup, markerDropoff, directionsService, directionsRenderer, polyline;
-
-function initModal() {
-    map = new google.maps.Map(document.getElementById("googleMap"), {
-        center: { lat: 40.7128, lng: -74.0060 },
-        zoom: 8,
-    });
-    directionsService = new google.maps.DirectionsService();
-    directionsRenderer = new google.maps.DirectionsRenderer({
-        map: map,
-    });
-
-    polyline = new google.maps.Polyline({
-        strokeColor: "#0000FF",
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        map: map,
-    });
-
-    map.addListener('click', function (event) {
-        if (!markerPickup) {
-            placeMarker(event.latLng, 'from');
-        } else if (!markerDropoff) {
-            placeMarker(event.latLng, 'to');
-            drawPolyline();
-            calculateAndDisplayRoute();
-        }
-    });
-
-    // Add event listeners to the input fields for manual entry
-    document.getElementById('pickup').addEventListener('change', function () {
-        geocodeAddress(this.value, 'pickup');
-    });
-
-    document.getElementById('dropOff').addEventListener('change', function () {
-        geocodeAddress(this.value, 'dropOff');
-    });
-}
-
-function placeMarker(location, inputField) {
-    if (inputField === 'pickup') {
-        if (markerPickup) markerPickup.setMap(null);
-        markerPickup = new google.maps.Marker({
-            position: location,
-            map: map,
-            draggable: true
-        });
-        geocodeLatLng(location, 'pickup');
-    } else if (inputField === 'dropOff') {
-        if (markerDropoff) markerDropoff.setMap(null);
-        markerDropoff = new google.maps.Marker({
-            position: location,
-            map: map,
-            draggable: true
-        });
-        geocodeLatLng(location, 'dropOff');
-    }
-}
-
-function drawPolyline() {
-    polyline.setPath([markerPickup.getPosition(), markerDropoff.getPosition()]);
-}
-
-function geocodeLatLng(location, inputField) {
-    let geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ 'location': location }, function (results, status) {
-        if (status === 'OK') {
-            if (results[0]) {
-                document.getElementById(inputField).value = results[0].formatted_address;
-            } else {
-                console.log('No results found');
-            }
-        } else {
-            console.log('Geocoder failed due to: ' + status);
-        }
-    });
-}
-
-function geocodeAddress(address, inputField) {
-    let geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ 'address': address }, function (results, status) {
-        if (status === 'OK') {
-            map.setCenter(results[0].geometry.location);
-            if (inputField === 'pickup') {
-                if (markerPickup) markerPickup.setMap(null);
-                markerPickup = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location,
-                    draggable: true
-                });
-            } else if (inputField === 'dropOff') {
-                if (markerDropoff) markerDropoff.setMap(null);
-                markerDropoff = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location,
-                    draggable: true
-                });
-                drawPolyline();
-                calculateAndDisplayRoute();
-            }
-        } else {
-            console.log('Geocode was not successful for the following reason: ' + status);
-        }
-    });
-}
-
-
-function calculateDistance() {
-    if (!markerPickup || !markerDropoff) {
-        console.log("Please select both pickup and drop-off locations.");
-        return;
-    }
-    const request = {
-        origin: markerPickup.getPosition(),
-        destination: markerDropoff.getPosition(),
-        travelMode: google.maps.TravelMode.DRIVING
-    };
-    directionsService.route(request, function (response, status) {
-        if (status === 'OK') {
-            const route = response.routes[0];
-            const distance = route.legs[0].distance.value / 1000; // Distance in kilometers
-            console.log("Distance: " + distance + " km");
-            document.getElementById('distanceOutput').innerText = "Distance: " + distance + " km"; // Update the text element in the form
-            
-            // Check if the distance is greater than 100 kilometers
-            if (distance > 400) {
-                // Display a warning message to the user
-                document.getElementById('dateRestriction').innerText = "Drop-off date must be at least two days ahead when distance is greater than 100 km.";
-            } else {
-                // If the distance is less than 100 kilometers, remove the message
-                document.getElementById('dateRestriction').innerText = "";
-            }
-        } else {
-            console.error('Failed to get route due to ' + status);
-        }
-    });
-}
-
-// Function to handle drop-off date selection 
-function handleDropoffDate() {
-    const pickupDate = new Date(document.getElementById('pickupDate').value);
-    const dropoffDate = new Date(document.getElementById('dropoffDate').value);
-    const timeDifference = dropoffDate.getTime() - pickupDate.getTime();
-    const dayDifference = timeDifference / (1000 * 3600 * 24);
-
-    if (dayDifference < 2) {
-        document.getElementById('dropoffDate').value = ""; // Clear the drop-off date value
-        document.getElementById('dateWarning').innerText = "Please select a drop-off date at least two days after the pickup date."; // Show a message under the drop-off date field
-    } else {
-        document.getElementById('dateWarning').innerText = ""; // Remove the message
-    }
-}
-</script> 
         <script type="text/javascript">
             $(function() {
                 $('#datepicker').datepicker();
             });
         </script>
-                    <script>
-                        const plusButtons = document.querySelectorAll(".plus");
-                        const minusButtons = document.querySelectorAll(".minus");
-                        const numElements = document.querySelectorAll(".num");
-
-                        plusButtons.forEach((button) => {
-                        button.addEventListener("click", function() {
-                            const parentElement = this.closest(".form-element");
-                            const numElement = parentElement.querySelector(".num");
-                            
-                            let a = parseInt(numElement.innerText);
-                            a++;
-                            a = (a < 10) ? "0" + a : a;
-                            numElement.innerText = a;
-                        });
-                        });
-
-                        minusButtons.forEach((button) => {
-                        button.addEventListener("click", function() {
-                            const parentElement = this.closest(".form-element");
-                            const numElement = parentElement.querySelector(".num");
-                            
-                            let a = parseInt(numElement.innerText);
-                            if (a > 1) {
-                            a--;
-                            a = (a < 10) ? "0" + a : a;
-                            numElement.innerText = a;
-                            }
-                        });
-                        });
-                    </script>
-
-
-
-
 
         <!-- JAVASCRIPT FILES -->
         <script src="../JS/uploadImage.js"></script>
@@ -905,10 +546,8 @@ function handleDropoffDate() {
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="Scripts/jquery-3.1.1.min.js"></script>
         <script src="../../Map/Distance cities/Main.js"></script>
+        <script src="../JS/NumberOfTrucks.js"></script>
         <script src="../JS/Form.js"></script>
-
-
-
-
+        <script src="../JS/CargoTypes.js"></script>
   </body>
 </html>

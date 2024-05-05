@@ -46,33 +46,6 @@ function handleDropoffDate() {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//This for Raghad 
-
-//<span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span> //Close Button
-
-//Where any additional shipment will be added 
-
-//<Section id="AddForm" class="AddForm"></Section> 
 // اكواد الباك حق التسجيل
 
 const express = require('express');
@@ -165,4 +138,36 @@ const port = 9000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
->>>>>>> 7568f661f67d9263806587c50d2887162569f65b
+ //7568f661f67d9263806587c50d2887162569f65b
+
+
+
+
+
+
+
+
+
+ //This for Raghad 
+
+//<span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span> //Close Button
+
+//Where any additional shipment will be added 
+
+//<Section id="AddForm" class="AddForm"></Section> 
+
+// document.getElementById("formClose").addEventListener("click", deleteForm);
+
+// function deleteForm(event) {
+//     var deleteButton = event.target;
+//     var parentForm = deleteButton.closest("div");
+  
+//     parentForm.remove();
+// }
+
+//  // Event delegation to handle delete button clicks
+//  document.addEventListener('click', function(event) {
+//     if (event.target && event.target.className === 'formClose') {
+//         deleteForm(event);
+//     }
+// });
