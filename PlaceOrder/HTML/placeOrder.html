@@ -522,8 +522,139 @@
         <!--End Form-->      
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>     
+<script>
+    let map, markers = [], polyline;
 
-        <script type="text/javascript">
+function initModal() {
+    map = new google.maps.Map(document.getElementById("googleMap"), {
+        center: { lat: 40.7128, lng: -74.0060 },
+        zoom: 8,
+    });
+
+    map.addListener('click', function (event) {
+        placeMarker(event.latLng);
+    });
+
+    // Add event listeners to the input fields for manual entry
+    document.getElementById('pickup').addEventListener('change', function () {
+        geocodeAddress(this.value, 'pickup');
+    });
+
+    document.getElementById('dropOff').addEventListener('change', function () {
+        geocodeAddress(this.value, 'dropOff');
+    });
+}
+
+function placeMarker(location) {
+    if (markers.length === 2) {
+        clearMarkers();
+    }
+
+    const marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        draggable: true
+    });
+
+    markers.push(marker);
+
+    if (markers.length === 2) {
+        drawLine(markers[0].getPosition(), markers[1].getPosition());
+        displayDropOffAddress(markers[1]);
+        displayPickupAddress(markers[0]);
+        displayPickupDate();
+    }
+}
+
+function clearMarkers() {
+    markers.forEach(marker => {
+        marker.setMap(null);
+    });
+    markers = [];
+
+    if (polyline) {
+        polyline.setMap(null);
+    }
+}
+
+function drawLine(start, end) {
+    if (polyline) {
+        polyline.setMap(null);
+    }
+    polyline = new google.maps.Polyline({
+        path: [start, end],
+        geodesic: true,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+    });
+    polyline.setMap(map);
+}
+
+function displayDropOffAddress(marker) {
+    let geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'location': marker.getPosition() }, function (results, status) {
+        if (status === 'OK') {
+            if (results[0]) {
+                document.getElementById('dropOff').value = results[0].formatted_address;
+            } else {
+                console.log('No results found');
+            }
+        } else {
+            console.log('Geocoder failed due to: ' + status);
+        }
+    });
+}
+
+function displayPickupAddress(marker) {
+    let geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'location': marker.getPosition() }, function (results, status) {
+        if (status === 'OK') {
+            if (results[0]) {
+                document.getElementById('pickup').value = results[0].formatted_address;
+            } else {
+                console.log('No results found');
+            }
+        } else {
+            console.log('Geocoder failed due to: ' + status);
+        }
+    });
+}
+
+function displayPickupDate() {
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1;
+    const year = currentDate.getFullYear();
+
+    document.getElementById('pickupDate').value = year + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
+}
+
+function calcRoute() {
+    if (markers.length < 2) {
+        console.log("Please select both pickup and drop-off locations.");
+        return;
+    }
+
+    const start = markers[0].getPosition();
+    const end = markers[1].getPosition();
+
+    drawLine(start, end);
+}
+
+function geocodeAddress(address, field) {
+    let geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status === 'OK') {
+            map.setCenter(results[0].geometry.location);
+            placeMarker(results[0].geometry.location);
+        } else {
+            console.log('Geocode was not successful for the following reason: ' + status);
+        }
+    });
+}
+</script>
+     <script type="text/javascript">
             $(function() {
                 $('#datepicker').datepicker();
             });
