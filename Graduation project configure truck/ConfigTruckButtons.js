@@ -60,3 +60,11 @@ function deleteForm(event) {
         deleteForm(event);
     }
 });
+
+// Form submission
+const submitButton = document.getElementById('confirm-btn');
+
+submitButton.addEventListener('click', () => {
+  document.getElementById('Owner-details-form').submit();
+  document.getElementById('vehicle-details-form').submit();
+});
