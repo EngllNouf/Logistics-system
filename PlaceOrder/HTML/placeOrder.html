@@ -36,6 +36,7 @@
         <link rel="stylesheet" href="../CSS/placeOrder.css">
 
         <script src="../JS/Map.js"></script>
+        <script src="../PlaceOrder/JS/script.js" defer></script>
     </head>
     <body>
         <nav style="background-color: #FFFFFF;" id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
@@ -96,7 +97,7 @@
         <!--Start Form-->
         <section class="form-container ">
             <div class="form-box">
-                <form id="myForm" action="#" method="post" autocomplete = "off">
+                <form method="post" action="/process" id="myForm" name="myForm" autocomplete = "on">
                     <!-- Start Tab 1 in brogress bar-->
                     <div class="tab" id ="tab-1">
                         <!--Heading-->
@@ -106,7 +107,7 @@
                             <hr style="background: black;"><br/>
                             <!--Pick-Up and Drop-Off-->
                         </div>
-                         <div class="row">
+                        <div class="row">
                             <div class="col-sm-5">
                                 <label style="margin-bottom: 10px;" class="form-label">Location</label>
                                 <!--Pick-Up-->
@@ -114,14 +115,14 @@
                                     <label for="pickup" class="control-label"><i class="far fa-dot-circle"></i></label>
                                 </div>
                                 <div class="col-xs-4">
-                                    <input type="text" id="pickup" name="pickup" placeholder="Enter the load pickup location" class="form-control" required>
+                                    <input type="text" name="pickup" id="pickup" placeholder="Enter the load pickup location" class="form-control" required>
                                 </div>
                                 <!--Drop-Off-->
                                 <div class="col-xs-2">
                                     <label for="dropOff" class="control-label"><i class="fas fa-map-marker-alt"></i></label>
                                 </div>
                                 <div class="col-xs-4">
-                                    <input type="text" id="dropOff" name="dropOff" placeholder="Enter the load drop-off location" class="form-control">
+                                    <input type="text" name="dropOff" id="dropOff" placeholder="Enter the load drop-off location" class="form-control">
                                 </div>
                                 <!--Button or Icon for Map-->
                                 <div class="text-left">
@@ -146,14 +147,14 @@
                             <div class="col-sm-6">
                                 <label for="datePickUp" class="form-label">Pick-up Date</label>
                                 <div class="input-group date" id="datepicker">
-                                    <input type="date" class="form-control" id="pickupDate" name="datePickUp" required onchange="handleDropoffDate()">
+                                    <input type="date" name="datePickUp" class="form-control" id="datePickUp" required onchange="handleDropoffDate()">
                                 </div>
                             </div>
                             <!--Drop-Off Date-->
                             <div class="col-sm-6">
                                 <label for="dateDropOff" class="form-label">Drop-off Date</label>
                                 <div class="input-group date" id="datepicker">
-                                    <input type="date" class="form-control" id="dropoffDate" name="dateDropOff" required onchange="handleDropoffDate()">
+                                    <input type="date" name="dateDropOff" class="form-control" id="dateDropOff" required onchange="handleDropoffDate()">
                                     <!--Show condition-->
                                     <span id="dateRestriction" style="color: red;"></span>
                                 </div>
@@ -162,7 +163,7 @@
                         <!--Type of Cargo-->
                         <div class="col-md-13" style="margin-top: 50px;">
                             <label style="margin-bottom: 10px;" for="typeCargo" class="form-label">Type of Cargo</label>
-                            <select style="height: 2.3em; border-radius: 5px;" class="form-select" id="typeCargo" name="typeCargo" required>
+                            <select style="height: 2.3em; border-radius: 5px;" class="form-select" name="typeCargo" id="typeCargo" required>
                                 <option value="">Select Cargo Type</option>
                             </select>
                         </div>
@@ -463,8 +464,8 @@
                             </div>
                             <!--Good Value-->
                             <div style="margin-left: 18px; margin-bottom: 50px;" class="col-md-6">
-                                <label style="margin-bottom: 10px;" for="validationCustom06" class="form-label">Goods value</label>
-                                <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom06" name="goodsValue" placeholder="Enter the Goods Value" required>
+                                <label style="margin-bottom: 10px;" for="goodsValue" class="form-label">Goods value</label>
+                                <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="goodsValue" name="goodsValue" placeholder="Enter the Goods Value" required>
                             </div>  
                             <!--Images and Notes-->   
                             <div class="col-sm-12">
@@ -510,6 +511,7 @@
                     <!-- End Tab 2 Page View order-->
                     <!-- Start Tab 3 in brogress bar-->
                     <div style="margin-top: 50px;" class="tab" id = "tab-3">
+                        <div><p id="msg"></p></div>
                         <div class="index-btn-wrapper">
                             <div class="index-btn" onclick="run(3, 2);">Previous</div>
                             <button class = "index-btn" type="submit" name="submit" style = "background: #f89d13;">Submit</button>
