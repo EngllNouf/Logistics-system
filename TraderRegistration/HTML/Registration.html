@@ -6,136 +6,363 @@
     <title>Registration Form</title>
     <link rel="stylesheet" type="text/css" href="../CSS/Registration.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../HomePage/ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
-    <!--For Nav Bar-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script><!--For cilck and drop down-->
-    <link rel="stylesheet" href="../ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
-    <link rel="stylesheet" href="/ForNavBar/allPages.Css"> <!--For simple style (nav)-->
-    <!--End nav bar-->
+    <!-- Select2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" rel="stylesheet" />
 
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <!-- Select2 JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
 
+      <!--For Nav Bar-->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script><!--For cilck and drop down-->
+      <link rel="stylesheet" href="../ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
+      <link rel="stylesheet" href="/ForNavBar/allPages.Css"> <!--For simple style (nav)-->
+      <!--End nav bar-->
 
 </head>
 <body>
+<!--nav-!-->
 
+<nav id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
+     
+    <a class="navbar-brand" href="../ForHtml/HomePage.html"><img src="TraderRegistration/IMG/logo(1).png" height="55" width="180" alt="logo"></a>
+    <button class="navbar-toggler collapsed" type="button" 
+    data-bs-toggle="collapse" data-bs-target="#miniNav" aria-controls="miniNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <!--
-    <nav id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="../FotHtml/HomePage.html"><img src="../images/LogoSample_ByTailorBrands.jpg" height="60" width="90" alt="logo"></a>
-            <button class="navbar-toggler collapsed" type="button" 
-            data-bs-toggle="collapse" data-bs-target="#miniNav" aria-controls="miniNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-    
-            <div class="collapse navbar-collapse" id="miniNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                      <a class="nav-link" href="../FotHtml/HomePage.html" style="color: #f89d13;">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services
-                      </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../index_file/Login.html">Treder</a></li>
-                           
-                              <li><a class="dropdown-item" href="../index_file/Register.html">transportation company</a></li>
-                              <li><a class="dropdown-item" href="../index_file/Login.html">Dirver</a></li>
-                            </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index_file/aboutUs.html">AboutUs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index_file/ContactUs.html">ContactUs</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../images/person.png" height="30" width="30" alt="person icon">
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../index_file/Login.html">Login</a></li>
-                            <li><a class="dropdown-item" href="../index_file/Register.html">Register</a></li>
-                        </ul>
-                    </li>
-                </ul> 
-            </div>
-        </div>
-    </nav> 
-   
+    <div class="collapse navbar-collapse" id="miniNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../FotHtml/HomePage.html" style="color: #f89d13;">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services
+              </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../index_file/Login.html">Trader</a></li>
+                   
+                      <li><a class="dropdown-item" href="../index_file/Register.html">Transportation company</a></li>
+                      <li><a class="dropdown-item" href="../index_file/Login.html">Driver</a></li>
+                    </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../index_file/aboutUs.html">AboutUs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../index_file/ContactUs.html">ContactUs</a>
+            </li>
 
-
--->
-
-
-    <div class="welcome-container" id="welcomeContainer">
-        <h1>Welcome!</h1>
-        <p>Choose Which Option Best Describes your Business</p>
-        <div class="options-container">
-            <div class="option">
-                <img src="../IMG/truck.png" alt="truck">
-                <button onclick="selectOption('transportation')">Transportation Company</button>
-            </div>
-            <div class="option">
-                <img src="../IMG/trader.png" alt="trader">
-                <button onclick="selectOption('trader')">Trader</button>
-            </div>
-        </div>
+            <li class="nav-item">
+              <a class="nav-link" href="../index_file/ContactUs.html">ContactUs</a>
+          </li>
+          <li class="nav-item">
+            <a class="Login" href="../index_file/Login.html">Login</a>
+          </li>
+           
+          <li class="nav-item">
+            <a class="Register" href="../index_file/Register.html">Register</a>
+          </li>
+               
+        </ul> 
     </div>
 
-    <div class="form-container" id="formContainer" style="display: none;">
-        <!-- Company details form -->
-        <div class="form-step company-details" id="step1" style="display: none;">
-            <h2> Trader's Company Details : </h2>
-            <div class="grid-container">
-                <input type="text" placeholder="Company Name">
-                <input type="text" placeholder="Company Email Id">
-                <input type="text" placeholder="Address line 1">
+</nav> 
+    
+    
+<div class="welcome-container" id="welcomeContainer">
+    <h1>Welcome!</h1>
+    <p>Choose Which Option Best Describes your Business</p>
+    <div class="options-container">
+        <div class="option">
+            <img src="../IMG/truck.png" alt="truck">
+            <button onclick="selectOption('transportation')">Transportation Company</button>
+        </div>
+        <div class="option">
+            <img src="../IMG/trader.png" alt="trader">
+            <button onclick="selectOption('trader')">Trader</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="point1" class="point" style="display: none;"> 1  </div>
+<div id="point2" class="point" style="display: none;"> 2  </div>
+
+
+<div class="form-container" id="formContainer" style="display: none;">
+    <!-- Company details form -->
+    <div class="form-step company-details" id="step1" style="display: none;">
+        <h2>Trader's Company's Details : </h2>
+        <div class="grid-container">
+            <div>
+                <input type="text" placeholder="Company Name" id="companyName">
+                <span id="companyNameError" class="error-message-small"></span>
+            </div>
+
+            <div>
+                <input type="text" placeholder="Company Email" id="companyEmail">
+                <span id="companyEmailError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="text" placeholder="Address line 1" id="companyAddress">
+                <span id="AddressError" class="error-message-small"></span>
+            </div>
+            <div>
                 <select id="citySelect">
                     <option value="" disabled selected>Select City</option>
+                    
                     <option value="Abha">Abha</option>
+                    <option value="Aflaj">Aflaj</option>
+                    <option value="Arid">Arid</option>
+                    <option value="Artawiyah">Artawiyah</option>
+                    <option value="Bukayriyah">Bukayriyah</option>
+                    <option value="Darb">Darb</option>
+                    <option value="Dawadimi">Dawadimi</option>
+                    <option value="Dilam">Dilam</option>
+                    <option value="Duwadimi">Duwadimi</option>
+                    <option value="Ghat">Ghat</option>
+                    <option value="Gwei'iyyah">Gwei'iyyah</option>
+                    <option value="Hada">Hada</option>
+                    <option value="Hareeq">Hareeq</option>
+                    <option value="Hasa">Hasa</option>
+                    <option value="Khobar">Khobar</option>
+                    <option value="Kharj">Kharj</option>
+                    <option value="Layyah">Layyah</option>
+                    <option value="Majmaah">Majmaah</option>
+                    <option value="Mandaq">Mandaq</option>
+                    <option value="Mithnab">Mithnab</option>
+                    <option value="Muwayh">Muwayh</option>
+                    <option value="Qassim">Qassim</option>
+                    <option value="Qunfudhah">Qunfudhah</option>
+                    <option value="Quway'iyah">Quway'iyah</option>
+                    <option value="Rajhi">Rajhi</option>
+                    <option value="Rass">Rass</option>
+                    <option value="Ruqayyiqah">Ruqayyiqah</option>
+                    <option value="Ulad">Ulad</option>
+                    <option value="Uyaynah">Uyaynah</option>
+                    <option value="Wajh">Wajh</option>
+                    <option value="Wurud">Wurud</option>
+                    <option value="Za'balah">Za'balah</option>
+                    <option value="Nimas">Nimas</option>
+                    <option value="Arar">Arar</option>
+                    <option value="Sulayyil">Sulayyil</option>
+                    <option value="Saffaniyah">Saffaniyah</option>
+                    <option value="Safra">Safra</option>
+                    <option value="Samman">Samman</option>
+                    <option value="Sarrar">Sarrar</option>
+                    <option value="Sayh">Sayh</option>
+                    <option value="Sayyad">Sayyad</option>
+                    <option value="Sulam">Sulam</option>
+                    <option value="Sulayyil">Sulayyil</option>
+                    <option value="Sulayyil">Sulayyil</option>
+                    <option value="Suwayri">Suwayri</option>
+                    <option value="Saffaniyah">Saffaniyah</option>
+                    <option value="Zaimah">Zaimah</option>
+                    <option value="Zulfi">Zulfi</option>
+                    <option value="Zulfi">Zulfi</option>
+                    <option value="Badr">Badr</option>
+                    <option value="Baha">Baha</option>
+                    <option value="Baljurashi">Baljurashi</option>
+                    <option value="Bani Amr">Bani Amr</option>
+                    <option value="Bani Dhabyan">Bani Dhabyan</option>
+                    <option value="Bani Hajr">Bani Hajr</option>
+                    <option value="Bani Muawiyah">Bani Muawiyah</option>
+                    <option value="Baqiq">Baqiq</option>
+                    <option value="Bareg">Bareg</option>
+                    <option value="Barzan">Barzan</option>
+                    <option value="Bisha">Bisha</option>
+                    <option value="Buqayq">Buqayq</option>
+                    <option value="Buraydah">Buraydah</option>
+                    <option value="Dammam">Dammam</option>
+                    <option value="Dhahran">Dhahran</option>
+                    <option value="Duba">Duba</option>
+                    <option value="Dumat Jandal">Dumat Jandal</option>
+                    <option value="Farasan">Farasan</option>
+                    <option value="Gatgat">Gatgat</option>
+                    <option value="Gurayat">Gurayat</option>
+                    <option value="Habala">Habala</option>
+                    <option value="Hafr Batin">Hafr Batin</option>
+                    <option value="Hail">Hail</option>
+                    <option value="Hajrah">Hajrah</option>
+                    <option value="Halat Ammar">Halat Ammar</option>
+                    <option value="Hawtat Bani Tamim">Hawtat Bani Tamim</option>
+                    <option value="Hayil">Hayil</option>
+                    <option value="Hinakiyah">Hinakiyah</option>
+                    <option value="Hofuf">Hofuf</option>
+                    <option value="Hofuf-Mubarraz">Hofuf-Mubarraz</option>
+                    <option value="Hotat Bani Tamim">Hotat Bani Tamim</option>
+                    <option value="Houtat Sudair">Houtat Sudair</option>
+                    <option value="Hufuf">Hufuf</option>
+                    <option value="Jazan">Jazan</option>
                     <option value="Jeddah">Jeddah</option>
+                    <option value="Jizan">Jizan</option>
+                    <option value="Jubail">Jubail</option>
+                    <option value="Khafji">Khafji</option>
+                    <option value="Khamis Mushayt">Khamis Mushayt</option>
+                    <option value="Kharj">Kharj</option>
+                    <option value="Khurma">Khurma</option>
+                    <option value="Kuf">Kuf</option>
+                    <option value="Laç">Laç</option>
+                    <option value="Madinah">Madinah</option>
+                    <option value="Makkah">Makkah</option>
+                    <option value="Majmaah">Majmaah</option>
+                    <option value="Mazin">Mazin</option>
+                    <option value="Muhayil">Muhayil</option>
+                    <option value="Muhayil-Sulayyil">Muhayil-Sulayyil</option>
+                    <option value="Mukayzin">Mukayzin</option>
+                    <option value="Mulayjah">Mulayjah</option>
+                    <option value="Mulayjah (Bisha)">Mulayjah (Bisha)</option>
+                    <option value="Nabhaniyah">Nabhaniyah</option>
+                    <option value="Najran">Najran</option>
+                    <option value="Namas">Namas</option>
+                    <option value="Qal'at Bishah">Qal'at Bishah</option>
+                    <option value="Qariyat Ulya">Qariyat Ulya</option>
+                    <option value="Qasr-Baha">Qasr-Baha</option>
+                    <option value="Qatif">Qatif</option>
+                    <option value="Qila at al Bishah">Qila at al Bishah</option>
+                    <option value="Qunfudhah">Qunfudhah</option>
+                    <option value="Rabigh">Rabigh</option>
+                    <option value="Rafha">Rafha</option>
+                    <option value="Ras Tanura">Ras Tanura</option>
+                    <option value="Riyadh">Riyadh</option>
+                    <option value="Riyadh-Majmaah">Riyadh-Majmaah</option>
+                    <option value="Riyadh-Taif">Riyadh-Taif</option>
+                    <option value="Rumaiah">Rumaiah</option>
+                    <option value="Sabya">Sabya</option>
+                    <option value="Safwa">Safwa</option>
+                    <option value="Saihat">Saihat</option>
+                    <option value="Sakaka">Sakaka</option>
+                    <option value="Saih Hatat">Saih Hatat</option>
+                    <option value="Saihat">Saihat</option>
+                    <option value="Sakakah">Sakakah</option>
+                    <option value="Salbukh">Salbukh</option>
+                    <option value="Sapt">Sapt</option>
+                    <option value="Sharurah">Sharurah</option>
+                    <option value="Shaqraa">Shaqraa</option>
+                    <option value="Shaybah">Shaybah</option>
+                    <option value="Shumaysi">Shumaysi</option>
+                    <option value="Subaykah">Subaykah</option>
+                    <option value="Sudair">Sudair</option>
+                    <option value="Tabuk">Tabuk</option>
+                    <option value="Taima">Taima</option>
+                    <option value="Tathleeth">Tathleeth</option>
+                    <option value="Tathleeth">Tathleeth</option>
+                    <option value="Tayma">Tayma</option>
+                    <option value="Tubarjal">Tubarjal</option>
+                    <option value="Turaif">Turaif</option>
+                    <option value="Udhailiyah">Udhailiyah</option>
+                    <option value="Unaizah">Unaizah</option>
+                    <option value="Uqayr">Uqayr</option>
+                    <option value="Uyun Jiwa">Uyun Jiwa</option>
+                    <option value="Wadi ad-Dawasir">Wadi ad-Dawasir</option>
+                    <option value="Yanbu">Yanbu</option>
+                    <option value="Zalim">Zalim</option>
                 </select>
-                <input type="text" placeholder="Zip Code">
-              
-                <input type="text" placeholder="VAT Number">
-                <input type="text" placeholder="Business License Number">
+                <span id="citySelectError" class="error-message-small"></span>
             </div>
-            <button onclick="nextStep()">Next</button>
-        </div>
-
-        <!-- Trader details form -->
-        <div class="form-step trader-details" id="step2" style="display: none;">
-            <h2>Trader's Details : </h2>
-            <div class="grid-container">
-                <input type="text" placeholder="Name">
-                <input type="text" placeholder="Phone Number">
-                <input type="text" placeholder="Address">
-                <select id="industrySelect">
-                    <option value="" disabled selected>Select Industry</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Finance">Finance</option>
-                </select>
-                <input type="text" placeholder="Saudi National ID or Iqama Number">
+            <div>
+                <input type="text" placeholder="Zip Code" id="companyZip">
+                <span id="ZipError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="text" placeholder="VAT Number" id="companyVat">
+                <span id="VatError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="text" placeholder="Business License Number" id="companyLicense">
+                <span id="LicenseError" class="error-message-small"></span>
             </div>
           
-               <div class="button-container">
-                 <button onclick="backStep()">Back</button>
-                 <button onclick="submitForm()">Submit</button>
-               </div>
         </div>
-
-        <div id="successMessage" class="success-animation" style="display: none;"></div>
+    
+        <div class="file-field">
+            <label for="fileInput1"> + Attach commercial registration file and other related files <span id="fileError1" class="error-message-small"></span></label>
+            <output id="fileList1"></output>
+            <input type="file" id="fileInput1" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('fileInput1', 'fileList1')">
+        </div>
+        
+       <div class="button-container">
+    <button class="back-btn" onclick="backToWelcomeFromForm()">Previous</button>
+    <button onclick="nextStep()">Next</button>
+</div>
     </div>
 
-            <div class="welcome-message" id="welcomeMessage">
-                Welcome <span id="userName"></span>!
-           </div>
+    <!-- Trader details form -->
+    <div class="form-step trader-details" id="step2" style="display: none;">
+        <h2>Trader's Details :</h2>
+        <div class="grid-container">
 
-    
+            <div>
+                <input type="text" placeholder="Name" id="traderName">
+                <span id="nameError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="text" placeholder="Phone Number" id="traderPhoneNumber">
+                <span id="phoneNumberError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="text" placeholder="Address" id="traderAddress">
+                <span id="addressError" class="error-message-small"></span>
+            </div>
+            <div>
+                <select id="industrySelect">
+                    <option value="" disabled selected>Select Industry</option>
+                    <option value="Automotive">Automotive</option>
+                    <option value="Construction">Construction</option>
+                    <option value="Education">Education</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Food and Beverage">Food and Beverage</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Manufacturing">Manufacturing</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Telecommunications">Telecommunications</option>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Aerospace">Aerospace</option>
+                    <option value="Chemicals">Chemicals</option>
+                    <option value="Consumer Goods">Consumer Goods</option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="Energy">Energy</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Hospitality">Hospitality</option>
+                    <option value="Pharmaceuticals">Pharmaceuticals</option>
+                </select>
+                <span id="industryError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="text" placeholder="National ID / Iqama ID" id="idNumber">
+                <span id="idNumberError" class="error-message-small"></span>
+            </div>
+        </div>
+        <div class="file-field">
+            <label for="fileInput2">+ Attach ID and other related files <span id="fileError2" class="error-message-small"></span></label>
+            <output id="fileList2"></output>
+            <input type="file" id="fileInput2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('fileInput2', 'fileList2')">
+        </div>
+        <div class="button-container">
+            <button onclick="backStep()">Previous</button>
+            <button onclick="submitForm()">Submit</button>
+        </div>
+        
+     </div>
 
-    <script src="../JS/Registration.js"></script>
+      <div id="successMessage" class="success-animation" style="display: none;">
+      
+</div>
+
+
+
+
+
+
+   
+
+<script src="../JS/Registration.js"></script>
 </body>
 </html>

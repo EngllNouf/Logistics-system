@@ -1,11 +1,10 @@
-/* CSS styles */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+/* CSS for Registration Form */
 
 body {
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
-     display: flex;
+    
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -27,77 +26,60 @@ body {
 }
 
 .welcome-container {
+    margin-top: 60px;
     text-align: center;
-   
 }
 
 .options-container {
-
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .option {
+    margin: 50px;
+    margin-bottom: 20px;
+    text-align: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     align-items: center;
-    margin: 0 20px;
-    width: 400px; 
-    flex-grow: 1; 
+}
+
+.option img {
+    margin-bottom: 10px; 
 }
 
 button {
-    font-family: "Poppins", sans-serif;
     padding: 15px 30px;
-    margin-top: 10px;
-    background-color: #f89d13; 
-    color: #fff; 
+    margin: 0 10px;
+    background-color: #f89d13;
+    color: #fff;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold; 
-    transition: background-color 0.3s ease, color 0.3s ease; 
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #727272; 
-    color: #ffffff; 
+    background-color: #fcbb5a;
 }
 
- h1 {
-    color: #393939cf; 
-    font-size: 50px;
-}
-
-.form-step h2 {
-    color: #5b9279cf; 
-}
 .form-container {
-    background-color: #fff; 
+    background-color: #fff;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 600px;
+    width: 520px;
     overflow: hidden;
-    perspective: 1000px; 
+    perspective: 1000px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    width: calc(100% - 40px); 
-    margin-top: 20px; 
-}
-
-.button-container button {
-    flex-grow: 1; 
-    margin: 0 10px; 
+    position: relative;
+    z-index: 1;
+    margin-top: 100px;
+    margin-left: 390px;
 }
 
 .form-step {
@@ -106,9 +88,8 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    backface-visibility: hidden; /* Hide the backface of the elements during animation */
-    transition: transform 0.5s ease; /* Add smooth transition effect for the flip */
-    animation: slideIn 0.5s forwards;
+    backface-visibility: hidden;
+    transition: transform 0.5s ease;
 }
 
 .form-step.active {
@@ -125,68 +106,169 @@ button:hover {
     grid-gap: 10px;
 }
 
-.trader-slide-animation {
-    animation: coverPage 1s forwards;
-}
-
-@keyframes coverPage {
-    from {
-        transform: scaleY(0);
-    }
-    to {
-        transform: scaleY(1);
-    }
-}
-
-
-.slide-animation {
-    animation: slideIn 0.5s forwards;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(55%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
 .success-animation {
     text-align: center;
-    color: #f89d13; 
+    color: #f89d13;
     font-size: 24px;
     animation: successFade 2s ease;
 }
 
 input[type="text"],
 select {
-    width:100%;
-    padding: 15px;
-    margin: 15px auto;;
-    margin-right: 80px;
-    margin-bottom: 20px; 
-    border: 1px solid #eb9007; 
-    border-radius: 20px; 
+    width: calc(100% - 3px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
-.welcome-message {
-    display: none;
-    font-size: 24px;
-    margin-top: 20px;
-    animation: slideIn 1s ease forwards;
-  }
-  
-  @keyframes slideIn {
+
+.file-field {
+    margin-top: 10px;
+
+}
+
+.file-field label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #5b9279;
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-right: 20px;
+    font-size: 11px;
+    border: 0px solid #5b9279;
+    border-radius: 1%;
+    background-color: #5b927937;
+}
+
+.file-field label:hover {
+    color: #5b9279; 
+    font-weight: bold; 
+}
+
+.delete-btn {
+    color: red; 
+    margin-left: 5px; 
+    cursor: pointer; 
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+}
+
+.file-name {
+    flex-grow: 1; /* file name expand to fill available space */
+}
+
+.file-name:hover {
+    text-decoration: underline; 
+}
+
+.file-field label #fileLabel {
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+.file-field label:hover #fileLabel {
+    font-weight: bolder;
+    color: #5b9279;
+}
+
+.file-field output {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #777;
+}
+
+@keyframes slideIn {
     from {
-      opacity: 0;
-      transform: translateY(-50px);
+        transform: translateX(100%);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        transform: translateX(0);
     }
-  }
+}
+
+.form-container {
+   
+    animation: slideIn 0.5s ease forwards;
+
+}
+
+/* animation to individual steps */
+.form-step.active {
+    animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes successFade {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.error-message-small {
+    color: red;
+    font-size: 10px;
+}
+
+.point {
+    width: 30px;
+    height: 30px;
+    background-color: #fdcb7f;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    margin-top: 90px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    border: 2px solid transparent; 
+}
+
+.point.active {
+    background-color: #f89d13; 
+    border-color: #f89d13; 
+}
 
 
+#point1 {
+    left: calc(50% - 50px);
+}
+
+#point2 {
+    right: calc(50% - 50px);
+}
+
+.success-message-btn {
+    padding: 15px 30px;
+    margin-top: 20px;
+    background-color: #f89d13;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.success-message-btn:hover {
+    background-color: #fcbb5a;
+}
+
+.form-step.company-details h2 {
+    color: #5b9279; 
+    font-size: 18px; 
+}
+
+.form-step.trader-details h2 {
+    color: #5b9279; 
+    font-size: 18px; 
+}
