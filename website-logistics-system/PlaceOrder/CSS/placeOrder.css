@@ -58,6 +58,36 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
+.centered-content {
+  text-align: center;
+  margin: 50px auto; /* Adjust margin as needed */
+  max-width: 800px; /* Adjust max-width as needed */
+  color: #3d3d3d;
+}
+
+#displayInfo p {
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+#displayInfo img {
+  display: block;
+  margin: 20px auto; /* Adjust margin as needed */
+}
+.button-wrapper{
+  display: flex;
+}
+.button{
+  margin: 20px 15px 0 0;
+  background: #5b9279;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
 
 li:before {
 content: "";
