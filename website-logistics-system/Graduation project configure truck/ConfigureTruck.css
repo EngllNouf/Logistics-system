@@ -314,3 +314,12 @@ input[type=date] {
   text-decoration: none;
   cursor: pointer;
 }
+
+
+/* For screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+  .formBody > form {
+    grid-template-columns: 1fr; 
+
+}
+}
