@@ -8,7 +8,6 @@ app.use("/", express.static("./website-Logistics-system"));
 app.use(express.json());
 
 
-
 //server
 const port = 2000;
 app.listen(port, () => {
