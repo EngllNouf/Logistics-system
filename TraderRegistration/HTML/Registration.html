@@ -71,7 +71,9 @@
     </div>
 
 </nav> 
-    
+
+
+
     
 <div class="welcome-container" id="welcomeContainer">
     <h1>Welcome!</h1>
@@ -89,11 +91,95 @@
 </div>
 
 
-<div id="point1" class="point" style="display: none;"> 1  </div>
-<div id="point2" class="point" style="display: none;"> 2  </div>
+<div id="point1" class="point" style="display: none;">  1    </div>
+<div id="point2" class="point" style="display: none;">  2    </div>
 
 
-<div class="form-container" id="formContainer" style="display: none;">
+<!-- Transportation company registration form -->
+<form id="transportationRegistrationForm" style="display: none;">
+    <div class="form-step transportation-details" id="transportationStep1" style="display: none;">
+        <h2>Transportation Company's Details:</h2>
+        <div class="grid-container">
+            <div>
+                <input type="text" placeholder="Commercial Registration Name" id="commercialRegistrationName">
+                <span id="commercialRegistrationNameError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="text" placeholder="Commercial Registration Number" id="commercialRegistrationNumber">
+                <span id="commercialRegistrationNumberError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="text" placeholder="Commercial Registration ID" id="commercialRegistrationID">
+                <span id="commercialRegistrationIDError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="date" placeholder="Issue Date" id="issueDate">
+                <span id="issueDateError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="date" placeholder="Expiration Date" id="expirationDate">
+                <span id="expirationDateError" class="error-message-small"></span>
+            </div>
+            <div>
+                <select id="licenseType">
+                    <option value="" disabled selected>License Type</option>
+                    <option value="Type A">Type A</option>
+                    <option value="Type B">Type B</option>
+                    <!-- Add more license types as needed -->
+                </select>
+                <span id="licenseTypeError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="text" placeholder="License Number" id="licenseNumber">
+                <span id="licenseNumberError" class="error-message-small"></span>
+            </div>
+            <div>
+                <select id="transportationActivity">
+                    <option value="" disabled selected>Transportation Activity</option>
+                    <option value="Transporting goods">Transporting goods</option>
+                    <option value="Transporting goods between cities">Transporting goods between cities</option>
+                </select>
+                <span id="transportationActivityError" class="error-message-small"></span>
+            </div>
+            <div>
+                <input type="text" placeholder="Specialization of the Company" id="companySpecialization">
+                <span id="companySpecializationError" class="error-message-small"></span>
+            </div>
+            <div class="file-field">
+                <label for="commercialRegistrationFile">Attach Commercial Registration File</label>
+                <output id="commercialRegistrationFileList"></output>
+                <input type="file" id="commercialRegistrationFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('commercialRegistrationFile', 'commercialRegistrationFileList')">
+            </div>
+            <div class="file-field">
+                <label for="ownerIdFile">Attach Owner ID File</label>
+                <output id="ownerIdFileList"></output>
+                <input type="file" id="ownerIdFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('ownerIdFile', 'ownerIdFileList')">
+            </div>
+            <div class="file-field">
+                <label for="licenseFile">Attach License File</label>
+                <output id="licenseFileList"></output>
+                <input type="file" id="licenseFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('licenseFile', 'licenseFileList')">
+            </div>
+            <div class="file-field">
+                <label for="commissionerIdFile">Attach Commissioner's ID File</label>
+                <output id="commissionerIdFileList"></output>
+                <input type="file" id="commissionerIdFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('commissionerIdFile', 'commissionerIdFileList')">
+            </div>
+        </div>
+        <div class="button-container">
+            <button class="back-btn" onclick="backToWelcomeFromForm()">Previous</button>
+            <button onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+  
+</form>
+
+
+
+
+<form id="TraderRegistrationForm">
+
+ <div class="form-container" id="formContainer" style="display: none;">
     <!-- Company details form -->
     <div class="form-step company-details" id="step1" style="display: none;">
         <h2>Trader's Company's Details : </h2>
@@ -114,153 +200,9 @@
             <div>
                 <select id="citySelect">
                     <option value="" disabled selected>Select City</option>
-                    
                     <option value="Abha">Abha</option>
                     <option value="Aflaj">Aflaj</option>
                     <option value="Arid">Arid</option>
-                    <option value="Artawiyah">Artawiyah</option>
-                    <option value="Bukayriyah">Bukayriyah</option>
-                    <option value="Darb">Darb</option>
-                    <option value="Dawadimi">Dawadimi</option>
-                    <option value="Dilam">Dilam</option>
-                    <option value="Duwadimi">Duwadimi</option>
-                    <option value="Ghat">Ghat</option>
-                    <option value="Gwei'iyyah">Gwei'iyyah</option>
-                    <option value="Hada">Hada</option>
-                    <option value="Hareeq">Hareeq</option>
-                    <option value="Hasa">Hasa</option>
-                    <option value="Khobar">Khobar</option>
-                    <option value="Kharj">Kharj</option>
-                    <option value="Layyah">Layyah</option>
-                    <option value="Majmaah">Majmaah</option>
-                    <option value="Mandaq">Mandaq</option>
-                    <option value="Mithnab">Mithnab</option>
-                    <option value="Muwayh">Muwayh</option>
-                    <option value="Qassim">Qassim</option>
-                    <option value="Qunfudhah">Qunfudhah</option>
-                    <option value="Quway'iyah">Quway'iyah</option>
-                    <option value="Rajhi">Rajhi</option>
-                    <option value="Rass">Rass</option>
-                    <option value="Ruqayyiqah">Ruqayyiqah</option>
-                    <option value="Ulad">Ulad</option>
-                    <option value="Uyaynah">Uyaynah</option>
-                    <option value="Wajh">Wajh</option>
-                    <option value="Wurud">Wurud</option>
-                    <option value="Za'balah">Za'balah</option>
-                    <option value="Nimas">Nimas</option>
-                    <option value="Arar">Arar</option>
-                    <option value="Sulayyil">Sulayyil</option>
-                    <option value="Saffaniyah">Saffaniyah</option>
-                    <option value="Safra">Safra</option>
-                    <option value="Samman">Samman</option>
-                    <option value="Sarrar">Sarrar</option>
-                    <option value="Sayh">Sayh</option>
-                    <option value="Sayyad">Sayyad</option>
-                    <option value="Sulam">Sulam</option>
-                    <option value="Sulayyil">Sulayyil</option>
-                    <option value="Sulayyil">Sulayyil</option>
-                    <option value="Suwayri">Suwayri</option>
-                    <option value="Saffaniyah">Saffaniyah</option>
-                    <option value="Zaimah">Zaimah</option>
-                    <option value="Zulfi">Zulfi</option>
-                    <option value="Zulfi">Zulfi</option>
-                    <option value="Badr">Badr</option>
-                    <option value="Baha">Baha</option>
-                    <option value="Baljurashi">Baljurashi</option>
-                    <option value="Bani Amr">Bani Amr</option>
-                    <option value="Bani Dhabyan">Bani Dhabyan</option>
-                    <option value="Bani Hajr">Bani Hajr</option>
-                    <option value="Bani Muawiyah">Bani Muawiyah</option>
-                    <option value="Baqiq">Baqiq</option>
-                    <option value="Bareg">Bareg</option>
-                    <option value="Barzan">Barzan</option>
-                    <option value="Bisha">Bisha</option>
-                    <option value="Buqayq">Buqayq</option>
-                    <option value="Buraydah">Buraydah</option>
-                    <option value="Dammam">Dammam</option>
-                    <option value="Dhahran">Dhahran</option>
-                    <option value="Duba">Duba</option>
-                    <option value="Dumat Jandal">Dumat Jandal</option>
-                    <option value="Farasan">Farasan</option>
-                    <option value="Gatgat">Gatgat</option>
-                    <option value="Gurayat">Gurayat</option>
-                    <option value="Habala">Habala</option>
-                    <option value="Hafr Batin">Hafr Batin</option>
-                    <option value="Hail">Hail</option>
-                    <option value="Hajrah">Hajrah</option>
-                    <option value="Halat Ammar">Halat Ammar</option>
-                    <option value="Hawtat Bani Tamim">Hawtat Bani Tamim</option>
-                    <option value="Hayil">Hayil</option>
-                    <option value="Hinakiyah">Hinakiyah</option>
-                    <option value="Hofuf">Hofuf</option>
-                    <option value="Hofuf-Mubarraz">Hofuf-Mubarraz</option>
-                    <option value="Hotat Bani Tamim">Hotat Bani Tamim</option>
-                    <option value="Houtat Sudair">Houtat Sudair</option>
-                    <option value="Hufuf">Hufuf</option>
-                    <option value="Jazan">Jazan</option>
-                    <option value="Jeddah">Jeddah</option>
-                    <option value="Jizan">Jizan</option>
-                    <option value="Jubail">Jubail</option>
-                    <option value="Khafji">Khafji</option>
-                    <option value="Khamis Mushayt">Khamis Mushayt</option>
-                    <option value="Kharj">Kharj</option>
-                    <option value="Khurma">Khurma</option>
-                    <option value="Kuf">Kuf</option>
-                    <option value="Laç">Laç</option>
-                    <option value="Madinah">Madinah</option>
-                    <option value="Makkah">Makkah</option>
-                    <option value="Majmaah">Majmaah</option>
-                    <option value="Mazin">Mazin</option>
-                    <option value="Muhayil">Muhayil</option>
-                    <option value="Muhayil-Sulayyil">Muhayil-Sulayyil</option>
-                    <option value="Mukayzin">Mukayzin</option>
-                    <option value="Mulayjah">Mulayjah</option>
-                    <option value="Mulayjah (Bisha)">Mulayjah (Bisha)</option>
-                    <option value="Nabhaniyah">Nabhaniyah</option>
-                    <option value="Najran">Najran</option>
-                    <option value="Namas">Namas</option>
-                    <option value="Qal'at Bishah">Qal'at Bishah</option>
-                    <option value="Qariyat Ulya">Qariyat Ulya</option>
-                    <option value="Qasr-Baha">Qasr-Baha</option>
-                    <option value="Qatif">Qatif</option>
-                    <option value="Qila at al Bishah">Qila at al Bishah</option>
-                    <option value="Qunfudhah">Qunfudhah</option>
-                    <option value="Rabigh">Rabigh</option>
-                    <option value="Rafha">Rafha</option>
-                    <option value="Ras Tanura">Ras Tanura</option>
-                    <option value="Riyadh">Riyadh</option>
-                    <option value="Riyadh-Majmaah">Riyadh-Majmaah</option>
-                    <option value="Riyadh-Taif">Riyadh-Taif</option>
-                    <option value="Rumaiah">Rumaiah</option>
-                    <option value="Sabya">Sabya</option>
-                    <option value="Safwa">Safwa</option>
-                    <option value="Saihat">Saihat</option>
-                    <option value="Sakaka">Sakaka</option>
-                    <option value="Saih Hatat">Saih Hatat</option>
-                    <option value="Saihat">Saihat</option>
-                    <option value="Sakakah">Sakakah</option>
-                    <option value="Salbukh">Salbukh</option>
-                    <option value="Sapt">Sapt</option>
-                    <option value="Sharurah">Sharurah</option>
-                    <option value="Shaqraa">Shaqraa</option>
-                    <option value="Shaybah">Shaybah</option>
-                    <option value="Shumaysi">Shumaysi</option>
-                    <option value="Subaykah">Subaykah</option>
-                    <option value="Sudair">Sudair</option>
-                    <option value="Tabuk">Tabuk</option>
-                    <option value="Taima">Taima</option>
-                    <option value="Tathleeth">Tathleeth</option>
-                    <option value="Tathleeth">Tathleeth</option>
-                    <option value="Tayma">Tayma</option>
-                    <option value="Tubarjal">Tubarjal</option>
-                    <option value="Turaif">Turaif</option>
-                    <option value="Udhailiyah">Udhailiyah</option>
-                    <option value="Unaizah">Unaizah</option>
-                    <option value="Uqayr">Uqayr</option>
-                    <option value="Uyun Jiwa">Uyun Jiwa</option>
-                    <option value="Wadi ad-Dawasir">Wadi ad-Dawasir</option>
-                    <option value="Yanbu">Yanbu</option>
-                    <option value="Zalim">Zalim</option>
                 </select>
                 <span id="citySelectError" class="error-message-small"></span>
             </div>
@@ -288,8 +230,9 @@
        <div class="button-container">
     <button class="back-btn" onclick="backToWelcomeFromForm()">Previous</button>
     <button onclick="nextStep()">Next</button>
-</div>
+ </div>
     </div>
+
 
     <!-- Trader details form -->
     <div class="form-step trader-details" id="step2" style="display: none;">
@@ -315,28 +258,11 @@
                     <option value="Construction">Construction</option>
                     <option value="Education">Education</option>
                     <option value="Entertainment">Entertainment</option>
-                    <option value="Finance">Finance</option>
-                    <option value="Food and Beverage">Food and Beverage</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Manufacturing">Manufacturing</option>
-                    <option value="Retail">Retail</option>
-                    <option value="Telecommunications">Telecommunications</option>
-                    <option value="Transportation">Transportation</option>
-                    <option value="Utilities">Utilities</option>
-                    <option value="Aerospace">Aerospace</option>
-                    <option value="Chemicals">Chemicals</option>
-                    <option value="Consumer Goods">Consumer Goods</option>
-                    <option value="E-commerce">E-commerce</option>
-                    <option value="Energy">Energy</option>
-                    <option value="Fashion">Fashion</option>
-                    <option value="Hospitality">Hospitality</option>
-                    <option value="Pharmaceuticals">Pharmaceuticals</option>
                 </select>
                 <span id="industryError" class="error-message-small"></span>
             </div>
             <div>
-                <input type="text" placeholder="National ID / Iqama ID" id="idNumber">
+                <input type="text" placeholder="Saudi National ID or Iqama ID" id="idNumber">
                 <span id="idNumberError" class="error-message-small"></span>
             </div>
         </div>
@@ -354,9 +280,9 @@
 
       <div id="successMessage" class="success-animation" style="display: none;">
       
-</div>
+ </div>
 
-
+</form>
 
 
 

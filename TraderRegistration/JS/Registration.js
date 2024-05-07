@@ -65,6 +65,13 @@ function selectOption(option) {
         currentStep = 1;
 
         document.getElementById('point1').classList.add('active');
+
+    }else if (option === 'transportation') {
+            // Show the transportation company registration form container
+            document.getElementById('transportationRegistrationForm').style.display = 'block';
+            // Show only the transportation company details form initially
+            document.getElementById('transportationStep1').style.display = 'flex';
+        
         
     } else {
         // Hide the form container for other options
@@ -75,6 +82,8 @@ function selectOption(option) {
 
 
 function nextStep() {
+
+    event.preventDefault();
     if (validateStep1()) {
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'flex';
@@ -101,6 +110,7 @@ function backToWelcomeFromForm() {
 
 
 function backStep() {
+    event.preventDefault(); 
     // Show the company details form when the user clicks "Back"
     document.getElementById('step1').style.display = 'flex';
     document.getElementById('step2').style.display = 'none';
@@ -111,6 +121,7 @@ function backStep() {
 
 
 function submitForm() {
+    event.preventDefault();
     // Get form fields
     const traderName = document.getElementById('traderName').value;
     const traderPhoneNumber = document.getElementById('traderPhoneNumber').value;
@@ -136,7 +147,7 @@ function submitForm() {
         isValid = false;
         setTimeout(() => {
             nameError.innerText = '';
-        }, 4000);
+        }, 4000); // 4 seconds timer
     } else if (!validateTraderName(traderName)) {
         nameError.innerText = '* Trader name can only contain letters';
         isValid = false;
@@ -215,6 +226,7 @@ function submitForm() {
         fileError.innerText = '';
     }
 
+    /*
     // If all fields are valid, show success message
     if (isValid) {
         // Hide the points and the form
@@ -233,6 +245,9 @@ function submitForm() {
             window.location.href = "file:///C:/Users/96656/OneDrive/%D8%B3%D8%B7%D8%AD%20%D8%A7%D9%84%D9%85%D9%83%D8%AA%D8%A8/Logistics-system/Trader/Trader.html"; // Change the URL to your "place order" page
         }, 4000); 
     }
+
+    */
+   
 }
 
 
@@ -251,7 +266,7 @@ function validateStep1() {
     const companyLicense = document.getElementById('companyLicense').value;
   
 
-    // Error message containers
+    
     const companyNameError = document.getElementById('companyNameError');
     const companyEmailError = document.getElementById('companyEmailError');
     const AddressError = document.getElementById('AddressError');
@@ -259,19 +274,18 @@ function validateStep1() {
     const ZipError = document.getElementById('ZipError');
     const VatError = document.getElementById('VatError');
     const LicenseError = document.getElementById('LicenseError');
-    // Add more error message variables for other fields
     const fileList1 = document.getElementById('fileList1');
     const fileInput1 = document.getElementById('fileInput1');
     const fileError1 = document.getElementById('fileError1');
 
     let isValid = true;
 
-    // Validate Company Name
+    
     if (companyName.trim() === '') {
         companyNameError.innerText = '* Required';
         isValid = false;
         
-       
+     
         setTimeout(() => {
             companyNameError.innerText = '';
         }, 4000);
@@ -281,6 +295,7 @@ function validateStep1() {
         companyEmailError.innerText = '* Required';
         isValid = false;
         
+      
         setTimeout(() => {
             companyEmailError.innerText = '';
         }, 4000);
@@ -296,6 +311,7 @@ function validateStep1() {
         AddressError.innerText = '* Required';
         isValid = false;
         
+       
         setTimeout(() => {
             AddressError.innerText = '';
         }, 4000);
@@ -312,8 +328,7 @@ function validateStep1() {
     if (companyZip.trim() === '') {
         ZipError.innerText = '* Required';
         isValid = false;
-        
-    
+      
         setTimeout(() => {
             ZipError.innerText = '';
         }, 4000);
@@ -328,6 +343,7 @@ function validateStep1() {
         VatError.innerText = '* Required';
         isValid = false;
         
+       
         setTimeout(() => {
             VatError.innerText = '';
         }, 4000);
@@ -342,7 +358,7 @@ function validateStep1() {
     if (companyLicense.trim() === '') {
         LicenseError.innerText = '* Required';
         isValid = false;
-        
+       
         setTimeout(() => {
             LicenseError.innerText = '';
         }, 4000);
@@ -368,45 +384,44 @@ function validateStep1() {
     return isValid;
 }
 function validateVatNumber(vatNumber) {
-    // Use a regular expression to check if the VAT number contains only 15 digits
+  
     const vatRegex = /^\d{15}$/;
     return vatRegex.test(vatNumber);
 }
 function validateLicenseNumber(licenseNumber) {
-    // Use a regular expression to check if the license number contains only 10 digits
+    
     const licenseRegex = /^\d{10}$/;
     return licenseRegex.test(licenseNumber);
 }
 function validateEmail(email) {
-    // Use a regular expression to check if the email format is valid
+   
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
 
 function validateZip(zipCode) {
-    // Use a regular expression to check if the ZIP code contains only 5 digits
+  
     const zipRegex = /^\d{5}$/;
     return zipRegex.test(zipCode);
 }
 
 function validatePhoneNumber(phoneNumber) {
-    // Use a regular expression to check if the phone number format is valid
+    
     const phoneRegex = /^05\d{8}$/;
     return phoneRegex.test(phoneNumber);
 }
 
 function validateIdNumber(idNumber) {
-    // Use a regular expression to check if the ID number format is valid
+   
     const saudiIdRegex = /^\d{10}$/;
     const iqamaIdRegex = /^\d{15}$/;
     
-    // Check if it matches either Saudi ID or Iqama ID format
     return saudiIdRegex.test(idNumber) || iqamaIdRegex.test(idNumber);
 }
 
 function validateTraderName(traderName) {
-    // Use a regular expression to check if the trader's name contains only letters
+  
     const nameRegex = /^[a-zA-Z ]+$/;
     return nameRegex.test(traderName);
 }

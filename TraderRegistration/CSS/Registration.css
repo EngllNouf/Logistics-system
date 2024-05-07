@@ -1,4 +1,4 @@
-/* CSS for Registration Form */
+
 
 body {
     font-family: "Poppins", sans-serif;
@@ -42,7 +42,7 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column; 
-    align-items: center;
+    align-items: center; 
 }
 
 .option img {
@@ -70,7 +70,7 @@ button:hover {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 520px;
+    width: 400px;
     overflow: hidden;
     perspective: 1000px;
     display: flex;
@@ -79,7 +79,7 @@ button:hover {
     position: relative;
     z-index: 1;
     margin-top: 100px;
-    margin-left: 390px;
+    margin-left: 440px;
 }
 
 .form-step {
@@ -160,7 +160,7 @@ select {
 }
 
 .file-name {
-    flex-grow: 1; /* file name expand to fill available space */
+    flex-grow: 1; 
 }
 
 .file-name:hover {
@@ -194,12 +194,12 @@ select {
 }
 
 .form-container {
-   
+  
     animation: slideIn 0.5s ease forwards;
 
 }
 
-/* animation to individual steps */
+
 .form-step.active {
     animation: slideIn 0.5s ease forwards;
 }
@@ -272,3 +272,98 @@ select {
     color: #5b9279; 
     font-size: 18px; 
 }
+
+/*css for transportatopn company form*/
+
+.form-step.transportation-details {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    overflow: hidden;
+    perspective: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    margin-top: 100px;
+    margin-left: 440px;
+}
+
+
+.form-step.transportation-details {
+    animation: slideIn 0.5s ease forwards;
+}
+
+
+.form-step.transportation-details.active {
+    animation: slideIn 0.5s ease forwards;
+}
+
+
+.form-step.transportation-details h2 {
+    color: #5b9279; 
+}
+
+#transportationRegistrationForm input[type="text"],
+#transportationRegistrationForm select {
+    width: calc(100% - 3px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+#transportationRegistrationForm .file-field label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #5b9279;
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-right: 20px;
+    font-size: 11px;
+    border: 0px solid #5b9279;
+    border-radius: 1%;
+    background-color: #5b927937;
+}
+
+#transportationRegistrationForm .file-field label:hover {
+    color: #5b9279; 
+    font-weight: bold; 
+}
+
+
+#transportationRegistrationForm .file-item {
+    display: flex;
+    align-items: center;
+}
+
+
+#transportationRegistrationForm .file-name {
+    flex-grow: 1; 
+}
+
+
+#transportationRegistrationForm .file-name:hover {
+    text-decoration: underline; 
+}
+
+
+#transportationRegistrationForm .file-field output {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #777;
+}
+
+.date-label {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
+
