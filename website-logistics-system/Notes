@@ -175,3 +175,26 @@ app.listen(port, () => {
 
 // for table 
 
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255) UNIQUE,
+  email VARCHAR(255) UNIQUE,
+  password VARCHAR(255)
+);
+
+
+CREATE TABLE order_details (
+  order_id INT AUTO_INCREMENT PRIMARY KEY,
+  pickup_location VARCHAR(255) NOT NULL,
+  dropoff_location VARCHAR(255) NOT NULL,
+  pickup_date DATE NOT NULL,
+  dropoff_date DATE NOT NULL,
+  cargo_type VARCHAR(255) NOT NULL,
+  truck_type VARCHAR(255) NOT NULL,
+  number_of_trucks INT NOT NULL,
+  goods_value DECIMAL(10, 2),
+  image_path VARCHAR(255),
+  notes TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
