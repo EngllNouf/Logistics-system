@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f1f1f1;}
+
+
 /* Basic Progress Bar setup*/
 .cardy-name{
   margin:50px
@@ -295,7 +297,7 @@ color: red;
   border-left: 1px solid rgba(0,0,0,0.2);
   pointer-events: none;
 }
-.row {
+.row-order {
     margin-top: 50px;
     display: flex;
     flex-direction: row;
@@ -359,4 +361,7 @@ margin: 20px auto;
 
 .form-element:hover .popover {
   display: block;
+}
+footer{
+  margin-top: 100px;
 }

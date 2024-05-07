@@ -6,41 +6,38 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>
-        <!--CSS-->
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
         <!--For Place Order-->
         <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
         <!--Font Awesome Icons-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
         <!--End Form Place Order-->
-            <!--For Nav Bar-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        
-        <link rel="stylesheet" href="../HomePage/ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
-        <link rel="stylesheet" href="/ForNavBar/allPages.Css"> <!--For simple style (nav)-->
-        <!--End nav bar-->
-        <!--For date-->
+        <!--For Fields -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!--End for date-->
+        <!--For Nav Bar-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../HomePage/ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
+        <link rel="stylesheet" href="../../ForNavBar/allPages.Css"> <!--For simple style (nav)-->
+        <!--End nav bar-->
+        <!--CSS-->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
         <!--JS-->
         <!--Form Place Order-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <!--End from order-->
         <!--For date-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script><!--For cilck and drop down-->
         <!--End for date-->
         <link rel="stylesheet" href="../CSS/placeOrder.css">
 
         <script src="../JS/Map.js"></script>
     </head>
     <body>
-        <nav style="background-color: #FFFFFF;" id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
-            <div class="container">
-                <a class="navbar-brand" href="../../HomePage/ForHtml/HomePage.html"><img src="../../HomePage/images/LogoSample_ByTailorBrands.jpg" height="60" width="90" alt="logo"></a>
+    <!--Nav-->
+        <div style="background-color: white;" class="container-nav">
+            <nav  id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
+                <a class="navbar-brand" href="../../index.html"><img src="../../HomePage/images/OurLogo.jpg" height="55" width="180" alt="logo"></a>
                 <button class="navbar-toggler collapsed" type="button" 
                 data-bs-toggle="collapse" data-bs-target="#miniNav" aria-controls="miniNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -49,37 +46,43 @@
                 <div class="collapse navbar-collapse" id="miniNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="../../HomePage/ForHtml/HomePage.html" style="color: #f89d13;">Home</a>
+                        <a class="nav-link" href="../../Trader/Trader.html" style="color: #f89d13;">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services
-                          </a>
+                        </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../index_file/Login.html">Treder</a></li>
-                               
-                                  <li><a class="dropdown-item" href="../index_file/Register.html">transportation company</a></li>
-                                  <li><a class="dropdown-item" href="../index_file/Login.html">Dirver</a></li>
+                                <li><a class="dropdown-item" href="../../PlaceOrder/HTML/placeOrder.html">Place Order</a></li>
+                            
+                                <li><a class="dropdown-item" href="#">View Orders</a></li>
+                                <!--<li><a class="dropdown-item" href="#"></a></li>-->
                                 </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index_file/aboutUs.html">AboutUs</a>
+                            <a class="nav-link" href="#">AboutUs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index_file/ContactUs.html">ContactUs</a>
+                            <a class="nav-link" href="#">ContactUs</a>
                         </li>
+        
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../../HomePage/images/person.png" height="30" width="30" alt="person icon">
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../../TraderRegistration/HTML/Registration.html">Login</a></li>
-                                <li><a class="dropdown-item" href="../../TraderRegistration/HTML/Registration.html">Register</a></li>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="../../HomePage/images/person.png" width="30" height="30">
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!--
+                                <li><a class="dropdown-item" href="../../index_file/Register.html">Register</a></li>
+                                <li><a class="dropdown-item" href="../../index_file/Login.html">Login</a></li>
+                            -->
                             </ul>
-                        </li>
+                    </li>
+                    
+                        
                     </ul> 
                 </div>
-            </div>
-        </nav>   
+        
+            </nav> 
+        </div>
+          <!--End of anv bar-->  
         <!--Start Progress Bar-->
         <div class="cardy-name">
             <!-- Step Counter Starts -->
@@ -106,7 +109,7 @@
                             <hr style="background: black;"><br/>
                             <!--Pick-Up and Drop-Off-->
                         </div>
-                         <div class="row">
+                         <div class="row-order">
                             <div class="col-sm-5">
                                 <label style="margin-bottom: 10px;" class="form-label">Location</label>
                                 <!--Pick-Up-->
@@ -141,7 +144,7 @@
                             </div>
                         </div>
                         <!--Date Pick-Up and Drop-Off-->
-                        <div class="row">
+                        <div class="row-order">
                             <!--Pick-Up Date-->
                             <div class="col-sm-6">
                                 <label for="datePickUp" class="form-label">Pick-up Date</label>
@@ -547,7 +550,63 @@
                 </form>
             </div>
         </section>
-        <!--End Form-->      
+        <!--End Form--> 
+        
+        <!--Start Footer-->
+        <footer class="site-footer">
+            <div class="container-footer">
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="row">
+                    <div class="col-md-3" id="image">
+                      
+                    </div>
+                    <div class="col-md-3">
+                      <h2 class="footer-heading mb-4">Quick Links</h2>
+                      <ul class="list-unstyled">
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+          
+                        <li><a href="#">Contact Us</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3">
+                      <h2 class="footer-heading mb-4">Features</h2>
+                      <ul class="list-unstyled">
+                      
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3">
+                      <h2 class="footer-heading mb-4">CONTACT US</h2>
+                      <p><img src="../../HomePage/images/phone-call.png" width="20" height="20" style="margin-right: 10px;">0550080027
+                      </p>
+                      <p><img src="../../HomePage/images/email.png" width="20" height="20" style="margin-right: 10px;">gm@naqelltd.com</p>
+                      <p><img src="../../HomePage/images/circle.png" width="20" height="20" style="margin-right: 10px;">Jeddah,Asfan</p>
+                      <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
+                  <form action="#" method="post">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary text-white" type="button" id="button-addon2">Send</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+             
+                
+              </div>
+            </div>
+        </footer>
+        <!--End Footer-->
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>     
 <script>
