@@ -1,6 +1,8 @@
 
 
 body {
+
+    /*
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
@@ -10,7 +12,7 @@ body {
     height: 100vh;
     background: radial-gradient(circle at top left, #e7ece6, #5b9279cf);
     background-size: 400% 400%;
-    animation: animateBackground 10s ease infinite;
+    animation: animateBackground 10s ease infinite;*/
 }
 
 @keyframes animateBackground {
@@ -26,9 +28,36 @@ body {
 }
 
 .welcome-container {
-    margin-top: 60px;
+    color: #ffffff;
+    padding-top: 100px;
+    background: radial-gradient(circle at top left, #e7ece6, #5b9279cf);
+    background-size: 400% 400%;
+    animation: animateBackground 10s ease infinite;
     text-align: center;
+    height: 30cm;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .welcome-container {
+        padding-top: 50px; 
+    }
+
+    .options-container {
+        flex-direction: column; 
+    }
+
+    .option {
+        margin: 20px auto; 
+    }
+
+}
+
+
+
+
+
+
 
 .options-container {
     display: flex;
@@ -66,11 +95,12 @@ button:hover {
 }
 
 .form-container {
-    background-color: #fff;
+    background-color: #f1f1f1;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 100%; /* Adjusted to take full width */
+    max-width: 430px; /* Maximum width for better readability */
     overflow: hidden;
     perspective: 1000px;
     display: flex;
@@ -79,8 +109,25 @@ button:hover {
     position: relative;
     z-index: 1;
     margin-top: 100px;
-    margin-left: 440px;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
 }
+#point1 {
+    padding: 2px;
+    text-align: center;
+    font-size: larger;
+      
+}
+
+#point2 {
+    padding: 2px;
+    text-align: center;
+    font-size: larger;
+      
+
+}
+
+
 
 .form-step {
     width: 100%;
@@ -216,8 +263,8 @@ select {
 }
 
 .point {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-color: #fdcb7f;
     border-radius: 50%;
     position: absolute;
@@ -276,11 +323,12 @@ select {
 /*css for transportatopn company form*/
 
 .form-step.transportation-details {
-    background-color: #fff;
+    background-color: #f1f1f1;
     border-radius: 10px;
-    padding: 20px;
+    padding: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 600px;
+    width: 100%; /* Adjusted to take full width */
+    max-width: 800px; /* Maximum width for better readability */
     overflow: hidden;
     perspective: 1000px;
     display: flex;
@@ -288,9 +336,21 @@ select {
     align-items: center;
     position: relative;
     z-index: 1;
-    margin-top: 100px;
-    margin-left: 440px;
+    margin-top: 60px;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+    
 }
+
+@media only screen and (max-width: 600px) {
+  
+
+ 
+
+  
+
+}
+
 
 
 .form-step.transportation-details {
