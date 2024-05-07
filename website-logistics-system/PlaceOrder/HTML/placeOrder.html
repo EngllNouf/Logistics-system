@@ -100,6 +100,7 @@
         <section class="form-container ">
             <div class="form-box">
                 <form id="myForm" action="#" method="post" autocomplete = "off">
+
                     <!-- Start Tab 1 in brogress bar-->
                     <div class="tab" id ="tab-1">
                         <!--Heading-->
@@ -109,15 +110,18 @@
                             <hr style="background: black;"><br/>
                             <!--Pick-Up and Drop-Off-->
                         </div>
-                         <div class="row-order">
+                        <div class="row">
                             <div class="col-sm-5">
                                 <label style="margin-bottom: 10px;" class="form-label">Location</label>
                                 <!--Pick-Up-->
                                 <div class="col-xs-2">
                                     <label for="pickup" class="control-label"><i class="far fa-dot-circle"></i></label>
+
                                 </div>
                                 <div class="col-xs-4">
-                                    <input type="text" id="pickup" name="pickup" placeholder="Enter the load pickup location" class="form-control" required>
+                                    <input type="text" id="pickup" name="pickup" placeholder="Enter the load pickup location" class="form-control" >
+                                    <div id="pickup-error" class="error-message" style="display: none; color: red;">Please enter the pick-up location.</div>
+                                  
                                 </div>
                                 <!--Drop-Off-->
                                 <div class="col-xs-2">
@@ -125,6 +129,8 @@
                                 </div>
                                 <div class="col-xs-4">
                                     <input type="text" id="dropOff" name="dropOff" placeholder="Enter the load drop-off location" class="form-control">
+                                    <div id="dropOff-error" class="error-message" style="display: none; color: red;">Please select a drop-off place</div>
+                               
                                 </div>
                                 <!--Button or Icon for Map-->
                                 <div class="text-left">
@@ -143,13 +149,18 @@
                                 <div id="output"></div>
                             </div>
                         </div>
+                        
                         <!--Date Pick-Up and Drop-Off-->
-                        <div class="row-order">
+                        <div class="row">
                             <!--Pick-Up Date-->
                             <div class="col-sm-6">
                                 <label for="datePickUp" class="form-label">Pick-up Date</label>
                                 <div class="input-group date" id="datepicker">
                                     <input type="date" class="form-control" id="pickupDate" name="datePickUp" required onchange="handleDropoffDate()">
+                               
+                                    <div id="dateWarning1" class="error-message" style="display: none; color: red;">Please select a pick-up date.</div>   
+                                    
+                                   
                                 </div>
                             </div>
                             <!--Drop-Off Date-->
@@ -158,7 +169,9 @@
                                 <div class="input-group date" id="datepicker">
                                     <input type="date" class="form-control" id="dropoffDate" name="dateDropOff" required onchange="handleDropoffDate()">
                                     <!--Show condition-->
-                                    <span id="dateRestriction" style="color: red;"></span>
+                                    <span id="dateWarning"  class="error-message" style="color: red;"></span>
+                                    
+                                      
                                 </div>
                             </div>
                         </div>
@@ -168,6 +181,7 @@
                             <select style="height: 2.3em; border-radius: 5px;" class="form-select" id="typeCargo" name="typeCargo" required>
                                 <option value="">Select Cargo Type</option>
                             </select>
+                            <div id="cargoError" class="error-message" style="display: none; color: red;">Please select a cargo type.</div>
                         </div>
                         <!--Trucks-->
                         <label style="margin-top: 50px;">Choose truck:</label>
@@ -463,11 +477,12 @@
                             <div style="margin-left: 18px; margin-bottom: 50px;" class="col-md-6">
                                 <label style="margin-bottom: 10px;" for="numberOfTruck" class="form-label">Number of Trucks</label>
                                 <input style="height: 2.3em; border-radius: 5px;" type="text" class="form-control" id="numberOfTruck" name="numberOfTruck" value="01" readonly>
-                            </div>
+                            </div> 
                             <!--Good Value-->
                             <div style="margin-left: 18px; margin-bottom: 50px;" class="col-md-6">
                                 <label style="margin-bottom: 10px;" for="validationCustom06" class="form-label">Goods value</label>
                                 <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom06" name="goodsValue" placeholder="Enter the Goods Value" required>
+                                <div id="goodsValueError" class="error-message" style="display: none; color: red;">Please enter the goods value.</div>
                             </div>  
                             <!--Images and Notes-->   
                             <div class="col-sm-12">
@@ -479,7 +494,7 @@
                                         <label class="upload" for="upload-button">
                                             <i class="fa-solid fa-upload"></i>&nbsp; Choose Or Drop Photos
                                         </label>
-                                        <div id="error"></div>
+                                        <div id="error" class="error-message" style="color: red; display: none;">Please upload an image.</div>
                                         <div id="image-display"></div>
                                     </div>
                                 </div>
@@ -494,7 +509,8 @@
                         </div>
                         <p class="truck-alert" style="display: none; color: red;">Please choose the type of truck</p>
                         <div style="margin-top: 50px;" class="index-btn-wrapper">
-                            <div class="index-btn" onclick="run(1, 2);">Next</div>
+                            <div class="index-btn" type="submit" onclick="validateFieldsAndProceed()">Next</div>
+                            
                             <button class="addShipment-btn index-btn" id="addShipment-btn">+ Add another shipment</button>
                         </div>
                     </div>
@@ -515,7 +531,7 @@
         <div class="index-btn" onclick="run(2, 1);">Previous</div>
         <!-- User information container will be populated here -->
         <button type="button" class="index-btn" onclick="submitForm()" >show</button>
-        <div class="index-btn" onclick="run(2, 3);">Next</div>
+        <div class="index-btn"  onclick="run(2, 3);">Next</div>
 
    <!-- Start Tab 3 in brogress bar-->
   
@@ -540,6 +556,8 @@
     <p id="displayPickupDate"></p>
     <p id="displayDropoffDate"></p>
     <p id="displayTypeCargo"></p>
+    <p id="displaynumberOfTruck"></p>
+  
     <div id="displayImages"></div>
   
 </div>
@@ -550,10 +568,9 @@
                 </form>
             </div>
         </section>
-        <!--End Form--> 
-        
-        <!--Start Footer-->
-        <footer class="site-footer">
+        <!--End Form-->  
+           <!--Start Footer-->
+           <footer class="site-footer">
             <div class="container-footer">
               <div class="row">
                 <div class="col-md-9">
@@ -605,10 +622,113 @@
                 
               </div>
             </div>
-        </footer>
-        <!--End Footer-->
+        </footer>    
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>     
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>   
+<script>
+
+document.getElementById('pickup').addEventListener('change', function() {
+        validatePickupDropOff();
+    });
+
+    document.getElementById('dropOff').addEventListener('change', function() {
+        validatePickupDropOff();
+    });
+
+    function validatePickupDropOff() {
+        var pickup = document.getElementById('pickup').value;
+        var dropOff = document.getElementById('dropOff').value;
+        var dropOffError = document.getElementById('dropOff-error');
+
+        if (pickup === dropOff) {
+            dropOffError.textContent = "Pickup and drop-off locations cannot be the same.";
+            dropOffError.style.display = "block";
+            document.getElementById('nextButton').disabled = true; // Disable the Next button
+        } else {
+            dropOffError.style.display = "none";
+            document.getElementById('nextButton').disabled = false; // Enable the Next button
+        }
+    }
+
+    
+    document.getElementById('pickup').addEventListener('input', function() {
+        validatePickupDropOff();
+    });
+
+    document.getElementById('dropOff').addEventListener('input', function() {
+        validatePickupDropOff();
+    });
+  
+    function validateFieldsAndProceed() {
+    var pickupLocation = document.getElementById("pickup").value.trim();
+    var dropOffLocation = document.getElementById("dropOff").value.trim();
+     var pickupDate = document.getElementById("pickupDate").value;
+    var dropoffDate = document.getElementById("dropoffDate").value;
+    var goodsValue = document.getElementById("validationCustom06").value.trim();
+    var selectedCargo = document.getElementById("typeCargo").value;
+    var image = document.getElementById("upload-button").files.length;
+    
+    var isValid = true;
+    
+
+  
+
+    if (pickupLocation === "") {
+        document.getElementById("pickup-error").style.display = "block";
+        isValid = false;
+    } else {
+        document.getElementById("pickup-error").style.display = "none";
+    }
+
+    if (dropOffLocation === "") {
+        document.getElementById("dropOff-error").style.display = "block";
+        isValid = false;
+    } else {
+        document.getElementById("dropOff-error").style.display = "none";
+    }
+
+    if (pickupDate === "") {
+        document.getElementById("dateWarning1").innerText = "Please select a pick-up place.";
+        document.getElementById("dateWarning1").style.display = "block";
+        isValid = false;
+    } else {
+        document.getElementById("dateWarning1").style.display = "none";
+    }
+    if (dropoffDate === "") {
+        document.getElementById("dateWarning").innerText = "Please select a drop-off date.";
+        isValid = false;
+    } else {
+        document.getElementById("dateWarning").innerText = "";
+    }
+
+    if (selectedCargo === "") {
+        document.getElementById("cargoError").style.display = "block";
+        isValid = false;
+    } else {
+        document.getElementById("cargoError").style.display = "none";
+    }
+    if (goodsValue === "") {
+    document.getElementById("goodsValueError").innerText = "Please enter the goods value.";
+    document.getElementById("goodsValueError").style.display = "block"; // Display the error message
+    isValid = false;
+} else {
+    document.getElementById("goodsValueError").innerText = "";
+    document.getElementById("goodsValueError").style.display = "none"; // Hide the error message
+}
+if (image === 0) {
+        document.getElementById("error").style.display = "block";
+        isValid = false;
+    } else {
+        document.getElementById("error").style.display = "none";
+    }
+
+
+    if (isValid) {
+        run(1, 2); // Proceed to the next step
+    }
+}
+
+    </script>  
 <script>
    function submitForm() {
         var pickupLocation = document.getElementById('pickup').value;
@@ -616,13 +736,17 @@
         var pickupDate = document.getElementById('pickupDate').value;
         var dropoffDate = document.getElementById('dropoffDate').value;
         var typeCargo = document.getElementById('typeCargo').value;
-
+   
+        var numberOfTruck = document.getElementById('numberOfTruck').value;
+       
         // Display submitted information
         document.getElementById('displayPickupLocation').textContent = "Pick-up Location: " + pickupLocation;
         document.getElementById('displayDropoffLocation').textContent = "Drop-off Location: " + dropoffLocation;
         document.getElementById('displayPickupDate').textContent = "Pick-up Date: " + pickupDate;
         document.getElementById('displayDropoffDate').textContent = "Drop-off Date: " + dropoffDate;
         document.getElementById('displayTypeCargo').textContent = "Type of Cargo: " + typeCargo;
+        document.getElementById('displaynumberOfTruck').textContent = "number Of Truck: " + numberOfTruck;
+
 
         var files = document.getElementById('upload-button').files;
         var displayImages = document.getElementById('displayImages');
@@ -639,7 +763,6 @@
         
     }
 </script>
-
         
 <script>
     let map, markers = [], polyline;
