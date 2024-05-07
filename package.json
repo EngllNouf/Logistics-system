@@ -1,0 +1,17 @@
+{
+  "name": "logistics-system",
+  "version": "1.0.0",
+  "description": "![WhatsApp Image 2024-04-23 at 20 19 06_a7254cb5](https://github.com/EngllNouf/Logistics-system/assets/124361377/bf4babc5-652d-4243-9a41-d682db8fde61)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-validator": "^7.0.1",
+    "mysql2": "^3.9.7"
+  }
+}

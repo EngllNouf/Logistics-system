@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configure Truck</title>
+    
+    <link rel="stylesheet" href="ConfigureTruck.css">
+    
+    <!--For Nav Bar-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script><!--For cilck and drop down-->
+    <link rel="stylesheet" href="../HomePage/ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
+    <link rel="stylesheet" href="../ForNavBar/allPages.Css"> <!--For simple style (nav)-->
+    <!--End nav bar-->
+
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv" crossorigin="anonymous">
+</head>
+
+    <body>
+               <!--Nav-->
+    <nav id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
+     
+        <a class="navbar-brand" href="../FotHtml/HomePage.html"><img src="../HomePage/images/OurLogo.jpg" height="55" width="180" alt="logo"></a>
+        <button class="navbar-toggler collapsed" type="button" 
+        data-bs-toggle="collapse" data-bs-target="#miniNav" aria-controls="miniNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="miniNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="../FotHtml/HomePage.html" style="color: #f89d13;">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services
+                  </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/Trader/Trader.html">Trader</a></li>
+                       
+                          <li><a class="dropdown-item" href="/trasportation compeny/transport.html">Transportation company</a></li>
+                          <li><a class="dropdown-item" href="#">Driver</a></li>
+                        </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">AboutUs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ContactUs</a>
+                </li>
+  
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="../HomePage/images/person.png" width="30" height="30">
+                </a>
+                  <ul class="dropdown-menu">
+                     
+                        <li><a class="dropdown-item" href="../index_file/Register.html">Register</a></li>
+                        <li><a class="dropdown-item" href="../index_file/Login.html">Login</a></li>
+                      </ul>
+              </li>
+             
+                   
+            </ul> 
+        </div>
+  
+  </nav> 
+  
+        
+
+        <div class="titleFrame">
+            <h4> Configure Truck </h4>
+        </div>
+
+        <div class="formBody" id="formBody">
+
+            <span class="formClose" id="formClose" onclick="deleteForm(event)">&times;</span>
+            
+            <h5>Owner details</h5>
+
+            <form method="post" action="xyz" id="Owner-details-form">
+
+                <div>
+                    <label for="Owner">Owner <span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="Owner" name="Owner" required>
+                    <span class="error" id="Owner-error" style="color: red;"></span>
+
+                </div>
+
+                <div>
+                    <label for="OwnerID">Owner ID <span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="OwnerID" name="OwnerID" required>
+                    <span class="error" id="OwnerID-error" style="color: red;"></span>
+                </div>
+
+                <div class="mb-3"> <!--نحتاج نتحقق من الفايل كمان-->
+                    <label for="formOwnerIDFile" class="form-label">Upload owner ID <span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input class="form-control" type="file" id="formOwnerIDFile" required>
+                </div>
+
+                <div>
+                    <label for="Owner">User</label>
+                    <input type="text" id="user" name="user">
+                </div>
+
+                <div>
+                    <label for="OwnerID">User ID</label>
+                    <input type="text" id="userID" name="userID">
+                </div>
+
+                <div class="mb-3">
+                    <label for="formUserIDFile" class="form-label">Upload user ID</span></label>
+                    <input class="form-control" type="file" id="formUserIDFile">
+                </div>
+
+            </form>
+
+            <hr>
+
+            <h5>Vehicle Details</h5>
+
+            <form method="post" action="xyz" id="vehicle-details-form">
+
+                <div>
+                    <label for="LicensePlate">License plate no. <span style="color: red;">*</span></label>
+                    <input type="text" id="LicensePlate" name="LicensePlate" required>
+                    <span class="error" id="LicensePlate-error" style="color: red;"></span>
+
+                </div>
+
+                <div>
+                    <label for="VehicleChassis">Vehicle chassis number <span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type= "text" id="VehicleChassis" name="VehicleChassis" required>
+                    <span class="error" id="VehicleChassis-error" style="color: red;"></span>
+                </div>
+
+                <div>
+                    <label for="RegistrationType">Registration type <span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="RegistrationType" name="RegistrationType" required>
+                    <span class="error" id="RegistrationType-error" style="color: red;"></span>
+
+                </div>
+
+                
+                <div>
+                    <label for="VehicleBrand">Vehicle brand <span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="VehicleBrand" name="VehicleBrand" required>
+                    <span class="error" id="VehicleBrand-error" style="color: red;"></span>
+
+                </div>
+
+                <div>
+                    <label for="VehicleModel">Vehicle model <span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="VehicleModel" name="VehicleModel" required>
+                    <span class="error" id="VehicleModel-error" style="color: red;"></span>
+
+                </div>
+
+                <div>
+                    <label for="Colour">Colour <span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="Colour" name="Colour" required>
+
+                </div>
+
+                <div>
+                    <label for="ManufactureYear">Manufacture year <span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="ManufactureYear" name="ManufactureYear" required>
+                    <span class="error" id="ManufactureYear-error" style="color: red;"></span>
+
+                </div>
+
+                <div>
+                    <label for="Serial_number">Serial number<span style="color: red;">* </span><span class="smallText"></span></label>
+                    <input type="text" id="Serial_number" name="Serial_number" required>
+                    <span class="error" id="Serial_number-error" style="color: red;"></span>
+
+                </div>
+
+                <div></div> <!--Empty div to fill in a grid column (For form organisation)-->
+
+                <div>
+                    <label for="insurance_start">Insurance Start Date<span style="color: red;">*</span></label>
+                    <input type="date" id="insurance_start" name="insurance_start" required>
+                    <br>
+                    <br>
+                    <label for="insurance_end">Insurance End Date<span style="color: red;">*</span></label>
+                    <input type="date" id="insurance_end" name="insurance_end" required>
+                </div>
+                
+                <div>
+                    <label for="inspection_start">Inspection Start Date<span style="color: red;">*</span></label>
+                    <input type="date" id="inspection_start" name="inspection_start" required>
+                    <span class="error" id="insurance_start-error" style="color: red;"></span>
+
+                    <br>
+                    <br>
+                    <label for="inspection_end">Inspection End Date<span style="color: red;">*</span></label>
+                    <input type="date" id="inspection_end" name="inspection_end" required>
+                    <span class="error" id="insurance_end-error" style="color: red;"></span>
+
+                </div>
+
+                <div>
+                    <div class="mb-3">
+                        <label for="formVehicleRegistrationFile" class="file-label">Upload vehicle registration <span style="color: red;">* </span></label>
+                        <input class="form-control" type="file" id="formVehicleRegistrationFile" required>
+                    </div>
+                    <br>
+                    <div class="mb-3">
+                        <label for="formVehiclePhotoFile" class="file-label">Upload vehicle photo <span style="color: red;">* </span></label>
+                        <input class="form-control" type="file" id="formVehiclePhotoFile" required>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+
+        <Section id="AddForm"></Section> <!-- Where any additional truck forms will be added -->
+
+        <div class="Check_box">
+            <input type="checkbox" id="Check" name="Check" value="agree">
+            <label for="Check" id="CheckLabel">I acknowledge that I am solely responsible for the accuracy and validity of the information provided, and I understand that any misinformation may result in consequences. <span style="color: red;">*</span></label>
+        </div>
+
+        <div class="Buttons">
+            <button class="addTruck-btn" id="addTruck-btn">Add another truck</button>
+            <button class="confirm-butn" id="confirm-btn" disabled="true">Confirm</button>
+        </div>
+
+
+        <!-- The first Modal -->
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <img src="anonymization.png" alt="Question-img" />
+            <p>Are you sure you would like to confirm and save?</p>
+            <button class="acceptConfirm" id="acceptConfirm">Confirm</button>
+            <button class="cancel" id="cancel">Cancel</button>
+            </div>
+        
+        </div>
+
+        <!-- The second Modal -->
+        <div id="mySuccessModal" class="successmodal">
+
+            <div class="successModal-content">
+            <span class="secondClose">&times;</span>
+            <img src="cargo.png" alt="Question-img" />
+            <p>Vehicles successfully saved</p>
+            </div>
+        
+        </div>
+  
+        <!--JS-->
+        <script src="ConfigTruckButtons.js"></script>
+        <script src="Modals.js"></script>
+        
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+ 
+    </body>
+
+</html>
