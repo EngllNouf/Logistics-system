@@ -6,41 +6,38 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>
-        <!--CSS-->
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
         <!--For Place Order-->
         <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
         <!--Font Awesome Icons-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
         <!--End Form Place Order-->
-            <!--For Nav Bar-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        
-        <link rel="stylesheet" href="../HomePage/ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
-        <link rel="stylesheet" href="/ForNavBar/allPages.Css"> <!--For simple style (nav)-->
-        <!--End nav bar-->
-        <!--For date-->
+        <!--For Fields -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!--End for date-->
+        <!--For Nav Bar-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../HomePage/ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
+        <link rel="stylesheet" href="../../ForNavBar/allPages.Css"> <!--For simple style (nav)-->
+        <!--End nav bar-->
+        <!--CSS-->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
         <!--JS-->
         <!--Form Place Order-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <!--End from order-->
         <!--For date-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script><!--For cilck and drop down-->
         <!--End for date-->
         <link rel="stylesheet" href="../CSS/placeOrder.css">
 
         <script src="../JS/Map.js"></script>
     </head>
     <body>
-        <nav style="background-color: #FFFFFF;" id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
-            <div class="container">
-                <a class="navbar-brand" href="../../HomePage/ForHtml/HomePage.html"><img src="../../HomePage/images/LogoSample_ByTailorBrands.jpg" height="60" width="90" alt="logo"></a>
+    <!--Nav-->
+        <div style="background-color: white;" class="container-nav">
+            <nav  id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
+                <a class="navbar-brand" href="../../index.html"><img src="../../HomePage/images/OurLogo.jpg" height="55" width="180" alt="logo"></a>
                 <button class="navbar-toggler collapsed" type="button" 
                 data-bs-toggle="collapse" data-bs-target="#miniNav" aria-controls="miniNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -49,37 +46,43 @@
                 <div class="collapse navbar-collapse" id="miniNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                          <a class="nav-link" href="../../HomePage/ForHtml/HomePage.html" style="color: #f89d13;">Home</a>
+                        <a class="nav-link" href="../../Trader/Trader.html" style="color: #f89d13;">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services
-                          </a>
+                        </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../index_file/Login.html">Treder</a></li>
-                               
-                                  <li><a class="dropdown-item" href="../index_file/Register.html">transportation company</a></li>
-                                  <li><a class="dropdown-item" href="../index_file/Login.html">Dirver</a></li>
+                                <li><a class="dropdown-item" href="../../PlaceOrder/HTML/placeOrder.html">Place Order</a></li>
+                            
+                                <li><a class="dropdown-item" href="#">View Orders</a></li>
+                                <!--<li><a class="dropdown-item" href="#"></a></li>-->
                                 </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index_file/aboutUs.html">AboutUs</a>
+                            <a class="nav-link" href="#">AboutUs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index_file/ContactUs.html">ContactUs</a>
+                            <a class="nav-link" href="#">ContactUs</a>
                         </li>
+        
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../../HomePage/images/person.png" height="30" width="30" alt="person icon">
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../../TraderRegistration/HTML/Registration.html">Login</a></li>
-                                <li><a class="dropdown-item" href="../../TraderRegistration/HTML/Registration.html">Register</a></li>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="../../HomePage/images/person.png" width="30" height="30">
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!--
+                                <li><a class="dropdown-item" href="../../index_file/Register.html">Register</a></li>
+                                <li><a class="dropdown-item" href="../../index_file/Login.html">Login</a></li>
+                            -->
                             </ul>
-                        </li>
+                    </li>
+                    
+                        
                     </ul> 
                 </div>
-            </div>
-        </nav>   
+        
+            </nav> 
+        </div>
+          <!--End of anv bar-->  
         <!--Start Progress Bar-->
         <div class="cardy-name">
             <!-- Step Counter Starts -->
@@ -97,6 +100,7 @@
         <section class="form-container ">
             <div class="form-box">
                 <form id="myForm" action="#" method="post" autocomplete = "off">
+
                     <!-- Start Tab 1 in brogress bar-->
                     <div class="tab" id ="tab-1">
                         <!--Heading-->
@@ -106,15 +110,18 @@
                             <hr style="background: black;"><br/>
                             <!--Pick-Up and Drop-Off-->
                         </div>
-                         <div class="row">
+                        <div class="row">
                             <div class="col-sm-5">
                                 <label style="margin-bottom: 10px;" class="form-label">Location</label>
                                 <!--Pick-Up-->
                                 <div class="col-xs-2">
                                     <label for="pickup" class="control-label"><i class="far fa-dot-circle"></i></label>
+
                                 </div>
                                 <div class="col-xs-4">
-                                    <input type="text" id="pickup" name="pickup" placeholder="Enter the load pickup location" class="form-control" required>
+                                    <input type="text" id="pickup" name="pickup" placeholder="Enter the load pickup location" class="form-control" >
+                                    <div id="pickup-error" class="error-message" style="display: none; color: red;">Please enter the pick-up location.</div>
+                                  
                                 </div>
                                 <!--Drop-Off-->
                                 <div class="col-xs-2">
@@ -122,6 +129,8 @@
                                 </div>
                                 <div class="col-xs-4">
                                     <input type="text" id="dropOff" name="dropOff" placeholder="Enter the load drop-off location" class="form-control">
+                                    <div id="dropOff-error" class="error-message" style="display: none; color: red;">Please select a drop-off place</div>
+                               
                                 </div>
                                 <!--Button or Icon for Map-->
                                 <div class="text-left">
@@ -140,6 +149,7 @@
                                 <div id="output"></div>
                             </div>
                         </div>
+                        
                         <!--Date Pick-Up and Drop-Off-->
                         <div class="row">
                             <!--Pick-Up Date-->
@@ -147,6 +157,10 @@
                                 <label for="datePickUp" class="form-label">Pick-up Date</label>
                                 <div class="input-group date" id="datepicker">
                                     <input type="date" class="form-control" id="pickupDate" name="datePickUp" required onchange="handleDropoffDate()">
+                               
+                                    <div id="dateWarning1" class="error-message" style="display: none; color: red;">Please select a pick-up date.</div>   
+                                    
+                                   
                                 </div>
                             </div>
                             <!--Drop-Off Date-->
@@ -155,7 +169,9 @@
                                 <div class="input-group date" id="datepicker">
                                     <input type="date" class="form-control" id="dropoffDate" name="dateDropOff" required onchange="handleDropoffDate()">
                                     <!--Show condition-->
-                                    <span id="dateRestriction" style="color: red;"></span>
+                                    <span id="dateWarning"  class="error-message" style="color: red;"></span>
+                                    
+                                      
                                 </div>
                             </div>
                         </div>
@@ -165,6 +181,7 @@
                             <select style="height: 2.3em; border-radius: 5px;" class="form-select" id="typeCargo" name="typeCargo" required>
                                 <option value="">Select Cargo Type</option>
                             </select>
+                            <div id="cargoError" class="error-message" style="display: none; color: red;">Please select a cargo type.</div>
                         </div>
                         <!--Trucks-->
                         <label style="margin-top: 50px;">Choose truck:</label>
@@ -460,11 +477,12 @@
                             <div style="margin-left: 18px; margin-bottom: 50px;" class="col-md-6">
                                 <label style="margin-bottom: 10px;" for="numberOfTruck" class="form-label">Number of Trucks</label>
                                 <input style="height: 2.3em; border-radius: 5px;" type="text" class="form-control" id="numberOfTruck" name="numberOfTruck" value="01" readonly>
-                            </div>
+                            </div> 
                             <!--Good Value-->
                             <div style="margin-left: 18px; margin-bottom: 50px;" class="col-md-6">
                                 <label style="margin-bottom: 10px;" for="validationCustom06" class="form-label">Goods value</label>
                                 <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="validationCustom06" name="goodsValue" placeholder="Enter the Goods Value" required>
+                                <div id="goodsValueError" class="error-message" style="display: none; color: red;">Please enter the goods value.</div>
                             </div>  
                             <!--Images and Notes-->   
                             <div class="col-sm-12">
@@ -476,7 +494,7 @@
                                         <label class="upload" for="upload-button">
                                             <i class="fa-solid fa-upload"></i>&nbsp; Choose Or Drop Photos
                                         </label>
-                                        <div id="error"></div>
+                                        <div id="error" class="error-message" style="color: red; display: none;">Please upload an image.</div>
                                         <div id="image-display"></div>
                                     </div>
                                 </div>
@@ -491,7 +509,8 @@
                         </div>
                         <p class="truck-alert" style="display: none; color: red;">Please choose the type of truck</p>
                         <div style="margin-top: 50px;" class="index-btn-wrapper">
-                            <div class="index-btn" onclick="run(1, 2);">Next</div>
+                            <div class="index-btn" type="submit" onclick="validateFieldsAndProceed()">Next</div>
+                            
                             <button class="addShipment-btn index-btn" id="addShipment-btn">+ Add another shipment</button>
                         </div>
                     </div>
@@ -512,7 +531,7 @@
         <div class="index-btn" onclick="run(2, 1);">Previous</div>
         <!-- User information container will be populated here -->
         <button type="button" class="index-btn" onclick="submitForm()" >show</button>
-        <div class="index-btn" onclick="run(2, 3);">Next</div>
+        <div class="index-btn"  onclick="run(2, 3);">Next</div>
 
    <!-- Start Tab 3 in brogress bar-->
   
@@ -537,6 +556,8 @@
     <p id="displayPickupDate"></p>
     <p id="displayDropoffDate"></p>
     <p id="displayTypeCargo"></p>
+    <p id="displaynumberOfTruck"></p>
+  
     <div id="displayImages"></div>
   
 </div>
@@ -547,9 +568,167 @@
                 </form>
             </div>
         </section>
-        <!--End Form-->      
+        <!--End Form-->  
+           <!--Start Footer-->
+           <footer class="site-footer">
+            <div class="container-footer">
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="row">
+                    <div class="col-md-3" id="image">
+                      
+                    </div>
+                    <div class="col-md-3">
+                      <h2 class="footer-heading mb-4">Quick Links</h2>
+                      <ul class="list-unstyled">
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+          
+                        <li><a href="#">Contact Us</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3">
+                      <h2 class="footer-heading mb-4">Features</h2>
+                      <ul class="list-unstyled">
+                      
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3">
+                      <h2 class="footer-heading mb-4">CONTACT US</h2>
+                      <p><img src="../../HomePage/images/phone-call.png" width="20" height="20" style="margin-right: 10px;">0550080027
+                      </p>
+                      <p><img src="../../HomePage/images/email.png" width="20" height="20" style="margin-right: 10px;">gm@naqelltd.com</p>
+                      <p><img src="../../HomePage/images/circle.png" width="20" height="20" style="margin-right: 10px;">Jeddah,Asfan</p>
+                      <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
+                  <form action="#" method="post">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary text-white" type="button" id="button-addon2">Send</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+             
+                
+              </div>
+            </div>
+        </footer>    
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>     
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>   
+<script>
+
+document.getElementById('pickup').addEventListener('change', function() {
+        validatePickupDropOff();
+    });
+
+    document.getElementById('dropOff').addEventListener('change', function() {
+        validatePickupDropOff();
+    });
+
+    function validatePickupDropOff() {
+        var pickup = document.getElementById('pickup').value;
+        var dropOff = document.getElementById('dropOff').value;
+        var dropOffError = document.getElementById('dropOff-error');
+
+        if (pickup === dropOff) {
+            dropOffError.textContent = "Pickup and drop-off locations cannot be the same.";
+            dropOffError.style.display = "block";
+            document.getElementById('nextButton').disabled = true; // Disable the Next button
+        } else {
+            dropOffError.style.display = "none";
+            document.getElementById('nextButton').disabled = false; // Enable the Next button
+        }
+    }
+
+    
+    document.getElementById('pickup').addEventListener('input', function() {
+        validatePickupDropOff();
+    });
+
+    document.getElementById('dropOff').addEventListener('input', function() {
+        validatePickupDropOff();
+    });
+  
+    function validateFieldsAndProceed() {
+    var pickupLocation = document.getElementById("pickup").value.trim();
+    var dropOffLocation = document.getElementById("dropOff").value.trim();
+     var pickupDate = document.getElementById("pickupDate").value;
+    var dropoffDate = document.getElementById("dropoffDate").value;
+    var goodsValue = document.getElementById("validationCustom06").value.trim();
+    var selectedCargo = document.getElementById("typeCargo").value;
+    var image = document.getElementById("upload-button").files.length;
+    
+    var isValid = true;
+    
+
+  
+
+    if (pickupLocation === "") {
+        document.getElementById("pickup-error").style.display = "block";
+        isValid = false;
+    } else {
+        document.getElementById("pickup-error").style.display = "none";
+    }
+
+    if (dropOffLocation === "") {
+        document.getElementById("dropOff-error").style.display = "block";
+        isValid = false;
+    } else {
+        document.getElementById("dropOff-error").style.display = "none";
+    }
+
+    if (pickupDate === "") {
+        document.getElementById("dateWarning1").innerText = "Please select a pick-up place.";
+        document.getElementById("dateWarning1").style.display = "block";
+        isValid = false;
+    } else {
+        document.getElementById("dateWarning1").style.display = "none";
+    }
+    if (dropoffDate === "") {
+        document.getElementById("dateWarning").innerText = "Please select a drop-off date.";
+        isValid = false;
+    } else {
+        document.getElementById("dateWarning").innerText = "";
+    }
+
+    if (selectedCargo === "") {
+        document.getElementById("cargoError").style.display = "block";
+        isValid = false;
+    } else {
+        document.getElementById("cargoError").style.display = "none";
+    }
+    if (goodsValue === "") {
+    document.getElementById("goodsValueError").innerText = "Please enter the goods value.";
+    document.getElementById("goodsValueError").style.display = "block"; // Display the error message
+    isValid = false;
+} else {
+    document.getElementById("goodsValueError").innerText = "";
+    document.getElementById("goodsValueError").style.display = "none"; // Hide the error message
+}
+if (image === 0) {
+        document.getElementById("error").style.display = "block";
+        isValid = false;
+    } else {
+        document.getElementById("error").style.display = "none";
+    }
+
+
+    if (isValid) {
+        run(1, 2); // Proceed to the next step
+    }
+}
+
+    </script>  
 <script>
    function submitForm() {
         var pickupLocation = document.getElementById('pickup').value;
@@ -557,13 +736,17 @@
         var pickupDate = document.getElementById('pickupDate').value;
         var dropoffDate = document.getElementById('dropoffDate').value;
         var typeCargo = document.getElementById('typeCargo').value;
-
+   
+        var numberOfTruck = document.getElementById('numberOfTruck').value;
+       
         // Display submitted information
         document.getElementById('displayPickupLocation').textContent = "Pick-up Location: " + pickupLocation;
         document.getElementById('displayDropoffLocation').textContent = "Drop-off Location: " + dropoffLocation;
         document.getElementById('displayPickupDate').textContent = "Pick-up Date: " + pickupDate;
         document.getElementById('displayDropoffDate').textContent = "Drop-off Date: " + dropoffDate;
         document.getElementById('displayTypeCargo').textContent = "Type of Cargo: " + typeCargo;
+        document.getElementById('displaynumberOfTruck').textContent = "number Of Truck: " + numberOfTruck;
+
 
         var files = document.getElementById('upload-button').files;
         var displayImages = document.getElementById('displayImages');
@@ -580,7 +763,6 @@
         
     }
 </script>
-
         
 <script>
     let map, markers = [], polyline;
