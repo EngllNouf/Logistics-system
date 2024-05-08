@@ -119,45 +119,25 @@ function backStep() {
     currentStep = 1;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Your code here
-    document.getElementById('TraderRegistrationForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission behavior
-        submitForm(); 
-    });
-});
-
-
 
 function submitForm() {
-
-   
-   
-     //get first form fields
-     let companyName = document.getElementById('companyName').value;
-     let companyEmail = document.getElementById('companyEmail').value;
-     let companyAddress = document.getElementById('companyAddress').value;
-     let citySelect = document.getElementById('citySelect').value;
-     let companyZip = document.getElementById('companyZip').value;
-     let companyVat = document.getElementById('companyVat').value;
-     let companyLicense = document.getElementById('companyLicense').value;
-    // Get second form fields
-    let traderName = document.getElementById('traderName').value;
-    let traderPhoneNumber = document.getElementById('traderPhoneNumber').value;
-    let traderAddress = document.getElementById('traderAddress').value;
-    let industrySelect = document.getElementById('industrySelect').value;
-    let idNumber = document.getElementById('idNumber').value;
+    event.preventDefault();
+    // Get form fields
+    const traderName = document.getElementById('traderName').value;
+    const traderPhoneNumber = document.getElementById('traderPhoneNumber').value;
+    const traderAddress = document.getElementById('traderAddress').value;
+    const industrySelect = document.getElementById('industrySelect');
+    const idNumber = document.getElementById('idNumber').value;
     const fileInput = document.getElementById('fileInput2');
     const fileList = document.getElementById('fileList2');
-   
+    const fileError = document.getElementById('fileError2');
 
     // Error message containers
-    let nameError = document.getElementById('nameError');
-    let phoneNumberError = document.getElementById('phoneNumberError');
-    let addressError = document.getElementById('addressError');
-    let industryError = document.getElementById('industryError');
-    let idNumberError = document.getElementById('idNumberError');
-    const fileError = document.getElementById('fileError2');
+    const nameError = document.getElementById('nameError');
+    const phoneNumberError = document.getElementById('phoneNumberError');
+    const addressError = document.getElementById('addressError');
+    const industryError = document.getElementById('industryError');
+    const idNumberError = document.getElementById('idNumberError');
 
     let isValid = true;
 
@@ -267,63 +247,14 @@ function submitForm() {
     }
 
     */
-
-    // If any validation fails, prevent form submission
-    if (!isValid) {
-        return false;
-    }
-
-    
-    // Send the data using fetch
-    fetch("/process", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            companyName,
-            companyEmail,
-            companyAddress,
-            citySelect,
-            companyZip,
-            companyVat,
-            companyLicense,
-            traderName,
-            traderPhoneNumber,
-            traderAddress,
-            industrySelect,
-            idNumber
-        })
-    })
-    .then(function(response) {
-        if (response.ok) {
-            alert("Data inserted successfully!");
-            // Reset the form fields if needed
-           // document.getElementById('TraderRegistrationForm').reset();
-        } else {
-            alert("Failed to insert data!");
-        }
-    })
-    .then(function(result) {
-        // Handle the result data
-        if (result.status) {
-            // Handle success
-            document.getElementById("msg").innerHTML="<span style = 'color:red'> the fors is submitted.</span>";
-        } else {
-            // Handle failure
-            throw new Error(result.err);
-        }
-    })
-    .catch(function(error) {
-        
-        document.getElementById("msg").innerHTML="<span style = 'color:red'>"+ error+"</span>"
-    });
+   
 }
 
 
-/*$(document).ready(function() {
+
+$(document).ready(function() {
     $('.select2').select2();
-}); */
+});
 
 function validateStep1() {
     const companyName = document.getElementById('companyName').value;
