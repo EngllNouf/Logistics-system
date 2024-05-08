@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
-* {
-     
-}
+
 
 body,
 input {
@@ -17,7 +15,6 @@ input {
   overflow: hidden;
   
 }
-
 
 
 .signin-signup {
@@ -65,7 +62,7 @@ form.sign-in-form {
   background-color: #f0f0f0;
   margin: 20px 0;
   height: 55px;
-  border-radius: 55px;
+  border-radius: 0px;
   display: grid;
   grid-template-columns: 15% 85%;
   padding: 0 0.4rem;
@@ -107,10 +104,11 @@ form.sign-in-form {
 
 /* Error message styling */
 .input-field .error-message {
+
   position: absolute;
-  bottom: -34px;
+  bottom: -30px;
   color: red;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
 }
 
 .input-field input::placeholder {
@@ -185,8 +183,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: url('../HomePage/images/Load.gif');
-  border-radius: 90%;
+  background-image: url('Loadt.gif');
  
   z-index: 6;
 }
@@ -260,7 +257,9 @@ form.sign-in-form {
 
 
 @media (max-width: 870px) {
-    
+  .container:before {
+    display: none; /* إخفاء الصورة عندما يكون عرض الشاشة أقل من 570 بكسل */
+  }
   
   .container {
     min-height: 800px;
@@ -369,8 +368,8 @@ form.sign-in-form {
     padding: 0 1.5rem;
   }
 
-  img {
-    display: none;
+  .container:before {
+    display: none; /* إخفاء الصورة عندما يكون عرض الشاشة أقل من 570 بكسل */
   }
   .panel .content {
     padding: 0.5rem 1rem;
