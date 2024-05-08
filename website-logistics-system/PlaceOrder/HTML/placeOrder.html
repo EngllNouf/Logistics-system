@@ -110,7 +110,7 @@
                             <hr style="background: black;"><br/>
                             <!--Pick-Up and Drop-Off-->
                         </div>
-                        <div class="row">
+                        <div class="row-order">
                             <div class="col-sm-5">
                                 <label style="margin-bottom: 10px;" class="form-label">Location</label>
                                 <!--Pick-Up-->
@@ -151,7 +151,7 @@
                         </div>
                         
                         <!--Date Pick-Up and Drop-Off-->
-                        <div class="row">
+                        <div class="row-order">
                             <!--Pick-Up Date-->
                             <div class="col-sm-6">
                                 <label for="datePickUp" class="form-label">Pick-up Date</label>
@@ -509,7 +509,7 @@
                         </div>
                         <p class="truck-alert" style="display: none; color: red;">Please choose the type of truck</p>
                         <div style="margin-top: 50px;" class="index-btn-wrapper">
-                            <div class="index-btn" type="submit" onclick="validateFieldsAndProceed()">Next</div>
+                            <div class="index-btn" type="submit" onclick="validateFieldsAndProceed(),submitForm();">Next</div>
                             
                             <button class="addShipment-btn index-btn" id="addShipment-btn">+ Add another shipment</button>
                         </div>
@@ -517,54 +517,39 @@
                     <!-- End Tab 1 in brogress bar-->
                     <!-- Start Tab 2 Page View order-->
                   <!-- User information container -->
-
-
-<!-- Tab 2: View Order -->
-<!-- Tab 2: View Order -->
-<!-- Tab 2: View Order -->
-<div class="tab" id="tab-2">
-    <div class="top">
-        <label class="heading">View Order</label><br/>
-        <hr style="background: black;"><br/>
-    </div>
-    <div style="margin-top: 50px;" class="index-btn-wrapper">
-        <div class="index-btn" onclick="run(2, 1);">Previous</div>
-        <!-- User information container will be populated here -->
-        <button type="button" class="index-btn" onclick="submitForm()" >show</button>
-        <div class="index-btn"  onclick="run(2, 3);">Next</div>
-
-   <!-- Start Tab 3 in brogress bar-->
-  
-<!-- End Tab 3 in brogress bar-->
-    </div>
-    
-    <!-- View Order Page (Initially hidden) -->
-
-    
-</div>
-<div style="margin-top: 50px;" class="tab" id = "tab-3">
-    <div><p id="msg"></p></div>
-    <div class="index-btn-wrapper">
-        <div class="index-btn" onclick="run(3, 2);">Previous</div>
-        <button class = "index-btn" type="submit" name="submit" style = "background: #f89d13;">Submit</button>
-    </div> 
-</div>  
-<div id="displayInfo" style="display: none;" class="centered-content">
-    <h2>Order Details Information</h2>
-    <p id="displayPickupLocation"></p>
-    <p id="displayDropoffLocation"></p>
-    <p id="displayPickupDate"></p>
-    <p id="displayDropoffDate"></p>
-    <p id="displayTypeCargo"></p>
-    <p id="displaynumberOfTruck"></p>
-  
-    <div id="displayImages"></div>
-  
-</div>
-
-
-              
-                 
+                    <div class="tab" id="tab-2">
+                        <div class="top">
+                            <!-- Order Details Information -->
+                            <label class="heading">Order Details Information</label><br/>
+                            <hr style="background: black;"><br/>
+                        </div>
+                        <div id="displayInfo" style="display: none;" class="centered-content">
+                            <p id="displayPickupLocation"></p>
+                            <p id="displayDropoffLocation"></p>
+                            <p id="displayPickupDate"></p>
+                            <p id="displayDropoffDate"></p>
+                            <p id="displayTypeCargo"></p>
+                            <p id="truck"></p>
+                            <p id="displaynumberOfTruck"></p>
+                        
+                            <div id="displayImages"></div>
+                        
+                        </div>
+                        <div style="margin-top: 50px;" class="index-btn-wrapper">
+                            <div class="index-btn" onclick="run(2, 1);">Previous</div>
+                            <!-- User information container will be populated here -->
+                            <div class="index-btn"  onclick="run(2, 3);">Next</div>
+                        </div>
+                    </div>
+                     <!-- Start Tab 3 in brogress bar-->
+                    <div style="margin-top: 50px;" class="tab" id = "tab-3">
+                        <div><p id="msg"></p></div>
+                        <div class="index-btn-wrapper">
+                            <div class="index-btn" onclick="run(3, 2);">Previous</div>
+                            <button class = "index-btn" type="submit" name="submit" style = "background: #f89d13;">Submit</button>
+                        </div> 
+                    </div>  
+                    <!-- End Tab 3 in brogress bar-->   
                 </form>
             </div>
         </section>
@@ -576,7 +561,6 @@
                 <div class="col-md-9">
                   <div class="row">
                     <div class="col-md-3" id="image">
-                      
                     </div>
                     <div class="col-md-3">
                       <h2 class="footer-heading mb-4">Quick Links</h2>
@@ -618,11 +602,9 @@
                   </form>
                 </div>
               </div>
-             
-                
-              </div>
             </div>
-        </footer>    
+          </div>
+       </footer>    
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Mpc_I9yCXVEHimmMzUj1kcp-bKhzttM&callback=initModal"></script>   
 <script>
