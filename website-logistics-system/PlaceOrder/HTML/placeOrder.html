@@ -359,7 +359,7 @@
                             <!--10.Lowbed Hydraulic-->
                             <div class="form-element heavy">
                                 <input type="radio" name="truck" value="LowbedHydraulic" id="LowbedHydraulic">
-                                <!--Image and Name of Truck-->
+                                <!--Image and Name of Truck-->  
                                 <label for="LowbedHydraulic">
                                 <div class="image">
                                     <img src="../Image/LowbedHydraulic.png" height="70px" width="200px" alt="Lowbed Hydraulic">
@@ -511,7 +511,7 @@
                         <div style="margin-top: 50px;" class="index-btn-wrapper">
                             <div class="index-btn" type="submit" onclick="validateFieldsAndProceed(),submitForm();">Next</div>
                             
-                            <button class="addShipment-btn index-btn" id="addShipment-btn">+ Add another shipment</button>
+                            <!--<button class="addShipment-btn index-btn" id="addShipment-btn">+ Add another shipment</button>-->
                         </div>
                     </div>
                     <!-- End Tab 1 in brogress bar-->
@@ -529,7 +529,7 @@
                             <p id="displayPickupDate"></p>
                             <p id="displayDropoffDate"></p>
                             <p id="displayTypeCargo"></p>
-                            <p id="truck"></p>
+                            <p id="displayTruckType"></p>
                             <p id="displaynumberOfTruck"></p>
                         
                             <div id="displayImages"></div>
@@ -718,7 +718,7 @@ if (image === 0) {
         var pickupDate = document.getElementById('pickupDate').value;
         var dropoffDate = document.getElementById('dropoffDate').value;
         var typeCargo = document.getElementById('typeCargo').value;
-   
+
         var numberOfTruck = document.getElementById('numberOfTruck').value;
        
         // Display submitted information
@@ -727,7 +727,20 @@ if (image === 0) {
         document.getElementById('displayPickupDate').textContent = "Pick-up Date: " + pickupDate;
         document.getElementById('displayDropoffDate').textContent = "Drop-off Date: " + dropoffDate;
         document.getElementById('displayTypeCargo').textContent = "Type of Cargo: " + typeCargo;
+
         document.getElementById('displaynumberOfTruck').textContent = "number Of Truck: " + numberOfTruck;
+
+        var truckTypeRadios = document.getElementsByName('truck');
+        var selectedTruckType;
+
+        for (var i = 0; i < truckTypeRadios.length; i++) {
+        if (truckTypeRadios[i].checked) {
+            selectedTruckType = truckTypeRadios[i].value;
+            break;
+        }
+        }
+
+        document.getElementById('displayTruckType').textContent = "Truck Type: " + selectedTruckType;
 
 
         var files = document.getElementById('upload-button').files;
