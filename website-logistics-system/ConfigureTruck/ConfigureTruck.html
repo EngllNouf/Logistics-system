@@ -87,13 +87,13 @@
 
                 <div>
                     <label for="Owner">Owner <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="Owner" name="Owner" required>
+                    <input type="text" id="Owner" name="Owner" pattern="[A-Za-z]{2,20}" required>
                     <span class="error" id="Owner-error" style="color: red;"></span>
                 </div>
 
                 <div>
                     <label for="OwnerID">Owner ID <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="OwnerID" name="OwnerID" pattern="[0-9]+{10}" required>
+                    <input type="text" id="OwnerID" name="OwnerID" pattern="[0-9]{10}" required>
                     <span class="error" id="OwnerID-error" style="color: red;"></span>
                 </div>
 
@@ -106,13 +106,11 @@
                 <div>
                     <label for="user">User</label>
                     <input type="text" id="user" name="user">
-                    <span id="user-errorMsg" class="error-message"></span>
                 </div>
 
                 <div>
                     <label for="userID">User ID</label>
-                    <input type="text" id="userID" name="userID" pattern="[0-9]+{10}">
-                    <span id="userID-errorMsg" class="error-message"></span>
+                    <input type="text" id="userID" name="userID">
                 </div>
 
                 <div class="mb-3">
@@ -131,38 +129,38 @@
 
                 <div>
                     <label for="LicensePlate">License plate no. <span style="color: red;">*</span></label>
-                    <input type="text" id="LicensePlate" name="LicensePlate" placeholder="1234 ABC" required>
+                    <input type="text" id="LicensePlate" name="LicensePlate" placeholder="1234 ABC" pattern="^\d{4} [A-Za-z]{3}$" required>
                     <span class="error" id="LicensePlate-error" style="color: red;"></span>
                 </div>
 
                 <div>
                     <label for="VehicleChassis">Vehicle chassis number <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="VehicleChassis" name="VehicleChassis" required>
+                    <input type="text" id="VehicleChassis" name="VehicleChassis" pattern="[a-zA-Z0-9]{17}" required>
                     <span class="error" id="VehicleChassis-error" style="color: red;"></span>
                 </div>
 
                 <div>
                     <label for="RegistrationType">Registration type <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="RegistrationType" name="RegistrationType" required>
+                    <input type="text" id="RegistrationType" name="RegistrationType" pattern="[A-Za-z]{2,20}" required>
                     <span class="error" id="RegistrationType-error" style="color: red;"></span>
                 </div>
 
                 
                 <div>
                     <label for="VehicleBrand">Vehicle brand <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="VehicleBrand" name="VehicleBrand" required>
+                    <input type="text" id="VehicleBrand" name="VehicleBrand" pattern="[A-Za-z]{2,20}" required>
                     <span class="error" id="VehicleBrand-error" style="color: red;"></span>
                 </div>
 
                 <div>
                     <label for="VehicleModel">Vehicle model <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="VehicleModel" name="VehicleModel" required>
+                    <input type="text" id="VehicleModel" name="VehicleModel" pattern="[A-Za-z]{2,20}" required>
                     <span class="error" id="VehicleModel-error" style="color: red;"></span>
                 </div>
 
                 <div>
                     <label for="Colour">Colour <span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="Colour" name="Colour" required>
+                    <input type="text" id="Colour" name="Colour" pattern="[A-Za-z]{2,20}" required>
                     <span class="error" id="Colour-error" style="color: red;"></span>
                 </div>
 
@@ -174,7 +172,7 @@
 
                 <div>
                     <label for="Serial_number">Serial number<span style="color: red;">* </span><span class="smallText"></span></label>
-                    <input type="text" id="Serial_number" name="Serial_number" required>
+                    <input type="text" id="Serial_number" name="Serial_number" pattern="[0-9]{8,10}">
                     <span class="error" id="Serial_number-error" style="color: red;"></span>
                 </div>
 
@@ -233,9 +231,9 @@
         </div>
 
         <!-- The first Modal -->
-        <div id="myModal" class="modal">
+        <div id="myModal" class="modal" >
 
-            <div class="modal-content">
+            <div class="modal-content" >
             <span class="close">&times;</span>
             <img src="anonymization.png" alt="Question-img" />
             <p>Are you sure you would like to confirm and save?</p>
@@ -311,7 +309,6 @@
          <!--JS-->
          <script src="ConfigTruckButtons.js"></script>
          <script src="Modals.js"></script>
-         <script src="RealTimeValidation.js"></script>
 
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

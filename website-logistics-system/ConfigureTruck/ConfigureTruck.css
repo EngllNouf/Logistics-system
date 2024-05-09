@@ -331,6 +331,14 @@ input[type=date] {
   font-weight: lighter;
 }
 
+#msg {
+  font-size: 12px;
+  font-weight: lighter;
+  color: red;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .navbar {
   margin-right: -0px;
