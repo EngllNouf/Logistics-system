@@ -1,7 +1,33 @@
-const express = require("express");
-const router = express.Router(); 
+const loginForm = document.getElementById("login");
 
-router.get("/", (request, response) => {
-    response.send({data: "Here is your login"});
+loginForm.addEventListener("submit", function (e) {
+  // Prevent the default form submission
+  e.preventDefault();
+
+  // Get user input
+  let UserName = document.getElementsByName("UserName")[0].value;
+  let Password = document.getElementsByName("Password")[0].value;
+
+  // Sending AJAX request
+  fetch("/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ UserName: UserName, Password: Password }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        // Display error message
+        msg.textContent = data.error;
+      } else {
+        // Redirect to the home page
+        window.location.href = "/index.html";
+      }
+    })
+    .catch((error) => {
+      // Handle error
+      console.error("Error:", error);
+    });
 });
-
