@@ -113,7 +113,7 @@ app.post(
       }
 
       // Registration successful, redirect to index page
-      return res.redirect("/Login&Sign/Login&.html");
+      return res.redirect("/TraderRegistration/HTML/Registration.html");
     });
   }
 );
@@ -123,7 +123,7 @@ app.post(
 
 
 
-
+//////////////////////////////////////////PLACE ORDER///////////////////////////////////////////////////
 //JSON routing
 let formValidation = getFormValidation(); // ميثود يشيك اذا فيه اخطاء او لا والنتيجة ترجع فيه
 app.use(express.urlencoded({extended:false}));
