@@ -32,6 +32,7 @@
         <link rel="stylesheet" href="../CSS/placeOrder.css">
 
         <script src="../JS/Map.js"></script>
+        <script src="../JS/script.js" defer></script>
     </head>
     <body>
     <!--Nav-->
@@ -99,7 +100,7 @@
         <!--Start Form-->
         <section class="form-container ">
             <div class="form-box">
-                <form id="myForm" action="#" method="post" autocomplete = "off">
+                <form id="myForm" action="/process" method="post" autocomplete = "off">
 
                     <!-- Start Tab 1 in brogress bar-->
                     <div class="tab" id ="tab-1">
@@ -508,6 +509,7 @@
                             </div>  
                         </div>
                         <p class="truck-alert" style="display: none; color: red;">Please choose the type of truck</p>
+                        <div id="msg"></div>
                         <div style="margin-top: 50px;" class="index-btn-wrapper">
                             <div class="index-btn" type="submit" onclick="validateFieldsAndProceed(),submitForm();">Next</div>
                             
