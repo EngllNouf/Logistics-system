@@ -10,7 +10,6 @@
   border-radius: 10px;
 }
 
-
 .formBody {
   /*display: none;*/
   background-color: #F5F5F5;
@@ -32,6 +31,12 @@
 }
 
 .formBody > h5 {
+  font-weight: bold;
+  padding-top: 10px;
+  color: #5b9279;
+}
+
+.configTruck-form > h5 {
   font-weight: bold;
   padding-top: 10px;
   color: #5b9279;
@@ -315,8 +320,18 @@ input[type=date] {
   cursor: pointer;
 }
 
+/*Validation*/
+.error {
+  font-size: 12px;
+  font-weight: lighter;
+}
 
-/* For screens smaller than 600px */
+.error-message {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+/*For screens smaller than 600px*/
 @media only screen and (max-width: 600px) {
   .formBody > form {
     grid-template-columns: 1fr; 
