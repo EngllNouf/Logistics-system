@@ -326,6 +326,11 @@ input[type=date] {
   font-weight: lighter;
 }
 
+.error-message {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
 /*For screens smaller than 600px*/
 @media only screen and (max-width: 600px) {
   .formBody > form {

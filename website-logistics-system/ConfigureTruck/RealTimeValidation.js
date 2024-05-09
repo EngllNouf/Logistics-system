@@ -150,7 +150,53 @@ fileInputs.forEach(input => {
     }
   });
 });
-  
+
+
+// Get the input elements
+const userInputElement = document.getElementById('user');
+const userIDInputElement = document.getElementById('userID');
+
+// Add event listeners for input focus and input events
+userInputElement.addEventListener('focus', handleUserValidation);
+userInputElement.addEventListener('input', handleUserValidation);
+userInputElement.addEventListener('blur', handleUserValidation);
+userIDInputElement.addEventListener('focus', handleUserIDValidation);
+userIDInputElement.addEventListener('input', handleUserIDValidation);
+userIDInputElement.addEventListener('blur', handleUserIDValidation);
+
+// Function to handle User field validation
+function handleUserValidation() {
+  const userValue = userInputElement.value.trim();
+  const userErrorElement = document.getElementById('user-errorMsg');
+
+  if (document.activeElement === userInputElement) {
+    if (userValue !== '' && !/^[A-Za-z]{2,20}$/.test(userValue)) {
+      userErrorElement.textContent = 'User name must be between 2 and 20 characters and contain only letters';
+      userErrorElement.style.color = 'red';
+    } else {
+      userErrorElement.textContent = '';
+    }
+  } else {
+    userErrorElement.textContent = '';
+  }
+}
+
+// Function to handle User ID field validation
+function handleUserIDValidation() {
+  const userIDValue = userIDInputElement.value.trim();
+  const userIDErrorElement = document.getElementById('userID-errorMsg');
+
+  if (document.activeElement === userIDInputElement) {
+    if (userIDValue !== '' && !/^\d{10}$/.test(userIDValue)) {
+      userIDErrorElement.textContent = 'User ID must be exactly 10 digits and contain only numbers';
+      userIDErrorElement.style.color = 'red';
+    } else {
+      userIDErrorElement.textContent = '';
+    }
+  } else {
+    userIDErrorElement.textContent = '';
+  }
+}
 
   
   

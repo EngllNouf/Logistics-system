@@ -103,11 +103,13 @@
                 <div>
                     <label for="user">User</label>
                     <input type="text" id="user" name="user">
+                    <span id="user-errorMsg" class="error-message"></span>
                 </div>
 
                 <div>
                     <label for="userID">User ID</label>
-                    <input type="text" id="userID" name="userID">
+                    <input type="text" id="userID" name="userID" pattern="[0-9]+{10}">
+                    <span id="userID-errorMsg" class="error-message"></span>
                 </div>
 
                 <div class="mb-3">
