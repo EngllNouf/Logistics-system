@@ -75,3 +75,18 @@ container.addEventListener(
 window.onload = () => {
   error.innerText = "";
 };
+// بعد إضافة الصورة وتحميلها
+// قم بتعيين العناصر المطلوب حذفها إلى المتغيرات المناسبة
+let fileInput = uploadButton;
+let fileList = imageDisplay;
+let fileItem = imageContainer; // افتراضيًا يكون هذا هو العنصر الذي يحتوي على الصورة المحملة
+
+// قم بإنشاء زر الحذف وإضافته إلى العنصر المستهدف
+const deleteButton = document.createElement('span');
+fileItem.appendChild(deleteButton);
+deleteButton.classList.add('delete-btn');
+deleteButton.textContent = 'X';
+deleteButton.addEventListener('click', function() {
+    fileInput.value = ''; // مسح الصورة المحملة
+    fileList.removeChild(fileItem); // إزالة عنصر الصورة
+});
