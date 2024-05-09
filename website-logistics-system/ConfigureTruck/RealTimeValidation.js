@@ -14,11 +14,17 @@ function validateInput(input) {
         errorElement.style.color = 'red';
       }
 
-      //Validate chassis 
-      if (input.id === 'VehicleChassis' && input.value.trim().length !== 17) {
-        errorElement.textContent = 'Vehicle chassis must be exactly 17 digits';
-        errorElement.style.color = 'red'; 
+     // Validate chassis
+      if (input.id === 'VehicleChassis') {
+      const value = input.value.trim();
+      const hasLetters = /[a-zA-Z]/.test(value);
+      const hasNumbers = /\d/.test(value);
+
+      if (value.length !== 17 || !hasLetters || !hasNumbers) {
+        errorElement.textContent = 'Vehicle chassis must be exactly 17 characters with both letters and numbers';
+        errorElement.style.color = 'red';
       }
+    }
 
       //Validate serial number 
       if (input.id === 'Serial_number' && (input.value.trim().length < 8 || input.value.trim().length > 10 || isNaN(input.value))) {
@@ -145,51 +151,6 @@ fileInputs.forEach(input => {
   });
 });
   
-  
-// Validate User
-function validateUserInput(input) {
-  const errorElement = document.getElementById(`${input.id}-error`);
-  if (errorElement) {
-    const userValue = input.value.trim();
-
-    if (userValue.length > 0 && (userValue.length < 2 || userValue.length > 20 || !/^[A-Za-z]+$/.test(userValue))) {
-      errorElement.textContent = 'User must be between 2 and 20 characters and contain only letters';
-      errorElement.style.color = 'red';
-    } else {
-      errorElement.textContent = '';
-    }
-  }
-}
-
-// Validate User ID
-function validateUserIDInput(input) {
-  const errorElement = document.getElementById(`${input.id}-error`);
-  if (errorElement) {
-    const userIDValue = input.value.trim();
-
-    if (userIDValue.length > 0 && (userIDValue.length !== 10 || isNaN(userIDValue))) {
-      errorElement.textContent = 'User ID must be exactly 10 digits and contain only numbers';
-      errorElement.style.color = 'red';
-    } else {
-      errorElement.textContent = '';
-    }
-  }
-}
-  
-  
-  // Function to validate file input
-  function validateFileInput(fileInput) {
-    const errorElement = document.getElementById(`${fileInput.id}-error`);
-    if (errorElement) {
-      if (fileInput.files.length === 0) {
-        errorElement.textContent = `${fileInput.name} is required`;
-        errorElement.style.color = "red"; // Change text color to red
-      } else {
-        errorElement.textContent = ""; // Clear the error message
-        errorElement.style.color = "green"; // Change text color to green
-      }
-    }
-  }
 
   
   
