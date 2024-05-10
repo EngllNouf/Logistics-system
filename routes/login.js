@@ -5,7 +5,7 @@ loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
   // Get user input
-  let UserName = document.getElementsByName("UserName")[0].value;
+  let UserName = document.getElementsByName("Email")[0].value;
   let Password = document.getElementsByName("Password")[0].value;
 
   // Sending AJAX request

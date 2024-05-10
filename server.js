@@ -39,7 +39,7 @@ app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegist
 
 
 app.post("/login", (req, res) => {
-  const { Email, Password } = req.body;
+  const {Email, Password } = req.body;
 
   // Check username and password in the database
   const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
