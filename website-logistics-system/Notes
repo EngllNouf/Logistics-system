@@ -174,19 +174,16 @@ app.listen(port, () => {
 
 
 
-
+-- Create the users table
 CREATE TABLE users (
-  username VARCHAR(255) PRIMARY KEY,
-  email VARCHAR(255) UNIQUE,
+  email VARCHAR(255) PRIMARY KEY,
+  username VARCHAR(255),
   password VARCHAR(255)
 );
 
---
--- Table structure for table trader
---
-
+-- Create the trader table
 CREATE TABLE trader (
-  idNumber varchar(10) NOT NULL,
+  idNumber varchar(10) PRIMARY KEY,
   companyName varchar(255) NOT NULL,
   companyEmail varchar(255) NOT NULL,
   companyAddress varchar(255) NOT NULL,
@@ -204,9 +201,9 @@ CREATE TABLE trader (
   FOREIGN KEY (email) REFERENCES users(email)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+-- Create the transportationcompany table
 CREATE TABLE transportationcompany (
-  commercialRegistrationID varchar(10) NOT NULL,
+  commercialRegistrationID varchar(10) PRIMARY KEY,
   commercialRegistrationName varchar(255) DEFAULT NULL,
   commercialRegistrationNumber varchar(10) DEFAULT NULL,
   issueDate date DEFAULT NULL,
@@ -224,8 +221,6 @@ CREATE TABLE transportationcompany (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-
-
 CREATE TABLE order_details (
   order_id INT AUTO_INCREMENT PRIMARY KEY,
   pickup_location VARCHAR(255) NOT NULL,
@@ -240,9 +235,12 @@ CREATE TABLE order_details (
   notes TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  idNumber VARCHAR(10),
   email VARCHAR(255),
+  FOREIGN KEY (idNumber) REFERENCES trader(idNumber),
   FOREIGN KEY (email) REFERENCES users(email)
 );
+
 
 CREATE TABLE truck (
   truckID INT AUTO_INCREMENT PRIMARY KEY,
