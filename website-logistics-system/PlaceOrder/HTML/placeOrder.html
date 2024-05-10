@@ -684,7 +684,7 @@ document.getElementById('pickup').addEventListener('change', function() {
     }
 
     if (pickupDate === "") {
-        document.getElementById("dateWarning1").innerText = "Please select a pick-up place.";
+        document.getElementById("dateWarning1").innerText = "Please select a pick-up date.";
         document.getElementById("dateWarning1").style.display = "block";
         isValid = false;
     } else {
@@ -711,7 +711,7 @@ document.getElementById('pickup').addEventListener('change', function() {
     document.getElementById("cargoValueError").innerText = "";
     document.getElementById("cargoValueError").style.display = "none"; // Hide the error message
 }
-if (weight === 0) {
+if (weight === "") {
         document.getElementById("weightError").style.display = "block";
         isValid = false;
     } else {
