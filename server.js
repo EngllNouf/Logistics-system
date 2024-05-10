@@ -42,7 +42,7 @@ app.post("/login", (req, res) => {
   const {Email, Password } = req.body;
 
   // Check username and password in the database
-  const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+  const sql = "SELECT * FROM users WHERE email = ? AND password = ?";
   connection.query(sql, [Email, Password], (err, result) => {
     if (err) {
       console.error("Error executing the database query: " + err.stack);
@@ -51,7 +51,7 @@ app.post("/login", (req, res) => {
     }
 
     if (result.length === 0) {
-      console.log("Invalid username or password.");
+      console.log("Invalid email or password.");
       return;
     }
 
@@ -741,7 +741,7 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
 /////////////////Server////////////////////////
 
 
-const port = 8300;
+const port = 811;
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });
