@@ -266,3 +266,111 @@ CREATE TABLE truck (
   FOREIGN KEY (email) REFERENCES users(email),
   FOREIGN KEY (commercialRegistrationID) REFERENCES transportationcompany(commercialRegistrationID)
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Create the users table with username as the primary key and email as unique
+CREATE TABLE users (
+  username VARCHAR(255) PRIMARY KEY,
+  email VARCHAR(255) UNIQUE,
+  password VARCHAR(255)
+);
+
+-- Create the trader table with email as a foreign key referencing users(email)
+CREATE TABLE trader (
+  idNumber varchar(10) NOT NULL PRIMARY KEY,
+  companyName varchar(255) NOT NULL,
+  companyEmail varchar(255) NOT NULL,
+  companyAddress varchar(255) NOT NULL,
+  citySelect varchar(255) NOT NULL,
+  companyZip varchar(5) NOT NULL,
+  companyVat varchar(15) NOT NULL,
+  companyLicense varchar(10) NOT NULL,
+  commercialRegistrationFile1 blob,
+  traderName varchar(255) NOT NULL,
+  traderPhoneNumber varchar(10) NOT NULL,
+  traderAddress varchar(255) NOT NULL,
+  industrySelect varchar(255) NOT NULL,
+  traderIDFile blob,
+  username VARCHAR(255),
+  FOREIGN KEY (username) REFERENCES users(username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Create the transportationcompany table with email as a foreign key referencing users(email)
+CREATE TABLE transportationcompany (
+  commercialRegistrationID varchar(10) PRIMARY KEY,
+  commercialRegistrationName varchar(255) DEFAULT NULL,
+  commercialRegistrationNumber varchar(10) DEFAULT NULL,
+  issueDate date DEFAULT NULL,
+  expirationDate date DEFAULT NULL,
+  licenseType enum('Directing goods transport vehicles License','Transporting goods on land roads license','Land freight broker license') DEFAULT NULL,
+  licenseNumber varchar(10) DEFAULT NULL,
+  transportType enum('Transporting goods','Transporting goods between cities') DEFAULT NULL,
+  companySpecialization enum('General Freight Shipping services','Express Delivery Services','Specialized Transportation Services','Distribution and Inventory Management Services','Livestock Transportation services','Oversized Cargo Transportation services','Efficient Parcel and Small Cargo Transportation services','Hazardous Materials Transportation services','Perishable Goods Transportation services','Waste Management and Recycling Transportation Services','Auto Transportation services') DEFAULT NULL,
+  commercialRegistrationFile blob,
+  ownerIdFile blob,
+  licenseFile blob,
+  commissionerIdFile blob,
+  username VARCHAR(255),
+  FOREIGN KEY (username) REFERENCES users(username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE order_details (
+  order_id INT AUTO_INCREMENT PRIMARY KEY,
+  pickup_location VARCHAR(255) NOT NULL,
+  dropoff_location VARCHAR(255) NOT NULL,
+  pickup_date DATE NOT NULL,
+  dropoff_date DATE NOT NULL,
+  cargo_type VARCHAR(255) NOT NULL,
+  truck_type VARCHAR(255) NOT NULL,
+  number_of_trucks INT NOT NULL,
+  goods_value DECIMAL(10, 2),
+  image_path VARCHAR(255),
+ weight DECIMAL NOT NULL,
+  notes TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  idNumber VARCHAR(10),
+  username VARCHAR(255),
+  FOREIGN KEY (idNumber) REFERENCES trader(idNumber),
+  FOREIGN KEY (username) REFERENCES users(username)
+);
+CREATE TABLE truck (
+  truckID int(11) NOT NULL,
+  Owner varchar(255) NOT NULL,
+  OwnerID int(11) NOT NULL,
+  formOwnerIDFile varchar(255) NOT NULL,
+  user varchar(255) DEFAULT NULL,
+  userID int(11) DEFAULT '0',
+  formUserIDFile varchar(255) DEFAULT NULL,
+  LicensePlate varchar(255) NOT NULL,
+  VehicleChassis varchar(255) NOT NULL,
+  RegistrationType varchar(255) NOT NULL,
+  VehicleBrand varchar(255) NOT NULL,
+  VehicleModel varchar(255) NOT NULL,
+  Colour varchar(255) NOT NULL,
+  ManufactureYear int(11) NOT NULL,
+  Serial_number varchar(255) NOT NULL,
+  insurance_start date NOT NULL,
+  insurance_end date NOT NULL,
+  inspection_start date NOT NULL,
+  inspection_end date NOT NULL,
+  formVehicleRegistrationFile varchar(255) NOT NULL,
+  formVehiclePhotoFile varchar(255) NOT NULL,
+  username varchar(255) DEFAULT NULL,
+  commercialRegistrationID varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

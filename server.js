@@ -297,10 +297,10 @@ function getFormValidationTransportation() {
 
 //////////////////////////////////////////PLACE ORDER///////////////////////////////////////////////////
 //JSON routing
-let formValidation = getFormValidationOrder(); // ميثود يشيك اذا فيه اخطاء او لا والنتيجة ترجع فيه
+let formValidationOrder = getFormValidationOrderDetails(); // ميثود يشيك اذا فيه اخطاء او لا والنتيجة ترجع فيه
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());// نفعل وضعية json
-app.post("/process",formValidation, (request, response) => {// formValidation يسمح لنا نستخدم الميثود
+app.post("/order",formValidationOrder, (request, response) => {// formValidation يسمح لنا نستخدم الميثود
   //reading form data
   //POST = request.body.name
 //   //GET = request.query.name
@@ -316,17 +316,18 @@ app.post("/process",formValidation, (request, response) => {// formValidation ي
         const typeCargo = request.body.typeCargo;
         const truck = request.body.truck;
         const numberOfTruck = request.body.numberOfTruck;
-        const goodsValue = request.body.goodsValue;
+        const CargoValue = request.body.CargoValue;
+        const weight = request.body.weight;
         const image = request.body.image;
         const notes = request.body.notes;
         addOrder(pickup, dropOff, datePickUp,dateDropOff,typeCargo,truck,
-          numberOfTruck,goodsValue,image,notes);
+          numberOfTruck,CargoValue,weight,image,notes);
           response.status(200).json({msg: "Form is validated", redirectUrl: "/Trader/Trader.html"});
    }
  });
 
 
-function getFormValidationOrder() {//فانكشن يرجع اوبجيكت 
+function getFormValidationOrderDetails() {//فانكشن يرجع اوبجيكت 
   return [
     body("pickup").notEmpty().withMessage("Please enter the pick-up location.")
       .isLength({ min: 3, max: 100 })
@@ -368,10 +369,66 @@ function getFormValidationOrder() {//فانكشن يرجع اوبجيكت
       .withMessage("Selection of truck is not from the provided list")
       .trim()
       .escape(),
+
+        //Number of trucks validation
+    body("numberOfTruck")
+    .notEmpty().withMessage("Please enter number of trucks.")
+    .isInt().withMessage("Number of trucks must be an integer") // Data type
+    .custom((value) => {
+      if (value > 100) {
+        throw new Error("Number of trucks cannot exceed 100");
+      }
+      return true;
+    })
+
+    //Sanitizers
+    .trim()
+    .escape() 
+    ,
+
+    //Cargo value validation
+    body("CargoValue")
+    .notEmpty().withMessage("Please enter cargo value.")
+    .custom((value) => {
+      const regex = /^\d+(\.\d+)?$/;
+      if (!regex.test(value)) {
+        throw new Error("cargo value must be a valid number");
+      }
+      return true;
+    })
+    
+    //Sanitizers
+    .trim()
+    .escape(),
+
+    body("weight").toFloat().isFloat({ min: 0.5 }).withMessage("Weight must be at least 0.5 tons"),
+    //Image validation
+    body("image")
+    .notEmpty().withMessage("Please upload cargo image")
+    .custom(async (value, { req }) => {
+      const fileExtension = value.substring(value.lastIndexOf('.') + 1);
+      const allowedExtensions = ['png', 'jpg', 'jpeg'];
+
+      if (!allowedExtensions.includes(fileExtension.toLowerCase())) {
+        throw new Error("Invalid image format. Please upload a PNG, JPG, or JPEG file.");
+      }
+      return true;
+    })
+    ,
+
+    //Notes validation
+    body("notes")
+    .isLength({  max:1000 }).withMessage("Notes maximum length: 1000") //length
+    .isString().withMessage("Notes must be a string")//datatype
+ 
+    //Sanitizers
+    .trim()
+    .escape()  
+  
   ];
 }
 
-function addOrder(pickup, dropOff, datePickUp, dateDropOff, typeCargo, truck, numberOfTruck, goodsValue, image, notes) {
+function addOrder(pickup, dropOff, datePickUp, dateDropOff, typeCargo, truck, numberOfTruck, CargoValue,weight, image, notes) {
   // اتصال بقاعدة البيانات
   const mysql = require("mysql2");
   let db = mysql.createConnection({
@@ -384,8 +441,8 @@ function addOrder(pickup, dropOff, datePickUp, dateDropOff, typeCargo, truck, nu
 
   db.connect(function (err) {
     // البيانات المطلوب إدخالها في قاعدة البيانات
-    let sql = `INSERT INTO \`order\` (pickup, dropOff, datePickUp, dateDropOff, typeCargo, truck, numberOfTruck, goodsValue, image, notes) VALUES 
-    ('${pickup}', '${dropOff}', '${datePickUp}', '${dateDropOff}', '${typeCargo}', '${truck}', '${numberOfTruck}', '${goodsValue}', '${image}', '${notes}')`;
+    let sql = `INSERT INTO \`order\` (pickup, dropOff, datePickUp, dateDropOff, typeCargo, truck, numberOfTruck, CargoValue, weight, image, notes) VALUES 
+    ('${pickup}', '${dropOff}', '${datePickUp}', '${dateDropOff}', '${typeCargo}', '${truck}', '${numberOfTruck}', '${CargoValue}','${weight}', '${image}', '${notes}')`;
     db.query(sql, function (err, result) {
       if (err) throw err;
       console.log("1 record has been added");
@@ -758,7 +815,7 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
 /////////////////Server////////////////////////
 
 
-const port = 8800;
+const port = 8000;
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });

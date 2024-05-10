@@ -100,7 +100,7 @@
         <!--Start Form-->
         <section class="form-container ">
             <div class="form-box">
-                <form id="myForm" action="/process" method="post" autocomplete = "off">
+                <form id="myForm" action="/order" method="post" autocomplete = "off">
 
                     <!-- Start Tab 1 in brogress bar-->
                     <div class="tab" id ="tab-1">
@@ -731,6 +731,19 @@ if (image === 0) {
 }
 
     </script>  
+    <script>
+        const weightInput = document.getElementById("weight");
+
+        weightInput.addEventListener("input", function() {
+        const weight = parseFloat(weightInput.value);
+
+        if (weight < 0.5) {
+            weightInput.setCustomValidity("Weight must be at least 0.5 tons");
+        } else {
+            weightInput.setCustomValidity("");
+        }
+        });
+    </script>
 <script>
    function submitForm() {
         var pickupLocation = document.getElementById('pickup').value;
