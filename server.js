@@ -39,11 +39,11 @@ app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegist
 
 
 app.post("/login", (req, res) => {
-  const { UserName, Password } = req.body;
+  const { Email, Password } = req.body;
 
   // Check username and password in the database
   const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-  connection.query(sql, [UserName, Password], (err, result) => {
+  connection.query(sql, [Email, Password], (err, result) => {
     if (err) {
       console.error("Error executing the database query: " + err.stack);
       console.log("An error occurred while executing the database query.");
@@ -741,7 +741,7 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
 /////////////////Server////////////////////////
 
 
-const port = 8800;
+const port = 8600;
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });
