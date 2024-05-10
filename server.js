@@ -38,7 +38,6 @@ app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegist
 
 
 
-// Login route
 app.post("/login", (req, res) => {
   const { UserName, Password } = req.body;
 
@@ -47,25 +46,21 @@ app.post("/login", (req, res) => {
   connection.query(sql, [UserName, Password], (err, result) => {
     if (err) {
       console.error("Error executing the database query: " + err.stack);
-      return res.status(500).json({
-        status: false,
-        error: "An error occurred while executing the database query.",
-      });
+      console.log("An error occurred while executing the database query.");
+      return;
     }
 
     if (result.length === 0) {
-      return res.status(401).json({
-        status: false,
-        error: "Invalid username or password.",
-      });
+      console.log("Invalid username or password.");
+      return;
     }
 
-    // Successfully logged in
-    return res.redirect("/index.html");
+    console.log("Login successful!");
 
+    // Successfully logged in
+    res.redirect("/index.html");
   });
 });
-
 
 
 // Signup route
@@ -120,22 +115,9 @@ app.get("/logout", (req, res) => {
   });
 });
 
-app.listen(7777, () => {
-  console.log("Server is running on port 3000");
-});
 
 
-
-
-
-
-
-
-
-
-
-
-const port = 8888;
+const port = 8800;
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });
