@@ -173,31 +173,6 @@ app.listen(port, () => {
 // });
 
 
-// for table 
-
-CREATE TABLE users (
-  
-  username VARCHAR(255) UNIQUE,
-  email VARCHAR(255) UNIQUE,
-  password VARCHAR(255)
-);
-
-
-CREATE TABLE order_details (
-  order_id INT AUTO_INCREMENT PRIMARY KEY,
-  pickup_location VARCHAR(255) NOT NULL,
-  dropoff_location VARCHAR(255) NOT NULL,
-  pickup_date DATE NOT NULL,
-  dropoff_date DATE NOT NULL,
-  cargo_type VARCHAR(255) NOT NULL,
-  truck_type VARCHAR(255) NOT NULL,
-  number_of_trucks INT NOT NULL,
-  goods_value DECIMAL(10, 2),
-  image_path VARCHAR(255),
-  notes TEXT,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
 
 
 CREATE TABLE users (
@@ -205,6 +180,51 @@ CREATE TABLE users (
   email VARCHAR(255) UNIQUE,
   password VARCHAR(255)
 );
+
+--
+-- Table structure for table trader
+--
+
+CREATE TABLE trader (
+  idNumber varchar(10) NOT NULL,
+  companyName varchar(255) NOT NULL,
+  companyEmail varchar(255) NOT NULL,
+  companyAddress varchar(255) NOT NULL,
+  citySelect varchar(255) NOT NULL,
+  companyZip varchar(5) NOT NULL,
+  companyVat varchar(15) NOT NULL,
+  companyLicense varchar(10) NOT NULL,
+  commercialRegistrationFile1 blob,
+  traderName varchar(255) NOT NULL,
+  traderPhoneNumber varchar(10) NOT NULL,
+  traderAddress varchar(255) NOT NULL,
+  industrySelect varchar(255) NOT NULL,
+  traderIDFile blob,
+  email VARCHAR(255),
+  FOREIGN KEY (email) REFERENCES users(email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE transportationcompany (
+  commercialRegistrationID varchar(10) NOT NULL,
+  commercialRegistrationName varchar(255) DEFAULT NULL,
+  commercialRegistrationNumber varchar(10) DEFAULT NULL,
+  issueDate date DEFAULT NULL,
+  expirationDate date DEFAULT NULL,
+  licenseType enum('Directing goods transport vehicles License','Transporting goods on land roads license','Land freight broker license') DEFAULT NULL,
+  licenseNumber varchar(10) DEFAULT NULL,
+  transportType enum('Transporting goods','Transporting goods between cities') DEFAULT NULL,
+  companySpecialization enum('General Freight Shipping services','Express Delivery Services','Specialized Transportation Services','Distribution and Inventory Management Services','Livestock Transportation services','Oversized Cargo Transportation services','Efficient Parcel and Small Cargo Transportation services','Hazardous Materials Transportation services','Perishable Goods Transportation services','Waste Management and Recycling Transportation Services','Auto Transportation services') DEFAULT NULL,
+  commercialRegistrationFile blob,
+  ownerIdFile blob,
+  licenseFile blob,
+  commissionerIdFile blob,
+  email VARCHAR(255),
+  FOREIGN KEY (email) REFERENCES users(email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 
 CREATE TABLE order_details (
   order_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -220,6 +240,32 @@ CREATE TABLE order_details (
   notes TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  email VARCHAR(255),
+  FOREIGN KEY (email) REFERENCES users(email)
+);
+
+CREATE TABLE truck (
+  truckID INT AUTO_INCREMENT PRIMARY KEY,
+  Owner VARCHAR(255) NOT NULL,
+  OwnerID INT NOT NULL,
+  formOwnerIDFile VARCHAR(255) NOT NULL,
+  user VARCHAR(255) DEFAULT NULL,
+  userID INT DEFAULT 0,
+  formUserIDFile VARCHAR(255) DEFAULT NULL,
+  LicensePlate VARCHAR(255) NOT NULL,
+  VehicleChassis VARCHAR(255) NOT NULL,
+  RegistrationType VARCHAR(255) NOT NULL,
+  VehicleBrand VARCHAR(255) NOT NULL,
+  VehicleModel VARCHAR(255) NOT NULL,
+  Colour VARCHAR(255) NOT NULL,
+  ManufactureYear INT NOT NULL,
+  Serial_number VARCHAR(255) NOT NULL,
+  insurance_start DATE NOT NULL,
+  insurance_end DATE NOT NULL,
+  inspection_start DATE NOT NULL,
+  inspection_end DATE NOT NULL,
+  formVehicleRegistrationFile VARCHAR(255) NOT NULL,
+  formVehiclePhotoFile VARCHAR(255) NOT NULL,
   email VARCHAR(255),
   FOREIGN KEY (email) REFERENCES users(email)
 );
