@@ -741,7 +741,7 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
 /////////////////Server////////////////////////
 
 
-const port = 8600;
+const port = 8300;
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });

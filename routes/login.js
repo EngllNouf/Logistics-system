@@ -14,7 +14,7 @@ loginForm.addEventListener("submit", function (e) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ UserName: UserName, Password: Password }),
+    body: JSON.stringify({Email:Email , Password: Password }),
   })
     .then((response) => response.json())
     .then((data) => {
