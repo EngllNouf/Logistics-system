@@ -1,12 +1,15 @@
 const express = require("express");
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const { body, validationResult } = require("express-validator");
+const path = require("path");
+
 const app = express();
 
 const connection = mysql.createConnection({
-  host: "127.0.0.1",
+  host: "localhost",
   user: "root",
   password: "root",
+  port: "3306",
   database: "loginandsignup",
 });
 
@@ -18,61 +21,47 @@ connection.connect((err) => {
   console.log("Connected to the database");
 });
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 // Serve static files
 app.use("/", express.static("./website-logistics-system"));
 
-// Login route
-app.post(
-  "/login",
-  body("UserName").notEmpty().withMessage("Username is required"),
-  body("Password").notEmpty().withMessage("Password is required"),
-  (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+app.get("/index.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Serve static files from the TraderRegistration folder
+app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
+
+
+
+app.post("/login", (req, res) => {
+  const { UserName, Password } = req.body;
+
+  // Check username and password in the database
+  const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+  connection.query(sql, [UserName, Password], (err, result) => {
+    if (err) {
+      console.error("Error executing the database query: " + err.stack);
+      console.log("An error occurred while executing the database query.");
+      return;
     }
 
-    const { UserName, Password } = req.body;
+    if (result.length === 0) {
+      console.log("Invalid username or password.");
+      return;
+    }
 
-    // Check username and password in the database
-    const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-    connection.query(sql, [UserName, Password], (err, result) => {
-      if (err) {
-        console.error("Error executing the database query: " + err.stack);
-        return res.status(500).json({
-          status: false,
-          error: "An error occurred while executing the database query.",
-        });
-      }
+    console.log("Login successful!");
 
-      if (result.length === 0) {
-        // No user found with the provided credentials
-        return res.status(401).json({
-          status: false,
-          error: "Invalid username or password.",
-        });
-      }
+    // Successfully logged in
+    res.redirect("/index.html");
+  });
+});
 
-      // User authenticated successfully
-      // You can perform further actions here, such as setting up a session or returning a token
-
-      // Check if the user has access to the home page
-      const user = result[0];
-      if (user.access_home_page !== 1) {
-        return res.status(403).json({
-          status: false,
-          error: "You don't have access to the home page.",
-        });
-      }
-
-      // Send the redirect URL in the response
-      return res.json({ redirectUrl: "/index.html" });
-    });
-  }
-);
 
 // Signup route
 app.post(
@@ -94,7 +83,7 @@ app.post(
 
     const { UserName, Email, Password, ConfirmPassword } = req.body;
 
-    // Insert the user data into the database
+    // Insert user data into the database
     const sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
     connection.query(sql, [UserName, Email, Password], (err, result) => {
       if (err) {
@@ -106,15 +95,35 @@ app.post(
       }
 
       // Registration successful, redirect to index page
-      return res.redirect("/index.html");
+      return res.redirect("/TraderRegistration/HTML/Registration.html");
     });
   }
 );
 
-const port = 4111;
+// Logout route
+app.get("/logout", (req, res) => {
+  // Destroy the session
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session: " + err);
+      return res.status(500).json({
+        status: false,
+        error: "An error occurred while destroying the session."
+      });
+    }
+    res.redirect("/login.html");
+  });
+});
+
+
+
+const port = 8800;
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });
+
+
+
 
 
 
