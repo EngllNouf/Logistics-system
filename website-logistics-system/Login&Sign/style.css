@@ -172,24 +172,40 @@ form.sign-in-form {
   left: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  
 }
 
-/* هنا المشكله حق الصورة */
+
 .container:before {
+  
   content: "";
   position: absolute;
   height: 3000px;
   width: 2000px;
   top: -10%;
-  right: 48%;
+  right: 50%;
   transform: translateY(-50%);
-  background-image: url('Loadt.gif');
+  background: radial-gradient(circle at top left, #e7ece6, #5b9279);
+
  
-  z-index: 6;
+   z-index: 6;
+}
+@keyframes animateBackground {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
 
 
+
 .panel {
+
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -201,6 +217,7 @@ form.sign-in-form {
 .left-panel {
   pointer-events: all;
   padding: 3rem 17% 2rem 12%;
+
 }
 
 .right-panel {
