@@ -37,22 +37,31 @@ app.use(express.json());
 app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
 
 
-
 app.post("/login", (req, res) => {
   const { UserName, Password } = req.body;
 
+  // Validate input
+  if (!UserName || !Password) {
+    console.log("Please provide a username and password.");
+    return res.status(400).send("Please provide a username and password.");
+  }
+
+  // Sanitize input
+  const sanitizedUserName = UserName.trim();
+  const sanitizedPassword = Password.trim();
+
   // Check username and password in the database
   const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-  connection.query(sql, [UserName, Password], (err, result) => {
+  connection.query(sql, [sanitizedUserName, sanitizedPassword], (err, result) => {
     if (err) {
       console.error("Error executing the database query: " + err.stack);
       console.log("An error occurred while executing the database query.");
-      return;
+      return res.status(500).send("An error occurred while processing your request.");
     }
 
     if (result.length === 0) {
       console.log("Invalid username or password.");
-      return;
+      return res.status(401).send("Invalid username or password.");
     }
 
     console.log("Login successful!");
@@ -61,7 +70,6 @@ app.post("/login", (req, res) => {
     res.redirect("/index.html");
   });
 });
-
 
 // Signup route
 app.post(
@@ -741,7 +749,7 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
 /////////////////Server////////////////////////
 
 
-const port = 8800;
+const port = 7770;
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });

@@ -234,9 +234,9 @@ CREATE TABLE order_details (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   idNumber VARCHAR(10),
-  email VARCHAR(255),
+  username VARCHAR(255),
   FOREIGN KEY (idNumber) REFERENCES trader(idNumber),
-  FOREIGN KEY (email) REFERENCES users(email)
+  FOREIGN KEY (username) REFERENCES users(username)
 );
 
 
@@ -262,7 +262,7 @@ CREATE TABLE truck (
   inspection_end DATE NOT NULL,
   formVehicleRegistrationFile VARCHAR(255) NOT NULL,
   formVehiclePhotoFile VARCHAR(255) NOT NULL,
-  email VARCHAR(255),
-  FOREIGN KEY (email) REFERENCES users(email),
+  username VARCHAR(255),
+  FOREIGN KEY (username) REFERENCES users(username),
   FOREIGN KEY (commercialRegistrationID) REFERENCES transportationcompany(commercialRegistrationID)
 );
