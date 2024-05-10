@@ -8,7 +8,6 @@
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <script src="Validation.js"></script>
     <script src="../../routes/signup.js" defer></script>
-    <script src="../../routes/login.js" defer></script>
 
 
 </head>
@@ -25,14 +24,13 @@
             <h2 class="title">Sign In</h2>
             <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="email" placeholder="Email" name="Email" />
+                <input type="text" placeholder="Username" class="inputForuserName" name="UserName" required/>
             </div>
             <div class="error-message" id="username-error-message"></div> <!-- Display error message here -->
             <div class="input-field">
                 <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Password"  name="Password" required/>
             </div>
-            <div id="password-error-message" class="error-message"></div> 
             <div class="error-message" id="password-error-message"></div> <!-- Display error message here -->
             <input  type="submit" value="Login" id="sign-in-btn" class="btn solid" >
             <p class="social-text">Or Sign up and be a part of us
