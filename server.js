@@ -2,8 +2,15 @@ const express = require("express");
 const mysql = require("mysql2");
 const { body, validationResult } = require("express-validator");
 const path = require("path");
-
+const session = require("express-session");
 const app = express();
+const temporaryStorage = {};
+// Set up sessions
+app.use(session({
+  secret: 'hihihihi', // Change this to a long random string
+  resave: false,
+  saveUninitialized: true
+}));
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -32,6 +39,7 @@ app.get("/index.html", (req, res) => {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 // Serve static files from the TraderRegistration folder
 app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
@@ -94,6 +102,8 @@ app.post(
         });
       }
 
+      temporaryStorage.username = UserName;
+
       // Registration successful, redirect to index page
       return res.redirect("/TraderRegistration/HTML/Registration.html");
     });
@@ -131,6 +141,8 @@ app.post("/process",formValidationTrader, (request, response) => {
     return response.status(422).json({errors:errors.array()})
   } else {
         /// if no errors send the varibles to addtrader function
+
+        const { username } = temporaryStorage;
         const companyName = request.body.companyName;
         const companyEmail = request.body.companyEmail;
         const companyAddress = request.body.companyAddress;
@@ -146,13 +158,15 @@ app.post("/process",formValidationTrader, (request, response) => {
         const idNumber = request.body.idNumber;
         const traderIDFile = request.body.traderIDFile;
         addTrader(companyName, companyEmail, companyAddress,citySelect,companyZip,companyVat,
-            companyLicense,commercialRegistrationFile1,traderName,traderPhoneNumber,traderAddress,industrySelect,idNumber,traderIDFile);
+            companyLicense,commercialRegistrationFile1,traderName,traderPhoneNumber,traderAddress,industrySelect,idNumber,traderIDFile,username);
+            delete temporaryStorage.username;
        response.status(200).json({msg:"Form is validated"});
+        
    }
  });
  
  
- function addTrader(companyName, companyEmail, companyAddress, citySelect, companyZip, companyVat, companyLicense, commercialRegistrationFile1, traderName, traderPhoneNumber, traderAddress, industrySelect, idNumber, traderIDFile) {
+ function addTrader(companyName, companyEmail, companyAddress, citySelect, companyZip, companyVat, companyLicense, commercialRegistrationFile1, traderName, traderPhoneNumber, traderAddress, industrySelect, idNumber, traderIDFile, username) {
     
 
     //connect to database
@@ -168,13 +182,16 @@ app.post("/process",formValidationTrader, (request, response) => {
     db.connect(function (err) {
       
     //insert into database    
-      let sql = `INSERT INTO trader (idNumber,companyName, companyEmail, companyAddress, citySelect, companyZip, companyVat, companyLicense, commercialRegistrationFile1, traderName, traderPhoneNumber, traderAddress, industrySelect, traderIDFile ) VALUES 
-      ('${idNumber}' , '${companyName}', '${companyEmail}', '${companyAddress}', '${citySelect}', '${companyZip}', '${companyVat}', '${companyLicense}', '${commercialRegistrationFile1}', '${traderName}', '${traderPhoneNumber}', '${traderAddress}', '${industrySelect}', '${traderIDFile}')`;
+      let sql = `INSERT INTO trader (idNumber,companyName, companyEmail, companyAddress, citySelect, companyZip, companyVat, companyLicense, commercialRegistrationFile1, traderName, traderPhoneNumber, traderAddress, industrySelect, traderIDFile, username) VALUES 
+      ('${idNumber}' , '${companyName}', '${companyEmail}', '${companyAddress}', '${citySelect}', '${companyZip}', '${companyVat}', '${companyLicense}', '${commercialRegistrationFile1}', '${traderName}', '${traderPhoneNumber}', '${traderAddress}', '${industrySelect}', '${traderIDFile}','${username}')`;
       db.query(sql, function (err, result) {
         if (err) throw err;
         console.log("trader record has been added");
     
         db.end();
+       
+
+
       });
     });
 
