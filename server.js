@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
   user: "root",
   password: "root",
   port: "3306",
-  database: "loginandsignup",
+  database: "naqel_limited_company",
 });
 
 connection.connect((err) => {
@@ -162,7 +162,7 @@ app.post("/process",formValidationTrader, (request, response) => {
       user: "root",
       password: "root",
       port: "3306",
-      database: "registrationinfo",
+      database: "naqel_limited_company",
     });
   
     db.connect(function (err) {
@@ -244,7 +244,7 @@ function addTransportationCompany(commercialRegistrationName, commercialRegistra
         user: "root",
         password: "root",
         port: "3306",
-        database: "registrationinfo",
+        database: "naqel_limited_company",
     });
 
     db.connect(function (err) {
@@ -362,7 +362,7 @@ function addOrder(pickup, dropOff, datePickUp, dateDropOff, typeCargo, truck, nu
     user: "root",
     password: "root",
     port: "3306",
-    database: "placeorder",
+    database: "naqel_limited_company",
   });
 
   db.connect(function (err) {
@@ -381,7 +381,6 @@ function addOrder(pickup, dropOff, datePickUp, dateDropOff, typeCargo, truck, nu
 
 //////////////////////////////////////////Configure truck///////////////////////////////////////////////////
 //Json routing
-const {check, validationResult} = require ("express-validator");
 let formValidationTruck = getFormValidation();
 
 app.use(express.urlencoded({extended:false}));
@@ -430,7 +429,7 @@ app.post("/process", formValidationTruck, (request, response) => {
 
 function getFormValidation(){
     return [
-        check("Owner")
+        body("Owner")
         //validators
         .notEmpty().withMessage("Owner name is required.") // check if not empty
         .isLength({ min: 2, max:20 }).withMessage("Owner name must be between 2 and 20 chars.") //length
@@ -443,7 +442,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("OwnerID")
+        body("OwnerID")
          //validators
          .notEmpty().withMessage("Owner ID is required.") // check if not empty
          .isLength({ exact: 10 }).withMessage("Owner ID must be 10 digits") //length
@@ -456,7 +455,7 @@ function getFormValidation(){
          ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("formOwnerIDFile")
+        body("formOwnerIDFile")
         .notEmpty().withMessage("Owner ID file is required.") // check if not empty
         .custom(async (value, { req }) => {
             const fileExtension = value.substring(value.lastIndexOf('.') + 1);
@@ -474,7 +473,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("user")
+        body("user")
         // Validators
         .if((value, { req }) => req.body.user !== undefined && req.body.user !== '') // Manual check for optional field
         .isLength({ min: 2, max: 20 }).withMessage("User name must be between 2 and 20 characters") // Length
@@ -486,7 +485,7 @@ function getFormValidation(){
         .escape()
         ,
 
-        check("userID")
+        body("userID")
         // Validators
         .if((value, { req }) => req.body.userID !== undefined && req.body.userID !== '') // Manual check for optional field
         .isLength({ exact: 10 }).withMessage("User ID must be 10 digits") // Length
@@ -498,7 +497,7 @@ function getFormValidation(){
         .escape(),
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("formUserIDFile")
+        body("formUserIDFile")
         .custom(async (value, { req }) => {
             if (value) {
               const fileExtension = value.substring(value.lastIndexOf('.') + 1);
@@ -518,7 +517,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("LicensePlate")
+        body("LicensePlate")
         //validators
         .notEmpty().withMessage("License plate is required.") // check if not empty
         .isLength({ exact: 8 }).withMessage("License plate must be 8 digits") //length
@@ -531,7 +530,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("VehicleChassis")
+        body("VehicleChassis")
         //validators
         .notEmpty().withMessage("vehicle chassis is required.") // check if not empty
         .isLength({ exact: 17 }).withMessage("Vehicle chassis number must be 17 digits") //length
@@ -544,7 +543,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("RegistrationType")
+        body("RegistrationType")
         //validators
         .notEmpty().withMessage("Registration type is required.") // check if not empty
         .isLength({ min: 2, max:20 }).withMessage("Registration type must be between 2 and 20 chars.") //length
@@ -557,7 +556,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("VehicleBrand")
+        body("VehicleBrand")
         //validators
         .notEmpty().withMessage("Vehicle brand is required.") // check if not empty
         .isLength({ min: 2, max:20 }).withMessage("Vehicle brand must be between 2 and 20 chars.") //length
@@ -570,7 +569,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("VehicleModel")
+        body("VehicleModel")
         //validators
         .notEmpty().withMessage("Vehicle model is required.") // check if not empty
         .isLength({ min: 2, max:20 }).withMessage("Vehicle model must be between 2 and 20 chars.") //length
@@ -583,7 +582,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("Colour")
+        body("Colour")
         //validators
         .notEmpty().withMessage("Vehicle colour is required.") // check if not empty
         .isLength({ min: 2, max:20 }).withMessage("Colour must be between 2 and 20 chars.") //length
@@ -596,7 +595,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("ManufactureYear")
+        body("ManufactureYear")
         //validators
         .notEmpty().withMessage("Manufacture year is required.") // check if not empty
         .isLength({ exact: 4 }).withMessage("Year must be 4 digits") //length
@@ -617,7 +616,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("Serial_number")
+        body("Serial_number")
         //validators
         .notEmpty().withMessage("Serial number is required.") // check if not empty
         .isLength({ min: 8, max:10 }).withMessage("Serial number must be between 8 and 10 digits") //length
@@ -629,7 +628,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("insurance_start")
+        body("insurance_start")
         //validators
         .notEmpty().withMessage("insurance start date is required.") // check if not empty
         .isBefore().withMessage("Insurance start date can't start after current date")
@@ -640,7 +639,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("insurance_end")
+        body("insurance_end")
         //validators
         .notEmpty().withMessage("insurance end date is required.") // check if not empty
         .isAfter().withMessage("Insurance can't end before current date")
@@ -651,7 +650,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("inspection_start")
+        body("inspection_start")
         //validators
         .notEmpty().withMessage("Inspection start date is required.") // check if not empty
         .isBefore().withMessage("Inspection start date can't start after current date")
@@ -662,7 +661,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("inspection_end")
+        body("inspection_end")
         //validators
         .notEmpty().withMessage("inspection end date is required.") // check if not empty
         .isAfter().withMessage("Inspection can't end before current date")
@@ -673,7 +672,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("formVehicleRegistrationFile")
+        body("formVehicleRegistrationFile")
         .notEmpty().withMessage("Vehicle registration file is required.") // check if not empty
         .custom(async (value, { req }) => {
             const fileExtension = value.substring(value.lastIndexOf('.') + 1);
@@ -691,7 +690,7 @@ function getFormValidation(){
         ,
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        check("formVehiclePhotoFile")
+        body("formVehiclePhotoFile")
         .notEmpty().withMessage("Vehicle photo is required.") // check if not empty
         .custom(async (value, { req }) => {
             const fileExtension = value.substring(value.lastIndexOf('.') + 1);
@@ -721,7 +720,7 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
         user:"root",
         password:"root",
         port:"3306",
-        database:"truckdatabase"
+        database:"naqel_limited_company"
     });
 
     db.connect(function(err){
