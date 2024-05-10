@@ -36,6 +36,8 @@ app.use(express.json());
 // Serve static files from the TraderRegistration folder
 app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
 
+
+
 app.post("/login", (req, res) => {
   const { UserName, Password } = req.body;
 
@@ -50,9 +52,6 @@ app.post("/login", (req, res) => {
 
     if (result.length === 0) {
       console.log("Invalid username or password.");
-
-      // Send error message to the client
-      res.send("Invalid username or password.");
       return;
     }
 
@@ -62,6 +61,7 @@ app.post("/login", (req, res) => {
     res.redirect("/index.html");
   });
 });
+
 
 // Signup route
 app.post(
@@ -114,6 +114,8 @@ app.get("/logout", (req, res) => {
     res.redirect("/login.html");
   });
 });
+
+
 
 /////////////////////////////////////////////////////Registration///////////////////////////////////////////////////////////////////////
 // validation functions one for trader , one for transportation company
@@ -313,7 +315,7 @@ function getFormValidationOrder() {//فانكشن يرجع اوبجيكت
       .isLength({ min: 3, max: 100 })
       .withMessage("The length should be between 3 and 100 characters.")
       .matches(/[\u0600-\u06FF\u0660-\u0669a-zA-Z,\/\s]/) //format
-      /[\u0600-\u06FF] matches the Arabic language.
+      /**[\u0600-\u06FF] matches the Arabic language.
         [\u0660-\u0669] matches Arabic numerals.
         [a-zA-Z] corresponds to the Latin lowercase and uppercase.
         ,\ matches the agreement partner.
@@ -365,7 +367,7 @@ function addOrder(pickup, dropOff, datePickUp, dateDropOff, typeCargo, truck, nu
 
   db.connect(function (err) {
     // البيانات المطلوب إدخالها في قاعدة البيانات
-    let sql = `INSERT INTO \order\ (pickup, dropOff, datePickUp, dateDropOff, typeCargo, truck, numberOfTruck, goodsValue, image, notes) VALUES 
+    let sql = `INSERT INTO \`order\` (pickup, dropOff, datePickUp, dateDropOff, typeCargo, truck, numberOfTruck, goodsValue, image, notes) VALUES 
     ('${pickup}', '${dropOff}', '${datePickUp}', '${dateDropOff}', '${typeCargo}', '${truck}', '${numberOfTruck}', '${goodsValue}', '${image}', '${notes}')`;
     db.query(sql, function (err, result) {
       if (err) throw err;
@@ -533,7 +535,7 @@ function getFormValidation(){
         .notEmpty().withMessage("vehicle chassis is required.") // check if not empty
         .isLength({ exact: 17 }).withMessage("Vehicle chassis number must be 17 digits") //length
         .isString().withMessage("Vehicle chassis must be a string")//datatype
-        .matches(/^(?=.[a-zA-Z])(?=.\d)[a-zA-Z\d]+$/).withMessage("Vehicle chassis must contain both numbers and letters") // Format (both numbers and letters)
+        .matches(/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+$/).withMessage("Vehicle chassis must contain both numbers and letters") // Format (both numbers and letters)
  
         //Sanitizers
         .trim()
@@ -724,7 +726,7 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
     db.connect(function(err){
 
     //sql command
-    let sql = INSERT INTO truck (Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile, LicensePlate, VehicleChassis, RegistrationType, VehicleBrand, VehicleModel, Colour, ManufactureYear, Serial_number, insurance_start, insurance_end, inspection_start, inspection_end, formVehicleRegistrationFile, formVehiclePhotoFile) VALUES ('${Owner}', '${OwnerID}', '${formOwnerIDFile}', '${user}', '${userID}', '${formUserIDFile}', '${LicensePlate}', '${VehicleChassis}', '${RegistrationType}', '${VehicleBrand}', '${VehicleModel}', '${Colour}', '${ManufactureYear}', '${Serial_number}', '${insurance_start}', '${insurance_end}', '${inspection_start}', '${inspection_end}', '${formVehicleRegistrationFile}', '${formVehiclePhotoFile}');
+    let sql = `INSERT INTO truck (Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile, LicensePlate, VehicleChassis, RegistrationType, VehicleBrand, VehicleModel, Colour, ManufactureYear, Serial_number, insurance_start, insurance_end, inspection_start, inspection_end, formVehicleRegistrationFile, formVehiclePhotoFile) VALUES ('${Owner}', '${OwnerID}', '${formOwnerIDFile}', '${user}', '${userID}', '${formUserIDFile}', '${LicensePlate}', '${VehicleChassis}', '${RegistrationType}', '${VehicleBrand}', '${VehicleModel}', '${Colour}', '${ManufactureYear}', '${Serial_number}', '${insurance_start}', '${insurance_end}', '${inspection_start}', '${inspection_end}', '${formVehicleRegistrationFile}', '${formVehiclePhotoFile}')`;
     db.query(sql, function(err, result){
 
     if(err) throw err;
@@ -739,43 +741,8 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
 /////////////////Server////////////////////////
 
 
-const port = 811;
+const port = 8800;
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.listen(7200, () => {
-  console.log("Server is running on port 7212");
-});
-
-
 
