@@ -21,9 +21,11 @@ loginForm.addEventListener("submit", function (e) {
       if (data.error) {
         // Display error message
         msg.textContent = data.error;
+        console.log("Login failed:", data.error); // Log login failure
       } else {
         // Redirect to the home page
         window.location.href = "/index.html";
+        console.log("Login successful!"); // Log login success
       }
     })
     .catch((error) => {

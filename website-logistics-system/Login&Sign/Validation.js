@@ -49,12 +49,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Password validation
-        const passwordError = validatePassword(passwordInput.value);
-        if (passwordError) {
-            showError(passwordInput, passwordError, passwordInput.parentElement);
-            isValid = false;
-        } else {
-            removeError(passwordInput, passwordInput.parentElement);
+        if (form === signInForm) {
+            // Password validation for sign-in form
+            const passwordError = validatePasswordSignIn(passwordInput.value);
+            if (passwordError) {
+                showError(passwordInput, passwordError, passwordInput.parentElement);
+                isValid = false;
+            } else {
+                removeError(passwordInput, passwordInput.parentElement);
+            }
+        } else if (form === signUpForm) {
+            // Password validation for sign-up form
+            const passwordError = validatePasswordSignUp(passwordInput.value);
+            if (passwordError) {
+                showError(passwordInput, passwordError, passwordInput.parentElement);
+                isValid = false;
+            } else {
+                removeError(passwordInput, passwordInput.parentElement);
+            }
         }
 
         // Email validation (for sign-up form)
@@ -95,14 +107,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function validatePassword(password) {
+    function validatePasswordSignIn(password) {
+        if (password.trim() === "") {
+            return "Password cannot be empty.";
+        } else {
+            return ""; // Valid password for sign-in
+        }
+    }
+
+    function validatePasswordSignUp(password) {
         if (password.trim() === "") {
             return "Password cannot be empty.";
         } else if (password.length < 8) {
             return "Password must be at least 8 characters long.";
-        } else{
-            return ""; // Valid password
+        } else if (!hasNumber(password)) {
+            return "Password must contain at least one number.";
+        } else if (!hasSpecialChar(password)) {
+            return "Password must contain at least one special character.";
+        } else {
+            return ""; // Valid password for sign-up
         }
+    }
+
+    function hasNumber(str) {
+        return /\d/.test(str);
+    }
+
+    function hasSpecialChar(str) {
+        return /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(str);
     }
 
     function validateEmail(email) {
