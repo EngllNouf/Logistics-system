@@ -445,7 +445,8 @@ document.getElementById("TraderRegistrationForm").addEventListener("submit", fun
             fileList1.innerHTML = '';
             
             // Hide the "I'm Ready to Submit" button
-            document.getElementById("submitButton").style.display = 'none';
+            //document.getElementById("submitButton").style.display = 'none';
+            window.location.href = data.redirectUrl;
            
         }
     })
@@ -697,7 +698,7 @@ document.getElementById("transportationRegistrationForm").addEventListener("subm
             });
         } else {
             // Reset form fields
-            document.getElementById("transportationRegistrationForm").reset();
+            window.location.href = data.redirectUrl;
         }
     })
     .catch(function (error) {
