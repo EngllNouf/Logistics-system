@@ -119,7 +119,7 @@ app.get("/logout", (req, res) => {
 
 /////////////////////////////////////////////////////Registration///////////////////////////////////////////////////////////////////////
 // validation functions one for trader , one for transportation company
-let formValidationTrader = getFormValidation(); 
+let formValidationTrader = getFormValidationTrader(); 
 let formValidationTransport = getFormValidationTransportation();
 
 //trader registration form route
@@ -184,7 +184,7 @@ app.post("/process",formValidationTrader, (request, response) => {
     
   }
 
-  function getFormValidation() {
+  function getFormValidationTrader() {
     return [
       body("companyName").notEmpty().withMessage("Company name is required"),
       body("companyEmail").isEmail().withMessage("Invalid email format"),
@@ -280,7 +280,7 @@ function getFormValidationTransportation() {
 
 //////////////////////////////////////////PLACE ORDER///////////////////////////////////////////////////
 //JSON routing
-let formValidation = getFormValidation(); // ميثود يشيك اذا فيه اخطاء او لا والنتيجة ترجع فيه
+let formValidation = getFormValidationOrder(); // ميثود يشيك اذا فيه اخطاء او لا والنتيجة ترجع فيه
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());// نفعل وضعية json
 app.post("/process",formValidation, (request, response) => {// formValidation يسمح لنا نستخدم الميثود
@@ -309,7 +309,7 @@ app.post("/process",formValidation, (request, response) => {// formValidation ي
  });
 
 
-function getFormValidation() {//فانكشن يرجع اوبجيكت 
+function getFormValidationOrder() {//فانكشن يرجع اوبجيكت 
   return [
     body("pickup").notEmpty().withMessage("Please enter the pick-up location.")
       .isLength({ min: 3, max: 100 })
