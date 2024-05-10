@@ -479,6 +479,13 @@
                                 <label style="margin-bottom: 10px;" for="numberOfTruck" class="form-label">Number of Trucks</label>
                                 <input style="height: 2.3em; border-radius: 5px;" type="text" class="form-control" id="numberOfTruck" name="numberOfTruck" value="01" readonly>
                             </div> 
+                            <!--Weight-->
+                            <div style="margin-left: 18px; margin-bottom: 50px;"  class="col-md-6">
+                                <label style="margin-bottom: 10px;" for="weight" class="form-label">Weight</label>
+                                <label style="margin-bottom: 10px; font-size: 12px; color: #9b9999;" class="form-label">Please enter the weight in tons</label>
+                                <input id="weight" type="text" class="form-control">
+                                <div id="weightError" class="error-message" style="display: none; color: red;">Please enter the weight.</div>
+                              </div>
                             <!--Good Value-->
                             <div style="margin-left: 18px; margin-bottom: 50px;" class="col-md-6">
                                 <label style="margin-bottom: 10px;" for="cargoValue" class="form-label">Cargo Value</label>
@@ -535,6 +542,7 @@
                             <p id="displayTypeCargo"></p>
                             <p id="displayTruckType"></p>
                             <p id="displaynumberOfTruck"></p>
+                            <p id="displayWeight"></p>
                             <p id="displayCargoValue"></p>
                             <p id="displayNotes"></p>
                             <div id="displayImages"></div>
@@ -653,6 +661,7 @@ document.getElementById('pickup').addEventListener('change', function() {
     var dropoffDate = document.getElementById("dropoffDate").value;
     var cargoValue = document.getElementById("cargoValue").value.trim();
     var selectedCargo = document.getElementById("typeCargo").value;
+    var weight = document.getElementById("weight").value;
     var image = document.getElementById("upload-button").files.length;
     
     var isValid = true;
@@ -702,6 +711,12 @@ document.getElementById('pickup').addEventListener('change', function() {
     document.getElementById("cargoValueError").innerText = "";
     document.getElementById("cargoValueError").style.display = "none"; // Hide the error message
 }
+if (weight === 0) {
+        document.getElementById("weightError").style.display = "block";
+        isValid = false;
+    } else {
+        document.getElementById("weightError").style.display = "none";
+    }
 if (image === 0) {
         document.getElementById("error").style.display = "block";
         isValid = false;
