@@ -28,60 +28,6 @@
 
 </head>
 <body>
-
-
-  <!--Nav-->
-  <nav id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
-     
-    <a class="navbar-brand" href="../FotHtml/HomePage.html"><img src="../../HomePage/images/OurLogo.jpg" height="55" width="180" alt="logo"></a>
-    <button class="navbar-toggler collapsed" type="button" 
-    data-bs-toggle="collapse" data-bs-target="#miniNav" aria-controls="miniNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="miniNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="../FotHtml/HomePage.html" style="color: #f89d13;">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services
-              </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/Trader/Trader.html">Trader</a></li>
-                   
-                      <li><a class="dropdown-item" href="/trasportation compeny/transport.html">Transportation company</a></li>
-                      <li><a class="dropdown-item" href="#">Driver</a></li>
-                    </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">AboutUs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">ContactUs</a>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="../../HomePage/images/person.png" width="30" height="30">
-            </a>
-              <ul class="dropdown-menu">
-                 
-                    <li><a class="dropdown-item" href="../index_file/Register.html">Register</a></li>
-                    <li><a class="dropdown-item" href="../index_file/Login.html">Login</a></li>
-                  </ul>
-          </li>
-         
-               
-        </ul> 
-    </div>
-
-</nav> 
-
-      <!--End of anv bar-->
-
-
-
-
     
 <div class="welcome-container" id="welcomeContainer">
     <h1>Welcome!</h1>
@@ -106,107 +52,137 @@
 <!-- Transportation company registration form -->
 <form id="transportationRegistrationForm" >
     <div class="form-step transportation-details" id="transportationStep1" style="display: none;" action="/process1" method="POST">
-        <h2>Transportation Company's Details:</h2>
-        <div class="grid-container">
-            <div>
-                <input type="text" placeholder="Commercial Registration Name" id="commercialRegistrationName">
-                <span id="commercialRegistrationNameError" class="error-message-small"></span>
-            </div>
-            <div>
-                <input type="text" placeholder="Commercial Registration Number" id="commercialRegistrationNumber">
-                <span id="commercialRegistrationNumberError" class="error-message-small"></span>
-            </div>
-            <div>
-                <input type="text" placeholder="Commercial Registration ID" id="commercialRegistrationID">
-                <span id="commercialRegistrationIDError" class="error-message-small"></span>
-            </div>
-            <div>
-                <label for="issueDate" class="date-label">Registration Issue Date</label>
-                <input type="date" placeholder="Issue Date" id="issueDate">
-                <span id="issueDateError" class="error-message-small"></span>
-            </div>
-            <div>
-                <label for="expirationDate" class="date-label">Registration Expiration Date</label>
-                <input type="date" placeholder="Expiration Date" id="expirationDate">
-                <span id="expirationDateError" class="error-message-small"></span>
-            </div>
-            <div>
-                <select id="licenseType">
-                    <option value="" disabled selected>Transportation's License Type</option>
-                    <option value="Directing goods transport vehicles License">Directing goods transport vehicles License</option>
-                    <option value="Transporting goods on land roads license">Transporting goods on land roads license</option>
-                    <option value="Land freight broker license">Land freight broker license</option>
-                   
-                </select>
-                <span id="licenseTypeError" class="error-message-small"></span>
-            </div>
-            <div>
-                <input type="text" placeholder="Transportation's License Number" id="licenseNumber">
-                <span id="licenseNumberError" class="error-message-small"></span>
-            </div>
-            <div>
-                <select id="transportType">
-                    <option value="" disabled selected>Transport type</option>
-                    <option value="Transporting goods">Transporting goods</option>
-                    <option value="Transporting goods between cities">Transporting goods between cities</option>
-                </select>
-                <span id="transportTypeError" class="error-message-small"></span>
-            </div>
-            <div>
+        <div class="form-step company-details" id="Tstep1" style="display: none;">
+            <h2>Transportation Company's Details:</h2>
+            <div class="grid-container">
+                <div>
+                    <input type="text" placeholder="Commercial Registration Name" id="commercialRegistrationName">
+                    <span id="commercialRegistrationNameError" class="error-message-small"></span>
+                </div>
+                <div>
+                    <input type="text" placeholder="Commercial Registration Number" id="commercialRegistrationNumber">
+                    <span id="commercialRegistrationNumberError" class="error-message-small"></span>
+                </div>
+                <div>
+                    <input type="text" placeholder="Commercial Registration ID" id="commercialRegistrationID">
+                    <span id="commercialRegistrationIDError" class="error-message-small"></span>
+                </div>
+                <div>
+                    <label for="issueDate" class="date-label">Registration Issue Date</label>
+                    <input type="date" placeholder="Issue Date" id="issueDate">
+                    <span id="issueDateError" class="error-message-small"></span>
+                </div>
+                <div>
+                    <label for="expirationDate" class="date-label">Registration Expiration Date</label>
+                    <input type="date" placeholder="Expiration Date" id="expirationDate">
+                    <span id="expirationDateError" class="error-message-small"></span>
+                </div>
+                <div>
+                    <select id="licenseType">
+                        <option value="" disabled selected>Transportation's License Type</option>
+                        <option value="Directing goods transport vehicles License">Directing goods transport vehicles License</option>
+                        <option value="Transporting goods on land roads license">Transporting goods on land roads license</option>
+                        <option value="Land freight broker license">Land freight broker license</option>
+                    
+                    </select>
+                    <span id="licenseTypeError" class="error-message-small"></span>
+                </div>
+                <div>
+                    <input type="text" placeholder="Transportation's License Number" id="licenseNumber">
+                    <span id="licenseNumberError" class="error-message-small"></span>
+                </div>
+                <div>
+                    <select id="transportType">
+                        <option value="" disabled selected>Transport type</option>
+                        <option value="Transporting goods">Transporting goods</option>
+                        <option value="Transporting goods between cities">Transporting goods between cities</option>
+                    </select>
+                    <span id="transportTypeError" class="error-message-small"></span>
+                </div>
+                <div>
+                    
+                    <select id="companySpecialization" >
+                        <option value="" disabled selected>Select Specialization</option>
+                        <option value="General Freight Shipping services">General Freight Shipping services</option>
+                        <option value="Express Delivery Services">Express Delivery Services</option>
+                        <option value="Specialized Transportation Services">Specialized Transportation Services</option>
+                        <option value="Distribution and Inventory Management Services">Distribution and Inventory Management Services</option>
+                        <option value="Livestock Transportation services">Livestock Transportation services</option>
+                        <option value="Oversized Cargo Transportation services">Oversized Cargo Transportation services</option>
+                        <option value="Efficient Parcel and Small Cargo Transportation services">Efficient Parcel and Small Cargo services</option>
+                        <option value="Hazardous Materials Transportation services">Hazardous Materials Transportation services</option>
+                        <option value="Perishable Goods Transportation services">Perishable Goods Transportation</option>
+                        <option value="Waste Management and Recycling Transportation Services">Waste Management and Recycling Transport Service</option>
+                        <option value="Auto Transportation services">Auto Transportation services</option>
                 
-                <select id="companySpecialization" >
-                    <option value="" disabled selected>Select Specialization</option>
-                    <option value="General Freight Shipping services">General Freight Shipping services</option>
-                    <option value="Express Delivery Services">Express Delivery Services</option>
-                    <option value="Specialized Transportation Services">Specialized Transportation Services</option>
-                    <option value="Distribution and Inventory Management Services">Distribution and Inventory Management Services</option>
-                    <option value="Livestock Transportation services">Livestock Transportation services</option>
-                    <option value="Oversized Cargo Transportation services">Oversized Cargo Transportation services</option>
-                    <option value="Efficient Parcel and Small Cargo Transportation services">Efficient Parcel and Small Cargo services</option>
-                    <option value="Hazardous Materials Transportation services">Hazardous Materials Transportation services</option>
-                    <option value="Perishable Goods Transportation services">Perishable Goods Transportation</option>
-                    <option value="Waste Management and Recycling Transportation Services">Waste Management and Recycling Transport Service</option>
-                    <option value="Auto Transportation services">Auto Transportation services</option>
-            
-                </select>
+                    </select>
 
+                    
+                    <span id="companySpecializationError" class="error-message-small"></span>
+                </div>
+                <div class="file-field">
+                    <label for="commercialRegistrationFile">Attach Commercial Registration File <span id="commercialRegistrationFileError" class="error-message-small"></span></label>
+                    <output id="commercialRegistrationFileList"></output>
+                    <input type="file" id="commercialRegistrationFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('commercialRegistrationFile', 'commercialRegistrationFileList')">
+                </div>
                 
-                <span id="companySpecializationError" class="error-message-small"></span>
+                <div class="file-field">
+                    <label for="ownerIdFile">Attach Owner ID pic <span id="ownerIdFileError" class="error-message-small"></span></label>
+                    <output id="ownerIdFileList"></output>
+                    <input type="file" id="ownerIdFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('ownerIdFile', 'ownerIdFileList')">
+                </div>
+                
+                <div class="file-field">
+                    <label for="licenseFile">Attach License File <span id="licenseFileError" class="error-message-small"></span></label>
+                    <output id="licenseFileList"></output>
+                    <input type="file" id="licenseFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('licenseFile', 'licenseFileList')">
+                </div>
+                
+                <div class="file-field">
+                    <label for="commissionerIdFile">Attach Commissioner's ID File <span id="commissionerIdFileError" class="error-message-small"></span></label>
+                    <output id="commissionerIdFileList"></output>
+                    <input type="file" id="commissionerIdFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('commissionerIdFile', 'commissionerIdFileList')">
+                </div>
+                
             </div>
-            <div class="file-field">
-                <label for="commercialRegistrationFile">Attach Commercial Registration File <span id="commercialRegistrationFileError" class="error-message-small"></span></label>
-                <output id="commercialRegistrationFileList"></output>
-                <input type="file" id="commercialRegistrationFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('commercialRegistrationFile', 'commercialRegistrationFileList')">
+            <div class="button-container">
+                <button class="back-btn" onclick="backToWelcomeFromTransportationForm()">Previous</button>
+                <button type="button" id="nextButton2">Next</button>
+                <button type="submit" id="submit" style="display: none;">Im Ready to Submit</button>
+                <div id="msg2"></div>
             </div>
-            
-            <div class="file-field">
-                <label for="ownerIdFile">Attach Owner ID pic <span id="ownerIdFileError" class="error-message-small"></span></label>
-                <output id="ownerIdFileList"></output>
-                <input type="file" id="ownerIdFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('ownerIdFile', 'ownerIdFileList')">
-            </div>
-            
-            <div class="file-field">
-                <label for="licenseFile">Attach License File <span id="licenseFileError" class="error-message-small"></span></label>
-                <output id="licenseFileList"></output>
-                <input type="file" id="licenseFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('licenseFile', 'licenseFileList')">
-            </div>
-            
-            <div class="file-field">
-                <label for="commissionerIdFile">Attach Commissioner's ID File <span id="commissionerIdFileError" class="error-message-small"></span></label>
-                <output id="commissionerIdFileList"></output>
-                <input type="file" id="commissionerIdFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('commissionerIdFile', 'commissionerIdFileList')">
-            </div>
-            
+          </div>
         </div>
-        <div class="button-container">
-            <button class="back-btn" onclick="backToWelcomeFromTransportationForm()">Previous</button>
-            <button type="button" id="nextButton2">Next</button>
-            <button type="submit" id="submit" style="display: none;">Im Ready to Submit</button>
-            <div id="msg2"></div>
+        <div class="form-step company-details" id="Tstep2" style="display: none;">
+            <h2 class="title">Sign Up</h2>
+                <div class="grid-container">
+                    <div>
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username"  name="UserName"/>
+                    </div>
+                    <div class="error-message" id="signup-username-error-message"></div> <!-- Display error message here -->
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" name="Email" />
+                    </div>
+                    <div class="error-message" id="signup-email-error-message"></div> <!-- Display error message here -->
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                    
+                        <input type="password" placeholder="Password" name="Password" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Confirm Password" name="ConfirmPassword" />
+                    </div>
+                    <div class="error-message" id="signup-password-error-message"></div> <!-- Display error message here -->
+                    <input type="submit" value="SignUp" id="sign-up-btn" class="btn solid" href="../index.html"/></a>
+                    <p class="already-have-account">If you already have an account, please
+                        <a type="submit" value="Login" id="sign-in-btn2" class="btn-link" >Login</a>
+                    </p>
+              </div>
         </div>
-    </div>
-  
-</form>
+    </form>
 
 
 
@@ -302,13 +278,13 @@
                 <select id="industrySelect">
                     <option value="" disabled selected>Select Industry</option>
                                         <option value="Transportation">Transportation</option>
-<option value="Utilities">Utilities</option>
-<option value="Chemicals">Chemicals</option>
-<option value="Consumer Goods">Consumer Goods</option>
-<option value="Energy">Energy</option>
-<option value="Fashion">Fashion</option>
-<option value="Food">Food</option>
-<option value="Electronic">Electronic</option>
+        <option value="Utilities">Utilities</option>
+        <option value="Chemicals">Chemicals</option>
+        <option value="Consumer Goods">Consumer Goods</option>
+        <option value="Energy">Energy</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Food">Food</option>
+        <option value="Electronic">Electronic</option>
                 </select>
                 <span id="industryError" class="error-message-small"></span>
             </div>

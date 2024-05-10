@@ -13,18 +13,19 @@ document.getElementById("myForm").addEventListener("submit", function (e) {
       let typeCargo = document.getElementsByName("typeCargo")[0].value;
       let truck = document.getElementsByName("truck")[0].value;
       let numberOfTruck = document.getElementsByName("numberOfTruck")[0].value;
-      let goodsValue = document.getElementsByName("goodsValue")[0].value;
+      let CargoValue = document.getElementsByName("CargoValue")[0].value;
+      let weight = document.getElementsByName("weight")[0].value;
       let image = document.getElementsByName("image")[0].value;
       let notes = document.getElementsByName("notes")[0].value;
   
   //sending AJAX request
-  fetch("/process", {
+  fetch("/order", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",//object json
     },
     body: JSON.stringify({ pickup: pickup, dropOff: dropOff, datePickUp: datePickUp, dateDropOff: dateDropOff,
-      typeCargo: typeCargo, truck: truck, numberOfTruck: numberOfTruck, goodsValue: goodsValue,
+      typeCargo: typeCargo, truck: truck, numberOfTruck: numberOfTruck, CargoValue: CargoValue, weight: weight,
       image: image, notes: notes
     }),
   })
