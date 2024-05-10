@@ -483,13 +483,13 @@
                             <div style="margin-left: 18px; margin-bottom: 50px;"  class="col-md-6">
                                 <label style="margin-bottom: 10px;" for="weight" class="form-label">Weight</label>
                                 <label style="margin-bottom: 10px; font-size: 12px; color: #9b9999;" class="form-label">Please enter the weight in tons</label>
-                                <input id="weight" type="text" class="form-control">
+                                <input id="weight" type="text" class="form-control" placeholder="Enter the Weight" name="weight" required>
                                 <div id="weightError" class="error-message" style="display: none; color: red;">Please enter the weight.</div>
                             </div>
                             <!--Good Value-->
                             <div style="margin-left: 18px; margin-bottom: 50px;" class="col-md-6">
                                 <label style="margin-bottom: 10px;" for="cargoValue" class="form-label">Cargo Value</label>
-                                <input style="height: 2.3em; border-radius: 5px; " type="text" class="form-control" id="cargoValue" name="CargoValue" placeholder="Enter the Goods Value" required>
+                                <input type="text" class="form-control" id="cargoValue" name="CargoValue" placeholder="Enter the Goods Value" required>
                                 <div id="cargoValueError" class="error-message" style="display: none; color: red;">Please enter the goods value.</div>
                             </div>  
                             <!--Images and Notes-->   
@@ -740,7 +740,6 @@ if (image === 0) {
         var typeCargo = document.getElementById('typeCargo').value;
         var CargoValue = document.getElementById('cargoValue').value;
         var numberOfTruck = document.getElementById('numberOfTruck').value;
-        var weight = document.getElementById('weight').value;
         var note = document.getElementById('note').value;
        
         // Display submitted information
@@ -786,17 +785,18 @@ if (image === 0) {
 <script>
     let map, markers = [], polyline;
 
+   
 function initModal() {
-    map = new google.maps.Map(document.getElementById("googleMap"), {
-        center: { lat: 40.7128, lng: -74.0060 },
-        zoom: 8,
+    var jeddah = { lat: 21.4858, lng: 39.1925 }; // Coordinates for Jeddah, Saudi Arabia
+    map = new google.maps.Map(document.getElementById('googleMap'), {
+        zoom: 12,
+        center: jeddah
     });
 
     map.addListener('click', function (event) {
         placeMarker(event.latLng);
     });
 
-    // Add event listeners to the input fields for manual entry
     document.getElementById('pickup').addEventListener('change', function () {
         geocodeAddress(this.value, 'pickup');
     });
@@ -823,7 +823,7 @@ function placeMarker(location) {
         drawLine(markers[0].getPosition(), markers[1].getPosition());
         displayDropOffAddress(markers[1]);
         displayPickupAddress(markers[0]);
-        displayPickupDate();
+        // displayPickupDate(); // If this function exists and is supposed to be called here
     }
 }
 
