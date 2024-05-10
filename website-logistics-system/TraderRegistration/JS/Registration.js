@@ -1,55 +1,11 @@
-// Maximum number of files allowed to be attached
-const maxFiles = 2;
-
-function handleFile(inputId, outputId) {
-    const fileInput = document.getElementById(inputId);
-    const fileList = document.getElementById(outputId);
-
-    // Check if the maximum number of files is already attached
-    if (fileInput.files.length + fileList.childElementCount > maxFiles) {
-        alert("You can only attach up to " + maxFiles + " files.");
-        // Clear the file input
-        fileInput.value = '';
-        return;
-    }
-
-    // Display attached files
-    const files = fileInput.files;
-    for (let i = 0; i < files.length; i++) {
-        // Check if the maximum number of files has been reached
-        if (fileList.childElementCount >= maxFiles) {
-            alert("You can only attach up to " + maxFiles + " files.");
-            break;
-        }
-
-        const file = files[i];
-        const fileItem = document.createElement('div');
-        fileItem.classList.add('file-item');
-
-        const fileName = document.createElement('span');
-        fileName.classList.add('file-name');
-        fileName.textContent = file.name;
-
-        const deleteButton = document.createElement('span');
-        deleteButton.classList.add('delete-btn');
-        deleteButton.textContent = 'X';
-        deleteButton.addEventListener('click', function() {
-            fileInput.value = ''; // Clear file input
-            fileList.removeChild(fileItem); // Remove file item
-        });
-
-        fileItem.appendChild(fileName);
-        fileItem.appendChild(deleteButton);
-        fileList.appendChild(fileItem);
-    }
-}
-
 function selectOption(option) {
     // Hide the welcome container
     document.getElementById('welcomeContainer').style.display = 'none';
 
     // Show the form container only if the user selects "trader"
     if (option === 'trader') {
+        // Show the form 
+        document.getElementById('TraderRegistrationForm').style.display = 'block';
         // Show the form container
         document.getElementById('formContainer').style.display = 'block';
         // Show only the company details form initially
@@ -73,41 +29,242 @@ function selectOption(option) {
             document.getElementById('transportationStep1').style.display = 'flex';
         
         
-    } else {
-        // Hide the form container for other options
-        document.getElementById('formContainer').style.display = 'none';
+    } 
+}
+   
+
+
+// Maximum number of files allowed to be attached
+const maxFiles = 1;
+function handleFile(inputId, outputId) {
+    const fileInput = document.getElementById(inputId);
+    const fileList = document.getElementById(outputId);
+
+      // Check if the maximum number of files is already attached
+      if (fileInput.files.length > maxFiles) {
+        alert("You can only attach up to " + maxFiles + " files.");
+        // Clear the file input
+        fileInput.value = '';
+        return;
+    }
+
+
+    // Remove existing files from the output
+    while (fileList.firstChild) {
+        fileList.removeChild(fileList.firstChild);
+    }
+
+    // Display the newly attached file
+    const files = fileInput.files;
+    if (files.length > 0) {
+        const file = files[0];
+        const fileItem = document.createElement('div');
+        fileItem.classList.add('file-item');
+
+        const fileName = document.createElement('span');
+        fileName.classList.add('file-name');
+        fileName.textContent = file.name;
+
+        const deleteButton = document.createElement('span');
+        deleteButton.classList.add('delete-btn');
+        deleteButton.textContent = 'X';
+        deleteButton.addEventListener('click', function() {
+            fileInput.value = ''; // Clear file input
+            fileList.removeChild(fileItem); // Remove file item
+        });
+
+        fileItem.appendChild(fileName);
+        fileItem.appendChild(deleteButton);
+        fileList.appendChild(fileItem);
     }
 }
 
+
+
+    
+    //to make the calender ends on todays date
+    let issueDateInput = document.getElementById('issueDate');
+    // Set the maximum date allowed in the issue date field to today's date
+    issueDateInput.max = new Date().toISOString().split("T")[0];
 
 
 function nextStep() {
 
     event.preventDefault();
-    if (validateStep1()) {
+    if (validateTraderCompany()) {
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'flex';
-        document.getElementById('point1').classList.remove('active'); // Remove active class from point 1
-        document.getElementById('point2').classList.add('active'); // Add active class to point 2
+        document.getElementById('point1').classList.remove('active'); 
+        document.getElementById('point2').classList.add('active'); 
         currentStep = 2;
     }
 }
 
+function validateTraderCompany() {
+    let companyName = document.getElementById('companyName').value;
+    let companyEmail = document.getElementById('companyEmail').value;
+    let companyAddress = document.getElementById('companyAddress').value;
+    let citySelect = document.getElementById('citySelect');
+    let companyZip = document.getElementById('companyZip').value;
+    let companyVat = document.getElementById('companyVat').value;
+    let companyLicense = document.getElementById('companyLicense').value;
+    let commercialRegistrationFile1Input = document.getElementById('commercialRegistrationFile1'); 
+    
+  
+
+    
+    let companyNameError = document.getElementById('companyNameError');
+    let companyEmailError = document.getElementById('companyEmailError');
+    let AddressError = document.getElementById('AddressError');
+    let citySelectError = document.getElementById('citySelectError');
+    let ZipError = document.getElementById('ZipError');
+    let VatError = document.getElementById('VatError');
+    let LicenseError = document.getElementById('LicenseError');
+    let commercialRegistrationFile1Error = document.getElementById('commercialRegistrationFile1Error');
+
+    let isValid = true;
+
+    // Validate company name
+if (companyName.trim() === '') {
+    companyNameError.innerText = '* Required';
+    isValid = false;
+} else if (!/^[a-zA-Z0-9\s]+$/.test(companyName)) {
+    companyNameError.innerText = '* Company name should only contain letters, numbers, and spaces';
+    isValid = false;
+} else {
+    companyNameError.innerText = '';
+}
+    
+    //validaite email
+    if (companyEmail.trim() === '') {
+        companyEmailError.innerText = '* Required';
+        isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(companyEmail)) {
+    companyEmailError.innerText = '* Invalid email format example: emailExample@gmail.com';
+    isValid = false;
+    } else {
+    companyEmailError.innerText = '';
+    }
+
+    // Validate company address
+    if (companyAddress.trim() === '') {
+       AddressError.innerText = '* Required';
+       isValid = false;
+    } else {
+        AddressError.innerText = '';
+    }
+
+// Validate city selection
+if (citySelect.value === '') {
+    citySelectError.innerText = '* Required';
+    isValid = false;
+} else {
+    citySelectError.innerText = '';
+}
+
+//validate zip
+if (companyZip.trim() === '') {
+    ZipError.innerText = '* Required';
+    isValid = false;
+} else if (!/^\d{5}$/.test(companyZip)) {
+    ZipError.innerText = '* Zip code must contain exactly 5 digits';
+    isValid = false;
+} else {
+    ZipError.innerText = '';
+}
+
+ // Validate VAT number 
+ if (companyVat.trim() === '') {
+    VatError.innerText = '* Required';
+    isValid = false;
+} else if (!/^\d{15}$/.test(companyVat)) {
+    VatError.innerText = '* VAT number must contain exactly 15 digits';
+    isValid = false;
+} else {
+    VatError.innerText = '';
+}
+//validate license number
+  if (companyLicense.trim() === '') {
+        LicenseError.innerText = '* Required';
+        isValid = false;
+    } else if (!/^\d{10}$/.test(companyLicense)) {
+        LicenseError.innerText = '* License number must contain exactly 10 digits';
+        isValid = false;
+    } else {
+        LicenseError.innerText = '';
+    }
+// Validate file attachment
+if (commercialRegistrationFile1Input.files.length === 0) {
+    commercialRegistrationFile1Error.innerText = '* Please attach a file';
+    isValid = false;
+} else {
+    commercialRegistrationFile1Error.innerText = '';
+}
+
+return isValid;
 
 
+}
 
-function backToWelcomeFromForm() {
-    // Hide the welcome container
+
+// Function to reset trader registration form
+function resetTraderRegistrationForm() {
+    document.getElementById('companyName').value = '';
+    document.getElementById('companyEmail').value = '';
+    document.getElementById('companyAddress').value = '';
+    document.getElementById('citySelect').value = '';
+    document.getElementById('companyZip').value = '';
+    document.getElementById('companyVat').value = '';
+    document.getElementById('companyLicense').value = '';
+    document.getElementById('traderName').value = '';
+    document.getElementById('traderPhoneNumber').value = '';
+    document.getElementById('traderAddress').value = '';
+    document.getElementById('industrySelect').value = '';
+    document.getElementById('idNumber').value = '';
+
+    // Clear file input fields
+    document.getElementById('commercialRegistrationFile1').value = '';
+    document.getElementById('fileList1').innerHTML = '';
+
+    document.getElementById('traderIDFile').value = '';
+    document.getElementById('fileList2').innerHTML = '';
+
+
+}
+
+// Function to handle back button from trader company details
+function backToWelcomeFromTraderForm() {
+    // Hide the form container for trader registration
+    document.getElementById('TraderRegistrationForm').style.display = 'none';
+
+    // Show the welcome container
     document.getElementById('welcomeContainer').style.display = 'block';
     
+    // Hide the points
+    document.getElementById('point1').style.display = 'none';
+    document.getElementById('point2').style.display = 'none';
+
+    // Reset trader registration form
+    resetTraderRegistrationForm();
+}
+
+
+
+function backToWelcomeFromTransportationForm() {
+    // show the welcome container
+    document.getElementById('welcomeContainer').style.display = 'block';
+
+
     // Hide the form container
-    document.getElementById('formContainer').style.display = 'none';
+    document.getElementById('transportationRegistrationForm').style.display = 'none';
     
     // Hide the points
     document.getElementById('point1').style.display = 'none';
     document.getElementById('point2').style.display = 'none';
 }
 
+
+//prevouis button of trader detials form
 
 function backStep() {
     event.preventDefault(); 
@@ -120,7 +277,7 @@ function backStep() {
 }
 
 
-//next button - trader form
+//next button - trader dtails form
 
 document.addEventListener('DOMContentLoaded', function() {
     // Add event listener to the "Next" button
@@ -149,7 +306,7 @@ function validateTraderDetails() {
     let traderAddress = document.getElementById('traderAddress').value;
     let industrySelect = document.getElementById('industrySelect').value;
     let idNumber = document.getElementById('idNumber').value;
-    const fileInput = document.getElementById('fileInput2');
+    let traderIDFileInput = document.getElementById('traderIDFile');
 
     // Error message containers
     let nameError = document.getElementById('nameError');
@@ -157,7 +314,7 @@ function validateTraderDetails() {
     let addressError = document.getElementById('addressError');
     let industryError = document.getElementById('industryError');
     let idNumberError = document.getElementById('idNumberError');
-    const fileError = document.getElementById('fileError2');
+    let traderIDFileError = document.getElementById('traderIDFileError');
 
     let isValid = true;
 
@@ -165,7 +322,7 @@ function validateTraderDetails() {
     if (traderName.trim() === '') {
         nameError.innerText = '* Required';
         isValid = false;
-    } else if (!validateTraderName(traderName)) {
+    } else if (!/^[a-zA-Z\s]+$/.test(traderName)) {
         nameError.innerText = '* Trader name can only contain letters';
         isValid = false;
     } else {
@@ -176,7 +333,7 @@ function validateTraderDetails() {
     if (traderPhoneNumber.trim() === '') {
         phoneNumberError.innerText = '* Required';
         isValid = false;
-    } else if (!validatePhoneNumber(traderPhoneNumber)) {
+    } else if (!/^(05)\d{8}$/.test(traderPhoneNumber)) {
         phoneNumberError.innerText = '* Invalid phone number format example : 05********';
         isValid = false;
     } else {
@@ -203,25 +360,25 @@ function validateTraderDetails() {
     if (idNumber.trim() === '') {
         idNumberError.innerText = '* Required';
         isValid = false;
-    } else if (!validateIdNumber(idNumber)) {
-        idNumberError.innerText = '* Invalid ID number format , national id : 10 numbers , iqama : 15';
+    } else if (!((idNumber.length === 10 && /^[0-9]+$/.test(idNumber)) || (idNumber.length === 15 && /^[0-9]+$/.test(idNumber)))) {
+        idNumberError.innerText = '* Invalid ID number format, national id : 10 numbers , iqama id : 15';
         isValid = false;
     } else {
         idNumberError.innerText = '';
     }
 
     // Validate attached files
-    if (fileInput.files.length === 0) {
-        fileError.innerText = '* Please attach a file';
+    if (traderIDFileInput.files.length === 0) {
+        traderIDFileError.innerText = '* Please attach a file';
         isValid = false;
     } else {
-        fileError.innerText = '';
+        traderIDFileError.innerText = '';
     }
 
     return isValid;
 }
 
-
+//trader form submition 
 const msg = document.getElementById("msg");
 
 document.getElementById("TraderRegistrationForm").addEventListener("submit", function (e) {
@@ -238,15 +395,17 @@ document.getElementById("TraderRegistrationForm").addEventListener("submit", fun
     let companyZip = document.getElementById("companyZip").value;
     let companyVat = document.getElementById("companyVat").value;
     let companyLicense = document.getElementById("companyLicense").value;
+    let commercialRegistrationFile = document.getElementById('commercialRegistrationFile').value; 
     let traderName = document.getElementById("traderName").value;
     let traderPhoneNumber = document.getElementById("traderPhoneNumber").value;
     let traderAddress = document.getElementById("traderAddress").value;
     let industrySelect = document.getElementById("industrySelect").value;
     let idNumber = document.getElementById("idNumber").value;
-    const fileInput = document.getElementById("fileInput2");
-    const fileList = document.getElementById("fileList2");
+    let traderIDFile = document.getElementById('traderIDFile').value;
 
-    // Sending AJAX request
+ 
+
+    //AJAX request
     fetch("/process", {
         method: "POST",
         headers: {
@@ -260,11 +419,13 @@ document.getElementById("TraderRegistrationForm").addEventListener("submit", fun
             companyZip: companyZip,
             companyVat: companyVat,
             companyLicense: companyLicense,
+            commercialRegistrationFile: commercialRegistrationFile, 
             traderName: traderName,
             traderPhoneNumber: traderPhoneNumber,
             traderAddress: traderAddress,
             industrySelect: industrySelect,
-            idNumber: idNumber
+            idNumber: idNumber,
+            traderIDFile: traderIDFile,
         }),
     })
     .then((response) => response.json())
@@ -279,6 +440,13 @@ document.getElementById("TraderRegistrationForm").addEventListener("submit", fun
         } else {
             // Reset form fields
             document.getElementById("TraderRegistrationForm").reset();
+
+            fileList.innerHTML = ''; // Clear the file list
+            fileList1.innerHTML = '';
+            
+            // Hide the "I'm Ready to Submit" button
+            document.getElementById("submitButton").style.display = 'none';
+           
         }
     })
     .catch(function (error) {
@@ -292,189 +460,33 @@ document.getElementById("TraderRegistrationForm").addEventListener("submit", fun
     $('.select2').select2();
 }); */
 
-function validateStep1() {
-    const companyName = document.getElementById('companyName').value;
-    const companyEmail = document.getElementById('companyEmail').value;
-    const companyAddress = document.getElementById('companyAddress').value;
-    const citySelect = document.getElementById('citySelect');
-    const companyZip = document.getElementById('companyZip').value;
-    const companyVat = document.getElementById('companyVat').value;
-    const companyLicense = document.getElementById('companyLicense').value;
-  
-
-    
-    const companyNameError = document.getElementById('companyNameError');
-    const companyEmailError = document.getElementById('companyEmailError');
-    const AddressError = document.getElementById('AddressError');
-    const citySelectError = document.getElementById('citySelectError');
-    const ZipError = document.getElementById('ZipError');
-    const VatError = document.getElementById('VatError');
-    const LicenseError = document.getElementById('LicenseError');
-    const fileList1 = document.getElementById('fileList1');
-    const fileInput1 = document.getElementById('fileInput1');
-    const fileError1 = document.getElementById('fileError1');
-
-    let isValid = true;
-
-    
-    if (companyName.trim() === '') {
-        companyNameError.innerText = '* Required';
-        isValid = false;
-        
-     
-        setTimeout(() => {
-            companyNameError.innerText = '';
-        }, 4000);
-    }
-
-    if (companyEmail.trim() === '') {
-        companyEmailError.innerText = '* Required';
-        isValid = false;
-        
-      
-        setTimeout(() => {
-            companyEmailError.innerText = '';
-        }, 4000);
-    }else if (!validateEmail(companyEmail)) {
-        companyEmailError.innerText = '* Invalid email format';
-        isValid = false;
-        setTimeout(() => {
-            companyEmailError.innerText = '';
-        }, 4000);
-    }
-
-    if (companyAddress.trim() === '') {
-        AddressError.innerText = '* Required';
-        isValid = false;
-        
-       
-        setTimeout(() => {
-            AddressError.innerText = '';
-        }, 4000);
-    }
-     if (citySelect.value === '') {
-        citySelectError.innerText = '* Required';
-        isValid = false;
-        setTimeout(() => {
-            citySelectError.innerText = '';
-        }, 4000);
-    }
-
-
-    if (companyZip.trim() === '') {
-        ZipError.innerText = '* Required';
-        isValid = false;
-      
-        setTimeout(() => {
-            ZipError.innerText = '';
-        }, 4000);
-    }else if (!validateZip(companyZip)) {
-        ZipError.innerText = '* Zip code number must contain 5 digits only';
-        isValid = false;
-        setTimeout(() => {
-            ZipError.innerText = '';
-        }, 4000);
-    }
-    if (companyVat.trim() === '') {
-        VatError.innerText = '* Required';
-        isValid = false;
-        
-       
-        setTimeout(() => {
-            VatError.innerText = '';
-        }, 4000);
-    }else if (!validateVatNumber(companyVat)) {
-        VatError.innerText = '* VAT number must contain 15 digits only';
-        isValid = false;
-        setTimeout(() => {
-            VatError.innerText = '';
-        }, 4000);
-    }
-   
-    if (companyLicense.trim() === '') {
-        LicenseError.innerText = '* Required';
-        isValid = false;
-       
-        setTimeout(() => {
-            LicenseError.innerText = '';
-        }, 4000);
-    }else if (!validateLicenseNumber(companyLicense)) {
-        LicenseError.innerText = '* License number must contain 10 digits only';
-        isValid = false;
-        setTimeout(() => {
-            LicenseError.innerText = '';
-        }, 4000);
-    }
-
-    if (fileInput1.files.length === 0) {
-        fileError1.innerText = '* Please attach a file';
-        isValid = false;
-        setTimeout(() => {
-            fileError1.innerText = '';
-        }, 4000);
-    }
-
-   
-   
-
-    return isValid;
-}
-function validateVatNumber(vatNumber) {
-  
-    const vatRegex = /^\d{15}$/;
-    return vatRegex.test(vatNumber);
-}
-function validateLicenseNumber(licenseNumber) {
-    
-    const licenseRegex = /^\d{10}$/;
-    return licenseRegex.test(licenseNumber);
-}
-function validateEmail(email) {
-   
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-
-function validateZip(zipCode) {
-  
-    const zipRegex = /^\d{5}$/;
-    return zipRegex.test(zipCode);
-}
-
-function validatePhoneNumber(phoneNumber) {
-    
-    const phoneRegex = /^05\d{8}$/;
-    return phoneRegex.test(phoneNumber);
-}
-
-function validateIdNumber(idNumber) {
-   
-    const saudiIdRegex = /^\d{10}$/;
-    const iqamaIdRegex = /^\d{15}$/;
-    
-    return saudiIdRegex.test(idNumber) || iqamaIdRegex.test(idNumber);
-}
-
-function validateTraderName(traderName) {
-  
-    const nameRegex = /^[a-zA-Z ]+$/;
-    return nameRegex.test(traderName);
-}
 
 
 
 
+//next button for the company form
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Your code here
-    document.getElementById('transportationRegistrationForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission behavior
-        submitTransportationForm(); 
+    // Add event listener to the "Next" button
+    document.getElementById('nextButton2').addEventListener('click', function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+        
+        // Call the function to validate trader details and proceed to the next step
+        validateAndProceedToNextStep2();
     });
 });
 
-function submitTransportationForm() {
+// Function to handle "Next" button click and validate trader details
+function validateAndProceedToNextStep2() {
+    // Validate trader details before proceeding
+    if (validateTransportationForm()) {
+        // Proceed to the next step
+        document.getElementById('submit').style.display = 'block';
+    }
+}
+
+function validateTransportationForm() {
     // Retrieve form field values
     let commercialRegistrationName = document.getElementById('commercialRegistrationName').value;
     let commercialRegistrationNumber = document.getElementById('commercialRegistrationNumber').value;
@@ -483,7 +495,7 @@ function submitTransportationForm() {
     let expirationDate = document.getElementById('expirationDate').value;
     let licenseType = document.getElementById('licenseType').value;
     let licenseNumber = document.getElementById('licenseNumber').value;
-    let transportationActivity = document.getElementById('transportationActivity').value;
+    let transportType = document.getElementById('transportType').value;
     let companySpecialization = document.getElementById('companySpecialization').value;
 
     // Retrieve error message elements
@@ -494,7 +506,7 @@ function submitTransportationForm() {
     let expirationDateError = document.getElementById('expirationDateError');
     let licenseTypeError = document.getElementById('licenseTypeError');
     let licenseNumberError = document.getElementById('licenseNumberError');
-    let transportationActivityError = document.getElementById('transportationActivityError');
+    let transportTypeError = document.getElementById('transportTypeError');
     let companySpecializationError = document.getElementById('companySpecializationError');
 
     // Retrieve file input elements and error message elements
@@ -502,6 +514,7 @@ function submitTransportationForm() {
     let ownerIdFileInput = document.getElementById('ownerIdFile');
     let licenseFileInput = document.getElementById('licenseFile');
     let commissionerIdFileInput = document.getElementById('commissionerIdFile');
+    
     let commercialRegistrationFileError = document.getElementById('commercialRegistrationFileError');
     let ownerIdFileError = document.getElementById('ownerIdFileError');
     let licenseFileError = document.getElementById('licenseFileError');
@@ -509,50 +522,61 @@ function submitTransportationForm() {
 
     let isValid = true;
 
-
-  
-
-    // Validate commercial registration name
+    // Validation logic for commercial registration name
     if (commercialRegistrationName.trim() === '') {
         commercialRegistrationNameError.innerText = '* Required';
+        isValid = false;
+    } else if (!/^[a-zA-Z\s]+$/.test(commercialRegistrationName)) {
+        commercialRegistrationNameError.innerText = '* Name Should contain only letters';
         isValid = false;
     } else {
         commercialRegistrationNameError.innerText = '';
     }
 
-    // Validate commercial registration number
+    // Validation logic for commercial registration number
     if (commercialRegistrationNumber.trim() === '') {
         commercialRegistrationNumberError.innerText = '* Required';
+        isValid = false;
+    } else if (!/^\d{10}$/.test(commercialRegistrationNumber)) {
+        commercialRegistrationNumberError.innerText = '* Should contain exactly 10 numbers';
         isValid = false;
     } else {
         commercialRegistrationNumberError.innerText = '';
     }
 
-    // Validate commercial registration ID
+    // Validation logic for commercial registration ID
     if (commercialRegistrationID.trim() === '') {
         commercialRegistrationIDError.innerText = '* Required';
+        isValid = false;
+    } else if (!/^\d{10}$/.test(commercialRegistrationID)) {
+        commercialRegistrationIDError.innerText = '* Should contain exactly 10 numbers';
         isValid = false;
     } else {
         commercialRegistrationIDError.innerText = '';
     }
 
-    // Validate issue date
-    if (issueDate.trim() === '') {
-        issueDateError.innerText = '* Required';
+    // Validation logic for issue date and expiration date
+    if (new Date(expirationDate) < new Date(issueDate)) {
+        issueDateError.innerText = '* Issue Date cant be after Expiration Date';
+        expirationDateError.innerText = '* Expiration Date cant be before Issue Date';
         isValid = false;
     } else {
         issueDateError.innerText = '';
-    }
-
-    // Validate expiration date
-    if (expirationDate.trim() === '') {
-        expirationDateError.innerText = '* Required';
-        isValid = false;
-    } else {
         expirationDateError.innerText = '';
     }
 
-    // Validate license type
+    // Validation logic for license number
+    if (licenseNumber.trim() === '') {
+        licenseNumberError.innerText = '* Required';
+        isValid = false;
+    } else if (!/^\d{10}$/.test(licenseNumber)) {
+        licenseNumberError.innerText = '* Should contain exactly 10 numbers';
+        isValid = false;
+    } else {
+        licenseNumberError.innerText = '';
+    }
+
+    // Validation logic for license type
     if (licenseType === '') {
         licenseTypeError.innerText = '* Required';
         isValid = false;
@@ -560,23 +584,15 @@ function submitTransportationForm() {
         licenseTypeError.innerText = '';
     }
 
-    // Validate license number
-    if (licenseNumber.trim() === '') {
-        licenseNumberError.innerText = '* Required';
+    // Validation logic for transportation activity
+    if (transportType === '') {
+        transportTypeError.innerText = '* Required';
         isValid = false;
     } else {
-        licenseNumberError.innerText = '';
+        transportTypeError.innerText = '';
     }
 
-    // Validate transportation activity
-    if (transportationActivity === '') {
-        transportationActivityError.innerText = '* Required';
-        isValid = false;
-    } else {
-        transportationActivityError.innerText = '';
-    }
-
-    // Validate company specialization
+    // Validation logic for company specialization
     if (companySpecialization.trim() === '') {
         companySpecializationError.innerText = '* Required';
         isValid = false;
@@ -584,8 +600,7 @@ function submitTransportationForm() {
         companySpecializationError.innerText = '';
     }
 
-  // Handle file attachments...
-      // Handle file attachments...
+    // Validation logic for file attachments
     if (commercialRegistrationFileInput.files.length === 0) {
         commercialRegistrationFileError.innerText = '* Please attach a file';
         isValid = false;
@@ -614,40 +629,78 @@ function submitTransportationForm() {
         commissionerIdFileError.innerText = '';
     }
 
+    return isValid;
+}
 
-    if (!isValid) {
-        return false; // Prevent form submission if validation fails
-    }
 
-    // Fetch request to submit form data
-    fetch("/process", {
+
+const msg2 = document.getElementById("msg2");
+
+document.getElementById("transportationRegistrationForm").addEventListener("submit", function (e) {
+    // Prevent default form submission
+    e.preventDefault();
+
+    msg2.innerHTML = '';
+
+
+
+    // Read user input
+    let commercialRegistrationName = document.getElementById("commercialRegistrationName").value;
+    let commercialRegistrationNumber = document.getElementById("commercialRegistrationNumber").value;
+    let commercialRegistrationID = document.getElementById("commercialRegistrationID").value;
+    let issueDate = document.getElementById("issueDate").value;
+    let expirationDate = document.getElementById("expirationDate").value;
+    let licenseType = document.getElementById("licenseType").value;
+    let licenseNumber = document.getElementById("licenseNumber").value;
+    let transportType = document.getElementById("transportType").value;
+    let companySpecialization = document.getElementById("companySpecialization").value;
+
+    //files
+
+    let commercialRegistrationFile = document.getElementById("commercialRegistrationFile").value;
+    let ownerIdFile = document.getElementById("ownerIdFile").value;
+    let licenseFile = document.getElementById("licenseFile").value;
+    let commissionerIdFile = document.getElementById("commissionerIdFile").value;
+
+    // AJAX request
+    fetch("/process1", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            commercialRegistrationName,
-            commercialRegistrationNumber,
-            commercialRegistrationID,
-            issueDate,
-            expirationDate,
-            licenseType,
-            licenseNumber,
-            transportationActivity,
-            companySpecialization
-        })
+            commercialRegistrationName: commercialRegistrationName,
+            commercialRegistrationNumber: commercialRegistrationNumber,
+            commercialRegistrationID: commercialRegistrationID,
+            issueDate: issueDate,
+            expirationDate: expirationDate,
+            licenseType: licenseType,
+            licenseNumber: licenseNumber,
+            transportType: transportType,
+            companySpecialization: companySpecialization,
+            commercialRegistrationFile: commercialRegistrationFile,
+            ownerIdFile: ownerIdFile,
+            licenseFile: licenseFile,
+            commissionerIdFile: commissionerIdFile,
+
+
+        }),
     })
-    .then(function(response) {
-        if (response.ok) {
-            alert("Data inserted successfully!");
-            // Reset the form fields if needed
-            // document.getElementById('transportationRegistrationForm').reset();
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+        if (data.errors) {
+            data.errors.forEach(error => {
+                const li2 = document.createElement('li');
+                li.textContent = error.msg2;
+                msg2.appendChild(li2);
+            });
         } else {
-            alert("Failed to insert data!");
+            // Reset form fields
+            document.getElementById("transportationRegistrationForm").reset();
         }
     })
-    .catch(function(error) {
-        console.error('Error:', error);
-        alert("An error occurred while submitting the form!");
+    .catch(function (error) {
+        console.error(error);
     });
-}
+});

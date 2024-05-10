@@ -15,12 +15,12 @@
 <!-- Select2 JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
 
-<!--For Nav Bar-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script><!--For cilck and drop down-->
-<link rel="stylesheet" href="../HomePage/ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
-<link rel="stylesheet" href="../ForNavBar/allPages.Css"> <!--For simple style (nav)-->
-<!--End nav bar-->
+ <!--For Nav Bar-->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+ <link rel="stylesheet" href="../../HomePage/ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
+ <link rel="stylesheet" href="../../ForNavBar/allPages.Css"> <!--For simple style (nav)-->
+ <!--End nav bar-->
+ <!--CSS-->
 
 <!-- Your JavaScript code -->
 
@@ -28,7 +28,7 @@
 
 </head>
 <body>
-<!--nav-!-->
+
 
   <!--Nav-->
   <nav id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
@@ -104,8 +104,8 @@
 
 
 <!-- Transportation company registration form -->
-<form id="transportationRegistrationForm" style="display: none;" action="xyz" method="POST">
-    <div class="form-step transportation-details" id="transportationStep1" style="display: none;">
+<form id="transportationRegistrationForm" >
+    <div class="form-step transportation-details" id="transportationStep1" style="display: none;" action="/process1" method="POST">
         <h2>Transportation Company's Details:</h2>
         <div class="grid-container">
             <div>
@@ -132,27 +132,45 @@
             </div>
             <div>
                 <select id="licenseType">
-                    <option value="" disabled selected>License Type</option>
-                    <option value="Type A">Type A</option>
-                    <option value="Type B">Type B</option>
-                    <!-- Add more license types as needed -->
+                    <option value="" disabled selected>Transportation's License Type</option>
+                    <option value="Directing goods transport vehicles License">Directing goods transport vehicles License</option>
+                    <option value="Transporting goods on land roads license">Transporting goods on land roads license</option>
+                    <option value="Land freight broker license">Land freight broker license</option>
+                   
                 </select>
                 <span id="licenseTypeError" class="error-message-small"></span>
             </div>
             <div>
-                <input type="text" placeholder="License Number" id="licenseNumber">
+                <input type="text" placeholder="Transportation's License Number" id="licenseNumber">
                 <span id="licenseNumberError" class="error-message-small"></span>
             </div>
             <div>
-                <select id="transportationActivity">
-                    <option value="" disabled selected>Transportation Activity</option>
+                <select id="transportType">
+                    <option value="" disabled selected>Transport type</option>
                     <option value="Transporting goods">Transporting goods</option>
                     <option value="Transporting goods between cities">Transporting goods between cities</option>
                 </select>
-                <span id="transportationActivityError" class="error-message-small"></span>
+                <span id="transportTypeError" class="error-message-small"></span>
             </div>
             <div>
-                <input type="text" placeholder="Specialization of the Company" id="companySpecialization">
+                
+                <select id="companySpecialization" >
+                    <option value="" disabled selected>Select Specialization</option>
+                    <option value="General Freight Shipping services">General Freight Shipping services</option>
+                    <option value="Express Delivery Services">Express Delivery Services</option>
+                    <option value="Specialized Transportation Services">Specialized Transportation Services</option>
+                    <option value="Distribution and Inventory Management Services">Distribution and Inventory Management Services</option>
+                    <option value="Livestock Transportation services">Livestock Transportation services</option>
+                    <option value="Oversized Cargo Transportation services">Oversized Cargo Transportation services</option>
+                    <option value="Efficient Parcel and Small Cargo Transportation services">Efficient Parcel and Small Cargo services</option>
+                    <option value="Hazardous Materials Transportation services">Hazardous Materials Transportation services</option>
+                    <option value="Perishable Goods Transportation services">Perishable Goods Transportation</option>
+                    <option value="Waste Management and Recycling Transportation Services">Waste Management and Recycling Transport Service</option>
+                    <option value="Auto Transportation services">Auto Transportation services</option>
+            
+                </select>
+
+                
                 <span id="companySpecializationError" class="error-message-small"></span>
             </div>
             <div class="file-field">
@@ -162,7 +180,7 @@
             </div>
             
             <div class="file-field">
-                <label for="ownerIdFile">Attach Owner ID File <span id="ownerIdFileError" class="error-message-small"></span></label>
+                <label for="ownerIdFile">Attach Owner ID pic <span id="ownerIdFileError" class="error-message-small"></span></label>
                 <output id="ownerIdFileList"></output>
                 <input type="file" id="ownerIdFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('ownerIdFile', 'ownerIdFileList')">
             </div>
@@ -181,8 +199,10 @@
             
         </div>
         <div class="button-container">
-            <button class="back-btn" onclick="backToWelcomeFromForm()">Previous</button>
-            <button type="submit">Submit</button>
+            <button class="back-btn" onclick="backToWelcomeFromTransportationForm()">Previous</button>
+            <button type="button" id="nextButton2">Next</button>
+            <button type="submit" id="submit" style="display: none;">Im Ready to Submit</button>
+            <div id="msg2"></div>
         </div>
     </div>
   
@@ -191,9 +211,9 @@
 
 
 
-<form id="TraderRegistrationForm">
+<form id="TraderRegistrationForm" >
 
- <div class="form-container" id="formContainer" style="display: none;"  action="/process" method="POST">
+ <div class="form-container" id="formContainer" style="display: none;" action="/process" method="POST" >
     <!-- Company details form -->
     <div class="form-step company-details" id="step1" style="display: none;">
         <h2>Trader's Company's Details : </h2>
@@ -249,13 +269,13 @@
         </div>
     
         <div class="file-field">
-            <label for="fileInput1"> + Attach commercial registration file and other related files <span id="fileError1" class="error-message-small"></span></label>
+            <label for="commercialRegistrationFile1"> + Attach commercial registration file and other related files <span id="commercialRegistrationFile1Error" class="error-message-small"></span></label>
             <output id="fileList1"></output>
-            <input type="file" id="fileInput1" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('fileInput1', 'fileList1')">
+            <input type="file" id="commercialRegistrationFile1" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('commercialRegistrationFile1', 'fileList1')">
         </div>
         
        <div class="button-container">
-    <button class="back-btn" onclick="backToWelcomeFromForm()">Previous</button>
+    <button class="back-btn" onclick="backToWelcomeFromTraderForm()">Previous</button>
     <button onclick="nextStep()">Next</button>
  </div>
     </div>
@@ -298,14 +318,17 @@
             </div>
         </div>
         <div class="file-field">
-            <label for="fileInput2">+ Attach ID and other related files <span id="fileError2" class="error-message-small"></span></label>
+            <label for="traderIDFile">+ Attach ID and other related files <span id="traderIDFileError" class="error-message-small"></span></label>
             <output id="fileList2"></output>
-            <input type="file" id="fileInput2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('fileInput2', 'fileList2')">
+            <input type="file" id="traderIDFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('traderIDFile', 'fileList2')">
+
         </div>
         <div class="button-container">
             <button onclick="backStep()">Previous</button>
-            <button type="button" id="nextButton">Next</button>
-            <button type="submit" id="submitButton" style="display: none;">Submit</button>
+            
+           <button id="nextButton">Next</button>
+
+           <button type="submit" id="submitButton" style="display: none;">I'm Ready to Submit</button>
 
 
             <div id="msg"></div>
