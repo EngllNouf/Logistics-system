@@ -45,31 +45,22 @@ app.use(express.json());
 app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
 
 
+
 app.post("/login", (req, res) => {
   const { UserName, Password } = req.body;
 
-  // Validate input
-  if (!UserName || !Password) {
-    console.log("Please provide a username and password.");
-    return res.status(400).send("Please provide a username and password.");
-  }
-
-  // Sanitize input
-  const sanitizedUserName = UserName.trim();
-  const sanitizedPassword = Password.trim();
-
   // Check username and password in the database
   const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-  connection.query(sql, [sanitizedUserName, sanitizedPassword], (err, result) => {
+  connection.query(sql, [UserName, Password], (err, result) => {
     if (err) {
       console.error("Error executing the database query: " + err.stack);
       console.log("An error occurred while executing the database query.");
-      return res.status(500).send("An error occurred while processing your request.");
+      return;
     }
 
     if (result.length === 0) {
       console.log("Invalid username or password.");
-      return res.status(401).send("Invalid username or password.");
+      return;
     }
 
     console.log("Login successful!");
@@ -78,6 +69,7 @@ app.post("/login", (req, res) => {
     res.redirect("/index.html");
   });
 });
+
 
 // Signup route
 app.post(
@@ -168,8 +160,7 @@ app.post("/process",formValidationTrader, (request, response) => {
         addTrader(companyName, companyEmail, companyAddress,citySelect,companyZip,companyVat,
             companyLicense,commercialRegistrationFile1,traderName,traderPhoneNumber,traderAddress,industrySelect,idNumber,traderIDFile,username);
             delete temporaryStorage.username;
-       response.status(200).json({msg:"Form is validated", redirectUrl: "/Trader/Trader.html"});
-       
+       response.status(200).json({msg:"Form is validated"});
         
    }
  });
@@ -257,7 +248,7 @@ app.post("/process",formValidationTrader, (request, response) => {
             issueDate, expirationDate, licenseType, licenseNumber, transportType, companySpecialization,
             commercialRegistrationFile, ownerIdFile, licenseFile, commissionerIdFile);
         
-        response.status(200).json({msg: "Form is validated", redirectUrl: "/Trader/Trader.html"});
+      response.status(200).json({ msg: "Form is validated", redirectUrl: "/Trader/Trader.html" });
     }
 });
 
