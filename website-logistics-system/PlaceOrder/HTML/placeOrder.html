@@ -70,7 +70,9 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="../../HomePage/images/person.png" width="30" height="30">
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"  id="logout" onclick="logout()">Log Out</a>
                             <!--
+                                
                                 <li><a class="dropdown-item" href="../../index_file/Register.html">Register</a></li>
                                 <li><a class="dropdown-item" href="../../index_file/Login.html">Login</a></li>
                             -->
@@ -933,6 +935,14 @@ function geocodeAddress(address, field) {
                 $('#datepicker').datepicker();
             });
         </script>
+
+        <script>
+        function logout() {
+  
+            window.location.href = "../../Login&Sign/Login&.html";
+          }
+          
+          </script>
 
         <!-- JAVASCRIPT FILES -->
         <script src="../JS/uploadImage.js"></script>

@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         validateForm(signUpForm);
     });
 
+
     function validateForm(form) {
         const usernameInput = form.querySelector("input[type='text']");
         const passwordInput = form.querySelector("input[type='password']");
@@ -182,4 +183,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         input.classList.remove("error");
     }
+    
 });
