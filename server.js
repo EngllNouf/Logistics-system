@@ -468,11 +468,11 @@ let formValidationTruck = getFormValidation();
 
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
-app.post("/process", formValidationTruck, (request, response) => {
+app.post("/configTruck", formValidationTruck, (request, response) => {
 
     const errors = validationResult(request);
     if (!errors.isEmpty()) {
-        msg = {status:false, err:"Sorry, we found validation erros with your submission"}
+        configMsg = {status:false, err:"Sorry, we found validation erros with your submission"}
         return response.status(422).json({errors:errors.array()});
     }else {
         //no errors
@@ -506,7 +506,7 @@ app.post("/process", formValidationTruck, (request, response) => {
             formVehicleRegistrationFile, formVehiclePhotoFile
         );
 
-        response.status(200).json({msg:"form is validated"});
+        console.log({configMsg:"form is validated"});
     }
 });
 
@@ -824,7 +824,7 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
 /////////////////Server////////////////////////
 
 
-const port = 8000;
+const port = 8011;
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });

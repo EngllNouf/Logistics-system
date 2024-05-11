@@ -106,7 +106,7 @@ document.querySelector('.configTruck-form').addEventListener("submit", function 
 
   
   //sending AJAX request
-  fetch("/process", {
+  fetch("/configTruck", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",//object json
