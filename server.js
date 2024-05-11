@@ -7,7 +7,7 @@ const app = express();
 const temporaryStorage = {};
 // Set up sessions
 app.use(session({
-  secret: 'hihihihi', // Change this to a long random string
+  secret: 'Nougor181', // Change this to a long random string
   resave: false,
   saveUninitialized: true
 }));
@@ -30,37 +30,46 @@ connection.connect((err) => {
 
 
 
-// Serve static files
-app.use("/", express.static("./website-logistics-system"));
+    // Serve static files
+    app.use("/", express.static("./website-logistics-system"));
 
-app.get("/index.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
-});
+    app.get("/index.html", (req, res) => {
+      res.sendFile(path.join(__dirname, "index.html"));
+    });
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+    app.use(express.json());
 
 
 // Serve static files from the TraderRegistration folder
 app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
 
 
-
 app.post("/login", (req, res) => {
   const { UserName, Password } = req.body;
 
+  // Validate input
+  if (!UserName || !Password) {
+    console.log("Please provide a username and password.");
+    return res.status(400).send("Please provide a username and password.");
+  }
+
+  // Sanitize input
+  const sanitizedUserName = UserName.trim();
+  const sanitizedPassword = Password.trim();
+
   // Check username and password in the database
   const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-  connection.query(sql, [UserName, Password], (err, result) => {
+  connection.query(sql, [sanitizedUserName, sanitizedPassword], (err, result) => {
     if (err) {
       console.error("Error executing the database query: " + err.stack);
       console.log("An error occurred while executing the database query.");
-      return;
+      return res.status(500).send("An error occurred while processing your request.");
     }
 
     if (result.length === 0) {
       console.log("Invalid username or password.");
-      return;
+      return res.status(401).send("Invalid username or password.");
     }
 
     console.log("Login successful!");
@@ -69,7 +78,6 @@ app.post("/login", (req, res) => {
     res.redirect("/index.html");
   });
 });
-
 
 // Signup route
 app.post(
@@ -110,21 +118,11 @@ app.post(
   }
 );
 
-// Logout route
-app.get("/logout", (req, res) => {
-  // Destroy the session
-  req.session.destroy((err) => {
-    if (err) {
-      console.error("Error destroying session: " + err);
-      return res.status(500).json({
-        status: false,
-        error: "An error occurred while destroying the session."
-      });
-    }
-    res.redirect("/login.html");
-  });
-});
 
+app.post("/logout", (req, res) => {
+  userLoggedIn = false;
+  res.redirect("/login.html");
+});
 
 
 /////////////////////////////////////////////////////Registration///////////////////////////////////////////////////////////////////////
@@ -248,7 +246,7 @@ app.post("/process",formValidationTrader, (request, response) => {
             issueDate, expirationDate, licenseType, licenseNumber, transportType, companySpecialization,
             commercialRegistrationFile, ownerIdFile, licenseFile, commissionerIdFile);
         
-      response.status(200).json({ msg: "Form is validated", redirectUrl: "/Trader/Trader.html" });
+        response.status(200).json({msg: "Form is validated", redirectUrl: "/Trader/Trader.html"});
     }
 });
 
@@ -459,11 +457,11 @@ let formValidationTruck = getFormValidation();
 
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
-app.post("/process", formValidationTruck, (request, response) => {
+app.post("/configTruck", formValidationTruck, (request, response) => {
 
     const errors = validationResult(request);
     if (!errors.isEmpty()) {
-        msg = {status:false, err:"Sorry, we found validation erros with your submission"}
+        configMsg = {status:false, err:"Sorry, we found validation erros with your submission"}
         return response.status(422).json({errors:errors.array()});
     }else {
         //no errors
@@ -497,7 +495,7 @@ app.post("/process", formValidationTruck, (request, response) => {
             formVehicleRegistrationFile, formVehiclePhotoFile
         );
 
-        response.status(200).json({msg:"form is validated"});
+        console.log({configMsg:"form is validated"});
     }
 });
 
@@ -815,7 +813,11 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
 /////////////////Server////////////////////////
 
 
-const port = 8000;
+<<<<<<< HEAD
+const port = 8088;
+=======
+const port = 8011;
+>>>>>>> 9b6b7f46ba087edb2523d0d1dc1a9420ee37ff69
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });
