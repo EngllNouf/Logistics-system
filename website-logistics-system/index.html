@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="HomePage/ForCss/bootstrap.min.css"> <!--To make all btn have same color--> 
     <link rel="stylesheet" href="ForNavBar/allPages.Css"> <!--For simple style (nav)-->
     <!--End nav bar-->
+    <script src="../website-logistics-system/ForNavBar/login&logout.js"></script><!--For cilck and drop down-->
 
     <!--For HOme page-->
     <link href="HomePage/ForCss/FotTiimeline.css" rel="stylesheet">      
@@ -56,8 +57,10 @@
                   </a>
                     <ul class="dropdown-menu">
                        
-                          <li><a class="dropdown-item" href="../Login&Sign/Login&.html">Register</a></li>
-                          <li><a class="dropdown-item" href="../Login&Sign/Login&.html">Login</a></li>
+                       
+                          <li><a class="dropdown-item" href="../Login&Sign/Login&.html" id="Login/Register">Login/Register</a></li>
+                          <li><a class="dropdown-item" href="#"  id="logout" onclick="logout()">Log Out</a>
+                          </li>
                         </ul>
                 </li>
                
@@ -342,14 +345,41 @@
       </div>
     </footer>
   </div>
+  <script>
+     var userLoggedIn = true;
 
-  
-   <!-- JAVASCRIPT FILES -->
+  function checkLoggedIn() {
+  const registerLoginLink = document.getElementById("Login/Register");
+  const logoutLink = document.getElementById("logout");
+
+  if (userLoggedIn) {
+    registerLoginLink.style.display = "block";
+    logoutLink.style.display = "none";
+  } else {
+    registerLoginLink.style.display = "none";
+    logoutLink.style.display = "block";
+  }
+}
+
+function logout() {
+  userLoggedIn = false;
+  window.location.href = "../Login&Sign/Login&.html";
+}
+
+window.onload = function() {
+  checkLoggedIn();
+};
+
+
+</script>
    <script src="HomePage/js/jquery.min.js"></script>
     
    <script src="HomePage/js/custom.js"></script>
 
   <script src="HomePage/js/main.js"></script>
+  <script>
     
+   
+</script>
   </body>
 </html>

@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <script src="Validation.js"></script>
     <script src="../../routes/signup.js" defer></script>
+    <script src="../../routes/login.js"></script>
 
 
 </head>
@@ -19,24 +20,25 @@
     <div class="forms-container" id="myForm">
 
       <div class="signin-signup" >
-        <form method="post" action="/login"class="sign-in-form">
-
+        <form id="login" method="post" action="/login" class="sign-in-form">
             <h2 class="title">Sign In</h2>
             <div class="input-field">
                 <i class="fas fa-user"></i>
                 <input type="text" placeholder="Username" class="inputForuserName" name="UserName" required/>
             </div>
-            <div class="error-message" id="username-error-message"></div> <!-- Display error message here -->
+            <div class="error-message" id="username-error-message"></div>
             <div class="input-field">
                 <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Password"  name="Password" required/>
             </div>
-            <div class="error-message" id="password-error-message"></div> <!-- Display error message here -->
-            <input  type="submit" value="Login" id="sign-in-btn" class="btn solid" >
+            <div class="error-message" id="password-error-message"></div>
+            <input type="submit" value="Login" id="sign-in-btn" class="btn solid" >
             <p class="social-text">Or Sign up and be a part of us
             <a type="submit" value="SignUp" id="sign-up-btn" class="btn-link" form="myForm" >SignUP</a>
             </p>
+            <div id="login-error-message" class="error-message"></div> <!-- Display error message here -->
         </form>
+        
         
         <form method="post" action="/signup" class="sign-up-form" id="signup">
 
@@ -79,8 +81,6 @@
 </div>
 </div>
 
-<script>
 
-  </script>
 </body>
 </html>

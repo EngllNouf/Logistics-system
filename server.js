@@ -7,7 +7,7 @@ const app = express();
 const temporaryStorage = {};
 // Set up sessions
 app.use(session({
-  secret: 'hihihihi', // Change this to a long random string
+  secret: 'Nougor181', // Change this to a long random string
   resave: false,
   saveUninitialized: true
 }));
@@ -30,55 +30,63 @@ connection.connect((err) => {
 
 
 
-// Serve static files
-app.use("/", express.static("./website-logistics-system"));
+    // Serve static files
+    app.use("/", express.static("./website-logistics-system"));
 
-app.get("/index.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
-});
+    app.get("/index.html", (req, res) => {
+      res.sendFile(path.join(__dirname, "index.html"));
+    });
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-
-// Serve static files from the TraderRegistration folder
-app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
+    app.use(express.urlencoded({ extended: true }));
+    app.use(express.json());
 
 
-app.post("/login", (req, res) => {
-  const { UserName, Password } = req.body;
+    // Serve static files from the TraderRegistration folder
+    app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
 
-  // Validate input
-  if (!UserName || !Password) {
-    console.log("Please provide a username and password.");
-    return res.status(400).send("Please provide a username and password.");
-  }
 
-  // Sanitize input
-  const sanitizedUserName = UserName.trim();
-  const sanitizedPassword = Password.trim();
+    const { body, validationResult } = require('express-validator');
 
-  // Check username and password in the database
-  const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-  connection.query(sql, [sanitizedUserName, sanitizedPassword], (err, result) => {
-    if (err) {
-      console.error("Error executing the database query: " + err.stack);
-      console.log("An error occurred while executing the database query.");
-      return res.status(500).send("An error occurred while processing your request.");
+    app.post("/login", getLoginFormValidation(), (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            console.log("Validation errors:", errors.array());
+            return res.status(400).json({ errors: errors.array() });
+        }
+    
+        const { UserName, Password } = req.body;
+        const sanitizedUserName = UserName.trim();
+        const sanitizedPassword = Password.trim();
+    
+        // Check username and password in the database
+        const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+        connection.query(sql, [sanitizedUserName, sanitizedPassword], (err, result) => {
+            if (err) {
+                console.error("Error executing the database query:", err.stack);
+                return res.status(500).send("An error occurred while processing your request.");
+            }
+    
+            if (result.length === 0) {
+                console.log("Invalid username or password.");
+                const errorMessage = "Invalid username or password.";
+                return res.send(`<script>alert('${errorMessage}'); window.history.back();</script>`);
+            }
+    
+            console.log("Login successful!");
+    
+            // Successfully logged in
+            userLoggedIn = true;
+            res.redirect("/index.html");
+        });
+    });
+    
+    function getLoginFormValidation() {
+        return [
+            body("UserName").notEmpty().withMessage("Please provide a username."),
+            body("Password").notEmpty().withMessage("Please provide a password.")
+        ];
     }
-
-    if (result.length === 0) {
-      console.log("Invalid username or password.");
-      return res.status(401).send("Invalid username or password.");
-    }
-
-    console.log("Login successful!");
-
-    // Successfully logged in
-    res.redirect("/index.html");
-  });
-});
-
+    
 // Signup route
 app.post(
   "/signup",
@@ -118,21 +126,11 @@ app.post(
   }
 );
 
-// Logout route
-app.get("/logout", (req, res) => {
-  // Destroy the session
-  req.session.destroy((err) => {
-    if (err) {
-      console.error("Error destroying session: " + err);
-      return res.status(500).json({
-        status: false,
-        error: "An error occurred while destroying the session."
-      });
-    }
-    res.redirect("/login.html");
-  });
-});
 
+app.post("/logout", (req, res) => {
+  userLoggedIn = false;
+  res.redirect("/login.html");
+});
 
 
 /////////////////////////////////////////////////////Registration///////////////////////////////////////////////////////////////////////
@@ -168,8 +166,7 @@ app.post("/process",formValidationTrader, (request, response) => {
         addTrader(companyName, companyEmail, companyAddress,citySelect,companyZip,companyVat,
             companyLicense,commercialRegistrationFile1,traderName,traderPhoneNumber,traderAddress,industrySelect,idNumber,traderIDFile,username);
             delete temporaryStorage.username;
-       response.status(200).json({msg:"Form is validated", redirectUrl: "/Trader/Trader.html"});
-       
+       response.status(200).json({msg:"Form is validated"});
         
    }
  });
@@ -257,7 +254,7 @@ app.post("/process",formValidationTrader, (request, response) => {
             issueDate, expirationDate, licenseType, licenseNumber, transportType, companySpecialization,
             commercialRegistrationFile, ownerIdFile, licenseFile, commissionerIdFile);
         
-        response.status(200).json({msg: "Form is validated", redirectUrl: "/Trader/Trader.html"});
+        response.status(200).json({msg: "Form is validated"});
     }
 });
 
@@ -824,7 +821,11 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
 /////////////////Server////////////////////////
 
 
+<<<<<<< HEAD
+const port = 8088;
+=======
 const port = 8011;
+>>>>>>> 9b6b7f46ba087edb2523d0d1dc1a9420ee37ff69
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });

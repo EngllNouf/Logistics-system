@@ -38,3 +38,6 @@ document.getElementById("signup").addEventListener("submit", function (e) {
       console.error("Error:", error); // Log error
     });
 });
+
+
+
