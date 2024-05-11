@@ -46,7 +46,16 @@ document.getElementById("confirm-btn").addEventListener("mouseout", function() {
     }
 });
   
-
+//Form submission for optional user ID
+document.getElementById("acceptConfirm").addEventListener("click", function() {
+    var idField = document.getElementById("userID");
+    
+    if (idField.value.trim() === "") {
+      idField.value = "0";
+    }
+  
+  });
+  
 /*delete form
 function deleteForm(event) {
     var deleteButton = event.target;
