@@ -41,52 +41,44 @@ connection.connect((err) => {
     app.use(express.json());
 
 
-    // Serve static files from the TraderRegistration folder
-    app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
+// Serve static files from the TraderRegistration folder
+app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
 
 
-    const { body, validationResult } = require('express-validator');
+app.post("/login", (req, res) => {
+  const { UserName, Password } = req.body;
 
-    app.post("/login", getLoginFormValidation(), (req, res) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            console.log("Validation errors:", errors.array());
-            return res.status(400).json({ errors: errors.array() });
-        }
-    
-        const { UserName, Password } = req.body;
-        const sanitizedUserName = UserName.trim();
-        const sanitizedPassword = Password.trim();
-    
-        // Check username and password in the database
-        const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-        connection.query(sql, [sanitizedUserName, sanitizedPassword], (err, result) => {
-            if (err) {
-                console.error("Error executing the database query:", err.stack);
-                return res.status(500).send("An error occurred while processing your request.");
-            }
-    
-            if (result.length === 0) {
-                console.log("Invalid username or password.");
-                const errorMessage = "Invalid username or password.";
-                return res.send(`<script>alert('${errorMessage}'); window.history.back();</script>`);
-            }
-    
-            console.log("Login successful!");
-    
-            // Successfully logged in
-            userLoggedIn = true;
-            res.redirect("/index.html");
-        });
-    });
-    
-    function getLoginFormValidation() {
-        return [
-            body("UserName").notEmpty().withMessage("Please provide a username."),
-            body("Password").notEmpty().withMessage("Please provide a password.")
-        ];
+  // Validate input
+  if (!UserName || !Password) {
+    console.log("Please provide a username and password.");
+    return res.status(400).send("Please provide a username and password.");
+  }
+
+  // Sanitize input
+  const sanitizedUserName = UserName.trim();
+  const sanitizedPassword = Password.trim();
+
+  // Check username and password in the database
+  const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+  connection.query(sql, [sanitizedUserName, sanitizedPassword], (err, result) => {
+    if (err) {
+      console.error("Error executing the database query: " + err.stack);
+      console.log("An error occurred while executing the database query.");
+      return res.status(500).send("An error occurred while processing your request.");
     }
-    
+
+    if (result.length === 0) {
+      console.log("Invalid username or password.");
+      return res.status(401).send("Invalid username or password.");
+    }
+
+    console.log("Login successful!");
+
+    // Successfully logged in
+    res.redirect("/index.html");
+  });
+});
+
 // Signup route
 app.post(
   "/signup",
@@ -254,7 +246,7 @@ app.post("/process",formValidationTrader, (request, response) => {
             issueDate, expirationDate, licenseType, licenseNumber, transportType, companySpecialization,
             commercialRegistrationFile, ownerIdFile, licenseFile, commissionerIdFile);
         
-        response.status(200).json({msg: "Form is validated"});
+        response.status(200).json({msg: "Form is validated", redirectUrl: "/Trader/Trader.html"});
     }
 });
 

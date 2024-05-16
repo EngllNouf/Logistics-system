@@ -362,6 +362,11 @@ footer{
 @media only screen and (max-width: 600px) {
   .formBody > form {
     grid-template-columns: 1fr; 
-}
+  }
+
+  .formBody {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
 
 }

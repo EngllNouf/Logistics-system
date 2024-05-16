@@ -753,8 +753,9 @@ if (image === 0) {
         var pickupDate = document.getElementById('pickupDate').value;
         var dropoffDate = document.getElementById('dropoffDate').value;
         var typeCargo = document.getElementById('typeCargo').value;
-        var CargoValue = document.getElementById('cargoValue').value;
+        var cargoValue = document.getElementById('cargoValue').value;
         var numberOfTruck = document.getElementById('numberOfTruck').value;
+        var weight = document.getElementById('weight').value;
         var note = document.getElementById('note').value;
        
         // Display submitted information
@@ -763,9 +764,9 @@ if (image === 0) {
         document.getElementById('displayPickupDate').textContent = "Pick-up Date: " + pickupDate;
         document.getElementById('displayDropoffDate').textContent = "Drop-off Date: " + dropoffDate;
         document.getElementById('displayTypeCargo').textContent = "Type of Cargo: " + typeCargo;
-        document.getElementById('displayCargoValue').textContent = "Cargo Value: " + cargoValue + " SR";
+        document.getElementById('displayCargoValue').textContent = "Cargo Value: " + cargoValue + "SR";
         document.getElementById('displaynumberOfTruck').textContent = "Number Of Truck: " + numberOfTruck;
-        document.getElementById('displayWeight').textContent = "Weighht: " + weight;
+        document.getElementById('displayWeight').textContent = "Weight: " + weight;
         document.getElementById('displayNotes').textContent = "Notes: " + note;
 
         var truckTypeRadios = document.getElementsByName('truck');
