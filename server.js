@@ -3,6 +3,7 @@ const mysql = require("mysql2");
 const { body, validationResult } = require("express-validator");
 const path = require("path");
 const session = require("express-session");
+const { request } = require("http");
 const app = express();
 const temporaryStorage = {};
 // Set up sessions
@@ -37,7 +38,7 @@ connection.connect((err) => {
       res.sendFile(path.join(__dirname, "index.html"));
     });
 
-    app.use(express.urlencoded({ extended: true }));
+    app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
 
 
@@ -45,37 +46,37 @@ connection.connect((err) => {
 app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
 
 
-app.post("/login", (req, res) => {
-  const { UserName, Password } = req.body;
+app.post('/login', async (request, response) => {
+  const errors = validationResult(request)
 
-  // Validate input
-  if (!UserName || !Password) {
-    console.log("Please provide a username and password.");
-    return res.status(400).send("Please provide a username and password.");
+  if(!errors.isEmpty()){
+    return response.status(422).json({errors: errors.array()})
   }
 
-  // Sanitize input
-  const sanitizedUserName = UserName.trim();
-  const sanitizedPassword = Password.trim();
+  const { UserName, Password } = request.body;
 
-  // Check username and password in the database
-  const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-  connection.query(sql, [sanitizedUserName, sanitizedPassword], (err, result) => {
-    if (err) {
-      console.error("Error executing the database query: " + err.stack);
-      console.log("An error occurred while executing the database query.");
-      return res.status(500).send("An error occurred while processing your request.");
+  //Verify that the user exists in the database
+  connection.query("SELECT * FROM users WHERE UserName = ?", [UserName], (error, results) => {
+    if (error) {
+      console.error("Error: " + error.message);
+      return response.status(500).json({ error: 'Internal server error' });
+    }
+    
+    if (results.length === 0) {
+      errors.errors.push({ msg: 'User not found' }); // Store the additional error message in errors
+      return response.status(404).json({ errors: errors.array() });
+    }
+    
+    const user = results[0];
+    // Compare the entered password with the user's stored password
+    if (Password !== user.password) {
+      // If the password is incorrect
+      errors.errors.push({ msg: 'Invalid password' }); // Store the additional error message in errors
+      return response.status(401).json({ errors: errors.array() });
     }
 
-    if (result.length === 0) {
-      console.log("Invalid username or password.");
-      return res.status(401).send("Invalid username or password.");
-    }
-
-    console.log("Login successful!");
-
-    // Successfully logged in
-    res.redirect("/index.html");
+    // Continue executing the code if the passwords match
+    response.redirect("/index.html");
   });
 });
 
@@ -117,6 +118,12 @@ app.post(
     });
   }
 );
+
+
+app.post("/logout", (req, res) => {
+  userLoggedIn = false;
+  res.redirect("/login.html");
+});
 
 
 app.post("/logout", (req, res) => {
@@ -811,13 +818,7 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
 
 
 /////////////////Server////////////////////////
-
-
-<<<<<<< HEAD
-const port = 8088;
-=======
 const port = 8011;
->>>>>>> 9b6b7f46ba087edb2523d0d1dc1a9420ee37ff69
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });

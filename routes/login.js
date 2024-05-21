@@ -1,8 +1,10 @@
-const loginForm = document.getElementById("login");
-const loginErrorMessage = document.getElementById("login-error-message");
+console.log("Hello")
+const errorMessages = document.getElementById("login-error-message");
 
-loginForm.addEventListener("submit", function (e) {
+const form = document.getElementById("login").addEventListener("submit", function (e) {
     e.preventDefault();
+
+    errorMessages.innerHTML=' '
 
     let UserName = document.getElementsByName("UserName")[0].value;
     let Password = document.getElementsByName("Password")[0].value;
@@ -10,29 +12,21 @@ loginForm.addEventListener("submit", function (e) {
     fetch("/login", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({ UserName: UserName, Password: Password }),
     })
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error("Invalid username or password.");
-        }
-        return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
-        if (data.error) {
-            loginErrorMessage.textContent = data.error;
-            console.log("Login failed:", data.error);
+        console.log(data);
+        if (data.errors) {
+            data.errors.forEach((error) => {
+                const li = document.createElement('li');
+                li.textContent = error.msg;
+                errorMessages.appendChild(li);
+            })
         } else {
-            window.location.href = "/index.html";
             console.log("Login successful!");
         }
     })
-    .catch((error) => {
-        loginErrorMessage.textContent = error.message;
-        console.error("Error:", error);
-    });
 });
-
-

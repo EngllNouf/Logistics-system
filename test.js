@@ -601,6 +601,9 @@ function addTruck(Owner, OwnerID, formOwnerIDFile,  user, userID, formUserIDFile
 }
 
 
+
+
+
  /*Database:
 CREATE TABLE truck (
     truckID INT AUTO_INCREMENT PRIMARY KEY,
@@ -625,3 +628,169 @@ CREATE TABLE truck (
     formVehicleRegistrationFile VARCHAR(255) NOT NULL,
     formVehiclePhotoFile VARCHAR(255) NOT NULL
 );*/
+
+app.post("/login", (req, res) => {
+  const { UserName, Password } = req.body;
+
+  // Validate input
+  if (!UserName || !Password) {
+    console.log("Please provide a username and password.");
+    return res.status(400).send("Please provide a username and password.");
+  }
+
+  // Sanitize input
+  const sanitizedUserName = UserName.trim();
+  const sanitizedPassword = Password.trim();
+
+  // Check username and password in the database
+  const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+  connection.query(sql, [sanitizedUserName, sanitizedPassword], (err, result) => {
+    if (err) {
+      console.error("Error executing the database query: " + err.stack);
+      console.log("An error occurred while executing the database query.");
+      return res.status(500).send("An error occurred while processing your request.");
+    }
+
+    if (result.length === 0) {
+      console.log("Invalid username or password.");
+      return res.status(401).send("Invalid username or password.");
+    }
+
+    console.log("Login successful!");
+
+    // Successfully logged in
+    res.redirect("/index.html");
+  });
+});
+
+
+app.post('/login',[
+  body('UserName').trim().notEmpty().withMessage("Please Enter THE User Name").isLength({ min: 8, max: 10 }).withMessage("Length"),
+  body('Password').trim().notEmpty().withMessage("Please Enter THE Password")
+  .custom((value, { request }) => {
+    const sanitizedUserName = request.body.UserName.trim();
+    const sanitizedPassword = value;
+
+    // Check username and password in the database
+    const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+    connection.query(sql, [sanitizedUserName, sanitizedPassword], (error, result) => {
+      if (err) {
+        console.error("Error executing the database query: " + error.stack);
+        console.log("An error occurred while executing the database query.");
+        return Promise.reject("An error occurred while processing your request.");
+      }
+
+      if (result.length === 0) {
+        console.log("Invalid username or password.");
+        return Promise.reject("Invalid username or password.");
+      }
+
+      return Promise.resolve();
+    });
+  })
+],
+(request, response) => {
+  const errors = validationResult(request)
+
+  if(!errors.isEmpty()){
+    return response.status(422).json({errors:errors.array()})
+  }
+  
+      // Registration successful, redirect to index page
+      response.status(200).json({msg:"Form is validated"});
+      res.redirect("/index.html");
+});
+
+
+app.post('/login',[
+  body('UserName').trim().notEmpty().withMessage("Please enter the user name"),
+  body('Password').trim().notEmpty().withMessage("Please enter the password")
+  .custom((value, { req }) => {
+    const sanitizedUserName = req.body.UserName.trim();
+    const sanitizedPassword = value;
+
+    // Check username and password in the database
+    const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+    return new Promise((resolve, reject) => {
+      connection.query(sql, [sanitizedUserName, sanitizedPassword], (error, result) => {
+        if (error) {
+          console.error("Error executing the database query: " + error.stack);
+          console.log("An error occurred while executing the database query.");
+          reject("An error occurred while processing your request.");
+        } else {
+          if (result.length === 0) {
+            console.log("Invalid username or password.");
+            reject("Invalid username or password.");
+          } else {
+            resolve();
+          }
+        }
+      });
+    });
+  })
+],
+(request, response) => {
+  const errors = validationResult(request)
+
+  if(!errors.isEmpty()){
+    return response.status(422).json({errors:errors.array()})
+  }
+  
+  // Registration successful, redirect to index page
+  response.status(200).json({msg:"Form is validated",redirectUrl: "/index.html"});
+});
+
+
+
+
+
+
+
+//اذا الباسورد كان مشفر مفيد لنا 
+
+app.post('/login', async (request, response) => {
+  const errors = validationResult(request)
+
+  if(!errors.isEmpty()){
+    return response.status(422).json({errors: errors.array()})
+  }
+
+  const { UserName, Password } = request.body;
+
+  //Verify that the user exists in the database
+  connection.query("SELECT * FROM users WHERE UserName = ?", [UserName], (error, results) => {
+    if (error) {
+      console.error("Error: " + error.message);
+      return response.status(500).json({ error: 'Internal server error' });
+    }
+    
+    if (results.length === 0) {
+      errors.errors.push({ msg: 'User not found' }); // Store the additional error message in errors
+      return response.status(404).json({ errors: errors.array() });
+    }
+    
+    const user = results[0];
+    /*
+    Import bcrypt module to encrypt passwords.
+    This module is used to increase application security and protect user data.
+    */
+    const bcrypt = require('bcrypt');
+
+    //Compare the entered password with the user's stored password
+    bcrypt.compare(Password, user.password, (error, passwordMatch) => {
+      if (error) {
+        // An error occurred while comparing passwords
+        console.error("Error: " + error.message);
+        return response.status(500).json({ error: 'Internal server error' });
+      }
+      if (!passwordMatch) {
+        //If the password is incorrect
+        errors.errors.push({ msg: 'Invalid password' }); // Store the additional error message in errors
+        return response.status(401).json({ errors: errors.array() });
+      }
+
+      //Continue executing the code if the passwords match
+      response.status(200).json({ msg: "User authenticated successfully",redirectUrl: "/index.html"});
+    });
+  });
+});
