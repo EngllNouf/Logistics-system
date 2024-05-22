@@ -358,8 +358,74 @@ footer{
   margin-top: 8px;
 }
 
-/*For screens smaller than 600px*/
-@media only screen and (max-width: 600px) {
+
+
+@media screen and (max-width: 1024px){
+
+  /* The FIRST Modal (background) */
+  .modal {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
+}
+
+/* iPad mini */
+@media screen and (max-width: 768px){
+
+  /* The FIRST Modal (background) */
+  .modal {
+    padding-left: 180px;
+    padding-right: 180px;
+  }
+              
+}
+
+@media screen and (max-width: 425px){
+
+  /* The FIRST Modal (background) */
+  .modal {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+              
+}
+
+/* iPhone SE */
+@media screen and (max-width: 376px){
+
+  /* The FIRST Modal (background) */
+  .modal {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+              
+}
+
+/* iPhone PRO max */
+@media screen and (max-width: 430px){
+
+  /* The FIRST Modal (background) */
+  .modal {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+              
+}
+
+/* Surface Duo */
+@media screen and (max-width: 540px){
+
+  /* The FIRST Modal (background) */
+  .modal {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+              
+}
+
+/*For screens smaller than 900px*/
+@media only screen and (max-width: 900px) {
   .formBody > form {
     grid-template-columns: 1fr; 
   }
@@ -370,3 +436,4 @@ footer{
   }
 
 }
+
