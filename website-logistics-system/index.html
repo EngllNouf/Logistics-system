@@ -59,7 +59,8 @@
                        
                        
                           <li><a class="dropdown-item" href="../Login&Sign/Login&.html" id="Login/Register">Login/Register</a></li>
-                          <li><a class="dropdown-item" href="#"  id="logout" onclick="logout()">Log Out</a>
+                          <li>
+                            <!--<a class="dropdown-item" href="#"  id="logout" onclick="logout()">Log Out</a>-->
                           </li>
                         </ul>
                 </li>
@@ -85,7 +86,7 @@
               
 
            <br>
-            <p><a href="../Login&Sign/Login&.html" class="btn btn-primary py-3 px-5 text-white">Be a part of us</a></p>
+            <p><a href="../website-logistics-system/Login&Sign/SinUp.html" class="btn btn-primary py-3 px-5 text-white">Be a part of us</a></p>
 
           </div>
         </div>
@@ -345,33 +346,7 @@
       </div>
     </footer>
   </div>
-  <script>
-     var userLoggedIn = true;
-
-  function checkLoggedIn() {
-  const registerLoginLink = document.getElementById("Login/Register");
-  const logoutLink = document.getElementById("logout");
-
-  if (userLoggedIn) {
-    registerLoginLink.style.display = "block";
-    logoutLink.style.display = "none";
-  } else {
-    registerLoginLink.style.display = "none";
-    logoutLink.style.display = "block";
-  }
-}
-
-function logout() {
-  userLoggedIn = false;
-  window.location.href = "../Login&Sign/Login&.html";
-}
-
-window.onload = function() {
-  checkLoggedIn();
-};
-
-
-</script>
+  
    <script src="HomePage/js/jquery.min.js"></script>
     
    <script src="HomePage/js/custom.js"></script>
