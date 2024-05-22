@@ -46,80 +46,82 @@ connection.connect((err) => {
 app.use("/TraderRegistration", express.static(path.join(__dirname, "TraderRegistration")));
 
 
-app.post('/login', async (request, response) => {
-  const errors = validationResult(request)
+app.post("/login", (req, res) => {
+  const { UserName, Password } = req.body;
 
-  if(!errors.isEmpty()){
-    return response.status(422).json({errors: errors.array()})
+  // Validate input
+  if (!UserName || !Password) {
+    console.log("Please provide a username and password.");
+    return res.status(400);
   }
 
-  const { UserName, Password } = request.body;
+  // Sanitize input
+  const sanitizedUserName = UserName.trim();
+  const sanitizedPassword = Password.trim();
 
-  //Verify that the user exists in the database
-  connection.query("SELECT * FROM users WHERE UserName = ?", [UserName], (error, results) => {
-    if (error) {
-      console.error("Error: " + error.message);
-      errors.errors.push({ msg: 'Internal server error' });// Store the additional error message in errors
-      return response.status(500).json({ errors: errors.array() });
-    }
-    
-    if (results.length === 0) {
-      errors.errors.push({ msg: 'User not found' }); // Store the additional error message in errors
-      return response.status(404).json({ errors: errors.array() });
-    }
-    
-    const user = results[0];
-    // Compare the entered password with the user's stored password
-    if (Password !== user.password) {
-      // If the password is incorrect
-      errors.errors.push({ msg: 'Invalid password' }); // Store the additional error message in errors
-      return response.status(401).json({ errors: errors.array() });
+  // Check username and password in the database
+  const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+  connection.query(sql, [sanitizedUserName, sanitizedPassword], (err, result) => {
+    if (err) {
+      console.error("Error executing the database query: " + err.stack);
+      console.log("An error occurred while executing the database query.");
+      return res.status(500);
     }
 
-    // Continue executing the code if the passwords match
-    response.redirect("/index.html");
+    if (result.length === 0) {
+      console.log("Invalid username or password.");
+      return res.status(401);
+      
+    }
+
+    console.log("Login successful!");
+
+    // Successfully logged in
+    res.redirect("/index.html");
   });
 });
 
 // Signup route
 app.post(
   "/signup",
-  [
-    body("UserName").notEmpty().withMessage("Username is required").matches(/^[a-zA-Z0-9]+$/)
-      .withMessage("Username can only contain English alphanumeric characters"),
-    body("Email").isEmail().withMessage("Invalid email"),
-    body("Password").matches(/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/).withMessage("Password can only contain English alphanumeric characters and special characters."),
-    // body("ConfirmPassword").custom((value, { req }) => {
-    //   if (value !== req.body.Password) {
-    //     throw new Error("Password confirmation does not match password");
-    //   }
-    //   return true;
-    // }),
-  ],
-  (request, response) => {
-    const errors = validationResult(request);
-
-    if (!errors.isEmpty()) {
-      return response.status(422).json({ errors: errors.array() });
+  body("UserName").notEmpty().withMessage("Username is required"),
+  body("Email").isEmail().withMessage("Invalid email"),
+  body("Password").isLength({ min: 8 }).withMessage("Password must be at least 8 characters"),
+  body("ConfirmPassword").custom((value, { req }) => {
+    if (value !== req.body.Password) {
+      throw new Error("Password confirmation does not match password");
     }
+    return true;
+  }),
+  (req, res) => {
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //   return res.status(400).json({ errors: errors.array() });
+    // }
 
-    const { UserName, Email, Password, ConfirmPassword } = request.body;
+    const { UserName, Email, Password, ConfirmPassword } = req.body;
 
     // Insert user data into the database
     const sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-    connection.query(sql, [UserName, Email, Password], (error, result) => {
-      if (error) {
-        errors.errors.push({ msg: 'Username or email already exists' });
-        return response.status(401).json({ errors: errors.array() });
-      }else{
+    connection.query(sql, [UserName, Email, Password], (err, result) => {
+      if (err) {
+        console.log("Error inserting data into the database");
+        //console.error("Error inserting data into the database: " + err.stack);
+          return res.status(500)
+          //.json({
+        //   status: false,
+        //   error: "An error occurred while inserting data into the database.",
+        // });
+      }
 
       temporaryStorage.username = UserName;
 
       // Registration successful, redirect to index page
-      response.redirect("/TraderRegistration/HTML/Registration.html");}
+      return res.redirect("/TraderRegistration/HTML/Registration.html");
     });
   }
 );
+
 
 
 
