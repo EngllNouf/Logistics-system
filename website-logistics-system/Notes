@@ -219,26 +219,28 @@ CREATE TABLE transportationcompany (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE order_details (
-  order_id INT AUTO_INCREMENT PRIMARY KEY,
-  pickup_location VARCHAR(255) NOT NULL,
-  dropoff_location VARCHAR(255) NOT NULL,
-  pickup_date DATE NOT NULL,
-  dropoff_date DATE NOT NULL,
-  cargo_type VARCHAR(255) NOT NULL,
-  truck_type VARCHAR(255) NOT NULL,
-  number_of_trucks INT NOT NULL,
-  goods_value DECIMAL(10, 2),
-  image_path VARCHAR(255),
-  notes TEXT,
+
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pickup` varchar(255) NOT NULL,
+  `dropOff` varchar(255) NOT NULL,
+  `datePickUp` date NOT NULL,
+  `dateDropOff` date NOT NULL,
+  `typeCargo` varchar(255) NOT NULL,
+  `truck` varchar(255) NOT NULL,
+  `numberOfTruck` varchar(255) NOT NULL,
+  `CargoValue` decimal(10,2) NOT NULL,
+  `weight` decimal(10,2) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `notes` varchar(255) DEFAULT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   idNumber VARCHAR(10),
   username VARCHAR(255),
   FOREIGN KEY (idNumber) REFERENCES trader(idNumber),
-  FOREIGN KEY (username) REFERENCES users(username)
+  FOREIGN KEY (username) REFERENCES users(username),
+  PRIMARY KEY (`id`)
 );
-
 
 CREATE TABLE truck (
   truckID INT AUTO_INCREMENT PRIMARY KEY,
