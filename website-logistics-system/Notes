@@ -352,7 +352,7 @@ CREATE TABLE order_details (
   FOREIGN KEY (username) REFERENCES users(username)
 );
 CREATE TABLE truck (
-  truckID int(11) NOT NULL,
+  truckID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Owner varchar(255) NOT NULL,
   OwnerID int(11) NOT NULL,
   formOwnerIDFile varchar(255) NOT NULL,

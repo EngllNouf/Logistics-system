@@ -24,84 +24,34 @@
 
 <!-- Your JavaScript code -->
 
-  
 
 </head>
+
 <body>
-      <!--Nav-->
-  <nav id="nav" class="navbar navbar-expand-lg navbarScroll navbar-light">
-
-    <a class="navbar-brand" href="../FotHtml/HomePage.html"><img src="../../HomePage/images/OurLogo.jpg" height="55" width="180" alt="logo"></a>
-    <button class="navbar-toggler collapsed" type="button" 
-    data-bs-toggle="collapse" data-bs-target="#miniNav" aria-controls="miniNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="miniNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="../FotHtml/HomePage.html" style="color: #f89d13;">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services
-              </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/Trader/Trader.html">Trader</a></li>
-
-                      <li><a class="dropdown-item" href="/trasportation compeny/transport.html">Transportation company</a></li>
-                      <li><a class="dropdown-item" href="#">Driver</a></li>
-                    </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">AboutUs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">ContactUs</a>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="../../HomePage/images/person.png" width="30" height="30">
-            </a>
-              <ul class="dropdown-menu">
-
-                    <li><a class="dropdown-item" href="../index_file/Register.html">Register</a></li>
-                    <li><a class="dropdown-item" href="../index_file/Login.html">Login</a></li>
-                  </ul>
-          </li>
-
-
-        </ul> 
-    </div>
-
-</nav> 
-
-      <!--End of anv bar-->
-    
-<div class="welcome-container" id="welcomeContainer">
-    <h1>Welcome!</h1>
-    <p>Choose Which Option Best Describes your Business</p>
-    <div class="options-container">
-        <div class="option">
-            <img src="../IMG/truck.png" alt="truck">
-            <button onclick="selectOption('transportation')">Transportation Company</button>
-        </div>
-        <div class="option">
-            <img src="../IMG/trader.png" alt="trader">
-            <button onclick="selectOption('trader')">Trader</button>
+    <div class="welcome-container" id="welcomeContainer">
+        <h1>Welcome!</h1>
+        <p>Choose Which Option Best Describes your Business</p>
+        <div class="options-container">
+            <div class="option">
+                <img src="../IMG/truck.png" alt="Transportation Company">
+                <button onclick="selectOption('transportation')">Transportation Company</button>
+            </div>
+            <div class="option">
+                <img src="../IMG/trader.png" alt="Trader">
+                <button onclick="selectOption('trader')">Trader</button>
+            </div>
         </div>
     </div>
-</div>
 
+    <div id="point1" class="point" style="display: none;">1</div>
+    <div id="point2" class="point" style="display: none;">2</div>
 
-<div id="point1" class="point" style="display: none;">1</div>
-<div id="point2" class="point" style="display: none;">2</div>
-
-
-<!-- Transportation company registration form -->
-<form id="transportationRegistrationForm" >
-    <div class="form-step transportation-details" id="transportationStep1" style="display: none;" action="/process1" method="POST">
-            <h2>Transportation Company's Details:</h2>
+    <!-- Transportation Company Registration Form -->
+    <form id="transportationRegistrationForm" action="/process1" method="POST">
+        <div class="form-step transportation-details" id="transportationStep1" style="display: none;">
+            <h2 class="transportation_Company_title">Transportation Company's Details:</h2>
             <div class="grid-container">
+                <!-- Input Fields -->
                 <div>
                     <input type="text" placeholder="Commercial Registration Name" id="commercialRegistrationName">
                     <span id="commercialRegistrationNameError" class="error-message-small"></span>
@@ -114,23 +64,24 @@
                     <input type="text" placeholder="Commercial Registration ID" id="commercialRegistrationID">
                     <span id="commercialRegistrationIDError" class="error-message-small"></span>
                 </div>
-                <div>
+                <!-- Date Fields -->
+                <div class="issDate-group">
                     <label for="issueDate" class="date-label">Registration Issue Date</label>
-                    <input type="date" placeholder="Issue Date" id="issueDate">
+                    <input type="date" class="issueDate" id="issueDate">
                     <span id="issueDateError" class="error-message-small"></span>
                 </div>
-                <div>
-                    <label for="expirationDate" class="date-label">Registration Expiration Date</label>
-                    <input type="date" placeholder="Expiration Date" id="expirationDate">
+                <div class="expDate-group">
+                    <label for="expirationDate" class="date-label2">Registration Expiration Date</label>
+                    <input type="date" class="expDate" id="expirationDate">
                     <span id="expirationDateError" class="error-message-small"></span>
                 </div>
+                <!-- Select Fields -->
                 <div>
                     <select id="licenseType">
                         <option value="" disabled selected>Transportation's License Type</option>
                         <option value="Directing goods transport vehicles License">Directing goods transport vehicles License</option>
                         <option value="Transporting goods on land roads license">Transporting goods on land roads license</option>
                         <option value="Land freight broker license">Land freight broker license</option>
-                    
                     </select>
                     <span id="licenseTypeError" class="error-message-small"></span>
                 </div>
@@ -147,8 +98,7 @@
                     <span id="transportTypeError" class="error-message-small"></span>
                 </div>
                 <div>
-                    
-                    <select id="companySpecialization" >
+                    <select id="companySpecialization">
                         <option value="" disabled selected>Select Specialization</option>
                         <option value="General Freight Shipping services">General Freight Shipping services</option>
                         <option value="Express Delivery Services">Express Delivery Services</option>
@@ -161,185 +111,180 @@
                         <option value="Perishable Goods Transportation services">Perishable Goods Transportation</option>
                         <option value="Waste Management and Recycling Transportation Services">Waste Management and Recycling Transport Service</option>
                         <option value="Auto Transportation services">Auto Transportation services</option>
-                
                     </select>
-
-                    
                     <span id="companySpecializationError" class="error-message-small"></span>
                 </div>
+                <!-- File Attachments -->
                 <div class="file-field">
-                    <label for="commercialRegistrationFile">Attach Commercial Registration File <span id="commercialRegistrationFileError" class="error-message-small"></span></label>
+                    <label for="commercialRegistrationFile">+ Attach Commercial Registration File</label>
                     <output id="commercialRegistrationFileList"></output>
                     <input type="file" id="commercialRegistrationFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('commercialRegistrationFile', 'commercialRegistrationFileList')">
+                    <span id="commercialRegistrationFileError" class="error-message-small"></span>
                 </div>
-                
                 <div class="file-field">
-                    <label for="ownerIdFile">Attach Owner ID pic <span id="ownerIdFileError" class="error-message-small"></span></label>
+                    <label for="ownerIdFile">+ Attach Owner ID pic</label>
                     <output id="ownerIdFileList"></output>
                     <input type="file" id="ownerIdFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('ownerIdFile', 'ownerIdFileList')">
+                    <span id="ownerIdFileError" class="error-message-small"></span>
                 </div>
-                
                 <div class="file-field">
-                    <label for="licenseFile">Attach License File <span id="licenseFileError" class="error-message-small"></span></label>
+                    <label for="licenseFile">+ Attach License File</label>
                     <output id="licenseFileList"></output>
                     <input type="file" id="licenseFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('licenseFile', 'licenseFileList')">
+                    <span id="licenseFileError" class="error-message-small"></span>
                 </div>
-                
                 <div class="file-field">
-                    <label for="commissionerIdFile">Attach Commissioner's ID File <span id="commissionerIdFileError" class="error-message-small"></span></label>
+                    <label for="commissionerIdFile">+ Attach Commissioner's ID File</label>
                     <output id="commissionerIdFileList"></output>
                     <input type="file" id="commissionerIdFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('commissionerIdFile', 'commissionerIdFileList')">
+                    <span id="commissionerIdFileError" class="error-message-small"></span>
                 </div>
-                
             </div>
             <div class="button-container">
-                <button class="back-btn" onclick="backToWelcomeFromTransportationForm()">Previous</button>
+                <button type="button" class="back-btn" onclick="backToWelcomeFromTransportationForm()">Previous</button>
                 <button type="button" id="nextButton2">Next</button>
-                <button type="submit" id="submit" style="display: none;">Im Ready to Submit</button>
+                <button type="submit" id="submit" style="display: none;">I'm Ready to Submit</button>
                 <div id="msg2"></div>
             </div>
-          </div>
         </div>
     </form>
 
-
-
-
-<form id="TraderRegistrationForm" >
-
- <div class="form-container" id="formContainer" style="display: none;" action="/process" method="POST" >
-    <!-- Company details form -->
-    <div class="form-step company-details" id="step1" style="display: none;">
-        <h2>Trader's Company's Details : </h2>
-        <div class="grid-container">
-            <div>
-                <input type="text" placeholder="Company Name" id="companyName">
-                <span id="companyNameError" class="error-message-small"></span>
+    <!-- Trader Registration Form -->
+    <form id="TraderRegistrationForm" action="/process" method="POST">
+        <div class="form-container" id="formContainer" style="display: none;">
+            <!-- Trader Company Details -->
+            <div class="form-step company-details" id="step1" style="display: none;">
+                <h2 class="trader_company_title">Trader's Company's Details:</h2>
+                <div class="grid-container">
+                    <div>
+                        <input type="text" placeholder="Company Name" id="companyName">
+                        <span id="companyNameError" class="error-message-small"></span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Company Email" id="companyEmail">
+                        <span id="companyEmailError" class="error-message-small"></span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Address line 1" id="companyAddress">
+                        <span id="AddressError" class="error-message-small"></span>
+                    </div>
+                    <div>
+                        <select id="citySelect">
+                            <option value="" disabled selected>Select City</option>
+                            <option value="Riyadh">Riyadh</option>
+                            <option value="Makkah">Makkah</option>
+                            <option value="Madinah">Al-Madinah</option>
+                            <option value="Eastern Region">Eastern</option>
+                            <option value="Asir">Asir</option>
+                            <option value="Tabuk">Tabuk</option>
+                            <option value="Qassim">Al-Qassim</option>
+                            <option value="Hail">Hail</option>
+                            <option value="Northern Borders Region">Northern Borders</option>
+                            <option value="Jazan">Jazan</option>
+                            <option value="Najran">Najran</option>
+                            <option value="Bahah">Al-Bahah</option>
+                            <option value="Jouf">Al-Jouf</option>
+                        </select>
+                        <span id="citySelectError" class="error-message-small"></span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Zip Code" id="companyZip">
+                        <span id="ZipError" class="error-message-small"></span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="VAT Number" id="companyVat">
+                        <span id="VatError" class="error-message-small"></span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Business License Number" id="companyLicense">
+                        <span id="LicenseError" class="error-message-small"></span>
+                    </div>
+                </div>
+                <div class="file-field">
+                    <label for="commercialRegistrationFile1">+ Attach Commercial Registration File</label>
+                    <output id="fileList1"></output>
+                    <input type="file" id="commercialRegistrationFile1" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('commercialRegistrationFile1', 'fileList1')">
+                    <span id="commercialRegistrationFile1Error" class="error-message-small"></span>
+                </div>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="backToWelcomeFromTraderForm()">Previous</button>
+                    <button type="button" onclick="nextStep()">Next</button>
+                </div>
             </div>
-
-            <div>
-                <input type="text" placeholder="Company Email" id="companyEmail">
-                <span id="companyEmailError" class="error-message-small"></span>
-            </div>
-            <div>
-                <input type="text" placeholder="Address line 1" id="companyAddress">
-                <span id="AddressError" class="error-message-small"></span>
-            </div>
-            <div>
-                <select id="citySelect">
-                    <option value="" disabled selected>Select City</option>
-                    <option value="Riyadh">Riyadh Region</option>
-                    <option value="Makkah">Makkah Region</option>
-                    <option value="Madinah">Al-Madinah Region</option>
-                    <option value="Eastern Region">Eastern Region</option>
-                    <option value="Asir">Asir Region</option>
-                    <option value="Tabuk">Tabuk Region</option>
-                    <option value="Qassim">Al-Qassim Region</option>
-                    <option value="Hail">Hail Region</option>
-                    <option value="Northern Borders Region">Northern Borders Region</option>
-                    <option value="Jazan">Jazan Region</option>
-                    <option value="Najran">Najran Region</option>
-                    <option value="Bahah">Al-Bahah Region</option>
-                    <option value="Jouf">Al-Jouf Region</option>
-                    
-                   
-                </select>
-                
-                <span id="citySelectError" class="error-message-small"></span>
-            </div>
-            <div>
-                <input type="text" placeholder="Zip Code" id="companyZip">
-                <span id="ZipError" class="error-message-small"></span>
-            </div>
-            <div>
-                <input type="text" placeholder="VAT Number" id="companyVat">
-                <span id="VatError" class="error-message-small"></span>
-            </div>
-            <div>
-                <input type="text" placeholder="Business License Number" id="companyLicense">
-                <span id="LicenseError" class="error-message-small"></span>
-            </div>
-          
-        </div>
-    
-        <div class="file-field">
-            <label for="commercialRegistrationFile1"> + Attach commercial registration file and other related files <span id="commercialRegistrationFile1Error" class="error-message-small"></span></label>
-            <output id="fileList1"></output>
-            <input type="file" id="commercialRegistrationFile1" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('commercialRegistrationFile1', 'fileList1')">
-        </div>
-        
-       <div class="button-container">
-    <button class="back-btn" onclick="backToWelcomeFromTraderForm()">Previous</button>
-    <button onclick="nextStep()">Next</button>
- </div>
-    </div>
-
-
-    <!-- Trader details form -->
-    <div class="form-step trader-details" id="step2" style="display: none;">
-        <h2>Trader's Details :</h2>
-        <div class="grid-container">
-
-            <div>
-                <input type="text" placeholder="Name" id="traderName">
-                <span id="nameError" class="error-message-small"></span>
-            </div>
-            <div>
-                <input type="text" placeholder="Phone Number" id="traderPhoneNumber">
-                <span id="phoneNumberError" class="error-message-small"></span>
-            </div>
-            <div>
-                <input type="text" placeholder="Address" id="traderAddress">
-                <span id="addressError" class="error-message-small"></span>
-            </div>
-            <div>
-                <select id="industrySelect">
-                    <option value="" disabled selected>Select Industry</option>
-                                        <option value="Transportation">Transportation</option>
-        <option value="Utilities">Utilities</option>
-        <option value="Chemicals">Chemicals</option>
-        <option value="Consumer Goods">Consumer Goods</option>
-        <option value="Energy">Energy</option>
-        <option value="Fashion">Fashion</option>
-        <option value="Food">Food</option>
-        <option value="Electronic">Electronic</option>
-                </select>
-                <span id="industryError" class="error-message-small"></span>
-            </div>
-            <div>
-                <input type="text" placeholder="Saudi National ID or Iqama ID" id="idNumber">
-                <span id="idNumberError" class="error-message-small"></span>
-            </div>
-        </div>
-        <div class="file-field">
-            <label for="traderIDFile">+ Attach ID and other related files <span id="traderIDFileError" class="error-message-small"></span></label>
-            <output id="fileList2"></output>
-            <input type="file" id="traderIDFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('traderIDFile', 'fileList2')">
-
-        </div>
-        <div class="button-container">
-            <button onclick="backStep()">Previous</button>
             
-           <button id="nextButton">Next</button>
-
-           <button type="submit" id="submitButton" style="display: none;">I'm Ready to Submit</button>
-
-
-            <div id="msg"></div>
-
+            <!-- Trader Details -->
+            <div class="form-step trader-details" id="step2" style="display: none;">
+                <h2 class="trader_details_title">Trader's Details:</h2>
+                <div class="grid-container">
+                    <div>
+                        <input type="text" placeholder="Name" id="traderName">
+                        <span id="nameError" class="error-message-small"></span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Phone Number" id="traderPhoneNumber">
+                        <span id="phoneNumberError" class="error-message-small"></span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Address" id="traderAddress">
+                        <span id="addressError" class="error-message-small"></span>
+                    </div>
+                    <div>
+                        <select id="industrySelect">
+                            <option value="" disabled selected>Select Industry</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Chemicals">Chemicals</option>
+                            <option value="Consumer Goods">Consumer Goods</option>
+                            <option value="Energy">Energy</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Food">Food</option>
+                            <option value="Electronic">Electronic</option>
+                            <option value="Agriculture">Agriculture</option>
+                            <option value="Automotive">Automotive</option>
+                            <option value="Banking">Banking</option>
+                            <option value="Biotechnology">Biotechnology</option>
+                            <option value="Construction">Construction</option>
+                            <option value="Education">Education</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Hospitality">Hospitality</option>
+                            <option value="Insurance">Insurance</option>
+                            <option value="Manufacturing">Manufacturing</option>
+                            <option value="Media and Entertainment">Media and Entertainment</option>
+                            <option value="Pharmaceuticals">Pharmaceuticals</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="Retail">Retail</option>
+                            <option value="Software and IT Services">Software and IT Services</option>
+                            <option value="Telecommunications">Telecommunications</option>
+                            <option value="Travel and Tourism">Travel and Tourism</option>
+                        </select>
+                        
+                        <span id="industryError" class="error-message-small"></span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Saudi National ID or Iqama ID" id="idNumber">
+                        <span id="idNumberError" class="error-message-small"></span>
+                    </div>
+                </div>
+                <div class="file-field">
+                    <label for="traderIDFile">+ Attach a File of National ID / Iqama ID</label>
+                    <output id="fileList2"></output>
+                    <input type="file" id="traderIDFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFile('traderIDFile', 'fileList2')">
+                    <span id="traderIDFileError" class="error-message-small"></span>
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="backStep()">Previous</button>
+                    <button type="button" id="nextButton">Next</button>
+                    <button type="submit" id="submitButton" style="display: none;">I'm Ready to Submit</button>
+                    <div id="msg"></div>
+                </div>
+            </div>
         </div>
-        
-     </div>
+        <div id="successMessage" class="success-animation" style="display: none;"></div>
+    </form>
 
-      <div id="successMessage" class="success-animation" style="display: none;">
-      
- </div>
-
-</form>
-
-
-
-<script src="../JS/Registration.js"></script>
-
+    <script src="../JS/Registration.js"></script>
 </body>
+
+
 </html>

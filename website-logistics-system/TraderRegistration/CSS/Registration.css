@@ -99,8 +99,8 @@ button:hover {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Adjusted to take full width */
-    max-width: 430px; /* Maximum width for better readability */
+    width: 700px; /* Adjusted to take full width */
+    max-width: 1000px; /* Maximum width for better readability */
     overflow: hidden;
     perspective: 1000px;
     display: flex;
@@ -108,9 +108,10 @@ button:hover {
     align-items: center;
     position: relative;
     z-index: 1;
-    margin-top: 100px;
+    margin-top: 170px;
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
+
 }
 #point1 {
     padding: 2px;
@@ -162,13 +163,39 @@ button:hover {
 
 input[type="text"],
 select {
-    width: calc(100% - 3px);
+    width: 300px;
     padding: 10px;
+    margin: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;
     border: 1px solid #f0f0f0;
     border-radius: 5px;
     box-sizing: border-box;
 }
+#citySelect{
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+#citySelect:focus {
+    border: 2px solid #ffffff00; /* Change border color to orange when input is focused */
+    transition: border-color 0.3s ease; /* Add transition effect for smoother change */
+    box-shadow: 0 0 5px #f89d13;
+   
+}
+
+#industrySelect{
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+#industrySelect:focus{
+    border: 2px solid #ffffff00; /* Change border color to orange when input is focused */
+    transition: border-color 0.3s ease; /* Add transition effect for smoother change */
+    box-shadow: 0 0 5px #f89d13;
+    
+}
+
 
 
 .file-field {
@@ -181,29 +208,33 @@ select {
     align-items: center;
     cursor: pointer;
     color: #5b9279;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 5px;
     margin-right: 20px;
     font-size: 11px;
     border: 0px solid #5b9279;
     border-radius: 1%;
     background-color: #5b927937;
+    font-weight: 500;
 }
+
+
 
 .file-field label:hover {
     color: #5b9279; 
-    font-weight: bold; 
+    font-weight: 1000; 
+}
+.file-item {
+    
+    align-items: center;
+    margin-bottom: 5px; 
 }
 
 .delete-btn {
-    color: red; 
     margin-left: 5px; 
-    cursor: pointer; 
-}
-
-.file-item {
-    display: flex;
-    align-items: center;
+    color: red;
+    cursor: pointer;
+   
 }
 
 .file-name {
@@ -240,6 +271,7 @@ select {
     }
 }
 
+
 .form-container {
   
     animation: slideIn 0.5s ease forwards;
@@ -262,6 +294,23 @@ select {
     font-size: 10px;
 }
 
+/* Adjust position of error messages */
+.grid-container > div,
+.file-field,
+.select-container {
+    position: relative;
+}
+
+.error-message-small {
+    margin-left: 30px;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+}
+
+.button-container{
+    margin-top: 20px;
+}
 .point {
     width: 40px;
     height: 40px;
@@ -310,15 +359,38 @@ select {
     background-color: #fcbb5a;
 }
 
-.form-step.company-details h2 {
-    color: #5b9279; 
-    font-size: 18px; 
+
+.trader_company_title{
+    font-size: 35px;
+    font-weight: bold;
+    color: #5b9279;
+    margin-bottom: 40px;
+    
 }
 
-.form-step.trader-details h2 {
-    color: #5b9279; 
-    font-size: 18px; 
+.trader_details_title{
+
+    font-size: 35px;
+    font-weight: bold;
+    color: #5b9279;
+    margin-bottom: 40px;
+
 }
+
+input:focus {
+    border: 2px solid #f89d13; /* Change border color to orange when input is focused */
+    transition: border-color 0.3s ease; /* Add transition effect for smoother change */
+    box-shadow: 0 0 5px #f89d13;
+    border-color: #f89d13;
+}
+
+
+
+
+
+
+
+
 
 /*css for transportatopn company form*/
 
@@ -342,17 +414,16 @@ select {
     
 }
 
-@media only screen and (max-width: 600px) {
-  
-
- 
-
-  
+@media only screen and (max-width: 600px) {  
 
 }
 
-
-
+.transportation_Company_title{
+    font-size: 35px;
+    font-weight: bold;
+    color: #5b9279;
+    margin-bottom: 40px;
+}
 .form-step.transportation-details {
     animation: slideIn 0.5s ease forwards;
 }
@@ -370,7 +441,7 @@ select {
 #transportationRegistrationForm input[type="text"],
 #transportationRegistrationForm select {
     width: calc(100% - 3px);
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 10px;
     border: 1px solid #f0f0f0;
     border-radius: 5px;
@@ -384,8 +455,10 @@ select {
     cursor: pointer;
     color: #5b9279;
     padding: 10px;
+    margin-top: 5px;
     margin-bottom: 5px;
-    margin-right: 20px;
+    margin-right: 0px;
+    margin-left: 22px;
     font-size: 11px;
     border: 0px solid #5b9279;
     border-radius: 1%;
@@ -419,15 +492,69 @@ select {
     margin-top: 5px;
     font-size: 14px;
     color: #777;
+   
 }
 
-.date-label {
-    font-size: 12px;
-    color: #777;
-    margin-top: 5px;
+/*
+.date-label{
+    padding: 50px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
+*/
 
 #submitButton {
     margin-top: 15px; 
-    margin-left: 60px;
+    margin-left: 4px;
+}
+#licenseType{
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+#transportType{
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+#companySpecialization{
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+
+}
+.expDate{
+    padding: 4px;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+.issueDate{
+    padding: 5px;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+.date-label{
+    padding: 5px;
+    padding-left: 20px;
+    margin-top: 8px;
+}
+
+.date-label2{
+    padding: 5px;
+    padding-left: 20px;
+    margin-top: 8px;
+}
+
+.expDate-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+.issDate-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
 }

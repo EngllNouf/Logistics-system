@@ -295,7 +295,7 @@ function validateAndProceedToNextStep() {
     // Validate trader details before proceeding
     if (validateTraderDetails()) {
         // Proceed to the next step
-        document.getElementById('submitButton').style.display = 'block';
+        document.getElementById('submitButton').style.display = 'flex';
     }
 }
 
@@ -458,14 +458,6 @@ document.getElementById("TraderRegistrationForm").addEventListener("submit", fun
 
 
 
-/*$(document).ready(function() {
-    $('.select2').select2();
-}); */
-
-
-
-
-
 //next button for the company form
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -523,24 +515,23 @@ function validateTransportationForm() {
     let commissionerIdFileError = document.getElementById('commissionerIdFileError');
 
     let isValid = true;
-
-    // Validation logic for commercial registration name
-    if (commercialRegistrationName.trim() === '') {
-        commercialRegistrationNameError.innerText = '* Required';
-        isValid = false;
-    } else if (!/^[a-zA-Z\s]+$/.test(commercialRegistrationName)) {
-        commercialRegistrationNameError.innerText = '* Name Should contain only letters';
-        isValid = false;
-    } else {
-        commercialRegistrationNameError.innerText = '';
-    }
+// Validation logic for commercial registration name
+if (commercialRegistrationName.trim() === '') {
+    commercialRegistrationNameError.innerText = '* Required';
+    isValid = false;
+} else if (!/^[a-zA-Z0-9\s]+$/.test(commercialRegistrationName)) {
+    commercialRegistrationNameError.innerText = '* Name Should contain only letters and numbers';
+    isValid = false;
+} else {
+    commercialRegistrationNameError.innerText = '';
+}
 
     // Validation logic for commercial registration number
     if (commercialRegistrationNumber.trim() === '') {
         commercialRegistrationNumberError.innerText = '* Required';
         isValid = false;
     } else if (!/^\d{10}$/.test(commercialRegistrationNumber)) {
-        commercialRegistrationNumberError.innerText = '* Should contain exactly 10 numbers';
+        commercialRegistrationNumberError.innerText = '* Should only contain exactly 10 numbers';
         isValid = false;
     } else {
         commercialRegistrationNumberError.innerText = '';
@@ -551,28 +542,39 @@ function validateTransportationForm() {
         commercialRegistrationIDError.innerText = '* Required';
         isValid = false;
     } else if (!/^\d{10}$/.test(commercialRegistrationID)) {
-        commercialRegistrationIDError.innerText = '* Should contain exactly 10 numbers';
+        commercialRegistrationIDError.innerText = '* Should only contain exactly 10 numbers';
         isValid = false;
     } else {
         commercialRegistrationIDError.innerText = '';
     }
-
-    // Validation logic for issue date and expiration date
-    if (new Date(expirationDate) < new Date(issueDate)) {
-        issueDateError.innerText = '* Issue Date cant be after Expiration Date';
-        expirationDateError.innerText = '* Expiration Date cant be before Issue Date';
-        isValid = false;
+// Validation logic for issue date and expiration date
+if (!issueDate || !expirationDate) {
+    if (!issueDate) {
+        issueDateError.innerText = '* Required';
     } else {
         issueDateError.innerText = '';
+    }
+    if (!expirationDate) {
+        expirationDateError.innerText = '* Required';
+    } else {
         expirationDateError.innerText = '';
     }
+    isValid = false;
+} else if (new Date(expirationDate) < new Date(issueDate)) {
+    issueDateError.innerText = '* Issue Date cant be after Expiration Date';
+    expirationDateError.innerText = '* Expiration Date cant be before Issue Date';
+    isValid = false;
+} else {
+    issueDateError.innerText = '';
+    expirationDateError.innerText = '';
+}
 
     // Validation logic for license number
     if (licenseNumber.trim() === '') {
         licenseNumberError.innerText = '* Required';
         isValid = false;
     } else if (!/^\d{10}$/.test(licenseNumber)) {
-        licenseNumberError.innerText = '* Should contain exactly 10 numbers';
+        licenseNumberError.innerText = '* Should only contain exactly 10 numbers';
         isValid = false;
     } else {
         licenseNumberError.innerText = '';
