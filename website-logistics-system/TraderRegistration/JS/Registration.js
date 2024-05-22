@@ -438,15 +438,16 @@ document.getElementById("TraderRegistrationForm").addEventListener("submit", fun
                 msg.appendChild(li);
             });
         } else {
+            window.location.href = data.redirectUrl;
             // Reset form fields
-            document.getElementById("TraderRegistrationForm").reset();
+            //document.getElementById("TraderRegistrationForm").reset();
 
             fileList.innerHTML = ''; // Clear the file list
             fileList1.innerHTML = '';
             
             // Hide the "I'm Ready to Submit" button
             //document.getElementById("submitButton").style.display = 'none';
-            window.location.href = data.redirectUrl;
+            
            
         }
     })

@@ -164,7 +164,8 @@ app.post("/process",formValidationTrader, (request, response) => {
         addTrader(companyName, companyEmail, companyAddress,citySelect,companyZip,companyVat,
             companyLicense,commercialRegistrationFile1,traderName,traderPhoneNumber,traderAddress,industrySelect,idNumber,traderIDFile,username);
             delete temporaryStorage.username;
-       response.status(200).json({msg:"Form is validated"});
+       response.status(200).json({msg:"Form is validated",redirectUrl: "/Trader/Trader.html"});
+
         
    }
  });
@@ -252,7 +253,7 @@ app.post("/process",formValidationTrader, (request, response) => {
             issueDate, expirationDate, licenseType, licenseNumber, transportType, companySpecialization,
             commercialRegistrationFile, ownerIdFile, licenseFile, commissionerIdFile);
         
-        response.status(200).json({msg: "Form is validated", redirectUrl: "/Trader/Trader.html"});
+        response.status(200).json({msg: "Form is validated", redirectUrl: "/ConfigureTruck/ConfigureTruck.html"});
     }
 });
 
